@@ -1,10 +1,8 @@
-import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import ServiceCard from "@/components/ui/ServiceCard";
-
-const API = process.env.NEXT_PUBLIC_API_URL;
+import postsData from "./api/posts.json";
 
 // 4 Macro Services
 const services = [
@@ -343,20 +341,9 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  try {
-    const [postsRes, pagesRes] = await Promise.all([
-      axios.get(`${API}/posts`),
-      axios.get(`${API}/pages`),
-    ]);
-    return {
-      props: {
-        posts: postsRes.data,
-        pages: pagesRes.data,
-      },
-      revalidate: 60,
-    };
-  } catch (err) {
-    console.error("Errore nel caricamento dati:", err.message);
-    return { props: { posts: [], pages: [] } };
-  }
+  return {
+    props: {
+      posts: postsData || [],
+    },
+  };
 }

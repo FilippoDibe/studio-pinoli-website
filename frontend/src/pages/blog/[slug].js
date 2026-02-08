@@ -1,9 +1,7 @@
-import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-
-const API = process.env.NEXT_PUBLIC_API_URL;
+import postsData from "../api/posts.json";
 
 // Helper function to extract first image from content
 function extractFirstImage(content) {
@@ -212,18 +210,13 @@ export default function BlogPost({ post }) {
 }
 
 export async function getStaticPaths() {
-  const res = await axios.get(`${API}/posts`);
-  const paths = res.data.map((post) => ({
+  const paths = postsData.map((post) => ({
     params: { slug: post.slug },
   }));
-  return { paths, fallback: "blocking" };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  try {
-    const res = await axios.get(`${API}/posts/${params.slug}`);
-    return { props: { post: res.data }, revalidate: 60 };
-  } catch {
-    return { props: { post: null } };
-  }
+  const post = postsData.find(p => p.slug === params.slug) || null;
+  return { props: { post } };
 }

@@ -1,8 +1,6 @@
-import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
-
-const API = process.env.NEXT_PUBLIC_API_URL;
+import pagesData from "../api/pages.json";
 
 export default function Page({ page }) {
   if (!page) {
@@ -80,18 +78,13 @@ export default function Page({ page }) {
 }
 
 export async function getStaticPaths() {
-  const res = await axios.get(`${API}/pages`);
-  const paths = res.data.map((p) => ({
+  const paths = pagesData.map((p) => ({
     params: { slug: p.slug },
   }));
-  return { paths, fallback: "blocking" };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  try {
-    const res = await axios.get(`${API}/pages/${params.slug}`);
-    return { props: { page: res.data }, revalidate: 60 };
-  } catch {
-    return { props: { page: null } };
-  }
+  const page = pagesData.find(p => p.slug === params.slug) || null;
+  return { props: { page } };
 }

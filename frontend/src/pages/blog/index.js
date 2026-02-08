@@ -1,9 +1,7 @@
-import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-
-const API = process.env.NEXT_PUBLIC_API_URL;
+import postsData from "../api/posts.json";
 
 // Helper function to extract first image from content
 function extractFirstImage(content) {
@@ -223,13 +221,7 @@ export default function Blog({ posts }) {
 }
 
 export async function getStaticProps() {
-  try {
-    const res = await axios.get(`${API}/posts`);
-    return {
-      props: { posts: res.data },
-      revalidate: 60,
-    };
-  } catch {
-    return { props: { posts: [] } };
-  }
+  return {
+    props: { posts: postsData || [] },
+  };
 }
