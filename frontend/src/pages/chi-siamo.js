@@ -1,13 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
-// Stats
+// Stats with numeric values for animation
 const stats = [
-  { number: "35+", label: "Anni di Esperienza" },
-  { number: "15.000+", label: "Pazienti Soddisfatti" },
-  { number: "4", label: "Aree di Specializzazione" },
-  { number: "98%", label: "Tasso di Soddisfazione" }
+  { number: 35, suffix: "+", label: "Anni di Esperienza" },
+  { number: 15000, suffix: "+", label: "Pazienti Soddisfatti" },
+  { number: 4, suffix: "", label: "Aree di Specializzazione" },
+  { number: 98, suffix: "%", label: "Tasso di Soddisfazione" }
 ];
 
 // Team members
@@ -55,6 +56,58 @@ const values = [
     description: "Ogni paziente è unico e merita un'attenzione personalizzata e premurosa."
   }
 ];
+
+// Animated Counter Component
+function AnimatedCounter({ target, suffix, duration = 2000 }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime;
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * target));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible, target, duration]);
+
+  return (
+    <span ref={ref} className="stat-number animated">
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
 
 export default function ChiSiamo() {
   return (
@@ -121,11 +174,15 @@ export default function ChiSiamo() {
               </div>
             </div>
 
-            {/* Stats */}
+            {/* Stats with Animated Counters */}
             <div className="stats-grid">
               {stats.map((stat, index) => (
                 <div key={index} className="stat-item">
-                  <div className="stat-number">{stat.number}</div>
+                  <AnimatedCounter
+                    target={stat.number}
+                    suffix={stat.suffix}
+                    duration={2000 + index * 200}
+                  />
                   <h4>{stat.label}</h4>
                 </div>
               ))}

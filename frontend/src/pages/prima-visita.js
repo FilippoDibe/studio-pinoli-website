@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 // Timeline steps
 const timelineSteps = [
@@ -8,28 +9,24 @@ const timelineSteps = [
     number: "01",
     title: "Accoglienza",
     description: "Ti accogliamo nel nostro studio con un sorriso. Il nostro staff ti guiderà nella compilazione dei documenti necessari e ti farà sentire a casa.",
-    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
     image: "/images/chi-siamo-studio.jpg"
   },
   {
     number: "02",
     title: "Colloquio Conoscitivo",
     description: "Un dialogo aperto per comprendere le tue esigenze, la tua storia clinica e le tue aspettative. Ascoltiamo attentamente per offrirti la miglior cura possibile.",
-    icon: "M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z",
     image: "/images/Dentista-a-Milano-team.jpg"
   },
   {
     number: "03",
     title: "Visita Clinica",
     description: "Esame approfondito della tua salute orale con tecnologie diagnostiche all'avanguardia. Radiografie digitali e scanner 3D per una diagnosi precisa.",
-    icon: "M19.5 3.5L18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2v14H3v3c0 1.66 1.34 3 3 3h12c1.66 0 3-1.34 3-3V2l-1.5 1.5zM19 19c0 .55-.45 1-1 1s-1-.45-1-1v-3H8V5h11v14z",
     image: "/images/home-prima-visita.jpg"
   },
   {
     number: "04",
     title: "Piano di Cura",
     description: "Ti presentiamo un piano di trattamento personalizzato, chiaro e trasparente. Discutiamo insieme le opzioni, i tempi e i costi senza sorprese.",
-    icon: "M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z",
     image: "/images/prima-visita-odontoiatrica.jpg"
   }
 ];
@@ -57,6 +54,88 @@ const benefits = [
     description: "Nessuna sorpresa: prezzi chiari e dettagliati."
   }
 ];
+
+// Scroll Timeline Component
+function ScrollTimeline({ steps }) {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const timelineRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+
+      const rect = timelineRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const timelineHeight = rect.height;
+
+      // Calculate how much of the timeline is visible/passed
+      const startOffset = rect.top - windowHeight * 0.5;
+      const endOffset = rect.bottom - windowHeight * 0.5;
+      const totalScrollable = timelineHeight;
+
+      if (startOffset > 0) {
+        setScrollProgress(0);
+      } else if (endOffset < 0) {
+        setScrollProgress(100);
+      } else {
+        const progress = Math.abs(startOffset) / totalScrollable * 100;
+        setScrollProgress(Math.min(100, Math.max(0, progress)));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="scroll-timeline" ref={timelineRef}>
+      {/* Center Line */}
+      <div className="scroll-timeline-track">
+        <div
+          className="scroll-timeline-progress"
+          style={{ height: `${scrollProgress}%` }}
+        />
+      </div>
+
+      {/* Timeline Items */}
+      {steps.map((step, index) => {
+        const stepProgress = (index / (steps.length - 1)) * 100;
+        const isActive = scrollProgress >= stepProgress;
+
+        return (
+          <div
+            key={index}
+            className={`scroll-timeline-item ${index % 2 === 1 ? "reverse" : ""} ${isActive ? "active" : ""}`}
+          >
+            <div className="scroll-timeline-content">
+              <span className="scroll-timeline-number">{step.number}</span>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
+
+            <div className="scroll-timeline-dot-wrapper">
+              <div className={`scroll-timeline-dot ${isActive ? "active" : ""}`}>
+                <span>{step.number}</span>
+              </div>
+            </div>
+
+            <div className="scroll-timeline-image">
+              <Image
+                src={step.image}
+                alt={step.title}
+                width={450}
+                height={300}
+                style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function PrimaVisita() {
   return (
@@ -118,7 +197,7 @@ export default function PrimaVisita() {
           </div>
         </section>
 
-        {/* Timeline Section */}
+        {/* Timeline Section with Scroll Progress */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
@@ -129,33 +208,7 @@ export default function PrimaVisita() {
               </p>
             </div>
 
-            <div className="vertical-timeline">
-              {timelineSteps.map((step, index) => (
-                <div key={index} className={`timeline-item ${index % 2 === 1 ? 'reverse' : ''}`}>
-                  <div className="timeline-content">
-                    <div className="timeline-number">{step.number}</div>
-                    <h3>{step.title}</h3>
-                    <p>{step.description}</p>
-                  </div>
-                  <div className="timeline-line">
-                    <div className="timeline-dot">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d={step.icon} />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="timeline-image">
-                    <Image
-                      src={step.image}
-                      alt={step.title}
-                      width={500}
-                      height={350}
-                      style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ScrollTimeline steps={timelineSteps} />
           </div>
         </section>
 
