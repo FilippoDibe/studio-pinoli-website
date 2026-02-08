@@ -1,22 +1,96 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import postsData from "./api/posts.json";
 
-// Quick service links for homepage (simpler than full cards)
-const quickServices = [
-  { name: "Odontoiatria", href: "/servizi/odontoiatria", icon: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6z", color: "var(--color-dental)" },
-  { name: "Bionutrizione", href: "/servizi/bionutrizione", icon: "M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05l-5 2v5.12c0 .68-.06 1.36-.18 2.02l-.33 1.79c-.05.29-.24.53-.51.65l-1.49.69V22h2.57zM1 21.99h2v-10l-2.5 2.5.83.84L4 12.66V22h2v-8.66l-1.83 1.84.83.83.83-.84L8 17.16V22h6v-4.83l-.98-.98-1.02.98V14h-2v3.17l-1.17 1.17H7.5c-.83 0-1.5-.67-1.5-1.5V10.5L4 12.5V22H2v-9l-1 1v8z", color: "var(--color-nutrition)" },
-  { name: "Medicina Estetica", href: "/servizi/medicina-estetica", icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z", color: "var(--color-aesthetic)" },
-  { name: "Medicina Integrata", href: "/servizi/medicina-integrata", icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-4h2v-2h2v-2h-2V9.5h-2V12H9v2h2v2z", color: "var(--color-integrative)" },
-];
+// Animated Counter Hook
+function useCountUp(target, duration = 2000) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
 
-// Stats for homepage
-const stats = [
-  { number: 35, suffix: "+", label: "Anni di Esperienza" },
-  { number: 15000, suffix: "+", label: "Pazienti Soddisfatti" },
-  { number: 4, suffix: "", label: "Specializzazioni" },
-  { number: 98, suffix: "%", label: "Soddisfazione" },
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    const start = performance.now();
+    const animate = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [hasAnimated, target, duration]);
+
+  return { count, ref };
+}
+
+// Stat Item Component
+function StatItem({ number, suffix, label }) {
+  const { count, ref } = useCountUp(number);
+
+  return (
+    <div className="hero-stat" ref={ref}>
+      <span className="hero-stat-number">
+        {count.toLocaleString('it-IT')}<span className="hero-stat-suffix">{suffix}</span>
+      </span>
+      <span className="hero-stat-label">{label}</span>
+    </div>
+  );
+}
+
+// Services data
+const services = [
+  {
+    title: "Odontoiatria",
+    description: "Implantologia, ortodonzia, igiene dentale e tutti i trattamenti per un sorriso sano e bello.",
+    href: "/servizi/odontoiatria",
+    image: "/images/14_Services_Dental_Care-Hero.jpg",
+    color: "#0066CC"
+  },
+  {
+    title: "Bionutrizione",
+    description: "Percorsi nutrizionali personalizzati per raggiungere il tuo peso forma e migliorare il benessere.",
+    href: "/servizi/bionutrizione",
+    image: "/images/home-bionutrizione.jpg",
+    color: "#27AE60"
+  },
+  {
+    title: "Medicina Estetica",
+    description: "Trattamenti non invasivi per contrastare i segni del tempo e valorizzare la tua bellezza naturale.",
+    href: "/servizi/medicina-estetica",
+    image: "/images/home-trattamenti-estetici.jpg",
+    color: "#8E44AD"
+  },
+  {
+    title: "Medicina Integrata",
+    description: "Un approccio olistico che unisce le cure tradizionali all'aromaterapia e ai rimedi naturali.",
+    href: "/servizi/medicina-integrata",
+    image: "/images/chi-siamo-medicina-integrata.jpg",
+    color: "#16A085"
+  }
 ];
 
 export default function Home({ posts }) {
@@ -30,306 +104,245 @@ export default function Home({ posts }) {
       </Head>
 
       <main id="main-content">
-        {/* Hero Section - Full Width with Video/Image Background */}
-        <section className="home-hero">
-          <div className="home-hero-bg">
+        {/* Hero Section */}
+        <section className="hero">
+          <div className="hero-bg">
             <Image
-              src="/images/14_Services_Dental_Care-Hero.jpg"
+              src="/images/chi-siamo-studio.jpg"
               alt="Studio Pinoli Milano"
               fill
               style={{ objectFit: "cover" }}
               priority
             />
           </div>
-          <div className="home-hero-overlay" />
+          <div className="hero-overlay" />
+
           <div className="container">
-            <div className="home-hero-content">
-              <span className="home-hero-badge">Da oltre 35 anni a Milano</span>
-              <h1>Il Tuo Benessere<br />È la Nostra Missione</h1>
-              <p>
-                Odontoiatria d'eccellenza, bionutrizione, medicina estetica e integrata.
-                Un approccio completo per prenderci cura di te.
+            <div className="hero-content">
+              <p className="hero-eyebrow">Studio Dentistico a Milano</p>
+              <h1>La tua salute,<br />la nostra passione</h1>
+              <p className="hero-text">
+                Da oltre 35 anni ci prendiamo cura del tuo sorriso e del tuo benessere
+                con un approccio integrato e personalizzato.
               </p>
-              <div className="home-hero-ctas">
+              <div className="hero-ctas">
                 <Link href="/prima-visita" className="btn btn-primary btn-lg">
-                  Prima Visita Gratuita
+                  Prenota una visita gratuita
                 </Link>
-                <a href="tel:+390242272381" className="btn btn-glass">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                  </svg>
+                <a href="tel:+390242272381" className="btn btn-white btn-lg">
                   02 4272381
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Quick Service Links */}
-          <div className="home-hero-services">
-            {quickServices.map((service, index) => (
-              <Link key={index} href={service.href} className="quick-service-link">
-                <div className="quick-service-icon" style={{ background: service.color }}>
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d={service.icon} />
-                  </svg>
-                </div>
-                <span>{service.name}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* Stats Bar */}
-        <section className="home-stats-bar">
-          <div className="container">
-            <div className="home-stats-grid">
-              {stats.map((stat, index) => (
-                <div key={index} className="home-stat-item">
-                  <span className="home-stat-number">
-                    {stat.number.toLocaleString()}{stat.suffix}
-                  </span>
-                  <span className="home-stat-label">{stat.label}</span>
-                </div>
-              ))}
+          {/* Stats */}
+          <div className="hero-stats">
+            <div className="container">
+              <div className="hero-stats-grid">
+                <StatItem number={35} suffix="+" label="Anni di esperienza" />
+                <StatItem number={15000} suffix="+" label="Pazienti soddisfatti" />
+                <StatItem number={4} suffix="" label="Aree specialistiche" />
+                <StatItem number={98} suffix="%" label="Tasso soddisfazione" />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* About Section */}
+        {/* Intro */}
         <section className="section">
           <div className="container">
-            <div className="home-about-grid">
-              <div className="home-about-images">
-                <div className="home-about-img-main">
-                  <Image
-                    src="/images/chi-siamo-studio.jpg"
-                    alt="Studio Pinoli"
-                    width={500}
-                    height={600}
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="home-about-img-float">
-                  <Image
-                    src="/images/chi-siamo-team-professionisti.jpg"
-                    alt="Team"
-                    width={250}
-                    height={200}
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                </div>
-              </div>
-              <div className="home-about-content">
-                <span className="section-subtitle">Chi Siamo</span>
-                <h2>Da Oltre 35 Anni il Dentista a Milano Vicino a Te</h2>
-                <p className="lead">
-                  Studio Pinoli offre un approccio integrato alla salute:
-                  odontoiatria, bionutrizione, medicina estetica e medicina integrata.
+            <div className="intro-grid">
+              <div className="intro-content">
+                <h2>Benessere a 360°</h2>
+                <p className="intro-lead">
+                  Non siamo solo un dentista. Siamo un centro medico che integra
+                  odontoiatria, nutrizione, estetica e medicina olistica per
+                  prendersi cura di te in modo completo.
                 </p>
                 <p>
-                  Crediamo che il benessere nasca dall'equilibrio tra corpo e mente.
-                  Il nostro team di specialisti lavora insieme per offrirti
-                  percorsi di cura personalizzati e completi.
+                  Il Dott. Luca Pinoli e il suo team ti accolgono in uno studio
+                  moderno e accogliente, dove la tecnologia più avanzata si unisce
+                  a un approccio umano e attento alle tue esigenze.
                 </p>
-                <ul className="home-features-list">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    Tecnologie all'avanguardia
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    Team multidisciplinare
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    Piani di cura personalizzati
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                    Prima visita gratuita
-                  </li>
-                </ul>
-                <Link href="/chi-siamo" className="btn btn-outline">
-                  Scopri di più su di noi
+                <Link href="/chi-siamo" className="link-arrow">
+                  Scopri la nostra storia
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
                 </Link>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Preview */}
-        <section className="section section-light">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-subtitle">I Nostri Servizi</span>
-              <h2 className="section-title">Un Approccio Integrato al Benessere</h2>
-              <p className="section-description">
-                Quattro aree di specializzazione per prenderci cura di te a 360 gradi
-              </p>
-            </div>
-
-            <div className="home-services-preview">
-              <div className="home-service-card">
-                <div className="home-service-img">
-                  <Image src="/images/14_Services_Dental_Care-Hero.jpg" alt="Odontoiatria" fill style={{ objectFit: "cover" }} />
-                </div>
-                <div className="home-service-content">
-                  <div className="home-service-icon" style={{ background: "var(--color-dental)" }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                  </div>
-                  <h3>Odontoiatria</h3>
-                  <p>Implantologia, ortodonzia, igiene orale e tutti i trattamenti per il tuo sorriso.</p>
-                  <Link href="/servizi/odontoiatria">Scopri di più →</Link>
-                </div>
-              </div>
-
-              <div className="home-service-card">
-                <div className="home-service-img">
-                  <Image src="/images/home-bionutrizione.jpg" alt="Bionutrizione" fill style={{ objectFit: "cover" }} />
-                </div>
-                <div className="home-service-content">
-                  <div className="home-service-icon" style={{ background: "var(--color-nutrition)" }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                  </div>
-                  <h3>Bionutrizione</h3>
-                  <p>Diete personalizzate e piani alimentari per il tuo benessere e peso forma.</p>
-                  <Link href="/servizi/bionutrizione">Scopri di più →</Link>
-                </div>
-              </div>
-
-              <div className="home-service-card">
-                <div className="home-service-img">
-                  <Image src="/images/home-trattamenti-estetici.jpg" alt="Medicina Estetica" fill style={{ objectFit: "cover" }} />
-                </div>
-                <div className="home-service-content">
-                  <div className="home-service-icon" style={{ background: "var(--color-aesthetic)" }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                  </div>
-                  <h3>Medicina Estetica</h3>
-                  <p>Trattamenti non invasivi per contrastare i segni del tempo.</p>
-                  <Link href="/servizi/medicina-estetica">Scopri di più →</Link>
-                </div>
-              </div>
-
-              <div className="home-service-card">
-                <div className="home-service-img">
-                  <Image src="/images/chi-siamo-medicina-integrata.jpg" alt="Medicina Integrata" fill style={{ objectFit: "cover" }} />
-                </div>
-                <div className="home-service-content">
-                  <div className="home-service-icon" style={{ background: "var(--color-integrative)" }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                  </div>
-                  <h3>Medicina Integrata</h3>
-                  <p>Approccio olistico con oli essenziali e aromaterapia.</p>
-                  <Link href="/servizi/medicina-integrata">Scopri di più →</Link>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ textAlign: "center", marginTop: "40px" }}>
-              <Link href="/i-nostri-servizi" className="btn btn-primary">
-                Vedi tutti i servizi
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Prima Visita CTA */}
-        <section className="home-prima-visita">
-          <div className="container">
-            <div className="home-pv-grid">
-              <div className="home-pv-content">
-                <span className="section-subtitle">Prima Visita Gratuita</span>
-                <h2>Il Primo Passo Verso il Tuo Benessere</h2>
-                <p>
-                  Prenota la tua prima visita gratuita. Ti accoglieremo in studio per un
-                  colloquio conoscitivo e una valutazione completa.
-                </p>
-                <ul className="home-pv-steps">
-                  <li><span>1</span> Accoglienza in studio</li>
-                  <li><span>2</span> Colloquio conoscitivo</li>
-                  <li><span>3</span> Visita e diagnosi</li>
-                  <li><span>4</span> Piano di cura personalizzato</li>
-                </ul>
-                <div className="home-pv-ctas">
-                  <Link href="/prima-visita" className="btn btn-primary">
-                    Scopri come funziona
-                  </Link>
-                  <Link href="/contatti" className="btn btn-outline">
-                    Prenota ora
-                  </Link>
-                </div>
-              </div>
-              <div className="home-pv-image">
+              <div className="intro-image">
                 <Image
-                  src="/images/home-prima-visita.jpg"
-                  alt="Prima Visita"
+                  src="/images/chi-siamo-team-professionisti.jpg"
+                  alt="Team Studio Pinoli"
                   width={600}
                   height={450}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Blog Section */}
+        {/* Services */}
+        <section className="section section-gray">
+          <div className="container">
+            <div className="section-header text-center">
+              <h2>I nostri servizi</h2>
+              <p>Quattro aree di specializzazione per il tuo benessere completo</p>
+            </div>
+
+            <div className="services-grid">
+              {services.map((service, index) => (
+                <Link key={index} href={service.href} className="service-card-home">
+                  <div className="service-card-image">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      style={{ objectFit: "cover" }}
+                    />
+                    <div className="service-card-overlay" />
+                  </div>
+                  <div className="service-card-body">
+                    <div className="service-card-accent" style={{ background: service.color }} />
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <span className="service-card-link">
+                      Scopri di più
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Prima Visita */}
+        <section className="section-cta-blue">
+          <div className="container">
+            <div className="cta-blue-grid">
+              <div className="cta-blue-content">
+                <h2>Prima visita gratuita</h2>
+                <p>
+                  Il primo passo verso il tuo benessere. Ti accogliamo per un colloquio
+                  conoscitivo e una valutazione completa, senza impegno.
+                </p>
+                <ul className="cta-blue-list">
+                  <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    Colloquio conoscitivo approfondito
+                  </li>
+                  <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    Visita con diagnostica avanzata
+                  </li>
+                  <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    Piano di cura personalizzato
+                  </li>
+                  <li>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                    Preventivo trasparente e senza sorprese
+                  </li>
+                </ul>
+                <div className="cta-blue-buttons">
+                  <Link href="/contatti" className="btn btn-white btn-lg">
+                    Prenota ora
+                  </Link>
+                  <Link href="/prima-visita" className="btn btn-outline-white btn-lg">
+                    Come funziona
+                  </Link>
+                </div>
+              </div>
+              <div className="cta-blue-image">
+                <Image
+                  src="/images/home-prima-visita.jpg"
+                  alt="Prima visita gratuita"
+                  width={550}
+                  height={400}
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Blog */}
         {recentPosts.length > 0 && (
-          <section className="section section-light">
+          <section className="section">
             <div className="container">
               <div className="section-header">
-                <span className="section-subtitle">Dal Nostro Blog</span>
-                <h2 className="section-title">Consigli per la Tua Salute</h2>
+                <h2>Dal nostro blog</h2>
+                <Link href="/blog" className="link-arrow">
+                  Tutti gli articoli
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </Link>
               </div>
 
-              <div className="home-blog-grid">
+              <div className="blog-grid-home">
                 {recentPosts.map((post) => (
-                  <article key={post.id} className="home-blog-card">
-                    <div className="home-blog-img">
-                      <div className="home-blog-placeholder">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="home-blog-content">
-                      <h3>
-                        <Link href={`/blog/${post.slug}`}>
-                          <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                        </Link>
-                      </h3>
-                      <Link href={`/blog/${post.slug}`} className="home-blog-link">
+                  <article key={post.id} className="blog-card-home">
+                    <Link href={`/blog/${post.slug}`}>
+                      <h3 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                      <span className="blog-card-link">
                         Leggi l'articolo →
-                      </Link>
-                    </div>
+                      </span>
+                    </Link>
                   </article>
                 ))}
-              </div>
-
-              <div style={{ textAlign: "center", marginTop: "40px" }}>
-                <Link href="/blog" className="btn btn-outline">
-                  Vai al blog
-                </Link>
               </div>
             </div>
           </section>
         )}
 
-        {/* Contact CTA */}
-        <section className="cta-section">
+        {/* Contact */}
+        <section className="section-contact">
           <div className="container">
-            <h2>Prenota il Tuo Appuntamento</h2>
-            <p>
-              Il nostro team è a tua disposizione. Contattaci per prenotare
-              una visita o per qualsiasi informazione.
-            </p>
-            <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
-                Contattaci
-              </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
-              </a>
+            <div className="contact-grid-home">
+              <div className="contact-info-home">
+                <h2>Vieni a trovarci</h2>
+                <p>
+                  Lo studio si trova in una posizione centrale e facilmente raggiungibile.
+                </p>
+                <address>
+                  <strong>Studio Pinoli</strong><br />
+                  Via Losanna, 16<br />
+                  20154 Milano (MI)
+                </address>
+                <p className="contact-phone-home">
+                  <a href="tel:+390242272381">02 4272381</a>
+                </p>
+                <Link href="/contatti" className="btn btn-primary">
+                  Contattaci
+                </Link>
+              </div>
+              <div className="contact-map-home">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.5!2d9.1686!3d45.4896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c14d8e6f6b67%3A0x5f8f8e8e8e8e8e8e!2sVia%20Losanna%2C%2016%2C%2020154%20Milano%20MI!5e0!3m2!1sit!2sit!4v1234567890"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0, borderRadius: "12px" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Mappa Studio Pinoli"
+                />
+              </div>
             </div>
           </div>
         </section>
