@@ -9,25 +9,25 @@ const timelineSteps = [
     number: "01",
     title: "Accoglienza",
     description: "Ti accogliamo nel nostro studio con un sorriso. Il nostro staff ti guiderà nella compilazione dei documenti necessari e ti farà sentire a casa.",
-    image: "/images/chi-siamo-studio.jpg"
+    image: "/media/studio-pinoli-social-3/images/image-045-foto-nastia-cc1a9602.jpg"
   },
   {
     number: "02",
     title: "Colloquio Conoscitivo",
     description: "Un dialogo aperto per comprendere le tue esigenze, la tua storia clinica e le tue aspettative. Ascoltiamo attentamente per offrirti la miglior cura possibile.",
-    image: "/images/Dentista-a-Milano-team.jpg"
+    image: "/media/studio-pinoli-social-3/images/image-046-foto-nastia-cc1a9608.jpg"
   },
   {
     number: "03",
     title: "Visita Clinica",
     description: "Esame approfondito della tua salute orale con tecnologie diagnostiche all'avanguardia. Radiografie digitali e scanner 3D per una diagnosi precisa.",
-    image: "/images/home-prima-visita.jpg"
+    image: "/media/studio-pinoli-social-3/images/image-047-foto-nastia-cc1a9610.jpg"
   },
   {
     number: "04",
     title: "Piano di Cura",
     description: "Ti presentiamo un piano di trattamento personalizzato, chiaro e trasparente. Discutiamo insieme le opzioni, i tempi e i costi senza sorprese.",
-    image: "/images/prima-visita-odontoiatrica.jpg"
+    image: "/media/studio-pinoli-social-3/images/image-048-foto-nastia-cc1a9613.jpg"
   }
 ];
 
@@ -153,7 +153,7 @@ export default function PrimaVisita() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/home-prima-visita.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-044-foto-nastia-cc1a9589.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -256,7 +256,7 @@ export default function PrimaVisita() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/images/chi-siamo-team.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-050-foto-nastia-cc1a9620.jpg"
                   alt="Team Studio Pinoli"
                   width={600}
                   height={450}

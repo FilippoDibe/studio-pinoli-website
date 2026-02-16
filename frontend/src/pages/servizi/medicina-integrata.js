@@ -67,6 +67,27 @@ const faqs = [
   },
 ];
 
+const relatedServices = [
+  {
+    title: "Odontoiatria",
+    description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
+    href: "/servizi/odontoiatria",
+    image: "/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg",
+  },
+  {
+    title: "Bionutrizione",
+    description: "Diete personalizzate per il tuo benessere completo.",
+    href: "/servizi/bionutrizione",
+    image: "/media/studio-pinoli-social-3/images/image-024-foto-nastia-cc1a9492.jpg",
+  },
+  {
+    title: "Medicina Estetica",
+    description: "Trattamenti estetici non invasivi e naturali.",
+    href: "/servizi/medicina-estetica",
+    image: "/media/studio-pinoli-social-3/images/image-025-foto-nastia-cc1a9493.jpg",
+  },
+];
+
 // FAQ Item Component
 function FAQItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,7 +123,7 @@ export default function MedicinaIntegrata() {
         <section className="service-hero integrative">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/chi-siamo-medicina-integrata.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-070-foto-stock-x-feed-pexels-tara-winstead-6693973.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -155,7 +176,7 @@ export default function MedicinaIntegrata() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/images/immagine-benessere.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-054-foto-nastia-cc1a9640.jpg"
                   alt="Medicina integrata e benessere"
                   width={600}
                   height={400}
@@ -196,7 +217,7 @@ export default function MedicinaIntegrata() {
             <div className="two-col-section reverse">
               <div className="two-col-image">
                 <Image
-                  src="/images/peppermint-gb70190b82_1920.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-004-foto-nastia-cc1a2912.jpg"
                   alt="Oli essenziali"
                   width={600}
                   height={400}
@@ -296,27 +317,25 @@ export default function MedicinaIntegrata() {
             </div>
 
             <div className="services-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
-              <div className="service-card">
-                <h3>Odontoiatria</h3>
-                <p>Cure odontoiatriche di eccellenza per il tuo sorriso.</p>
-                <Link href="/servizi/odontoiatria" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
-              <div className="service-card">
-                <h3>Bionutrizione</h3>
-                <p>Diete personalizzate per il tuo benessere completo.</p>
-                <Link href="/servizi/bionutrizione" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
-              <div className="service-card">
-                <h3>Medicina Estetica</h3>
-                <p>Trattamenti estetici non invasivi e naturali.</p>
-                <Link href="/servizi/medicina-estetica" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
+              {relatedServices.map((service) => (
+                <article key={service.href} className="service-card">
+                  <div className="service-card-photo">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="service-card-copy">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <Link href={service.href} className="btn btn-outline">
+                      Scopri di più
+                    </Link>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>

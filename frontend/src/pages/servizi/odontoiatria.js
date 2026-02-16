@@ -81,6 +81,27 @@ const faqs = [
   },
 ];
 
+const relatedServices = [
+  {
+    title: "Bionutrizione",
+    description: "Diete personalizzate per il tuo benessere completo.",
+    href: "/servizi/bionutrizione",
+    image: "/media/studio-pinoli-social-3/images/image-024-foto-nastia-cc1a9492.jpg",
+  },
+  {
+    title: "Medicina Estetica",
+    description: "Trattamenti estetici non invasivi e naturali.",
+    href: "/servizi/medicina-estetica",
+    image: "/media/studio-pinoli-social-3/images/image-025-foto-nastia-cc1a9493.jpg",
+  },
+  {
+    title: "Medicina Integrata",
+    description: "Approccio olistico per mente e corpo.",
+    href: "/servizi/medicina-integrata",
+    image: "/media/studio-pinoli-social-3/images/image-036-foto-nastia-cc1a9553.jpg",
+  },
+];
+
 // FAQ Item Component
 function FAQItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -116,7 +137,7 @@ export default function Odontoiatria() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/14_Services_Dental_Care-Hero.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-051-foto-nastia-cc1a9625.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -168,7 +189,7 @@ export default function Odontoiatria() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/images/home-prima-visita.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg"
                   alt="Studio dentistico moderno"
                   width={600}
                   height={400}
@@ -265,27 +286,25 @@ export default function Odontoiatria() {
             </div>
 
             <div className="services-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
-              <div className="service-card">
-                <h3>Bionutrizione</h3>
-                <p>Diete personalizzate per il tuo benessere completo.</p>
-                <Link href="/servizi/bionutrizione" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
-              <div className="service-card">
-                <h3>Medicina Estetica</h3>
-                <p>Trattamenti estetici non invasivi e naturali.</p>
-                <Link href="/servizi/medicina-estetica" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
-              <div className="service-card">
-                <h3>Medicina Integrata</h3>
-                <p>Approccio olistico per mente e corpo.</p>
-                <Link href="/servizi/medicina-integrata" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
+              {relatedServices.map((service) => (
+                <article key={service.href} className="service-card">
+                  <div className="service-card-photo">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="service-card-copy">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <Link href={service.href} className="btn btn-outline">
+                      Scopri di più
+                    </Link>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>

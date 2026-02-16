@@ -71,6 +71,27 @@ const faqs = [
   },
 ];
 
+const relatedServices = [
+  {
+    title: "Odontoiatria",
+    description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
+    href: "/servizi/odontoiatria",
+    image: "/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg",
+  },
+  {
+    title: "Medicina Estetica",
+    description: "Trattamenti estetici non invasivi e naturali.",
+    href: "/servizi/medicina-estetica",
+    image: "/media/studio-pinoli-social-3/images/image-025-foto-nastia-cc1a9493.jpg",
+  },
+  {
+    title: "Medicina Integrata",
+    description: "Approccio olistico per mente e corpo.",
+    href: "/servizi/medicina-integrata",
+    image: "/media/studio-pinoli-social-3/images/image-036-foto-nastia-cc1a9553.jpg",
+  },
+];
+
 // FAQ Item Component
 function FAQItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,7 +127,7 @@ export default function Bionutrizione() {
         <section className="service-hero nutrition">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/home-bionutrizione.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-010-foto-nastia-cc1a3172.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -158,7 +179,7 @@ export default function Bionutrizione() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/images/diete-personalizzate.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-055-foto-nastia-cc1a9639.jpg"
                   alt="Consulenza nutrizionale"
                   width={600}
                   height={400}
@@ -219,7 +240,7 @@ export default function Bionutrizione() {
             <div className="two-col-section reverse">
               <div className="two-col-image">
                 <Image
-                  src="/images/prima-visita-nutrizione.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-056-foto-nastia-cc1a9642.jpg"
                   alt="Benefici della nutrizione"
                   width={600}
                   height={400}
@@ -290,27 +311,25 @@ export default function Bionutrizione() {
             </div>
 
             <div className="services-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
-              <div className="service-card">
-                <h3>Odontoiatria</h3>
-                <p>Cure odontoiatriche di eccellenza per il tuo sorriso.</p>
-                <Link href="/servizi/odontoiatria" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
-              <div className="service-card">
-                <h3>Medicina Estetica</h3>
-                <p>Trattamenti estetici non invasivi e naturali.</p>
-                <Link href="/servizi/medicina-estetica" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
-              <div className="service-card">
-                <h3>Medicina Integrata</h3>
-                <p>Approccio olistico per mente e corpo.</p>
-                <Link href="/servizi/medicina-integrata" className="btn btn-outline">
-                  Scopri di più
-                </Link>
-              </div>
+              {relatedServices.map((service) => (
+                <article key={service.href} className="service-card">
+                  <div className="service-card-photo">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="service-card-copy">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <Link href={service.href} className="btn btn-outline">
+                      Scopri di più
+                    </Link>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>

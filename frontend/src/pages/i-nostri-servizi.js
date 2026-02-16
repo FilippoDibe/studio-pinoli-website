@@ -10,7 +10,7 @@ const services = [
     title: "Odontoiatria",
     description:
       "Da oltre 35 anni offriamo cure odontoiatriche di eccellenza. Implantologia, ortodonzia, igiene orale, estetica dentale, endodonzia e protesi: un servizio completo per il tuo sorriso.",
-    image: "/images/14_Services_Dental_Care-Hero.jpg",
+    image: "/media/studio-pinoli-social-3/images/image-030-foto-nastia-cc1a9507.jpg",
     icon: "/images/dentist-chair.svg",
     href: "/servizi/odontoiatria",
     theme: "dental",
@@ -19,7 +19,7 @@ const services = [
     title: "Bionutrizione",
     description:
       "Diete personalizzate e piani alimentari su misura per raggiungere il tuo peso forma e migliorare il benessere. Consulenze nutrizionali per sportivi, patologie e stile di vita sano.",
-    image: "/images/home-bionutrizione.jpg",
+    image: "/media/studio-pinoli-social-3/images/image-031-foto-nastia-cc1a9514.jpg",
     icon: "/images/diet.svg",
     href: "/servizi/bionutrizione",
     theme: "nutrition",
@@ -28,7 +28,7 @@ const services = [
     title: "Medicina Estetica",
     description:
       "Trattamenti estetici non invasivi per contrastare i segni del tempo. Filler, biorivitalizzazione, mesoterapia e soluzioni anti-aging per risultati naturali e duraturi.",
-    image: "/images/home-trattamenti-estetici.jpg",
+    image: "/media/studio-pinoli-social-3/images/image-033-foto-nastia-cc1a9528.jpg",
     icon: "/images/17_Services_SpaBeauty-Logo.png",
     href: "/servizi/medicina-estetica",
     theme: "aesthetic",
@@ -37,7 +37,7 @@ const services = [
     title: "Medicina Integrata",
     description:
       "Un approccio olistico alla salute che unisce corpo e mente. Oli essenziali, aromaterapia e medicina olistica per ritrovare equilibrio e benessere completo.",
-    image: "/images/chi-siamo-medicina-integrata.jpg",
+    image: "/media/studio-pinoli-social-3/images/image-034-foto-nastia-cc1a9533.jpg",
     icon: "/images/Dentista-A-Milano-Medicina-Integrata.svg",
     href: "/servizi/medicina-integrata",
     theme: "integrative",
@@ -137,7 +137,7 @@ export default function INosttiServizi() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/14_Services_Dental_Care-Hero.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-037-foto-nastia-cc1a9555.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">

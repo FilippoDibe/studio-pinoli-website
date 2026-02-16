@@ -17,19 +17,19 @@ const team = [
     name: "Dott. Luca Pinoli",
     role: "Direttore Sanitario",
     description: "Specialista in Odontoiatria con oltre 35 anni di esperienza nel settore.",
-    image: "/images/chi-siamo-dr-luca-pinoli.jpg"
+    image: "/media/studio-pinoli-social-3/images/image-022-foto-nastia-cc1a9480.jpg"
   },
   {
     name: "Dott.ssa Rosa Nelly de Olazabal",
     role: "Odontoiatra",
     description: "Specializzata in implantologia e protesi dentale.",
-    image: "/images/chi-siamo-odontoiatria.jpg"
+    image: "/media/studio-pinoli-social-3/images/image-027-foto-nastia-cc1a9499.jpg"
   },
   {
     name: "Bionutrizionista",
     role: "Specialista Nutrizione",
     description: "Esperta in nutrizione clinica e piani alimentari personalizzati.",
-    image: "/images/bionutrizionista.jpg"
+    image: "/media/studio-pinoli-social-3/images/image-028-foto-nastia-cc1a9500.jpg"
   }
 ];
 
@@ -125,7 +125,7 @@ export default function ChiSiamo() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/chi-siamo-studio.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-020-foto-nastia-cc1a9475.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -165,7 +165,7 @@ export default function ChiSiamo() {
               </div>
               <div className="about-hero-image">
                 <Image
-                  src="/images/chi-siamo-team-professionisti.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-021-foto-nastia-cc1a9478.jpg"
                   alt="Team Studio Pinoli"
                   width={600}
                   height={450}
@@ -255,7 +255,7 @@ export default function ChiSiamo() {
             <div className="two-col-section">
               <div className="two-col-image">
                 <Image
-                  src="/images/chi-siamo-medicina-integrata.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-029-foto-nastia-cc1a9504.jpg"
                   alt="Approccio integrato"
                   width={600}
                   height={450}
