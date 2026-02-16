@@ -1,8 +1,5 @@
 .page {
-  background:
-    radial-gradient(circle at 10% -5%, rgba(15, 128, 125, 0.12), transparent 32%),
-    radial-gradient(circle at 95% 12%, rgba(0, 102, 204, 0.1), transparent 30%),
-    linear-gradient(180deg, #f5f8fb 0%, #ffffff 35%, #f9fbfd 100%);
+  background: #f7f9fb;
 }
 
 .hero {
@@ -37,8 +34,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(110deg, rgba(10, 28, 47, 0.72) 12%, rgba(10, 28, 47, 0.36) 55%, rgba(10, 28, 47, 0.62) 100%),
-    linear-gradient(180deg, rgba(10, 28, 47, 0.08) 0%, rgba(10, 28, 47, 0.68) 100%);
+    linear-gradient(112deg, rgba(14, 24, 35, 0.66) 8%, rgba(14, 24, 35, 0.32) 60%, rgba(14, 24, 35, 0.58) 100%),
+    linear-gradient(180deg, rgba(14, 24, 35, 0.06) 0%, rgba(14, 24, 35, 0.64) 100%);
 }
 
 .heroContent {
@@ -55,7 +52,7 @@
   padding: 0.35rem 0.82rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.34);
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.12);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -98,11 +95,11 @@
 }
 
 .statCard {
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(16, 33, 50, 0.12);
-  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(16, 33, 50, 0.14);
+  border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 16px 26px rgba(16, 33, 50, 0.08);
+  box-shadow: none;
 }
 
 .statCard strong {
@@ -136,10 +133,10 @@
 
 .aboutContent {
   background: #fff;
-  border: 1px solid rgba(16, 33, 50, 0.1);
-  border-radius: 20px;
+  border: 1px solid rgba(16, 33, 50, 0.12);
+  border-radius: 14px;
   padding: clamp(1.3rem, 2vw, 2rem);
-  box-shadow: 0 16px 26px rgba(16, 33, 50, 0.06);
+  box-shadow: none;
 }
 
 .sectionTag,
@@ -176,9 +173,9 @@
 .ctaImageWrap {
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 14px;
   border: 1px solid rgba(16, 33, 50, 0.1);
-  box-shadow: 0 16px 26px rgba(16, 33, 50, 0.07);
+  box-shadow: none;
   min-height: 360px;
 }
 
@@ -211,17 +208,17 @@
 
 .serviceCard {
   background: #fff;
-  border: 1px solid rgba(16, 33, 50, 0.12);
-  border-radius: 18px;
+  border: 1px solid rgba(16, 33, 50, 0.14);
+  border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
-  box-shadow: 0 14px 24px rgba(16, 33, 50, 0.07);
+  box-shadow: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .serviceCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 22px 34px rgba(16, 33, 50, 0.13);
+  box-shadow: 0 14px 24px rgba(16, 33, 50, 0.1);
 }
 
 .serviceImageWrap {
