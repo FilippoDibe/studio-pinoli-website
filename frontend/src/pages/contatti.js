@@ -241,6 +241,19 @@ export default function Contatti() {
 
               {/* Map and Info */}
               <div className="contact-info-wrapper">
+                <div className="contact-photo-card">
+                  <Image
+                    src="/media/studio-pinoli-social-3/images/image-042-foto-nastia-cc1a9571.jpg"
+                    alt="Accoglienza Studio Pinoli"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 35vw"
+                  />
+                  <div className="contact-photo-overlay">
+                    <strong>Un team pronto ad accoglierti</strong>
+                    <p>Contattaci e ti aiutiamo a fissare il percorso piu adatto a te.</p>
+                  </div>
+                </div>
+
                 <div className="contact-map">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.4!2d9.14!3d45.49!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDI5JzI0LjAiTiA5wrAwOCcyNC4wIkU!5e0!3m2!1sit!2sit!4v1234567890"

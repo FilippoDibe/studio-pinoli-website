@@ -6,38 +6,38 @@ import styles from "../styles/StudioHome.module.css";
 
 const IMAGES = {
   hero: "/media/studio-pinoli-social-3/images/image-003-foto-anna-sof-5706.jpg",
-  about: "/media/studio-pinoli-social-3/images/image-018-foto-nastia-cc1a9472.jpg",
-  primaVisita: "/media/studio-pinoli-social-3/images/image-019-foto-nastia-cc1a9473.jpg",
+  about: "/media/studio-pinoli-social-3/images/image-042-foto-nastia-cc1a9571.jpg",
+  primaVisita: "/media/studio-pinoli-social-3/images/image-057-foto-nastia-cc1a9651.jpg",
 };
-const HERO_VIDEO = "/media/studio-pinoli-social-3/videos/video-031-video-nastia-cc1a9649-mp4.mp4";
+const HERO_VIDEO = "/media/studio-pinoli-social-3/videos/hero-home-horizontal.mp4";
 
 const services = [
   {
     title: "Odontoiatria",
     description: "Implantologia, ortodonzia, igiene e trattamenti specialistici per la salute del sorriso.",
     href: "/servizi/odontoiatria",
-    image: "/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg",
+    image: "/media/studio-pinoli-social-3/images/image-051-foto-nastia-cc1a9625.jpg",
     accent: "#0066cc",
   },
   {
     title: "Bionutrizione",
     description: "Piani nutrizionali personalizzati per ritrovare energia, equilibrio e benessere quotidiano.",
     href: "/servizi/bionutrizione",
-    image: "/media/studio-pinoli-social-3/images/image-024-foto-nastia-cc1a9492.jpg",
+    image: "/media/studio-pinoli-social-3/images/image-010-foto-nastia-cc1a3172.jpg",
     accent: "#2a9d5b",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti non invasivi per valorizzare i lineamenti in modo naturale e armonico.",
     href: "/servizi/medicina-estetica",
-    image: "/media/studio-pinoli-social-3/images/image-025-foto-nastia-cc1a9493.jpg",
+    image: "/media/studio-pinoli-social-3/images/image-069-foto-stock-x-feed-pexels-shiny-diamond-3762441.jpg",
     accent: "#c16d43",
   },
   {
     title: "Medicina Integrata",
     description: "Un approccio completo che combina odontoiatria, prevenzione e benessere globale.",
     href: "/servizi/medicina-integrata",
-    image: "/media/studio-pinoli-social-3/images/image-036-foto-nastia-cc1a9553.jpg",
+    image: "/media/studio-pinoli-social-3/images/image-070-foto-stock-x-feed-pexels-tara-winstead-6693973.jpg",
     accent: "#0f807d",
   },
 ];
@@ -88,7 +88,7 @@ export default function Home({ posts }) {
           <div className="container">
             <div className={styles.heroContent}>
               <span className={styles.heroTag}>Studio Dentistico a Milano</span>
-              <h1>La tua salute, il nostro metodo</h1>
+              <h1>La tua salute,<br />il nostro metodo</h1>
               <p>
                 Un centro professionale dove odontoiatria e benessere si incontrano per offrirti un percorso
                 personalizzato, chiaro e orientato al risultato.
@@ -123,17 +123,17 @@ export default function Home({ posts }) {
             <div className={styles.aboutGrid}>
               <div className={styles.aboutContent}>
                 <span className={styles.sectionTag}>Chi siamo</span>
-                <h2>Un unico studio, piu aree di competenza</h2>
+                <h2>Un unico studio, quattro aree di competenza</h2>
                 <p>
-                  Da Studio Pinoli trovi un team multidisciplinare che lavora in sinergia: odontoiatria,
-                  nutrizione, medicina estetica e medicina integrata in un percorso costruito su di te.
+                  Da Studio Pinoli trovi un team multidisciplinare guidato dal Dott. Luca Pinoli che lavora in sinergia:
+                  odontoiatria, nutrizione, medicina estetica e medicina integrata in un percorso costruito su di te.
                 </p>
                 <p>
-                  Ti accompagniamo con un approccio concreto, tecnologie aggiornate e attenzione reale
+                  Da oltre 35 anni ti accompagniamo con un approccio concreto, tecnologie aggiornate e attenzione reale
                   all&apos;esperienza in studio.
                 </p>
                 <Link href="/chi-siamo" className={styles.textLink}>
-                  Scopri il team
+                  Scopri il team &rarr;
                 </Link>
               </div>
               <div className={styles.aboutImageWrap}>
