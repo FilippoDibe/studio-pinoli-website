@@ -85,7 +85,7 @@ export default function Contatti() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/chi-siamo-studio.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-010-foto-nastia-cc1a3172.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">

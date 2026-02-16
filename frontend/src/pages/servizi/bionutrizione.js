@@ -106,7 +106,7 @@ export default function Bionutrizione() {
         <section className="service-hero nutrition">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/home-bionutrizione.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-054-foto-nastia-cc1a9637.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -158,7 +158,7 @@ export default function Bionutrizione() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/images/diete-personalizzate.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-055-foto-nastia-cc1a9639.jpg"
                   alt="Consulenza nutrizionale"
                   width={600}
                   height={400}
@@ -219,7 +219,7 @@ export default function Bionutrizione() {
             <div className="two-col-section reverse">
               <div className="two-col-image">
                 <Image
-                  src="/images/prima-visita-nutrizione.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-056-foto-nastia-cc1a9642.jpg"
                   alt="Benefici della nutrizione"
                   width={600}
                   height={400}

@@ -102,7 +102,7 @@ export default function MedicinaIntegrata() {
         <section className="service-hero integrative">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/chi-siamo-medicina-integrata.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-016-foto-nastia-cc1a9461.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -155,7 +155,7 @@ export default function MedicinaIntegrata() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/images/immagine-benessere.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-015-foto-nastia-cc1a9459.jpg"
                   alt="Medicina integrata e benessere"
                   width={600}
                   height={400}
@@ -196,7 +196,7 @@ export default function MedicinaIntegrata() {
             <div className="two-col-section reverse">
               <div className="two-col-image">
                 <Image
-                  src="/images/peppermint-gb70190b82_1920.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-004-foto-nastia-cc1a2912.jpg"
                   alt="Oli essenziali"
                   width={600}
                   height={400}

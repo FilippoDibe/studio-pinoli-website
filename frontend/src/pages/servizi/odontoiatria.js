@@ -116,7 +116,7 @@ export default function Odontoiatria() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/14_Services_Dental_Care-Hero.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-051-foto-nastia-cc1a9625.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -168,7 +168,7 @@ export default function Odontoiatria() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/images/home-prima-visita.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-052-foto-nastia-cc1a9628.jpg"
                   alt="Studio dentistico moderno"
                   width={600}
                   height={400}

@@ -102,7 +102,7 @@ export default function MedicinaEstetica() {
         <section className="service-hero aesthetic">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/images/home-trattamenti-estetici.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-057-foto-nastia-cc1a9651.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -154,7 +154,7 @@ export default function MedicinaEstetica() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/images/17_Services_SpaBeauty-Hero-Img_1.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-042-foto-nastia-cc1a9571.jpg"
                   alt="Trattamento di medicina estetica"
                   width={600}
                   height={400}
@@ -219,7 +219,7 @@ export default function MedicinaEstetica() {
             <div className="two-col-section reverse">
               <div className="two-col-image">
                 <Image
-                  src="/images/17_Services_SpaBeauty-BeautySection_Img_1.jpg"
+                  src="/media/studio-pinoli-social-3/images/image-017-foto-nastia-cc1a9464.jpg"
                   alt="Risultati medicina estetica"
                   width={600}
                   height={400}
