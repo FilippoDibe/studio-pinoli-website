@@ -285,7 +285,7 @@ export default function Odontoiatria() {
               <h2 className="section-title">Altri Servizi</h2>
             </div>
 
-            <div className="services-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+            <div className="services-grid">
               {relatedServices.map((service) => (
                 <article key={service.href} className="service-card">
                   <div className="service-card-photo">

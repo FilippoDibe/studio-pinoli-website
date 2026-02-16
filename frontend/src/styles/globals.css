@@ -6254,3 +6254,52 @@ main {
     padding: 26px 20px;
   }
 }
+
+/* ===== MOBILE HARDENING ===== */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.sub-services-grid.sub-services-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 860px) {
+  .sub-services-grid.sub-services-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .two-col-image {
+    min-height: 280px;
+  }
+
+  .service-card-photo {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-hero-ctas .btn,
+  .cta-buttons .btn,
+  .hero-ctas .btn,
+  .home-hero-ctas .btn {
+    width: 100%;
+    max-width: none;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+
+  .two-col-image {
+    min-height: 220px;
+  }
+
+  .service-card-photo {
+    min-height: 176px;
+  }
+}

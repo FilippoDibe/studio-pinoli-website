@@ -198,7 +198,7 @@ export default function Bionutrizione() {
               <h2 className="section-title">Servizi di Bionutrizione</h2>
             </div>
 
-            <div className="sub-services-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+            <div className="sub-services-grid sub-services-grid--two">
               {subServices.map((service, index) => (
                 <div key={index} className="sub-service-card">
                   <div className="sub-service-icon">
@@ -310,7 +310,7 @@ export default function Bionutrizione() {
               <h2 className="section-title">Altri Servizi</h2>
             </div>
 
-            <div className="services-grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+            <div className="services-grid">
               {relatedServices.map((service) => (
                 <article key={service.href} className="service-card">
                   <div className="service-card-photo">
