@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+
+# Large raw source videos not used by current pages.
+public/media/studio-pinoli-social-3/videos/video-008-video-anna-spezzoni-viedeo-pinoli.mp4
+public/media/studio-pinoli-social-3/videos/video-009-video-anna-spezzoni-viedeo-pinoli1.mp4
+public/media/studio-pinoli-social-3/videos/video-010-video-anna-spezzoni-viedeo-reel2-pinoli.mp4
