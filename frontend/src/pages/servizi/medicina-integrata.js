@@ -123,7 +123,7 @@ export default function MedicinaIntegrata() {
         <section className="service-hero integrative">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-070-foto-stock-x-feed-pexels-tara-winstead-6693973.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-058-foto-nastia-cc1a9658.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">

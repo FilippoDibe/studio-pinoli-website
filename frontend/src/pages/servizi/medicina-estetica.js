@@ -123,7 +123,7 @@ export default function MedicinaEstetica() {
         <section className="service-hero aesthetic">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-069-foto-stock-x-feed-pexels-shiny-diamond-3762441.jpg')" }}
+            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-057-foto-nastia-cc1a9651.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
