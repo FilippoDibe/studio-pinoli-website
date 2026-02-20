@@ -156,17 +156,17 @@ export default function MedicinaIntegrata() {
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>La Salute Come Equilibrio</h2>
+                <h2>Salute Come Equilibrio — Medicina Integrata a Milano</h2>
                 <p>
-                  La medicina integrata considera la persona nella sua totalità,
+                  La medicina integrata a Milano considera la persona nella sua totalità,
                   riconoscendo che il benessere fisico, mentale ed emotivo sono
-                  profondamente interconnessi.
+                  profondamente interconnessi e inscindibili.
                 </p>
                 <p>
-                  Il nostro approccio combina le conoscenze della medicina tradizionale
-                  con terapie complementari come l'aromaterapia e l'uso degli oli essenziali,
-                  per creare percorsi di cura personalizzati che vanno oltre il semplice
-                  trattamento dei sintomi.
+                  Il nostro approccio combina medicina tradizionale e terapie complementari —
+                  aromaterapia, oli essenziali, medicina olistica — per creare percorsi di cura
+                  personalizzati che vanno oltre il semplice trattamento dei sintomi e puntano
+                  al benessere globale della persona.
                 </p>
                 <ul>
                   <li>Visione olistica della salute</li>
@@ -178,7 +178,7 @@ export default function MedicinaIntegrata() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-054-foto-nastia-cc1a9640.jpg"
-                  alt="Medicina integrata e benessere"
+                  alt="Medicina integrata olistica e benessere psico-fisico Milano Studio Pinoli"
                   width={600}
                   height={400}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -219,7 +219,7 @@ export default function MedicinaIntegrata() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-004-foto-nastia-cc1a2912.jpg"
-                  alt="Oli essenziali"
+                  alt="Oli essenziali aromaterapia trattamento benessere Milano Studio Pinoli"
                   width={600}
                   height={400}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -277,10 +277,10 @@ export default function MedicinaIntegrata() {
         {/* CTA Section */}
         <section className="cta-section" style={{ background: "var(--color-integrative)" }}>
           <div className="container">
-            <h2>Inizia Il Tuo Percorso di Benessere</h2>
+            <h2>Inizia il Tuo Percorso di Medicina Integrata a Milano</h2>
             <p>
-              Scopri come la medicina integrata può aiutarti a ritrovare l'equilibrio
-              e il benessere che meriti.
+              Scopri come la medicina integrata e olistica a Milano può aiutarti a ritrovare
+              l'equilibrio psico-fisico e il benessere che meriti.
             </p>
             <div className="cta-buttons">
               <Link href="/contatti" className="btn btn-primary">

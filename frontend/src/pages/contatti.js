@@ -73,10 +73,10 @@ export default function Contatti() {
   return (
     <>
       <Head>
-        <title>Contatti | Studio Pinoli Milano</title>
+        <title>Contatti | Studio Dentistico Pinoli Milano — Prenota una Visita</title>
         <meta
           name="description"
-          content="Contatta Studio Pinoli Milano. Prenota un appuntamento per odontoiatria, bionutrizione, medicina estetica o medicina integrata. Tel: 02 4272381"
+          content="Contatta Studio Pinoli a Milano zona Certosa. Prenota una visita dal dentista, una consulenza nutrizionale o un trattamento estetico. Tel: 02 4272381 — Anche WhatsApp."
         />
       </Head>
 
@@ -94,10 +94,10 @@ export default function Contatti() {
               <span>/</span>
               <span>Contatti</span>
             </nav>
-            <h1>Contattaci</h1>
+            <h1>Contattaci — Studio Dentistico Pinoli Milano</h1>
             <p>
-              Siamo qui per te. Contattaci per prenotare un appuntamento o per
-              qualsiasi informazione sui nostri servizi.
+              Siamo qui per te. Contattaci per prenotare una visita dal dentista, una consulenza
+              nutrizionale o un trattamento estetico presso il nostro studio a Milano (zona Certosa).
             </p>
           </div>
         </section>
@@ -244,13 +244,13 @@ export default function Contatti() {
                 <div className="contact-photo-card">
                   <Image
                     src="/media/studio-pinoli-social-3/images/image-042-foto-nastia-cc1a9571.jpg"
-                    alt="Accoglienza Studio Pinoli"
+                    alt="Accoglienza pazienti Studio dentistico Pinoli Milano zona Certosa"
                     fill
                     sizes="(max-width: 1024px) 100vw, 35vw"
                   />
                   <div className="contact-photo-overlay">
                     <strong>Un team pronto ad accoglierti</strong>
-                    <p>Contattaci e ti aiutiamo a fissare il percorso piu adatto a te.</p>
+                    <p>Contattaci e ti aiutiamo a fissare il percorso più adatto a te.</p>
                   </div>
                 </div>
 

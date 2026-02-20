@@ -141,10 +141,10 @@ export default function PrimaVisita() {
   return (
     <>
       <Head>
-        <title>Prima Visita | Studio Pinoli Milano</title>
+        <title>Prima Visita Gratuita dal Dentista a Milano | Studio Pinoli</title>
         <meta
           name="description"
-          content="Prenota la tua prima visita gratuita allo Studio Pinoli. Ti accogliamo per un colloquio conoscitivo e una valutazione completa della tua salute orale."
+          content="Prima visita gratuita dal dentista a Milano presso Studio Pinoli. Valutazione completa della salute orale, piano di cura personalizzato e preventivo trasparente. Prenota ora."
         />
       </Head>
 
@@ -162,10 +162,11 @@ export default function PrimaVisita() {
               <span>/</span>
               <span>Prima Visita</span>
             </nav>
-            <h1>La Tua Prima Visita</h1>
+            <h1>Prima Visita Gratuita dal Dentista a Milano</h1>
             <p>
-              Il primo passo verso il tuo sorriso ideale. Ti accogliamo in un ambiente
-              sereno per conoscerti e capire insieme come prenderci cura di te.
+              Il primo passo verso il tuo sorriso ideale. La prima visita dal dentista è gratuita e
+              senza impegno: ti accogliamo nel nostro studio a Milano in un ambiente sereno per conoscerti
+              e capire insieme come prenderci cura di te.
             </p>
             <div className="page-hero-ctas">
               <Link href="/contatti" className="btn btn-primary">
@@ -204,7 +205,8 @@ export default function PrimaVisita() {
               <span className="section-subtitle">Il tuo percorso</span>
               <h2 className="section-title">Come Funziona la Prima Visita</h2>
               <p className="section-description">
-                Un percorso studiato per farti sentire a tuo agio e garantirti la migliore esperienza.
+                Ogni prima visita dal dentista nel nostro studio a Milano è pensata per farti sentire
+                a tuo agio e garantirti la migliore esperienza possibile, fin dal primo momento.
               </p>
             </div>
 
@@ -257,7 +259,7 @@ export default function PrimaVisita() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-050-foto-nastia-cc1a9620.jpg"
-                  alt="Team Studio Pinoli"
+                  alt="Dentista Studio Pinoli Milano — accoglienza prima visita"
                   width={600}
                   height={450}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -270,9 +272,10 @@ export default function PrimaVisita() {
         {/* CTA */}
         <section className="cta-section">
           <div className="container">
-            <h2>Prenota la Tua Prima Visita Gratuita</h2>
+            <h2>Prenota la Prima Visita Gratuita dal Dentista a Milano</h2>
             <p>
-              Il nostro team è pronto ad accoglierti. Chiamaci o compila il form per fissare un appuntamento.
+              Il nostro team di dentisti a Milano è pronto ad accoglierti. Chiamaci o compila il form
+              per fissare la tua prima visita gratuita senza impegno.
             </p>
             <div className="cta-buttons">
               <Link href="/contatti" className="btn btn-primary">

@@ -15,20 +15,20 @@ const stats = [
 const team = [
   {
     name: "Dott. Luca Pinoli",
-    role: "Direttore Sanitario",
-    description: "Specialista in Odontoiatria con oltre 35 anni di esperienza nel settore.",
+    role: "Direttore Sanitario — Dentista a Milano",
+    description: "Fondatore e direttore sanitario di Studio Pinoli. Specialista in odontoiatria con oltre 35 anni di esperienza a Milano. Pioniere dell'approccio integrato tra salute orale e benessere globale.",
     image: "/media/studio-pinoli-social-3/images/image-022-foto-nastia-cc1a9480.jpg"
   },
   {
     name: "Dott.ssa Rosa Nelly de Olazabal",
-    role: "Odontoiatra",
-    description: "Specializzata in implantologia e protesi dentale.",
+    role: "Odontoiatra — Implantologia e Protesi",
+    description: "Odontoiatra specializzata in implantologia dentale, protesi fissa e removibile. Esperienza consolidata nella riabilitazione orale completa presso lo Studio Pinoli di Milano.",
     image: "/media/studio-pinoli-social-3/images/image-027-foto-nastia-cc1a9499.jpg"
   },
   {
     name: "Bionutrizionista",
-    role: "Specialista Nutrizione",
-    description: "Esperta in nutrizione clinica e piani alimentari personalizzati.",
+    role: "Specialista in Nutrizione — Milano",
+    description: "Nutrizionista esperta in bionutrizione, nutrizione clinica e piani alimentari personalizzati. Supporto nutrizionale per dimagrimento, nutrizione sportiva e gestione di patologie metaboliche.",
     image: "/media/studio-pinoli-social-3/images/image-028-foto-nastia-cc1a9500.jpg"
   }
 ];
@@ -113,10 +113,10 @@ export default function ChiSiamo() {
   return (
     <>
       <Head>
-        <title>Chi Siamo | Studio Pinoli Milano</title>
+        <title>Chi Siamo | Studio Dentistico Pinoli Milano dal 1989</title>
         <meta
           name="description"
-          content="Scopri la storia e il team di Studio Pinoli. Da oltre 35 anni ci prendiamo cura del benessere dei nostri pazienti a Milano."
+          content="Studio Pinoli a Milano: dentisti e specialisti con oltre 35 anni di esperienza in odontoiatria, bionutrizione e medicina estetica. Scopri il nostro team e la nostra storia."
         />
       </Head>
 
@@ -134,10 +134,10 @@ export default function ChiSiamo() {
               <span>/</span>
               <span>Chi Siamo</span>
             </nav>
-            <h1>Chi Siamo</h1>
+            <h1>Chi Siamo — Studio Pinoli Milano</h1>
             <p>
-              Da oltre 35 anni ci prendiamo cura del benessere dei nostri pazienti.
-              Un team di professionisti dedicati alla tua salute.
+              Da oltre 35 anni il nostro studio dentistico a Milano si prende cura del benessere dei pazienti.
+              Un team multidisciplinare di dentisti e specialisti dedicati alla tua salute e al tuo sorriso.
             </p>
           </div>
         </section>
@@ -148,25 +148,27 @@ export default function ChiSiamo() {
             <div className="about-hero-section">
               <div className="about-hero-content">
                 <span className="section-subtitle">La nostra storia</span>
-                <h2>Più di 35 Anni al Servizio del Tuo Sorriso</h2>
+                <h2>Più di 35 Anni al Servizio del Tuo Sorriso a Milano</h2>
                 <p className="lead">
                   Studio Pinoli nasce dalla passione per l'odontoiatria e dalla volontà
-                  di offrire un servizio di eccellenza ai pazienti milanesi.
+                  di offrire un servizio di eccellenza ai pazienti milanesi. Dal 1989 siamo
+                  il dentista di fiducia di migliaia di famiglie nella zona ovest di Milano.
                 </p>
                 <p>
                   Nel corso degli anni abbiamo ampliato la nostra offerta, integrando
-                  servizi di bionutrizione, medicina estetica e medicina integrata,
-                  per un approccio completo al benessere della persona.
+                  servizi di bionutrizione con nutrizionisti specializzati, medicina estetica
+                  e medicina integrata, per un approccio completo al benessere della persona.
                 </p>
                 <p>
-                  La nostra filosofia si basa sull'ascolto attento delle esigenze di
-                  ogni paziente e sulla personalizzazione dei percorsi di cura.
+                  La nostra filosofia si basa sull'ascolto attento delle esigenze di ogni
+                  paziente e sulla personalizzazione dei percorsi di cura: nessun protocollo
+                  standard, solo trattamenti su misura per te.
                 </p>
               </div>
               <div className="about-hero-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-021-foto-nastia-cc1a9478.jpg"
-                  alt="Team Studio Pinoli"
+                  alt="Il team dello Studio Pinoli — dentisti e specialisti a Milano"
                   width={600}
                   height={450}
                   style={{ width: "100%", height: "auto" }}
@@ -256,7 +258,7 @@ export default function ChiSiamo() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-029-foto-nastia-cc1a9504.jpg"
-                  alt="Approccio integrato"
+                  alt="Approccio integrato odontoiatria e benessere Studio Pinoli Milano"
                   width={600}
                   height={450}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -290,7 +292,8 @@ export default function ChiSiamo() {
               <span className="section-subtitle">Dove siamo</span>
               <h2 className="section-title">Vieni a Trovarci</h2>
               <p className="section-description">
-                Situati nel cuore di Milano, siamo facilmente raggiungibili con mezzi pubblici e privati.
+                Il nostro studio dentistico si trova in Via G. Chiminello 6, Milano (zona Certosa),
+                facilmente raggiungibile con la metro M5, tram e in auto dalla tangenziale ovest.
               </p>
             </div>
 
