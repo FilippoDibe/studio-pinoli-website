@@ -6,13 +6,13 @@ import { useState } from "react";
 // Treatments data
 const treatments = [
   {
-    title: "Filler",
-    description: "Trattamenti di riempimento con acido ialuronico per ridurre rughe e donare volume al viso.",
+    title: "Filler con Acido Ialuronico",
+    description: "Filler labbra, zigomi e rughe con acido ialuronico a Milano: riduzione delle rughe, definizione dei contorni e volume naturale al viso. Risultati immediati.",
     icon: "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z",
   },
   {
     title: "Biorivitalizzazione",
-    description: "Trattamenti per stimolare la produzione naturale di collagene e migliorare l'idratazione della pelle.",
+    description: "Microiniezioni di acido ialuronico e vitamine per stimolare il collagene, idratare la pelle in profondità e migliorarne luminosità e tono. Ideale per la prevenzione anti-aging.",
     icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
   },
   {
@@ -111,10 +111,10 @@ export default function MedicinaEstetica() {
   return (
     <>
       <Head>
-        <title>Medicina Estetica | Studio Pinoli Milano</title>
+        <title>Medicina Estetica a Milano — Filler e Anti-aging | Studio Pinoli</title>
         <meta
           name="description"
-          content="Medicina estetica a Milano: filler, biorivitalizzazione, mesoterapia, trattamenti anti-aging. Risultati naturali con approccio non invasivo."
+          content="Medicina estetica a Milano: filler acido ialuronico, biorivitalizzazione, mesoterapia e trattamenti anti-aging viso. Risultati naturali, approccio non invasivo. Studio Pinoli."
         />
       </Head>
 
@@ -134,10 +134,11 @@ export default function MedicinaEstetica() {
               <span>/</span>
               <span>Medicina Estetica</span>
             </nav>
-            <h1>Medicina Estetica</h1>
+            <h1>Medicina Estetica a Milano</h1>
             <p>
-              Trattamenti estetici non invasivi per esaltare la tua bellezza naturale.
-              Filler, biorivitalizzazione e protocolli anti-aging per risultati armoniosi.
+              Trattamenti estetici non invasivi a Milano per esaltare la tua bellezza naturale.
+              Filler con acido ialuronico, biorivitalizzazione, mesoterapia e protocolli anti-aging
+              per risultati visibili e armoniosi.
             </p>
             <div className="page-hero-ctas">
               <Link href="/contatti" className="btn btn-primary">
@@ -155,16 +156,17 @@ export default function MedicinaEstetica() {
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>Bellezza Naturale, Risultati Visibili</h2>
+                <h2>Medicina Estetica Viso a Milano — Risultati Naturali</h2>
                 <p>
-                  La nostra filosofia di medicina estetica si basa sull'esaltazione
+                  La nostra filosofia di medicina estetica a Milano si basa sull'esaltazione
                   della bellezza naturale di ogni persona. Non stravolgiamo i lineamenti,
                   ma lavoriamo per valorizzare ciò che rende unico ogni volto.
                 </p>
                 <p>
-                  Utilizziamo solo prodotti di alta qualità e tecniche all'avanguardia
-                  per garantire risultati naturali, sicuri e duraturi. Ogni trattamento
-                  viene personalizzato in base alle tue esigenze specifiche.
+                  Utilizziamo solo prodotti certificati CE — filler con acido ialuronico, tossina
+                  botulinica e principi attivi di alta qualità — con tecniche all'avanguardia per
+                  garantire risultati naturali, sicuri e duraturi. Ogni trattamento estetico viene
+                  personalizzato sulle tue esigenze specifiche.
                 </p>
                 <ul>
                   <li>Approccio non invasivo</li>
@@ -176,7 +178,7 @@ export default function MedicinaEstetica() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-042-foto-nastia-cc1a9571.jpg"
-                  alt="Trattamento di medicina estetica"
+                  alt="Trattamento filler medicina estetica viso Milano Studio Pinoli"
                   width={600}
                   height={400}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -241,7 +243,7 @@ export default function MedicinaEstetica() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-017-foto-nastia-cc1a9464.jpg"
-                  alt="Risultati medicina estetica"
+                  alt="Risultati biorivitalizzazione e filler acido ialuronico Milano Studio Pinoli"
                   width={600}
                   height={400}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -270,10 +272,10 @@ export default function MedicinaEstetica() {
         {/* CTA Section */}
         <section className="cta-section" style={{ background: "var(--color-aesthetic)" }}>
           <div className="container">
-            <h2>Scopri i Nostri Trattamenti Estetici</h2>
+            <h2>Prenota una Consulenza di Medicina Estetica a Milano</h2>
             <p>
-              Prenota una consulenza per scoprire quali trattamenti sono più adatti
-              a valorizzare la tua bellezza naturale.
+              Scopri quali trattamenti estetici a Milano sono più adatti a valorizzare la tua bellezza naturale.
+              Filler, biorivitalizzazione, mesoterapia: ti guidiamo verso il risultato migliore per te.
             </p>
             <div className="cta-buttons">
               <Link href="/contatti" className="btn btn-primary">

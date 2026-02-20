@@ -8,7 +8,7 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Studio Dentistico Pinoli - Cure odontoiatriche di alta qualita a Milano. Implantologia, ortodonzia, estetica dentale e molto altro." />
+        <meta name="description" content="Studio Pinoli — dentista a Milano dal 1989. Odontoiatria, implantologia, ortodonzia, bionutrizione e medicina estetica. Prima visita gratuita: chiama 02 4272381." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />

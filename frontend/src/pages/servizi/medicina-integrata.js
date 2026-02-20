@@ -111,10 +111,10 @@ export default function MedicinaIntegrata() {
   return (
     <>
       <Head>
-        <title>Medicina Integrata | Studio Pinoli Milano</title>
+        <title>Medicina Integrata a Milano — Aromaterapia e Benessere | Studio Pinoli</title>
         <meta
           name="description"
-          content="Medicina integrata e olistica a Milano: oli essenziali, aromaterapia, approccio mente-corpo. Scopri un percorso di benessere completo."
+          content="Medicina integrata e olistica a Milano: oli essenziali, aromaterapia, equilibrio psico-fisico e approccio mente-corpo. Percorso di benessere personalizzato. Studio Pinoli."
         />
       </Head>
 
@@ -134,10 +134,11 @@ export default function MedicinaIntegrata() {
               <span>/</span>
               <span>Medicina Integrata</span>
             </nav>
-            <h1>Medicina Integrata</h1>
+            <h1>Medicina Integrata a Milano</h1>
             <p>
-              Un approccio olistico alla salute che unisce corpo e mente.
-              Scopri il potere degli oli essenziali e dell'aromaterapia per il tuo benessere.
+              Un approccio olistico alla salute a Milano che unisce corpo e mente.
+              Scopri il potere degli oli essenziali, dell'aromaterapia e della medicina complementare
+              per ritrovare il tuo equilibrio psico-fisico.
             </p>
             <div className="page-hero-ctas">
               <Link href="/contatti" className="btn btn-primary">

@@ -6,33 +6,33 @@ import { useState } from "react";
 // Sub-services data
 const subServices = [
   {
-    title: "Implantologia",
-    description: "Sostituzione di denti mancanti con impianti dentali di ultima generazione per un sorriso naturale e funzionale.",
+    title: "Implantologia a Milano",
+    description: "Sostituzione di denti mancanti con impianti dentali in titanio di ultima generazione. Oltre il 95% di successo a 10 anni. Risultati naturali e duraturi.",
     icon: "/images/implant.svg",
   },
   {
-    title: "Ortodonzia",
-    description: "Correzione di malocclusioni e allineamento dentale con apparecchi tradizionali e invisibili.",
+    title: "Ortodonzia a Milano",
+    description: "Correzione di malocclusioni e allineamento dentale con apparecchi fissi tradizionali o allineatori invisibili (ortodonzia invisibile). Per adulti e bambini.",
     icon: "/images/ortodonzia-invisibile.svg",
   },
   {
-    title: "Igiene Orale",
-    description: "Pulizia professionale e prevenzione delle patologie orali per mantenere denti e gengive sani.",
+    title: "Igiene Orale Professionale",
+    description: "Pulizia dei denti professionale, ablazione del tartaro e prevenzione delle malattie parodontali. Consigliata ogni 6 mesi per mantenere gengive e denti sani.",
     icon: "/images/dentist.svg",
   },
   {
     title: "Estetica Dentale",
-    description: "Sbiancamento, faccette e trattamenti estetici per un sorriso luminoso e armonioso.",
+    description: "Sbiancamento denti professionale, faccette in porcellana e trattamenti estetici per un sorriso luminoso, bianco e armonioso.",
     icon: "/images/dentist-chair.svg",
   },
   {
-    title: "Endodonzia",
-    description: "Trattamento dei canali radicolari per salvare denti compromessi da carie profonde o traumi.",
+    title: "Endodonzia (Devitalizzazione)",
+    description: "Trattamento dei canali radicolari per salvare denti compromessi da carie profonde, ascessi o traumi. Procedura precisa e indolore con anestesia locale.",
     icon: "/images/dentist-2.svg",
   },
   {
     title: "Protesi Dentale",
-    description: "Corone, ponti e protesi rimovibili per ripristinare funzionalità ed estetica del sorriso.",
+    description: "Corone in ceramica, ponti fissi e protesi rimovibili per ripristinare funzionalità estetica del sorriso. Materiali di alta qualità per risultati naturali.",
     icon: "/images/dentist-chair-2.svg",
   },
 ];
@@ -65,19 +65,23 @@ const processSteps = [
 const faqs = [
   {
     question: "Quanto dura un impianto dentale?",
-    answer: "Con le giuste cure e controlli regolari, un impianto dentale può durare tutta la vita. La percentuale di successo degli impianti è superiore al 95% a 10 anni.",
+    answer: "Con le giuste cure e controlli regolari, un impianto dentale può durare tutta la vita. La percentuale di successo dell'implantologia è superiore al 95% a 10 anni. Nel nostro studio dentistico a Milano utilizziamo impianti in titanio di ultima generazione.",
   },
   {
     question: "L'implantologia è dolorosa?",
-    answer: "L'intervento viene eseguito in anestesia locale e non provoca dolore. Dopo l'intervento è normale un leggero gonfiore e fastidio, facilmente gestibile con farmaci antidolorifici.",
+    answer: "No. L'intervento di implantologia viene eseguito in anestesia locale e non provoca dolore durante la procedura. Dopo l'intervento è normale un leggero gonfiore e fastidio, facilmente gestibile con antidolorifici comuni.",
   },
   {
-    question: "Quanto costa una visita odontoiatrica?",
-    answer: "La prima visita ha un costo contenuto e include la valutazione completa, radiografie se necessarie e il piano di trattamento. Contattaci per maggiori informazioni.",
+    question: "La prima visita dal dentista è gratuita?",
+    answer: "Sì, la prima visita presso Studio Pinoli è gratuita e senza impegno. Include una valutazione completa della tua salute orale, radiografie se necessarie e la presentazione di un piano di trattamento personalizzato.",
   },
   {
-    question: "Offrite soluzioni di ortodonzia invisibile?",
-    answer: "Sì, offriamo diverse soluzioni di ortodonzia invisibile tra cui allineatori trasparenti. Durante la visita valuteremo insieme la soluzione più adatta al tuo caso.",
+    question: "Offrite soluzioni di ortodonzia invisibile a Milano?",
+    answer: "Sì, offriamo diverse soluzioni di ortodonzia invisibile con allineatori trasparenti, adatte sia agli adulti che agli adolescenti. Durante la visita valuteremo insieme il tipo di apparecchio — fisso o invisibile — più adatto al tuo caso.",
+  },
+  {
+    question: "Con che frequenza fare la pulizia dei denti dal dentista?",
+    answer: "Si consiglia una pulizia professionale dei denti ogni 6 mesi. Nei pazienti con tendenza al tartaro o con problemi gengivali, il nostro studio dentistico a Milano può raccomandare intervalli più frequenti.",
   },
 ];
 
@@ -125,10 +129,10 @@ export default function Odontoiatria() {
   return (
     <>
       <Head>
-        <title>Odontoiatria | Studio Pinoli Milano</title>
+        <title>Dentista a Milano — Odontoiatria | Studio Pinoli</title>
         <meta
           name="description"
-          content="Servizi di odontoiatria a Milano: implantologia, ortodonzia, igiene orale, estetica dentale. Oltre 35 anni di esperienza. Prenota la tua visita."
+          content="Dentista a Milano con oltre 35 anni di esperienza. Implantologia, ortodonzia, igiene orale, sbiancamento e protesi dentale. Studio Pinoli, zona Certosa. Prima visita gratuita."
         />
       </Head>
 
@@ -148,10 +152,11 @@ export default function Odontoiatria() {
               <span>/</span>
               <span>Odontoiatria</span>
             </nav>
-            <h1>Odontoiatria</h1>
+            <h1>Odontoiatria a Milano</h1>
             <p>
-              Da oltre 35 anni offriamo cure odontoiatriche di eccellenza a Milano.
-              Un team di specialisti dedicati alla salute e alla bellezza del tuo sorriso.
+              Da oltre 35 anni il nostro studio dentistico a Milano offre cure odontoiatriche di eccellenza:
+              implantologia, ortodonzia, igiene orale e molto altro. Un team di specialisti dedicato alla salute
+              e alla bellezza del tuo sorriso.
             </p>
             <div className="page-hero-ctas">
               <Link href="/contatti" className="btn btn-primary">
@@ -169,16 +174,16 @@ export default function Odontoiatria() {
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>Il Tuo Sorriso, La Nostra Passione</h2>
+                <h2>Il Tuo Dentista a Milano dal 1989</h2>
                 <p>
                   Studio Pinoli è un punto di riferimento per l'odontoiatria a Milano da oltre
-                  35 anni. Il nostro team di specialisti utilizza le più moderne tecnologie e
-                  tecniche per garantire trattamenti efficaci e minimamente invasivi.
+                  35 anni. Il nostro team di dentisti e specialisti utilizza le tecnologie più moderne
+                  per garantire trattamenti efficaci, precisi e minimamente invasivi.
                 </p>
                 <p>
-                  Dalla prevenzione alla riabilitazione completa, offriamo un servizio
-                  odontoiatrico completo in un ambiente accogliente e sereno, dove il
-                  comfort del paziente è la nostra priorità.
+                  Dalla prevenzione alla riabilitazione orale completa — implantologia, ortodonzia,
+                  sbiancamento e protesi — offriamo tutto ciò di cui hai bisogno in un unico studio
+                  dentistico a Milano, in zona Certosa.
                 </p>
                 <ul>
                   <li>Tecnologie diagnostiche all'avanguardia</li>
@@ -190,7 +195,7 @@ export default function Odontoiatria() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg"
-                  alt="Studio dentistico moderno"
+                  alt="Sala trattamenti odontoiatria Studio Pinoli Milano zona Certosa"
                   width={600}
                   height={400}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -245,10 +250,10 @@ export default function Odontoiatria() {
         {/* CTA Section */}
         <section className="cta-section">
           <div className="container">
-            <h2>Prenota La Tua Visita Odontoiatrica</h2>
+            <h2>Prenota la Tua Visita Dentistica a Milano</h2>
             <p>
-              Il nostro team è pronto ad accoglierti per una valutazione completa
-              e un piano di trattamento personalizzato.
+              Il nostro team di dentisti a Milano è pronto ad accoglierti per una prima visita gratuita,
+              con valutazione completa e piano di trattamento personalizzato.
             </p>
             <div className="cta-buttons">
               <Link href="/contatti" className="btn btn-primary">

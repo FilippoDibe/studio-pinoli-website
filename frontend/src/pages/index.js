@@ -14,30 +14,34 @@ const HERO_VIDEO = "/media/studio-pinoli-social-3/videos/hero-home-horizontal.mp
 const services = [
   {
     title: "Odontoiatria",
-    description: "Implantologia, ortodonzia, igiene e trattamenti specialistici per la salute del sorriso.",
+    description: "Implantologia, ortodonzia, igiene orale ed estetica dentale a Milano. Oltre 35 anni di esperienza per la salute del tuo sorriso.",
     href: "/servizi/odontoiatria",
     image: "/media/studio-pinoli-social-3/images/image-051-foto-nastia-cc1a9625.jpg",
+    alt: "Trattamento odontoiatrico presso Studio Pinoli Milano",
     accent: "#0066cc",
   },
   {
     title: "Bionutrizione",
-    description: "Piani nutrizionali personalizzati per ritrovare energia, equilibrio e benessere quotidiano.",
+    description: "Piani alimentari personalizzati e consulenza nutrizionale a Milano per ritrovare energia, equilibrio e benessere duraturo.",
     href: "/servizi/bionutrizione",
     image: "/media/studio-pinoli-social-3/images/image-054-foto-nastia-cc1a9637.jpg",
+    alt: "Consulenza bionutrizione e dieta personalizzata Milano Studio Pinoli",
     accent: "#2a9d5b",
   },
   {
     title: "Medicina Estetica",
-    description: "Trattamenti non invasivi per valorizzare i lineamenti in modo naturale e armonico.",
+    description: "Filler, biorivitalizzazione e trattamenti anti-aging a Milano. Risultati naturali con approccio non invasivo.",
     href: "/servizi/medicina-estetica",
     image: "/media/studio-pinoli-social-3/images/image-057-foto-nastia-cc1a9651.jpg",
+    alt: "Trattamento medicina estetica viso Milano Studio Pinoli",
     accent: "#c16d43",
   },
   {
     title: "Medicina Integrata",
-    description: "Un approccio completo che combina odontoiatria, prevenzione e benessere globale.",
+    description: "Approccio olistico che combina terapie naturali, aromaterapia e oli essenziali per il benessere globale a Milano.",
     href: "/servizi/medicina-integrata",
     image: "/media/studio-pinoli-social-3/images/image-058-foto-nastia-cc1a9658.jpg",
+    alt: "Medicina integrata e benessere olistico Studio Pinoli Milano",
     accent: "#0f807d",
   },
 ];
@@ -53,10 +57,10 @@ export default function Home({ posts }) {
   return (
     <>
       <Head>
-        <title>Studio Pinoli | Dentista a Milano</title>
+        <title>Studio Pinoli | Dentista a Milano dal 1989</title>
         <meta
           name="description"
-          content="Studio Pinoli a Milano: odontoiatria, bionutrizione, medicina estetica e medicina integrata. Prenota la prima visita in studio."
+          content="Studio Pinoli, dentista a Milano dal 1989. Odontoiatria, implantologia, ortodonzia, bionutrizione e medicina estetica in un unico studio. Prima visita gratuita."
         />
       </Head>
 
@@ -65,7 +69,7 @@ export default function Home({ posts }) {
           <div className={styles.heroMedia}>
             <Image
               src={IMAGES.hero}
-              alt="Studio Pinoli a Milano"
+              alt="Studio dentistico Pinoli — sala accoglienza pazienti a Milano"
               fill
               priority
               sizes="100vw"
@@ -90,8 +94,8 @@ export default function Home({ posts }) {
               <span className={styles.heroTag}>Studio Dentistico a Milano</span>
               <h1>La tua salute,<br />il nostro metodo</h1>
               <p>
-                Un centro professionale dove odontoiatria e benessere si incontrano per offrirti un percorso
-                personalizzato, chiaro e orientato al risultato.
+                Il tuo dentista a Milano dal 1989: odontoiatria, implantologia, bionutrizione e medicina estetica
+                in un unico studio. Un percorso personalizzato, chiaro e orientato al risultato.
               </p>
               <div className={styles.heroActions}>
                 <Link href="/prima-visita" className="btn btn-primary btn-lg">
@@ -123,14 +127,15 @@ export default function Home({ posts }) {
             <div className={styles.aboutGrid}>
               <div className={styles.aboutContent}>
                 <span className={styles.sectionTag}>Chi siamo</span>
-                <h2>Un unico studio, quattro aree di competenza</h2>
+                <h2>Un unico studio a Milano, quattro aree di competenza</h2>
                 <p>
-                  Da Studio Pinoli trovi un team multidisciplinare guidato dal Dott. Luca Pinoli che lavora in sinergia:
-                  odontoiatria, nutrizione, medicina estetica e medicina integrata in un percorso costruito su di te.
+                  Da Studio Pinoli trovi un team multidisciplinare guidato dal Dott. Luca Pinoli: dentista a Milano
+                  con oltre 35 anni di esperienza in odontoiatria, nutrizione, medicina estetica e medicina integrata,
+                  con un percorso costruito su di te.
                 </p>
                 <p>
-                  Da oltre 35 anni ti accompagniamo con un approccio concreto, tecnologie aggiornate e attenzione reale
-                  all&apos;esperienza in studio.
+                  Tecnologie diagnostiche aggiornate, approccio minimamente invasivo e attenzione reale
+                  all&apos;esperienza del paziente: questo è Studio Pinoli.
                 </p>
                 <Link href="/chi-siamo" className={styles.textLink}>
                   Scopri il team &rarr;
@@ -139,7 +144,7 @@ export default function Home({ posts }) {
               <div className={styles.aboutImageWrap}>
                 <Image
                   src={IMAGES.about}
-                  alt="Team medico dello Studio Pinoli"
+                  alt="Il team di dentisti e specialisti dello Studio Pinoli a Milano"
                   fill
                   sizes="(max-width: 900px) 100vw, 45vw"
                   className={styles.coverImage}
@@ -162,7 +167,7 @@ export default function Home({ posts }) {
                   <div className={styles.serviceImageWrap}>
                     <Image
                       src={service.image}
-                      alt={service.title}
+                      alt={service.alt}
                       fill
                       sizes="(max-width: 900px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       className={styles.coverImage}
@@ -186,10 +191,10 @@ export default function Home({ posts }) {
             <div className={styles.ctaGrid}>
               <div className={styles.ctaContent}>
                 <span className={styles.sectionTagLight}>Prima visita</span>
-                <h2>Inizia con una valutazione completa</h2>
+                <h2>Prima visita gratuita a Milano</h2>
                 <p>
-                  La prima visita e il momento in cui analizziamo la tua situazione clinica, ascoltiamo gli obiettivi
-                  e definiamo il piano migliore per te.
+                  La prima visita è il momento in cui il nostro dentista a Milano analizza la tua situazione clinica,
+                  ascolta i tuoi obiettivi e definisce il piano di cura migliore per te. È gratuita e senza impegno.
                 </p>
                 <ul>
                   <li>Analisi del quadro clinico</li>
@@ -208,7 +213,7 @@ export default function Home({ posts }) {
               <div className={styles.ctaImageWrap}>
                 <Image
                   src={IMAGES.primaVisita}
-                  alt="Accoglienza prima visita Studio Pinoli"
+                  alt="Prima visita dentista gratuita Studio Pinoli Milano"
                   fill
                   sizes="(max-width: 900px) 100vw, 40vw"
                   className={styles.coverImage}
@@ -246,13 +251,13 @@ export default function Home({ posts }) {
             <div className={styles.contactGrid}>
               <div className={styles.contactInfo}>
                 <h2>Contatti</h2>
-                <p>Ti aspettiamo in studio a Milano. Il team e disponibile per informazioni e appuntamenti.</p>
+                <p>Ti aspettiamo nel nostro studio dentistico a Milano. Il team è disponibile per informazioni e appuntamenti.</p>
                 <address>
                   <strong>Studio Pinoli</strong>
                   <br />
-                  Via Losanna, 16
+                  Via G. Chiminello 6
                   <br />
-                  20154 Milano (MI)
+                  20146 Milano (Certosa) MI
                 </address>
                 <p className={styles.phone}>
                   <a href="tel:+390242272381">02 4272381</a>

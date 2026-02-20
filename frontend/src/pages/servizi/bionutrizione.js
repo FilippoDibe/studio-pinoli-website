@@ -6,23 +6,23 @@ import { useState } from "react";
 // Sub-services data
 const subServices = [
   {
-    title: "Diete Personalizzate",
-    description: "Piani alimentari su misura creati in base alle tue esigenze, obiettivi e stile di vita.",
+    title: "Diete Personalizzate a Milano",
+    description: "Piani alimentari su misura elaborati dal nostro nutrizionista a Milano in base al tuo metabolismo, ai tuoi obiettivi e al tuo stile di vita.",
     icon: "/images/diet.svg",
   },
   {
     title: "Consulenza Nutrizionale",
-    description: "Valutazione approfondita delle tue abitudini alimentari e consigli per migliorare la tua alimentazione.",
+    description: "Valutazione approfondita delle abitudini alimentari, analisi della composizione corporea e consigli pratici per migliorare la tua nutrizione quotidiana.",
     icon: "/images/diet-1.svg",
   },
   {
     title: "Nutrizione Sportiva",
-    description: "Piani alimentari specifici per atleti e sportivi per ottimizzare prestazioni e recupero.",
+    description: "Piani alimentari specifici per atleti e sportivi a Milano: ottimizzazione delle prestazioni, recupero muscolare e gestione dei macronutrienti.",
     icon: "/images/exercise.svg",
   },
   {
     title: "Nutrizione Clinica",
-    description: "Supporto nutrizionale per patologie specifiche come diabete, ipercolesterolemia, intolleranze.",
+    description: "Supporto nutrizionale specializzato per patologie come diabete, ipercolesterolemia, sindrome metabolica, intolleranze e allergie alimentari.",
     icon: "/images/diet-2.svg",
   },
 ];
@@ -115,10 +115,10 @@ export default function Bionutrizione() {
   return (
     <>
       <Head>
-        <title>Bionutrizione | Studio Pinoli Milano</title>
+        <title>Nutrizionista a Milano — Bionutrizione | Studio Pinoli</title>
         <meta
           name="description"
-          content="Diete personalizzate e consulenze nutrizionali a Milano. Piani alimentari su misura per dimagrimento, sport e patologie. Prenota la tua consulenza."
+          content="Nutrizionista a Milano: piani alimentari personalizzati, diete per dimagrimento, nutrizione sportiva e clinica. Studio Pinoli zona Certosa. Prenota una consulenza."
         />
       </Head>
 
@@ -138,10 +138,10 @@ export default function Bionutrizione() {
               <span>/</span>
               <span>Bionutrizione</span>
             </nav>
-            <h1>Bionutrizione</h1>
+            <h1>Nutrizionista a Milano — Bionutrizione</h1>
             <p>
-              Diete personalizzate e piani alimentari su misura per raggiungere i tuoi
-              obiettivi di salute e benessere. Un approccio scientifico all'alimentazione.
+              Diete personalizzate e consulenza nutrizionale a Milano per raggiungere i tuoi obiettivi di salute
+              e benessere. Un approccio scientifico e integrato all'alimentazione, su misura per te.
             </p>
             <div className="page-hero-ctas">
               <Link href="/contatti" className="btn btn-primary">
@@ -159,16 +159,16 @@ export default function Bionutrizione() {
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>La Tua Salute Passa Dall'Alimentazione</h2>
+                <h2>Il Tuo Nutrizionista a Milano</h2>
                 <p>
-                  Il nostro servizio di Bionutrizione offre un approccio personalizzato
-                  all'alimentazione. Crediamo che ogni persona sia unica e meriti un
-                  piano alimentare creato su misura per le proprie esigenze.
+                  Il nostro servizio di bionutrizione offre un approccio personalizzato all'alimentazione.
+                  Il nostro nutrizionista a Milano crea piani alimentari su misura per le tue esigenze,
+                  il tuo metabolismo e il tuo stile di vita.
                 </p>
                 <p>
-                  Che tu voglia perdere peso, migliorare le tue prestazioni sportive o
-                  gestire una patologia, i nostri nutrizionisti ti guideranno verso
-                  uno stile di vita più sano e consapevole.
+                  Che tu voglia dimagrire, migliorare le prestazioni sportive o gestire una patologia
+                  come diabete o intolleranze alimentari, ti guidiamo verso uno stile di vita più sano
+                  e consapevole con un percorso di nutrizione integrata.
                 </p>
                 <ul>
                   <li>Valutazione metabolica completa</li>
@@ -180,7 +180,7 @@ export default function Bionutrizione() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-055-foto-nastia-cc1a9639.jpg"
-                  alt="Consulenza nutrizionale"
+                  alt="Consulenza nutrizionista Milano — bionutrizione Studio Pinoli"
                   width={600}
                   height={400}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -241,7 +241,7 @@ export default function Bionutrizione() {
               <div className="two-col-image">
                 <Image
                   src="/media/studio-pinoli-social-3/images/image-056-foto-nastia-cc1a9642.jpg"
-                  alt="Benefici della nutrizione"
+                  alt="Programma nutrizionale personalizzato a Milano — Studio Pinoli"
                   width={600}
                   height={400}
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
@@ -270,10 +270,10 @@ export default function Bionutrizione() {
         {/* CTA Section */}
         <section className="cta-section" style={{ background: "var(--color-nutrition)" }}>
           <div className="container">
-            <h2>Inizia Il Tuo Percorso Nutrizionale</h2>
+            <h2>Prenota una Consulenza con il Nutrizionista a Milano</h2>
             <p>
-              Prenota una consulenza con i nostri nutrizionisti e scopri il piano
-              alimentare più adatto a te.
+              Inizia il tuo percorso di bionutrizione a Milano: prenota una consulenza e scopri il piano
+              alimentare su misura per i tuoi obiettivi di salute e benessere.
             </p>
             <div className="cta-buttons">
               <Link href="/contatti" className="btn btn-primary">
