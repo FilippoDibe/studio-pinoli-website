@@ -19,12 +19,16 @@
   --color-nutrition: #2a9d5b;   /* Verde - Bionutrizione */
   --color-aesthetic: #9b5f8a;   /* Rosa antico - Medicina Estetica */
   --color-integrative: #0f807d; /* Teal - Medicina Integrata */
+  --color-osteopatia: #5c6bc0;  /* Indaco - Osteopatia */
+  --color-art: #a0522d;         /* Sienna - Art-Terapia */
 
   /* Varianti scure per hover */
   --color-dental-dark: #084a74;
   --color-nutrition-dark: #1e8449;
   --color-aesthetic-dark: #7d4a6f;
   --color-integrative-dark: #0b6664;
+  --color-osteopatia-dark: #3f51b5;
+  --color-art-dark: #7d3f22;
 
   /* Colori Neutri - Toni caldi */
   --white: #ffffff;
@@ -2547,6 +2551,36 @@ ul, ol {
 .macro-service-card.integrative .btn-themed:hover {
   background: var(--color-integrative-dark);
   border-color: var(--color-integrative-dark);
+}
+.macro-service-card.osteopatia .macro-service-card-badge {
+  background: var(--color-osteopatia);
+}
+.macro-service-card.art .macro-service-card-badge {
+  background: var(--color-art);
+}
+.macro-service-card.osteopatia .macro-service-card-icon {
+  color: var(--color-osteopatia);
+}
+.macro-service-card.art .macro-service-card-icon {
+  color: var(--color-art);
+}
+.macro-service-card.osteopatia .btn-themed {
+  background: var(--color-osteopatia);
+  border-color: var(--color-osteopatia);
+  color: var(--white);
+}
+.macro-service-card.osteopatia .btn-themed:hover {
+  background: var(--color-osteopatia-dark);
+  border-color: var(--color-osteopatia-dark);
+}
+.macro-service-card.art .btn-themed {
+  background: var(--color-art);
+  border-color: var(--color-art);
+  color: var(--white);
+}
+.macro-service-card.art .btn-themed:hover {
+  background: var(--color-art-dark);
+  border-color: var(--color-art-dark);
 }
 
 /* ===== SERVICE HERO - Professional Themed ===== */

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import ServiceCard from "@/components/ui/ServiceCard";
+const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
 // Services data
 const services = [
@@ -10,37 +11,41 @@ const services = [
     title: "Odontoiatria",
     description:
       "Da oltre 35 anni offriamo cure odontoiatriche di eccellenza. Implantologia, ortodonzia, igiene orale, estetica dentale, endodonzia e protesi: un servizio completo per il tuo sorriso.",
-    image: "/media/studio-pinoli-social-3/images/image-030-foto-nastia-cc1a9507.jpg",
-    icon: "/images/dentist-chair.svg",
+    image: "/servizi/odontoriatria.jpg",
     href: "/servizi/odontoiatria",
     theme: "dental",
   },
   {
-    title: "Bionutrizione",
+    title: "Bio-nutrizione",
     description:
-      "Diete personalizzate e piani alimentari su misura per raggiungere il tuo peso forma e migliorare il benessere. Consulenze nutrizionali per sportivi, patologie e stile di vita sano.",
-    image: "/media/studio-pinoli-social-3/images/image-031-foto-nastia-cc1a9514.jpg",
-    icon: "/images/diet.svg",
+      "Piani nutrizionali personalizzati per migliorare energia, composizione corporea e performance mentale, con un approccio scientifico e monitoraggio costante nel tempo.",
+    image: "/servizi/Biochimica-nutrizione_Immagine_blog-.jpg",
     href: "/servizi/bionutrizione",
     theme: "nutrition",
   },
   {
     title: "Medicina Estetica",
     description:
-      "Trattamenti estetici non invasivi per contrastare i segni del tempo. Filler, biorivitalizzazione, mesoterapia e soluzioni anti-aging per risultati naturali e duraturi.",
-    image: "/media/studio-pinoli-social-3/images/image-033-foto-nastia-cc1a9528.jpg",
-    icon: "/images/17_Services_SpaBeauty-Logo.png",
+      "Trattamenti non invasivi e protocolli medicali per valorizzare i lineamenti in modo naturale. Filler, biorivitalizzazione e soluzioni anti-aging per risultati eleganti e duraturi.",
+    image: "/servizi/medicina-estetica.jpg",
     href: "/servizi/medicina-estetica",
     theme: "aesthetic",
   },
   {
-    title: "Medicina Integrata",
+    title: "Osteopatia",
     description:
-      "Un approccio olistico alla salute che unisce corpo e mente. Oli essenziali, aromaterapia e medicina olistica per ritrovare equilibrio e benessere completo.",
-    image: "/media/studio-pinoli-social-3/images/image-034-foto-nastia-cc1a9533.jpg",
-    icon: "/images/Dentista-A-Milano-Medicina-Integrata.svg",
-    href: "/servizi/medicina-integrata",
-    theme: "integrative",
+      "Valutazioni e trattamenti osteopatici per migliorare postura, mobilità e benessere muscolo-scheletrico, in integrazione con il percorso clinico complessivo dello studio.",
+    image: "/servizi/osteopatia-hd.jpg",
+    href: "/servizi/osteopatia",
+    theme: "osteopatia",
+  },
+  {
+    title: "Art-Terapia",
+    description:
+      "Percorsi di art-terapia orientati alla gestione dello stress, all'equilibrio emotivo e al benessere psico-fisico, in un contesto medico strutturato e professionale.",
+    image: "/servizi/art-terapia-hd.jpg",
+    href: "/servizi/art-terapia",
+    theme: "art",
   },
 ];
 
@@ -128,7 +133,7 @@ export default function INosttiServizi() {
         <title>I Nostri Servizi | Studio Pinoli Milano</title>
         <meta
           name="description"
-          content="Odontoiatria, Bionutrizione, Medicina Estetica e Medicina Integrata a Milano. Scopri i nostri servizi per il tuo benessere completo."
+          content="Odontoiatria, Bio-nutrizione, Medicina Estetica, Osteopatia e Art-Terapia a Milano. Scopri i nostri 5 servizi per il tuo benessere completo."
         />
       </Head>
 
@@ -148,15 +153,16 @@ export default function INosttiServizi() {
             </nav>
             <h1>I Nostri Servizi</h1>
             <p>
-              Un approccio integrato alla salute: Odontoiatria, Bionutrizione, Medicina
-              Estetica e Medicina Integrata per il tuo benessere completo.
+              Cinque aree di specializzazione per la tua salute a 360°: Odontoiatria, Bio-nutrizione, Medicina Estetica, Osteopatia e Art-Terapia.
             </p>
             <div className="page-hero-ctas">
-              <Link href="/contatti" className="btn btn-primary">
+              <Link   href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer" className="btn btn-primary">
                 Prenota un appuntamento
               </Link>
               <Link href="/prima-visita" className="btn btn-secondary">
-                Prima visita gratuita
+                Prima visita
               </Link>
             </div>
           </div>
@@ -169,10 +175,9 @@ export default function INosttiServizi() {
               <span className="section-subtitle">Il nostro approccio</span>
               <h2 className="section-title">Il Corpo è Un Sistema Che Vive In Equilibrio</h2>
               <p className="section-description">
-                Per questo abbiamo una visione integrata di medicina, odontoiatria e
-                nutrizione. Il nostro obiettivo è guardare alla totalità del paziente e del
-                suo benessere generale, creando percorsi di cura personalizzati che
-                considerano ogni aspetto della salute.
+               Per questo abbiamo una visione integrata di medicina, odontoiatria e nutrizione 
+Il nostro obiettivo è guardare alla totalità del paziente e del suo benessere generale. Partendo dal sintomo indaghiamo sulla causa del problema, creando percorsi di cura personalizzati che considerano ogni aspetto della salute del paziente. 
+
               </p>
             </div>
           </div>

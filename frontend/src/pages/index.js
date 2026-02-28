@@ -1,57 +1,216 @@
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import postsData from "./api/posts.json";
 import styles from "../styles/StudioHome.module.css";
+const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+
 
 const IMAGES = {
   hero: "/media/studio-pinoli-social-3/images/image-003-foto-anna-sof-5706.jpg",
   about: "/media/studio-pinoli-social-3/images/image-042-foto-nastia-cc1a9571.jpg",
-  primaVisita: "/media/studio-pinoli-social-3/images/image-057-foto-nastia-cc1a9651.jpg",
+  primaVisita: "/prima-visita/prima-visita.jpg",
 };
-const HERO_VIDEO = "/media/studio-pinoli-social-3/videos/hero-home-horizontal.mp4";
+const HERO_VIDEO = "/video/hero-pinoli.mp4";
 
 const services = [
   {
-    title: "Odontoiatria",
-    description: "Implantologia, ortodonzia, igiene orale ed estetica dentale a Milano. Oltre 35 anni di esperienza per la salute del tuo sorriso.",
+    tag: "Odontoiatria",
+    title: "Odontoiatria a Milano",
+    description: "Odontoiatria conservativa, protesi, implantologia, ortodonzia invisibile, igiene professionale ed estetica dentale per garantire salute, funzionalità e un sorriso armonico nel tempo.",
     href: "/servizi/odontoiatria",
-    image: "/media/studio-pinoli-social-3/images/image-051-foto-nastia-cc1a9625.jpg",
+    image: "/servizi/odontoriatria.jpg",
     alt: "Trattamento odontoiatrico presso Studio Pinoli Milano",
     accent: "#0066cc",
   },
   {
-    title: "Bionutrizione",
-    description: "Piani alimentari personalizzati e consulenza nutrizionale a Milano per ritrovare energia, equilibrio e benessere duraturo.",
+    tag: "Bio-nutrizione",
+    title: "Bio-nutrizione a Milano",
+    description: "Piani nutrizionali personalizzati per migliorare energia, composizione corporea e performance mentale, con un approccio scientifico e monitoraggio costante nel tempo.",
     href: "/servizi/bionutrizione",
-    image: "/media/studio-pinoli-social-3/images/image-054-foto-nastia-cc1a9637.jpg",
+    image: "/servizi/Biochimica-nutrizione_Immagine_blog-.jpg",
     alt: "Consulenza bionutrizione e dieta personalizzata Milano Studio Pinoli",
     accent: "#2a9d5b",
   },
   {
-    title: "Medicina Estetica",
-    description: "Filler, biorivitalizzazione e trattamenti anti-aging a Milano. Risultati naturali con approccio non invasivo.",
+    tag: "Medicina Estetica",
+    title: "Medicina Estetica a Milano",
+    description: "Trattamenti non invasivi e protocolli medicali per valorizzare i lineamenti in modo naturale, con risultati eleganti e armonici.",
     href: "/servizi/medicina-estetica",
-    image: "/media/studio-pinoli-social-3/images/image-057-foto-nastia-cc1a9651.jpg",
+    image: "/servizi/medicina-estetica.jpg",
     alt: "Trattamento medicina estetica viso Milano Studio Pinoli",
     accent: "#c16d43",
   },
-  {
-    title: "Medicina Integrata",
-    description: "Approccio olistico che combina terapie naturali, aromaterapia e oli essenziali per il benessere globale a Milano.",
-    href: "/servizi/medicina-integrata",
-    image: "/media/studio-pinoli-social-3/images/image-058-foto-nastia-cc1a9658.jpg",
-    alt: "Medicina integrata e benessere olistico Studio Pinoli Milano",
+  // {
+  //   tag: "Medicina Integrata",
+  //   title: "Medicina Integrata",
+  //   description: "Approccio olistico che combina terapie naturali, aromaterapia e oli essenziali per il benessere globale a Milano.",
+  //   href: "/servizi/medicina-integrata",
+  //   image: "/media/studio-pinoli-social-3/images/image-058-foto-nastia-cc1a9658.jpg",
+  //   alt: "Medicina integrata e benessere olistico Studio Pinoli Milano",
+  //   accent: "#0f807d",
+  // },
+    {
+    tag: "Osteopatia",
+    title: "Osteopatia a Milano",
+    description: "Valutazioni e trattamenti osteopatici per migliorare postura, mobilità e benessere muscolo-scheletrico, in integrazione con il percorso clinico complessivo.",
+    href: "/servizi/osteopatia",
+
+    image: "/servizi/osteopatia-hd.jpg",
+    alt: "Trattamenti osteopatici Studio Pinoli Milano",
+    accent: "#0f807d",
+  },
+    {
+    tag: "Art-Terapia",
+    title: "Art-Terapia a Milano",
+    description: "Percorsi di art-terapia orientati alla gestione dello stress, all’equilibrio emotivo e al benessere psico-fisico, in un contesto medico strutturato.",
+    href: "/servizi/art-terapia",
+    image: "/servizi/art-terapia-hd.jpg",
+    alt: "Trattamenti art-terapia Studio Pinoli Milano",
     accent: "#0f807d",
   },
 ];
 
 const studioStats = [
-  { value: "35+", label: "Anni di esperienza" },
-  { value: "15.000+", label: "Pazienti seguiti" },
-  { value: "4", label: "Aree specialistiche" },
-  { value: "98%", label: "Soddisfazione" },
+  { numeric: 35,    suffix: "+",  label: "Anni di esperienza" },
+  { numeric: 15000, suffix: "+",  label: "Pazienti seguiti" },
+  { numeric: 5,     suffix: "",   label: "Aree specialistiche" },
+  { numeric: 98,    suffix: "%",  label: "Soddisfazione" },
 ];
+
+function StatCard({ numeric, suffix, label }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const duration = 1600;
+          const fps = 60;
+          const steps = Math.round((duration / 1000) * fps);
+          let step = 0;
+          const timer = setInterval(() => {
+            step++;
+            // easeOutQuad
+            const progress = 1 - Math.pow(1 - step / steps, 2);
+            const current = Math.round(progress * numeric);
+            setCount(current);
+            if (step >= steps) clearInterval(timer);
+          }, duration / steps);
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [numeric]);
+
+  const formatted = count >= 1000 ? count.toLocaleString("it-IT") : String(count);
+
+  return (
+    <article ref={ref} className={styles.statCard}>
+      <strong>{formatted}{suffix}</strong>
+      <span>{label}</span>
+    </article>
+  );
+}
+
+function ServiceCarousel() {
+  const total = services.length;
+  const [current, setCurrent] = useState(0);
+  const [progKey, setProgKey] = useState(0);
+  const timerRef = useRef(null);
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrent((c) => (c + 1) % total);
+      setProgKey((k) => k + 1);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const go = (idx) => {
+    setCurrent((idx + total) % total);
+    setProgKey((k) => k + 1);
+    startTimer();
+  };
+
+  return (
+    <div className={styles.carousel}>
+      <div
+        className={styles.carouselTrack}
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {services.map((service, i) => (
+          <div key={i} className={styles.carouselSlide}>
+            <Image
+              src={service.image}
+              alt={service.alt}
+              fill
+              sizes="100vw"
+              className={styles.coverImage}
+              priority={i === 0}
+            />
+            <div className={styles.slideOverlay}>
+              <span
+                className={styles.slideTag}
+                style={{ borderColor: service.accent, color: "#fff", background: `${service.accent}33` }}
+              >
+                {service.tag}
+              </span>
+              <h2 className={styles.slideTitle}>{service.title}</h2>
+              <p className={styles.slideDesc}>{service.description}</p>
+              <Link href={service.href} className={styles.slideLink}>
+                Scopri di più <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button
+        className={`${styles.carouselBtn} ${styles.carouselBtnPrev}`}
+        onClick={() => go(current - 1)}
+        aria-label="Servizio precedente"
+      >
+        ‹
+      </button>
+      <button
+        className={`${styles.carouselBtn} ${styles.carouselBtnNext}`}
+        onClick={() => go(current + 1)}
+        aria-label="Servizio successivo"
+      >
+        ›
+      </button>
+
+      <div className={styles.carouselDots} role="tablist">
+        {services.map((s, i) => (
+          <button
+            key={i}
+            role="tab"
+            aria-selected={i === current}
+            aria-label={s.title}
+            className={`${styles.dot} ${i === current ? styles.dotActive : ""}`}
+            onClick={() => go(i)}
+          />
+        ))}
+      </div>
+
+      <div key={progKey} className={styles.carouselProgress} />
+    </div>
+  );
+}
 
 export default function Home({ posts }) {
   return (
@@ -91,18 +250,17 @@ export default function Home({ posts }) {
 
           <div className="container">
             <div className={styles.heroContent}>
-              <span className={styles.heroTag}>Studio Dentistico a Milano</span>
-              <h1>La tua salute,<br />il nostro metodo</h1>
+              <h1 className={styles.heroTag}>Studio Dentistico a Milano</h1>
+              <h1>Odontoiatria, Bio-Nutrizione e Medicina integrata</h1>
               <p>
-                Il tuo dentista a Milano dal 1989: odontoiatria, implantologia, bionutrizione e medicina estetica
-                in un unico studio. Un percorso personalizzato, chiaro e orientato al risultato.
+               Centro medico nel cuore di Milano specializzato in odontoiatria, bio-nutrizione e medicina olistica, con percorsi personalizzati per chi ricerca qualità, precisione e risultati duraturi nel tempo.
               </p>
               <div className={styles.heroActions}>
                 <Link href="/prima-visita" className="btn btn-primary btn-lg">
                   Prenota la prima visita
                 </Link>
-                <a href="tel:+390242272381" className="btn btn-white btn-lg">
-                  02 4272381
+                <a href="tel:+393316713904" className="btn btn-white btn-lg">
+                  Chiama ora
                 </a>
               </div>
             </div>
@@ -113,10 +271,7 @@ export default function Home({ posts }) {
           <div className="container">
             <div className={styles.statsGrid}>
               {studioStats.map((stat) => (
-                <article key={stat.label} className={styles.statCard}>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
-                </article>
+                <StatCard key={stat.label} {...stat} />
               ))}
             </div>
           </div>
@@ -127,18 +282,15 @@ export default function Home({ posts }) {
             <div className={styles.aboutGrid}>
               <div className={styles.aboutContent}>
                 <span className={styles.sectionTag}>Chi siamo</span>
-                <h2>Un unico studio a Milano, quattro aree di competenza</h2>
+                <h2>Studio medico a Milano, cinque aree di competenza integrate</h2>
                 <p>
-                  Da Studio Pinoli trovi un team multidisciplinare guidato dal Dott. Luca Pinoli: dentista a Milano
-                  con oltre 35 anni di esperienza in odontoiatria, nutrizione, medicina estetica e medicina integrata,
-                  con un percorso costruito su di te.
+                  <b>Studio Pinoli</b>, situato nel cuore di Milano, è uno Studio medico specializzato in <b>odontoiatria, bio-nutrizione e medicina integrata</b>. Lo Studio, guidato dalla direzione sanitaria del Dr. Luca Maria Pinoli, offre un ambiente dove professionisti del benessere lavorano in sinergia per offrirti un percorso di cure personalizzato.
                 </p>
                 <p>
-                  Tecnologie diagnostiche aggiornate, approccio minimamente invasivo e attenzione reale
-                  all&apos;esperienza del paziente: questo è Studio Pinoli.
+               Da oltre 35 anni, accompagniamo i nostri pazienti con un approccio clinico integrato, grazie all’utilizzo di tecnologie avanzate e un’attenzione costante alla qualità dell’esperienza clinica in Studio.
                 </p>
                 <Link href="/chi-siamo" className={styles.textLink}>
-                  Scopri il team &rarr;
+                  Scopri il nostro team &rarr;
                 </Link>
               </div>
               <div className={styles.aboutImageWrap}>
@@ -158,31 +310,10 @@ export default function Home({ posts }) {
           <div className="container">
             <div className={styles.sectionHead}>
               <span className={styles.sectionTag}>Servizi</span>
-              <h2>Le aree principali dello studio</h2>
-              <p>Percorsi specialistici integrati per la salute orale e il benessere complessivo.</p>
+              <h2>Le aree di specializzazione dello Studio</h2>
+              <p>Offriamo percorsi clinici integrati per la salute orale, l’equilibrio psico-fisico e il benessere estetico del paziente.</p>
             </div>
-            <div className={styles.servicesGrid}>
-              {services.map((service) => (
-                <Link key={service.title} href={service.href} className={styles.serviceCard}>
-                  <div className={styles.serviceImageWrap}>
-                    <Image
-                      src={service.image}
-                      alt={service.alt}
-                      fill
-                      sizes="(max-width: 900px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className={styles.coverImage}
-                    />
-                    <div className={styles.serviceImageOverlay} />
-                  </div>
-                  <div className={styles.serviceBody}>
-                    <span style={{ backgroundColor: service.accent }} />
-                    <h3>{service.title}</h3>
-                    <p>{service.description}</p>
-                    <small>Scopri di piu</small>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <ServiceCarousel />
           </div>
         </section>
 
@@ -191,10 +322,9 @@ export default function Home({ posts }) {
             <div className={styles.ctaGrid}>
               <div className={styles.ctaContent}>
                 <span className={styles.sectionTagLight}>Prima visita</span>
-                <h2>Prima visita gratuita a Milano</h2>
+                <h3 style={{fontSize:"2.5rem", marginTop:"20px"}}>Prenota una prima visita in Studio </h3>
                 <p>
-                  La prima visita è il momento in cui il nostro dentista a Milano analizza la tua situazione clinica,
-                  ascolta i tuoi obiettivi e definisce il piano di cura migliore per te. È gratuita e senza impegno.
+               La prima visita e il momento in cui analizziamo la tua situazione clinica, ascoltiamo i tuoi obiettivi e definiamo il piano di cure migliore per te. 
                 </p>
                 <ul>
                   <li>Analisi del quadro clinico</li>
@@ -202,7 +332,8 @@ export default function Home({ posts }) {
                   <li>Preventivo chiaro e trasparente</li>
                 </ul>
                 <div className={styles.ctaActions}>
-                  <Link href="/contatti" className="btn btn-white btn-lg">
+                  <Link href={BOOKING_URL} className="btn btn-white btn-lg"  target="_blank"
+                rel="noopener noreferrer" >
                     Prenota ora
                   </Link>
                   <Link href="/prima-visita" className={styles.ctaGhostBtn}>
@@ -250,25 +381,25 @@ export default function Home({ posts }) {
           <div className="container">
             <div className={styles.contactGrid}>
               <div className={styles.contactInfo}>
-                <h2>Contatti</h2>
-                <p>Ti aspettiamo nel nostro studio dentistico a Milano. Il team è disponibile per informazioni e appuntamenti.</p>
+                <h2>Contatti – Studio Dentistico a Milano</h2>
+                <p>Ti aspettiamo nel nostro <b>Studio medico dentistico a Milano</b>  per informazioni, consulenze e appuntamenti personalizzati.</p>
                 <address>
                   <strong>Studio Pinoli</strong>
                   <br />
-                  Via G. Chiminello 6
+                  Via Domenico Cimarosa, 4
                   <br />
-                  20146 Milano (Certosa) MI
+                  20144 Milano (MI)
                 </address>
                 <p className={styles.phone}>
-                  <a href="tel:+390242272381">02 4272381</a>
+                  <a href="tel:+393316713904">+39 3316713904</a>
                 </p>
-                <Link href="/contatti" className="btn btn-primary">
+                <Link style={{ marginTop: '1.2rem' }} href="/contatti" className="btn btn-primary">
                   Contattaci
                 </Link>
               </div>
               <div className={styles.mapWrap}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.5!2d9.1686!3d45.4896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c14d8e6f6b67%3A0x5f8f8e8e8e8e8e8e!2sVia%20Losanna%2C%2016%2C%2020154%20Milano%20MI!5e0!3m2!1sit!2sit!4v1234567890"
+                  src="https://maps.google.com/maps?q=Via+Domenico+Cimarosa+4,+20144+Milano+MI&output=embed&hl=it"
                   width="100%"
                   height="340"
                   style={{ border: 0 }}
