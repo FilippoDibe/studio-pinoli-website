@@ -7,31 +7,81 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   { number: 35, suffix: "+", label: "Anni di Esperienza" },
   { number: 15000, suffix: "+", label: "Pazienti Soddisfatti" },
-  { number: 4, suffix: "", label: "Aree di Specializzazione" },
+  { number: 5, suffix: "", label: "Aree di Specializzazione" },
   { number: 98, suffix: "%", label: "Tasso di Soddisfazione" }
 ];
 
 // Team members
-const team = [
+const clinicalTeam = [
   {
-    name: "Dott. Luca Pinoli",
-    role: "Direttore Sanitario — Dentista a Milano",
-    description: "Fondatore e direttore sanitario di Studio Pinoli. Specialista in odontoiatria con oltre 35 anni di esperienza a Milano. Pioniere dell'approccio integrato tra salute orale e benessere globale.",
-    image: "/media/studio-pinoli-social-3/images/image-022-foto-nastia-cc1a9480.jpg"
+    name: "Dr. Luca Maria Pinoli",
+    role: "Medico Chirurgo, Odontoiatra",
+    description: "Direttore Sanitario di Studio Pinoli. Odontoiatra con oltre 35 anni di esperienza clinica a Milano, specializzato in odontoiatria conservativa, implantologia e protesi. Pioniere di un approccio integrato che unisce la cura orale al benessere globale della persona.",
+    image: "/team/LUCA-MARIA.jpeg",
+    color: "var(--color-dental)",
+    specialty: "Odontoiatria",
   },
   {
-    name: "Dott.ssa Rosa Nelly de Olazabal",
-    role: "Odontoiatra — Implantologia e Protesi",
-    description: "Odontoiatra specializzata in implantologia dentale, protesi fissa e removibile. Esperienza consolidata nella riabilitazione orale completa presso lo Studio Pinoli di Milano.",
-    image: "/media/studio-pinoli-social-3/images/image-027-foto-nastia-cc1a9499.jpg"
+    name: "Dr.ssa Diana Mihaela Bulache",
+    role: "Igienista Dentale",
+    description: "Igienista dentale specializzata nella prevenzione e nel mantenimento della salute orale. Si occupa di igiene professionale, terapia parodontale di supporto e piani preventivi personalizzati, con attenzione costante al comfort e all'educazione del paziente.",
+    image: "/team/DIANA.jpeg",
+    color: "var(--color-dental)",
+    specialty: "Igiene Dentale",
   },
   {
-    name: "Bionutrizionista",
-    role: "Specialista in Nutrizione — Milano",
-    description: "Nutrizionista esperta in bionutrizione, nutrizione clinica e piani alimentari personalizzati. Supporto nutrizionale per dimagrimento, nutrizione sportiva e gestione di patologie metaboliche.",
-    image: "/media/studio-pinoli-social-3/images/image-028-foto-nastia-cc1a9500.jpg"
-  }
+    name: "Dr.ssa Marta Plutino",
+    role: "Ortodontista",
+    description: "Specialista in ortodonzia per adulti e bambini, con competenza in trattamenti fissi, mobili e allineatori invisibili. Guida ogni paziente verso un sorriso armonico con tecniche contemporanee, rispettando funzionalità occlusale ed estetica.",
+    image: "/team/MARTA.jpeg",
+    color: "var(--color-dental)",
+    specialty: "Ortodonzia",
+  },
+  {
+    name: "Dr. Alessandro Ploner",
+    role: "Osteopata",
+    description: "Osteopata specializzato nel trattamento di disfunzioni muscolo-scheletriche, posturali e cranio-sacrali. Collabora con l'équipe medica dello studio in ottica integrata, offrendo percorsi per dolori cronici, tensioni cervicali e problematiche correlate alla salute orale.",
+    image: "/team/ALESSANDRO.jpeg",
+    color: "var(--color-osteopatia)",
+    specialty: "Osteopatia",
+  },
+  {
+    name: "Dr.ssa Irina Metliaeva",
+    role: "Art-Terapeuta",
+    description: "Art-terapeuta con formazione in psicologia e terapia espressiva. Conduce percorsi di arte-terapia orientati alla gestione dello stress, all'equilibrio emotivo e al benessere psico-fisico, in un contesto clinico strutturato che valorizza l'espressione come strumento di cura.",
+    image: "/team/IRINA.jpeg",
+    color: "var(--color-art)",
+    specialty: "Art-Terapia",
+  },
 ];
+
+const supportTeam = [
+  {
+    name: "Francesca Mazzardo",
+    role: "Dirigente ASO",
+    description: "Assistente alla Poltrona con anni di esperienza clinica e ruolo di coordinamento operativo. Supporta l'équipe medica durante le procedure garantendo efficienza, sicurezza e un ambiente sereno per ogni paziente.",
+    image: "/team/FRANCESCA.jpeg",
+  },
+  {
+    name: "Viktoriia Kushnyrik",
+    role: "Assistente alla Poltrona (ASO)",
+    description: "Assistente alla Poltrona con formazione specialistica nel supporto alle procedure odontoiatriche. Contribuisce con precisione e attenzione alla qualità di ogni trattamento, assicurando continuità e serenità al paziente in ogni fase della visita.",
+    image: "/team/VIKTORIIA.jpeg",
+  },
+  {
+    name: "Gabriella Mazzardo",
+    role: "Segreteria",
+    description: "Responsabile dell'accoglienza e della gestione amministrativa dello studio. Primo punto di contatto per i pazienti: coordina gli appuntamenti, gestisce le comunicazioni e si assicura che ogni visita sia organizzata con cura e puntualità.",
+    image: "/team/GABRIELLA.jpeg",
+  },
+  {
+    name: "Lorenzo Di Benedetto",
+    role: "Amministratore",
+    description: "Responsabile dell'amministrazione e della gestione strategica dello studio. Supervisiona i processi organizzativi, la comunicazione e le attività operative con l'obiettivo di garantire la migliore esperienza possibile ai pazienti e al team.",
+    image: "/team/LORENZO.jpeg",
+  },
+];
+
 
 // Values
 const values = [
@@ -134,7 +184,7 @@ export default function ChiSiamo() {
               <span>/</span>
               <span>Chi Siamo</span>
             </nav>
-            <h1>Chi Siamo — Studio Pinoli Milano</h1>
+            <h1>Chi Siamo</h1>
             <p>
               Da oltre 35 anni il nostro studio dentistico a Milano si prende cura del benessere dei pazienti.
               Un team multidisciplinare di dentisti e specialisti dedicati alla tua salute e al tuo sorriso.
@@ -216,35 +266,84 @@ export default function ChiSiamo() {
           </div>
         </section>
 
-        {/* Team */}
-        <section className="section">
+        {/* Team — Premium Layout */}
+        <section className="section team-premium-section">
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Il nostro team</span>
               <h2 className="section-title">Professionisti al Tuo Servizio</h2>
               <p className="section-description">
-                Un team di specialisti qualificati e costantemente aggiornati sulle
-                ultime novità del settore.
+                Un team multidisciplinare di specialisti qualificati, costantemente aggiornati
+                per offrirti cure di eccellenza in ogni area.
               </p>
             </div>
 
-            <div className="team-grid">
-              {team.map((member, index) => (
-                <div key={index} className="team-card">
-                  <div className="team-card-image">
+            {/* Director — featured hero card */}
+            <div className="team-director-card">
+              <div className="team-director-info">
+                <span className="team-director-label"> Direttore Sanitario</span>
+                <h3>{clinicalTeam[0].name}</h3>
+                <p className="team-director-role">{clinicalTeam[0].role}</p>
+                <p className="team-director-bio">{clinicalTeam[0].description}</p>
+                <span className="team-director-badge">{clinicalTeam[0].specialty}</span>
+              </div>
+              <div className="team-director-photo">
+                <Image
+                  src={clinicalTeam[0].image}
+                  alt={clinicalTeam[0].name}
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "top center" }}
+                  sizes="420px"
+                />
+              </div>
+            </div>
+
+            {/* Clinical staff — 4 col */}
+            <p className="team-group-label team-group-label-spaced">Staff Clinico</p>
+            <div className="team-clinical-grid">
+              {clinicalTeam.slice(1).map((member) => (
+                <div
+                  key={member.name}
+                  className="team-member-card"
+                  style={{ "--member-color": member.color }}
+                >
+                  <div className="team-member-card-image">
                     <Image
                       src={member.image}
                       alt={member.name}
-                      width={400}
-                      height={280}
+                      fill
+                      style={{ objectFit: "cover", objectPosition: "top center" }}
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                    />
+                    <span className="team-member-specialty">{member.specialty}</span>
+                  </div>
+                  <div className="team-member-card-body">
+                    <h4>{member.name}</h4>
+                    <p className="team-member-card-role">{member.role}</p>
+                    <p className="team-member-card-bio">{member.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Support staff — compact row */}
+            <p className="team-group-label team-group-label-spaced">Staff di Studio</p>
+            <div className="team-support-row">
+              {supportTeam.map((member) => (
+                <div key={member.name} className="team-support-card">
+                  <div className="team-support-photo">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={88}
+                      height={88}
+                      sizes="88px"
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
                   </div>
-                  <div className="team-card-content">
-                    <h4>{member.name}</h4>
-                    <p className="team-card-role">{member.role}</p>
-                    <p>{member.description}</p>
-                  </div>
+                  <p className="team-support-name">{member.name}</p>
+                  <p className="team-support-role">{member.role}</p>
+                  <p className="team-support-bio">{member.description}</p>
                 </div>
               ))}
             </div>

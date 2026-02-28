@@ -64,7 +64,7 @@ const valueProps = [
   {
     icon: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z",
     title: "Team Specializzato",
-    description: "Professionisti qualificati pronti ad accoglierti e guidarti nel percorso di cura.",
+    description: "Professionisti qualificati pronti ad accoglierti e guidarti nel tuo percorso di cura.",
   },
   {
     icon: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z",
@@ -183,15 +183,32 @@ Il nostro obiettivo è guardare alla totalità del paziente e del suo benessere 
           </div>
         </section>
 
-        {/* 4 Macro Services Grid */}
-        <section className="section section-light">
+        {/* Services Mosaic — Premium Dark Section */}
+        <section className="mosaic-section">
+          {/* Decorative layers */}
+          <div className="mosaic-section-bg"      aria-hidden="true" />
+          <div className="mosaic-section-topline" aria-hidden="true" />
+
           <div className="container">
-            <div className="section-header">
-              <span className="section-subtitle">Aree di specializzazione</span>
-              <h2 className="section-title">Scegli Il Tuo Percorso di Cura</h2>
+            {/* Header: logo bianco | divisore | titolo */}
+            <div className="mosaic-header">
+              <div className="mosaic-header-logo">
+                <Image
+                  src="/images/studio-pinoli-logo-oriz-1.png"
+                  alt="Studio Pinoli"
+                  width={180}
+                  height={68}
+                  style={{ width: "100%", height: "auto", filter: "brightness(0) invert(1)" }}
+                />
+              </div>
+              <div className="mosaic-header-divider" aria-hidden="true" />
+              <div className="mosaic-header-text">
+                <span className="mosaic-section-subtitle">Aree di specializzazione</span>
+                <h2 className="mosaic-section-title">Scegli Il Tuo Percorso di Cura</h2>
+              </div>
             </div>
 
-            <div className="macro-services-grid">
+            <div className="mosaic-services-grid">
               {services.map((service, index) => (
                 <ServiceCard
                   key={index}
@@ -201,6 +218,7 @@ Il nostro obiettivo è guardare alla totalità del paziente e del suo benessere 
                   icon={service.icon}
                   href={service.href}
                   theme={service.theme}
+                  num={String(index + 1).padStart(2, "0")}
                 />
               ))}
             </div>
@@ -234,17 +252,18 @@ Il nostro obiettivo è guardare alla totalità del paziente e del suo benessere 
         {/* CTA Section */}
         <section className="cta-section">
           <div className="container">
-            <h2>Inizia Il Tuo Percorso Verso Il Benessere</h2>
+            <h2>Fai Il Primo Passo Verso Il Tuo Benessere</h2>
             <p>
               Prenota una consulenza con i nostri specialisti e scopri il percorso di
               cura più adatto alle tue esigenze.
             </p>
             <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
+              <Link href={BOOKING_URL} target="_blank"
+                rel="noopener noreferrer" className="btn btn-primary">
                 Prenota una visita
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama ora: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama ora
               </a>
             </div>
           </div>
@@ -266,21 +285,7 @@ Il nostro obiettivo è guardare alla totalità del paziente e del suo benessere 
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="section">
-          <div className="container">
-            <div className="blue-box" style={{ maxWidth: 800, margin: "0 auto" }}>
-              <h3>Fai Il Primo Passo Verso Il Tuo Benessere</h3>
-              <p>
-                Il nostro team è pronto ad accoglierti e guidarti nel percorso di cura più
-                adatto a te. Contattaci per una consulenza personalizzata.
-              </p>
-              <Link href="/contatti" className="btn">
-                Prenota ora la tua visita
-              </Link>
-            </div>
-          </div>
-        </section>
+    
       </main>
     </>
   );
