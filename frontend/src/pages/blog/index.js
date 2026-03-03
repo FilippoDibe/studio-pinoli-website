@@ -173,48 +173,7 @@ export default function Blog({ posts }) {
           </div>
         </section>
 
-        {/* Newsletter CTA */}
-        <section className="section section-light">
-          <div className="container">
-            <div className="newsletter-cta">
-              <div className="newsletter-content">
-                <h2>Resta Aggiornato</h2>
-                <p>
-                  Iscriviti per ricevere i nostri ultimi articoli su salute dentale,
-                  nutrizione e benessere direttamente nella tua inbox.
-                </p>
-              </div>
-              <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="La tua email"
-                  required
-                />
-                <button type="submit" className="btn btn-primary">
-                  Iscriviti
-                </button>
-              </form>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="cta-section">
-          <div className="container">
-            <h2>Prenota la Tua Prima Visita</h2>
-            <p>
-              Hai domande sulla tua salute? Vieni a trovarci per una consulenza personalizzata.
-            </p>
-            <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
-                Prenota un appuntamento
-              </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
-              </a>
-            </div>
-          </div>
-        </section>
+  
       </main>
     </>
   );

@@ -187,23 +187,7 @@ export default function BlogPost({ post }) {
           </div>
         </article>
 
-        {/* CTA */}
-        <section className="cta-section">
-          <div className="container">
-            <h2>Hai Domande?</h2>
-            <p>
-              Il nostro team è a tua disposizione per rispondere a qualsiasi domanda.
-            </p>
-            <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
-                Contattaci
-              </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
-              </a>
-            </div>
-          </div>
-        </section>
+    
       </main>
     </>
   );

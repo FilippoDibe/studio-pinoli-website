@@ -16,7 +16,7 @@ const clinicalTeam = [
   {
     name: "Dr. Luca Maria Pinoli",
     role: "Medico Chirurgo, Odontoiatra",
-    description: "Direttore Sanitario di Studio Pinoli. Odontoiatra con oltre 35 anni di esperienza clinica a Milano, specializzato in odontoiatria conservativa, implantologia e protesi. Pioniere di un approccio integrato che unisce la cura orale al benessere globale della persona.",
+    description: "Direttore sanitario dello Studio, specializzato in odontostomatologia e bio-nutrizione, con oltre 35 anni di esperienza è uno specialista nel campo dell’estetica dentale e della medicina integrata. Unisce la cura orale al benessere globale della persona, unendo tecniche avanzate di cura dentale a terapie naturali e nutrizionali che prendono in considerazione ogni aspetto della salute dell’individuo.",
     image: "/team/LUCA-MARIA.jpeg",
     color: "var(--color-dental)",
     specialty: "Odontoiatria",
@@ -24,7 +24,7 @@ const clinicalTeam = [
   {
     name: "Dr.ssa Diana Mihaela Bulache",
     role: "Igienista Dentale",
-    description: "Igienista dentale specializzata nella prevenzione e nel mantenimento della salute orale. Si occupa di igiene professionale, terapia parodontale di supporto e piani preventivi personalizzati, con attenzione costante al comfort e all'educazione del paziente.",
+    description: "Igienista dentale specializzata nella prevenzione e nel mantenimento della salute orale. Promuove la salute orale come parte integrante del benessere complessivo dei nostri pazienti, attraverso trattamenti personalizzati e consigli pratici per una corretta igiene orale.",
     image: "/team/DIANA.jpeg",
     color: "var(--color-dental)",
     specialty: "Igiene Dentale",
@@ -88,7 +88,7 @@ const values = [
   {
     icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
     title: "Eccellenza",
-    description: "Puntiamo alla massima qualità in ogni trattamento, utilizzando tecnologie all'avanguardia."
+    description: "Puntiamo alla massima qualità nella realizzazione di ogni piano di cura."
   },
   {
     icon: "M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z",
@@ -98,7 +98,7 @@ const values = [
   {
     icon: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z",
     title: "Innovazione",
-    description: "Aggiornamento continuo per offrire le soluzioni più moderne ed efficaci."
+    description: "Ogni paziente è unico e merita un'attenzione personalizzata e premurosa."
   },
   {
     icon: "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z",
@@ -106,6 +106,89 @@ const values = [
     description: "Ogni paziente è unico e merita un'attenzione personalizzata e premurosa."
   }
 ];
+
+// Team Carousel Component
+function TeamCarousel({ members, label }) {
+  const [current, setCurrent] = useState(0);
+  const total = members.length;
+  const timerRef = useRef(null);
+  const [animating, setAnimating] = useState(false);
+  const [direction, setDirection] = useState("next");
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setDirection("next");
+      setAnimating(true);
+      setTimeout(() => {
+        setCurrent((c) => (c + 1) % total);
+        setAnimating(false);
+      }, 300);
+    }, 4500);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const go = (idx, dir = "next") => {
+    setDirection(dir);
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrent((idx + total) % total);
+      setAnimating(false);
+    }, 300);
+    startTimer();
+  };
+
+  const member = members[current];
+
+  return (
+    <div className="team-carousel">
+      <p className="team-group-label">{label}</p>
+      <div className={`team-carousel-card ${animating ? `exit-${direction}` : "enter"}`}>
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          style={{ objectFit: "cover", objectPosition: "top center" }}
+          sizes="(max-width: 768px) 100vw, 45vw"
+        />
+        {member.specialty && (
+          <span className="team-carousel-badge" style={{ "--member-color": member.color }}>{member.specialty}</span>
+        )}
+        <div className="team-carousel-name-bar">
+          <h4>{member.name}</h4>
+          <p className="team-carousel-role">{member.role}</p>
+        </div>
+        <div className="team-carousel-overlay">
+          <h4>{member.name}</h4>
+          <p className="team-carousel-role">{member.role}</p>
+          <p className="team-carousel-bio">{member.description}</p>
+        </div>
+      </div>
+      <div className="team-carousel-controls">
+        <button className="team-carousel-btn" onClick={() => go(current - 1, "prev")} aria-label="Precedente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div className="team-carousel-dots">
+          {members.map((_, i) => (
+            <button
+              key={i}
+              className={`team-carousel-dot${i === current ? " active" : ""}`}
+              onClick={() => go(i, i > current ? "next" : "prev")}
+              aria-label={members[i].name}
+            />
+          ))}
+        </div>
+        <button className="team-carousel-btn" onClick={() => go(current + 1, "next")} aria-label="Successivo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  );
+}
 
 // Animated Counter Component
 function AnimatedCounter({ target, suffix, duration = 2000 }) {
@@ -186,8 +269,7 @@ export default function ChiSiamo() {
             </nav>
             <h1>Chi Siamo</h1>
             <p>
-              Da oltre 35 anni il nostro studio dentistico a Milano si prende cura del benessere dei pazienti.
-              Un team multidisciplinare di dentisti e specialisti dedicati alla tua salute e al tuo sorriso.
+             Da oltre 35 anni il nostro Studio Medico Dentistico a Milano si prende cura del sorriso e del benessere complessivo della persona. Un team di specialisti dedicati alla tua salute ed al tuo sorriso, pronti a dedicarti un’esperienza di cura personalizzata ed attenta ad ogni tua esigenza.
             </p>
           </div>
         </section>
@@ -197,23 +279,19 @@ export default function ChiSiamo() {
           <div className="container">
             <div className="about-hero-section">
               <div className="about-hero-content">
-                <span className="section-subtitle">La nostra storia</span>
-                <h2>Più di 35 Anni al Servizio del Tuo Sorriso a Milano</h2>
+                <span className="section-subtitle">LA NOSTRA FILOSOFIA</span>
+                <h2>Un Sorriso Sano Come Riflesso di Un Corpo in Armonia</h2>
                 <p className="lead">
-                  Studio Pinoli nasce dalla passione per l'odontoiatria e dalla volontà
-                  di offrire un servizio di eccellenza ai pazienti milanesi. Dal 1989 siamo
-                  il dentista di fiducia di migliaia di famiglie nella zona ovest di Milano.
+               La <b>missione</b> del nostro Studio Medico Dentistico a Milano è trasformare l’odontoiatria in un percorso di salute globale e di benessere complessivo per ogni paziente. 
                 </p>
-                <p>
-                  Nel corso degli anni abbiamo ampliato la nostra offerta, integrando
-                  servizi di bionutrizione con nutrizionisti specializzati, medicina estetica
-                  e medicina integrata, per un approccio completo al benessere della persona.
+                <p className="lead">
+                 I nostri <b>valori</b> si fondano sull’integrazione tra cura dentale e salute generale, rispettando l’interconnessione tra bocca, corpo e mente. Ci impegniamo a trattare ogni paziente con un approccio integrato, mirando non solo alla soluzione del problema, ma anche al suo benessere psico-fisico. 
                 </p>
-                <p>
+                {/* <p>
                   La nostra filosofia si basa sull'ascolto attento delle esigenze di ogni
                   paziente e sulla personalizzazione dei percorsi di cura: nessun protocollo
                   standard, solo trattamenti su misura per te.
-                </p>
+                </p> */}
               </div>
               <div className="about-hero-image">
                 <Image
@@ -271,10 +349,9 @@ export default function ChiSiamo() {
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Il nostro team</span>
-              <h2 className="section-title">Professionisti al Tuo Servizio</h2>
+              <h2 className="section-title">I Professionisti al Tuo Servizio</h2>
               <p className="section-description">
-                Un team multidisciplinare di specialisti qualificati, costantemente aggiornati
-                per offrirti cure di eccellenza in ogni area.
+             Sarai accolto e seguito da un team di specialisti qualificati pronti ad offrirti cure di eccellenza.
               </p>
             </div>
 
@@ -298,58 +375,30 @@ export default function ChiSiamo() {
               </div>
             </div>
 
-            {/* Clinical staff — 4 col */}
-            <p className="team-group-label team-group-label-spaced">Staff Clinico</p>
-            <div className="team-clinical-grid">
-              {clinicalTeam.slice(1).map((member) => (
-                <div
-                  key={member.name}
-                  className="team-member-card"
-                  style={{ "--member-color": member.color }}
-                >
-                  <div className="team-member-card-image">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      style={{ objectFit: "cover", objectPosition: "top center" }}
-                      sizes="(max-width: 768px) 100vw, 25vw"
-                    />
-                    <span className="team-member-specialty">{member.specialty}</span>
-                  </div>
-                  <div className="team-member-card-body">
-                    <h4>{member.name}</h4>
-                    <p className="team-member-card-role">{member.role}</p>
-                    <p className="team-member-card-bio">{member.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Support staff — compact row */}
-            <p className="team-group-label team-group-label-spaced">Staff di Studio</p>
-            <div className="team-support-row">
-              {supportTeam.map((member) => (
-                <div key={member.name} className="team-support-card">
-                  <div className="team-support-photo">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={88}
-                      height={88}
-                      sizes="88px"
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                    />
-                  </div>
-                  <p className="team-support-name">{member.name}</p>
-                  <p className="team-support-role">{member.role}</p>
-                  <p className="team-support-bio">{member.description}</p>
-                </div>
-              ))}
+            {/* Two carousels side by side */}
+            <div className="team-carousels-row">
+              <TeamCarousel members={clinicalTeam.slice(1)} label="Staff Clinico" />
+              <TeamCarousel members={supportTeam} label="Staff di Studio" />
             </div>
           </div>
         </section>
-
+  {/* CTA */}
+        <section className="cta-section">
+          <div className="container">
+            <h2>Inizia il Tuo Percorso con Noi</h2>
+            <p>
+              Prenota una visita e scopri come possiamo aiutarti a raggiungere il benessere che meriti.
+            </p>
+            <div className="cta-buttons">
+              <Link href="/prima-visita" className="btn btn-primary">
+                Prenota la prima visita
+              </Link>
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama In Studio
+              </a>
+            </div>
+          </div>
+        </section>
         {/* Mission */}
         <section className="section section-light">
           <div className="container">
@@ -367,14 +416,14 @@ export default function ChiSiamo() {
                 <span className="section-subtitle">La nostra missione</span>
                 <h2>Un Approccio Integrato alla Salute</h2>
                 <p>
-                  Crediamo che il benessere sia il risultato dell'equilibrio tra corpo e mente.
-                  Per questo abbiamo sviluppato un approccio che integra diverse discipline:
+               Crediamo che il benessere sia il risultato dell'equilibrio tra corpo e mente. Per questo abbiamo sviluppato un approccio che integra diverse discipline:
                 </p>
                 <ul>
                   <li><strong>Odontoiatria</strong> - Per la salute del tuo sorriso</li>
-                  <li><strong>Bionutrizione</strong> - Per un'alimentazione equilibrata</li>
+                  <li><strong>Bio-nutrizione</strong> - Per un'alimentazione equilibrata</li>
+                  <li><strong>Osteopartia</strong> - Per ritrovare equilibrio tra postura e movimento</li>
                   <li><strong>Medicina Estetica</strong> - Per valorizzare la tua bellezza naturale</li>
-                  <li><strong>Medicina Integrata</strong> - Per il benessere globale</li>
+                  <li><strong>Art-Terapia</strong> - Per favorire benessere emotivo e serenità nel tuo percorso di cura</li>
                 </ul>
                 <Link href="/i-nostri-servizi" className="btn btn-blue" style={{ marginTop: "20px" }}>
                   Scopri i nostri servizi
@@ -390,9 +439,8 @@ export default function ChiSiamo() {
             <div className="section-header">
               <span className="section-subtitle">Dove siamo</span>
               <h2 className="section-title">Vieni a Trovarci</h2>
-              <p className="section-description">
-                Il nostro studio dentistico si trova in Via G. Chiminello 6, Milano (zona Certosa),
-                facilmente raggiungibile con la metro M5, tram e in auto dalla tangenziale ovest.
+              <p className="section-description" style={{ textWrap: "pretty" }}>
+                Il nostro Studio Medico Dentistico si trova in Via Domenico Cimarosa 4, Milano (Corso Vercelli), facilmente raggiungibile in auto, con la metro M1 (Fermata Pagano) o con il tram (linee n.&nbsp;16, 29 e 30).
               </p>
             </div>
 
@@ -400,8 +448,8 @@ export default function ChiSiamo() {
               <div className="two-col-content">
                 <h3>Studio Pinoli</h3>
                 <p style={{ fontSize: "1.1rem", marginBottom: "24px" }}>
-                  <strong>Via G. Chiminello 6</strong><br />
-                  20146 Milano (Certosa) MI
+                  <strong>Via Domenico Cimarosa, 4</strong><br />
+                  20144 Milano - MI
                 </p>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "30px" }}>
@@ -412,7 +460,7 @@ export default function ChiSiamo() {
                       </svg>
                     </div>
                     <div>
-                      <strong>Telefono:</strong> <a href="tel:+390242272381">02 4272381</a>
+                      <strong>Telefono:</strong> <a href="tel:+393316713904">+39 3316713904</a>
                     </div>
                   </div>
 
@@ -446,7 +494,7 @@ export default function ChiSiamo() {
               <div className="two-col-image">
                 <div style={{ borderRadius: "var(--radius-lg)", overflow: "hidden", height: "350px", boxShadow: "0 10px 40px rgba(0,0,0,0.1)" }}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2797.4!2d9.14!3d45.49!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDI5JzI0LjAiTiA5wrAwOCcyNC4wIkU!5e0!3m2!1sit!2sit!4v1234567890"
+                    src="https://maps.google.com/maps?q=Via+Domenico+Cimarosa+4,+20144+Milano+MI&output=embed&hl=it"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -460,23 +508,7 @@ export default function ChiSiamo() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="cta-section">
-          <div className="container">
-            <h2>Inizia il Tuo Percorso con Noi</h2>
-            <p>
-              Prenota una visita e scopri come possiamo aiutarti a raggiungere il benessere che meriti.
-            </p>
-            <div className="cta-buttons">
-              <Link href="/prima-visita" className="btn btn-primary">
-                Prenota la prima visita
-              </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
-              </a>
-            </div>
-          </div>
-        </section>
+      
       </main>
     </>
   );
