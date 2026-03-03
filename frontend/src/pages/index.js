@@ -8,8 +8,8 @@ const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
 
 const IMAGES = {
-  hero: "/media/studio-pinoli-social-3/images/image-003-foto-anna-sof-5706.jpg",
-  about: "/media/studio-pinoli-social-3/images/image-042-foto-nastia-cc1a9571.jpg",
+  hero: "/foto/image-003-foto-anna-sof-5706.jpg",
+  about: "/foto/image-042-foto-nastia-cc1a9571.jpg",
   primaVisita: "/prima-visita/prima-visita.jpg",
 };
 const HERO_VIDEO = "/video/hero-pinoli.mp4";
@@ -47,7 +47,7 @@ const services = [
   //   title: "Medicina Integrata",
   //   description: "Approccio olistico che combina terapie naturali, aromaterapia e oli essenziali per il benessere globale a Milano.",
   //   href: "/servizi/medicina-integrata",
-  //   image: "/media/studio-pinoli-social-3/images/image-058-foto-nastia-cc1a9658.jpg",
+  //   image: "/foto/image-058-foto-nastia-cc1a9658.jpg",
   //   alt: "Medicina integrata e benessere olistico Studio Pinoli Milano",
   //   accent: "#0f807d",
   // },

@@ -258,7 +258,7 @@ export default function ChiSiamo() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-020-foto-nastia-cc1a9475.jpg')" }}
+            style={{ backgroundImage: "url('/foto/image-020-foto-nastia-cc1a9475.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -295,7 +295,7 @@ export default function ChiSiamo() {
               </div>
               <div className="about-hero-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-021-foto-nastia-cc1a9478.jpg"
+                  src="/foto/image-021-foto-nastia-cc1a9478.jpg"
                   alt="Il team dello Studio Pinoli — dentisti e specialisti a Milano"
                   width={600}
                   height={450}
@@ -405,7 +405,7 @@ export default function ChiSiamo() {
             <div className="two-col-section">
               <div className="two-col-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-029-foto-nastia-cc1a9504.jpg"
+                  src="/foto/image-029-foto-nastia-cc1a9504.jpg"
                   alt="Approccio integrato odontoiatria e benessere Studio Pinoli Milano"
                   width={600}
                   height={450}

@@ -90,19 +90,19 @@ const relatedServices = [
     title: "Bionutrizione",
     description: "Diete personalizzate per il tuo benessere completo.",
     href: "/servizi/bionutrizione",
-    image: "/media/studio-pinoli-social-3/images/image-024-foto-nastia-cc1a9492.jpg",
+    image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
-    image: "/media/studio-pinoli-social-3/images/image-025-foto-nastia-cc1a9493.jpg",
+    image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
   },
   {
     title: "Medicina Integrata",
     description: "Approccio olistico per mente e corpo.",
     href: "/servizi/medicina-integrata",
-    image: "/media/studio-pinoli-social-3/images/image-036-foto-nastia-cc1a9553.jpg",
+    image: "/foto/image-036-foto-nastia-cc1a9553.jpg",
   },
 ];
 
@@ -141,7 +141,7 @@ export default function Odontoiatria() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-051-foto-nastia-cc1a9625.jpg')" }}
+            style={{ backgroundImage: "url('/foto/image-051-foto-nastia-cc1a9625.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -194,7 +194,7 @@ export default function Odontoiatria() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg"
+                  src="/foto/image-013-foto-nastia-cc1a9446.jpg"
                   alt="Sala trattamenti odontoiatria Studio Pinoli Milano zona Certosa"
                   width={600}
                   height={400}

@@ -72,19 +72,19 @@ const relatedServices = [
     title: "Odontoiatria",
     description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
     href: "/servizi/odontoiatria",
-    image: "/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg",
+    image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
   },
   {
     title: "Bionutrizione",
     description: "Diete personalizzate per il tuo benessere completo.",
     href: "/servizi/bionutrizione",
-    image: "/media/studio-pinoli-social-3/images/image-024-foto-nastia-cc1a9492.jpg",
+    image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
   },
   {
     title: "Medicina Integrata",
     description: "Approccio olistico per mente e corpo.",
     href: "/servizi/medicina-integrata",
-    image: "/media/studio-pinoli-social-3/images/image-036-foto-nastia-cc1a9553.jpg",
+    image: "/foto/image-036-foto-nastia-cc1a9553.jpg",
   },
 ];
 
@@ -123,7 +123,7 @@ export default function MedicinaEstetica() {
         <section className="service-hero aesthetic">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-057-foto-nastia-cc1a9651.jpg')" }}
+            style={{ backgroundImage: "url('/foto/image-057-foto-nastia-cc1a9651.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -177,7 +177,7 @@ export default function MedicinaEstetica() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-042-foto-nastia-cc1a9571.jpg"
+                  src="/foto/image-042-foto-nastia-cc1a9571.jpg"
                   alt="Trattamento filler medicina estetica viso Milano Studio Pinoli"
                   width={600}
                   height={400}
@@ -242,7 +242,7 @@ export default function MedicinaEstetica() {
             <div className="two-col-section reverse">
               <div className="two-col-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-017-foto-nastia-cc1a9464.jpg"
+                  src="/foto/image-017-foto-nastia-cc1a9464.jpg"
                   alt="Risultati biorivitalizzazione e filler acido ialuronico Milano Studio Pinoli"
                   width={600}
                   height={400}

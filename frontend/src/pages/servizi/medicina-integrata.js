@@ -72,19 +72,19 @@ const relatedServices = [
     title: "Odontoiatria",
     description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
     href: "/servizi/odontoiatria",
-    image: "/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg",
+    image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
   },
   {
     title: "Bionutrizione",
     description: "Diete personalizzate per il tuo benessere completo.",
     href: "/servizi/bionutrizione",
-    image: "/media/studio-pinoli-social-3/images/image-024-foto-nastia-cc1a9492.jpg",
+    image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
-    image: "/media/studio-pinoli-social-3/images/image-025-foto-nastia-cc1a9493.jpg",
+    image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
   },
 ];
 
@@ -123,7 +123,7 @@ export default function MedicinaIntegrata() {
         <section className="service-hero integrative">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-058-foto-nastia-cc1a9658.jpg')" }}
+            style={{ backgroundImage: "url('/foto/image-058-foto-nastia-cc1a9658.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -177,7 +177,7 @@ export default function MedicinaIntegrata() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-054-foto-nastia-cc1a9640.jpg"
+                  src="/foto/image-054-foto-nastia-cc1a9640.jpg"
                   alt="Medicina integrata olistica e benessere psico-fisico Milano Studio Pinoli"
                   width={600}
                   height={400}
@@ -218,7 +218,7 @@ export default function MedicinaIntegrata() {
             <div className="two-col-section reverse">
               <div className="two-col-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-004-foto-nastia-cc1a2912.jpg"
+                  src="/foto/image-004-foto-nastia-cc1a2912.jpg"
                   alt="Oli essenziali aromaterapia trattamento benessere Milano Studio Pinoli"
                   width={600}
                   height={400}

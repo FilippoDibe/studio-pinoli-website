@@ -12,7 +12,7 @@ function extractFirstImage(content) {
 
 // Helper function to get a fallback image
 function getFallbackImage() {
-  return "/media/studio-pinoli-social-3/images/image-005-foto-nastia-cc1a3017.jpg";
+  return "/foto/image-005-foto-nastia-cc1a3017.jpg";
 }
 
 // Helper to strip HTML tags
@@ -38,7 +38,7 @@ export default function BlogPost({ post }) {
           <section className="service-hero dental">
             <div
               className="service-hero-bg"
-              style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-006-foto-nastia-cc1a3018.jpg')" }}
+              style={{ backgroundImage: "url('/foto/image-006-foto-nastia-cc1a3018.jpg')" }}
             />
             <div className="service-hero-overlay" />
             <div className="container">

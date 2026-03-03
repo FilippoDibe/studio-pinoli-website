@@ -142,7 +142,7 @@ export default function INosttiServizi() {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-037-foto-nastia-cc1a9555.jpg')" }}
+            style={{ backgroundImage: "url('/foto/image-037-foto-nastia-cc1a9555.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">

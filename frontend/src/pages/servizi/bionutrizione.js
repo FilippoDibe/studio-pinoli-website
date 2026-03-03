@@ -76,19 +76,19 @@ const relatedServices = [
     title: "Odontoiatria",
     description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
     href: "/servizi/odontoiatria",
-    image: "/media/studio-pinoli-social-3/images/image-013-foto-nastia-cc1a9446.jpg",
+    image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
-    image: "/media/studio-pinoli-social-3/images/image-025-foto-nastia-cc1a9493.jpg",
+    image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
   },
   {
     title: "Medicina Integrata",
     description: "Approccio olistico per mente e corpo.",
     href: "/servizi/medicina-integrata",
-    image: "/media/studio-pinoli-social-3/images/image-036-foto-nastia-cc1a9553.jpg",
+    image: "/foto/image-036-foto-nastia-cc1a9553.jpg",
   },
 ];
 
@@ -127,7 +127,7 @@ export default function Bionutrizione() {
         <section className="service-hero nutrition">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-010-foto-nastia-cc1a3172.jpg')" }}
+            style={{ backgroundImage: "url('/foto/image-010-foto-nastia-cc1a3172.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
@@ -179,7 +179,7 @@ export default function Bionutrizione() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-055-foto-nastia-cc1a9639.jpg"
+                  src="/foto/image-055-foto-nastia-cc1a9639.jpg"
                   alt="Consulenza nutrizionista Milano — bionutrizione Studio Pinoli"
                   width={600}
                   height={400}
@@ -240,7 +240,7 @@ export default function Bionutrizione() {
             <div className="two-col-section reverse">
               <div className="two-col-image">
                 <Image
-                  src="/media/studio-pinoli-social-3/images/image-056-foto-nastia-cc1a9642.jpg"
+                  src="/foto/image-056-foto-nastia-cc1a9642.jpg"
                   alt="Programma nutrizionale personalizzato a Milano — Studio Pinoli"
                   width={600}
                   height={400}

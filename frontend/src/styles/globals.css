@@ -6401,7 +6401,7 @@ main {
   padding: clamp(120px, 14vw, 164px) 0 clamp(76px, 10vw, 110px);
   background:
     linear-gradient(126deg, rgba(10, 66, 104, 0.88) 0%, rgba(9, 84, 128, 0.8) 52%, rgba(8, 106, 125, 0.72) 100%),
-    url('/media/studio-pinoli-social-3/images/image-037-foto-nastia-cc1a9555.jpg') center/cover no-repeat;
+    url('/foto/image-037-foto-nastia-cc1a9555.jpg') center/cover no-repeat;
 }
 
 .page-hero h1 {

@@ -13,12 +13,12 @@ function extractFirstImage(content) {
 // Helper function to get a fallback image based on index
 function getFallbackImage(index) {
   const images = [
-    "/media/studio-pinoli-social-3/images/image-009-foto-nastia-cc1a3167.jpg",
-    "/media/studio-pinoli-social-3/images/image-043-foto-nastia-cc1a9578.jpg",
-    "/media/studio-pinoli-social-3/images/image-038-foto-nastia-cc1a9559.jpg",
-    "/media/studio-pinoli-social-3/images/image-007-foto-nastia-cc1a3019.jpg",
-    "/media/studio-pinoli-social-3/images/image-039-foto-nastia-cc1a9560.jpg",
-    "/media/studio-pinoli-social-3/images/image-012-foto-nastia-cc1a3200.jpg"
+    "/foto/image-009-foto-nastia-cc1a3167.jpg",
+    "/foto/image-043-foto-nastia-cc1a9578.jpg",
+    "/foto/image-038-foto-nastia-cc1a9559.jpg",
+    "/foto/image-007-foto-nastia-cc1a3019.jpg",
+    "/foto/image-039-foto-nastia-cc1a9560.jpg",
+    "/foto/image-012-foto-nastia-cc1a3200.jpg"
   ];
   return images[index % images.length];
 }
@@ -45,7 +45,7 @@ export default function Blog({ posts }) {
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
-            style={{ backgroundImage: "url('/media/studio-pinoli-social-3/images/image-023-foto-nastia-cc1a9489.jpg')" }}
+            style={{ backgroundImage: "url('/foto/image-023-foto-nastia-cc1a9489.jpg')" }}
           />
           <div className="service-hero-overlay" />
           <div className="container">
