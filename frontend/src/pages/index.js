@@ -250,7 +250,7 @@ export default function Home({ posts }) {
 
           <div className="container">
             <div className={styles.heroContent}>
-              <h1 className={styles.heroTag}>Studio Dentistico a Milano</h1>
+              <h1 className={styles.heroTag}>Studio Medico Dentistico a Milano</h1>
               <h1>Odontoiatria, Bio-Nutrizione e Medicina integrata</h1>
               <p>
                Centro medico nel cuore di Milano specializzato in odontoiatria, bio-nutrizione e medicina olistica, con percorsi personalizzati per chi ricerca qualità, precisione e risultati duraturi nel tempo.
@@ -282,7 +282,7 @@ export default function Home({ posts }) {
             <div className={styles.aboutGrid}>
               <div className={styles.aboutContent}>
                 <span className={styles.sectionTag}>Chi siamo</span>
-                <h2>Studio medico a Milano, cinque aree di competenza integrate</h2>
+                <h2>Studio Medico Dentistico a Milano, cinque aree di competenza integrate</h2>
                 <p>
                   <b>Studio Pinoli</b>, situato nel cuore di Milano, è uno Studio medico specializzato in <b>odontoiatria, bio-nutrizione e medicina integrata</b>. Lo Studio, guidato dalla direzione sanitaria del Dr. Luca Maria Pinoli, offre un ambiente dove professionisti del benessere lavorano in sinergia per offrirti un percorso di cure personalizzato.
                 </p>
@@ -305,24 +305,12 @@ export default function Home({ posts }) {
             </div>
           </div>
         </section>
-
-        <section className={styles.servicesSection}>
-          <div className="container">
-            <div className={styles.sectionHead}>
-              <span className={styles.sectionTag}>Servizi</span>
-              <h2>Le aree di specializzazione dello Studio</h2>
-              <p>Offriamo percorsi clinici integrati per la salute orale, l’equilibrio psico-fisico e il benessere estetico del paziente.</p>
-            </div>
-            <ServiceCarousel />
-          </div>
-        </section>
-
-        <section className={styles.ctaSection}>
+  <section className={styles.ctaSection}>
           <div className="container">
             <div className={styles.ctaGrid}>
               <div className={styles.ctaContent}>
                 <span className={styles.sectionTagLight}>Prima visita</span>
-                <h3 style={{fontSize:"2.5rem", marginTop:"20px"}}>Prenota una prima visita in Studio </h3>
+                <h3 style={{fontSize:"2.5rem", marginTop:"20px", color:"white"}}>Prenota una prima visita in Studio </h3>
                 <p>
                La prima visita e il momento in cui analizziamo la tua situazione clinica, ascoltiamo i tuoi obiettivi e definiamo il piano di cure migliore per te. 
                 </p>
@@ -353,35 +341,26 @@ export default function Home({ posts }) {
             </div>
           </div>
         </section>
-
-        {posts.length > 0 && (
-          <section className={styles.blogSection}>
-            <div className="container">
-              <div className={styles.blogHead}>
-                <h2>Dal nostro blog</h2>
-                <Link href="/blog" className={styles.textLink}>
-                  Tutti gli articoli
-                </Link>
-              </div>
-              <div className={styles.blogGrid}>
-                {posts.map((post) => (
-                  <article key={post.id} className={styles.blogCard}>
-                    <h3 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                    <Link href={`/blog/${post.slug}`} className={styles.textLink}>
-                      Leggi articolo
-                    </Link>
-                  </article>
-                ))}
-              </div>
+        <section className={styles.servicesSection}>
+          <div className="container">
+            <div className={styles.sectionHead}>
+              <span className={styles.sectionTag}>Servizi</span>
+              <h2>Le aree di specializzazione dello Studio</h2>
+              <p>Offriamo percorsi clinici integrati per la salute orale, l’equilibrio psico-fisico e il benessere estetico del paziente.</p>
             </div>
-          </section>
-        )}
+            <ServiceCarousel />
+          </div>
+        </section>
+
+      
+
+      
 
         <section className={styles.contactSection}>
           <div className="container">
             <div className={styles.contactGrid}>
               <div className={styles.contactInfo}>
-                <h2>Contatti – Studio Dentistico a Milano</h2>
+                <h2>Contatti – Studio Medico Dentistico a Milano</h2>
                 <p>Ti aspettiamo nel nostro <b>Studio medico dentistico a Milano</b>  per informazioni, consulenze e appuntamenti personalizzati.</p>
                 <address>
                   <strong>Studio Pinoli</strong>
@@ -411,6 +390,28 @@ export default function Home({ posts }) {
             </div>
           </div>
         </section>
+          {/* {posts.length > 0 && (
+          <section className={styles.blogSection}>
+            <div className="container">
+              <div className={styles.blogHead}>
+                <h2>Dal nostro blog</h2>
+                <Link href="/blog" className={styles.textLink}>
+                  Tutti gli articoli
+                </Link>
+              </div>
+              <div className={styles.blogGrid}>
+                {posts.map((post) => (
+                  <article key={post.id} className={styles.blogCard}>
+                    <h3 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                    <Link href={`/blog/${post.slug}`} className={styles.textLink}>
+                      Leggi articolo
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )} */}
       </main>
     </>
   );

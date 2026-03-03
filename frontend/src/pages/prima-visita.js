@@ -47,19 +47,19 @@ const timelineSteps = [
   {
     number: "01",
     title: "Accoglienza",
-    description: "Ti accogliamo nel nostro studio con un sorriso. Il nostro staff ti guiderà nella compilazione dei documenti necessari e ti farà sentire a casa.",
+    description: "Ti accogliamo nel nostro Studio con un sorriso. Il nostro staff ti guiderà nella compilazione dei documenti necessari e ti farà sentire a casa.",
     image: "/media/studio-pinoli-social-3/images/image-045-foto-nastia-cc1a9602.jpg"
   },
   {
     number: "02",
     title: "Colloquio Conoscitivo",
-    description: "Un dialogo aperto per comprendere le tue esigenze, la tua storia clinica e le tue aspettative. Ascoltiamo attentamente per offrirti la miglior cura possibile.",
+    description: "Un dialogo aperto per comprendere le tue esigenze, la tua storia clinica e le tue aspettative. Ascoltiamo attentamente per offrirti le migliori cure",
     image: "/media/studio-pinoli-social-3/images/image-046-foto-nastia-cc1a9608.jpg"
   },
   {
     number: "03",
     title: "Visita Clinica",
-    description: "Esame approfondito della tua salute orale con tecnologie diagnostiche all'avanguardia. Radiografie digitali e scanner 3D per una diagnosi precisa.",
+    description: "Ti presentiamo un piano di cure personalizzato, chiaro e trasparente. Discutiamo insieme le opzioni, i tempi e i costi senza sorprese.",
     image: "/media/studio-pinoli-social-3/images/image-047-foto-nastia-cc1a9610.jpg"
   },
   {
@@ -76,12 +76,12 @@ const benefits = [
   {
     icon: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z",
     title: "Durata 60 minuti",
-    description: "Dedichiamo tutto il tempo necessario per conoscerci ed elaborare un piano di terapia efficace"
+    description: "Dedichiamo tutto il tempo necessario per conoscerci ed elaborare un piano di cura efficace"
   },
     {
     icon: "M12 2C9.79 2 8 3.79 8 6s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 1.5c1.38 0 2.5 1.12 2.5 2.5S13.38 8.5 12 8.5 9.5 7.38 9.5 6s1.12-2.5 2.5-2.5zM17 11.5c-.55 0-1 .45-1 1v1h-1v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H9v-1c0-.55-.45-1-1-1s-1 .45-1 1v4c0 1.1.9 2 2 2h1v3h4v-3h1c1.1 0 2-.9 2-2v-4c0-.55-.45-1-1-1z",
     title: "Professionista Dedicato",
-    description: "Un medico di riferimento ti segue dall'anamnesi al trattamento, garantendo continuità clinica e un ascolto attento ad ogni visita."
+    description: "Un medico di riferimento ti seguirà dall'anamnesi al trattamento, garantendo continuità clinica e un ascolto attento ad ogni visita."
   },
   {
     icon: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z",
@@ -91,77 +91,132 @@ const benefits = [
   {
     icon: "M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z",
     title: "Preventivo Trasparente",
-    description: "Nessuna sorpresa: prezzi chiari e dettagliati."
+    description: "Al termine della tua prima visita riceverai un preventivo con prezzi chiari e dettagliati per ogni prestazione preventivata."
   }
 ];
 
-// Scroll Timeline Component
+// FAQ Item Component
+function FAQItem({ question, answer }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className={`faq-item-styled ${isOpen ? "open" : ""}`}>
+      <button className="faq-question-styled" onClick={() => setIsOpen(!isOpen)}>
+        <span>{question}</span>
+        <svg className="faq-icon-styled" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+        </svg>
+      </button>
+      <div className="faq-answer-styled">
+        <p>{answer}</p>
+      </div>
+    </div>
+  );
+}
+
+// Scroll Timeline Component — RAF-driven, no React state for animations
 function ScrollTimeline({ steps }) {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const timelineRef = useRef(null);
+  const trackFillRef = useRef(null);
+  const itemRefs = useRef([]);
+  const rafRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!timelineRef.current) return;
+    const tick = () => {
+      if (!timelineRef.current || !trackFillRef.current) return;
 
-      const rect = timelineRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const timelineHeight = rect.height;
+      // Line fill: midpoint of viewport moving through the timeline container
+      const tlRect = timelineRef.current.getBoundingClientRect();
+      const mid = window.innerHeight * 0.5;
+      const fill = Math.min(100, Math.max(0, ((mid - tlRect.top) / tlRect.height) * 100));
+      trackFillRef.current.style.height = fill + "%";
 
-      // Calculate how much of the timeline is visible/passed
-      const startOffset = rect.top - windowHeight * 0.5;
-      const endOffset = rect.bottom - windowHeight * 0.5;
-      const totalScrollable = timelineHeight;
+      // Per-item smooth animation
+      itemRefs.current.forEach((el) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const isReverse = el.classList.contains("reverse");
 
-      if (startOffset > 0) {
-        setScrollProgress(0);
-      } else if (endOffset < 0) {
-        setScrollProgress(100);
-      } else {
-        const progress = Math.abs(startOffset) / totalScrollable * 100;
-        setScrollProgress(Math.min(100, Math.max(0, progress)));
-      }
+        // Punto di riferimento sull'elemento: il suo quarto superiore
+        const targetPoint = rect.top + rect.height * 0.25;
+        // Range: da quando l'elemento è appena visibile (95% viewport) a quando è ben in view (32%)
+        const startAt = window.innerHeight * 0.95;
+        const endAt   = window.innerHeight * 0.32;
+        const linear = Math.min(1, Math.max(0, (startAt - targetPoint) / (startAt - endAt)));
+        // Ease-out cubico: parte rapida, rallenta dolcemente alla fine
+        const progress = 1 - Math.pow(1 - linear, 2.8);
+
+        const content = el.querySelector(".scroll-timeline-content");
+        const image = el.querySelector(".scroll-timeline-image");
+        const imgEl = image?.querySelector("img");
+        const dot = el.querySelector(".scroll-timeline-dot");
+
+        if (content) {
+          content.style.opacity = String(progress);
+          content.style.transform = `translateX(${(1 - progress) * (isReverse ? 18 : -18)}px)`;
+        }
+        if (image) {
+          image.style.opacity = String(0.4 + progress * 0.6);
+          image.style.transform = `translateX(${(1 - progress) * (isReverse ? -18 : 18)}px)`;
+        }
+        if (imgEl) {
+          // Grayscale 100%→0% + brightness scura→piena: effetto "illuminazione"
+          const gs = Math.round((1 - progress) * 100);
+          const br = (0.55 + progress * 0.45).toFixed(3);
+          imgEl.style.filter = `grayscale(${gs}%) brightness(${br})`;
+        }
+        if (dot) {
+          if (progress > 0.7) dot.classList.add("active");
+          else dot.classList.remove("active");
+        }
+      });
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    const onScroll = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(tick);
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    tick();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
     <div className="scroll-timeline" ref={timelineRef}>
-      {/* Center Line */}
       <div className="scroll-timeline-track">
-        <div
-          className="scroll-timeline-progress"
-          style={{ height: `${scrollProgress}%` }}
-        />
+        <div className="scroll-timeline-progress" ref={trackFillRef} style={{ height: "0%" }} />
       </div>
 
-      {/* Timeline Items */}
       {steps.map((step, index) => {
-        const stepProgress = (index / (steps.length - 1)) * 100;
-        const isActive = scrollProgress >= stepProgress;
-
+        const isReverse = index % 2 === 1;
         return (
           <div
             key={index}
-            className={`scroll-timeline-item ${index % 2 === 1 ? "reverse" : ""} ${isActive ? "active" : ""}`}
+            ref={(el) => { itemRefs.current[index] = el; }}
+            className={`scroll-timeline-item${isReverse ? " reverse" : ""}`}
           >
-            <div className="scroll-timeline-content">
+            <div
+              className="scroll-timeline-content"
+              style={{ opacity: 0, transform: `translateX(${isReverse ? 18 : -18}px)` }}
+            >
               <span className="scroll-timeline-number">{step.number}</span>
               <h3>{step.title}</h3>
               <p>{step.description}</p>
             </div>
 
             <div className="scroll-timeline-dot-wrapper">
-              <div className={`scroll-timeline-dot ${isActive ? "active" : ""}`}>
+              <div className="scroll-timeline-dot">
                 <span>{step.number}</span>
               </div>
             </div>
 
-            <div className="scroll-timeline-image">
+            <div
+              className="scroll-timeline-image"
+              style={{ opacity: 0.4, transform: `translateX(${isReverse ? -18 : 18}px)` }}
+            >
               <Image
                 src={step.image}
                 alt={step.title}
@@ -202,7 +257,7 @@ export default function PrimaVisita() {
               <span>/</span>
               <span>Prima Visita</span>
             </nav>
-            <h1>La Nostra Prima Visita</h1>
+            <h1>La Prima Visita In Studio</h1>
             <p>
               Ti accogliamo nel nostro Studio Medico a Milano, un ambiente sereno per conoscerci
               e capire insieme come prenderci cura di te.
@@ -220,7 +275,7 @@ export default function PrimaVisita() {
         </section>
 
         {/* Benefits */}
-        <section className="section">
+        {/* <section className="section">
           <div className="container">
             <div className="value-props-grid">
               {benefits.map((benefit, index) => (
@@ -236,54 +291,74 @@ export default function PrimaVisita() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Timeline Section with Scroll Progress */}
-        <section className="section section-light">
+        <section className="section section-light pv-timeline-section">
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Il tuo percorso</span>
               <h2 className="section-title">Come Funziona la Prima Visita</h2>
               <p className="section-description">
-                Ogni prima visita dal dentista nel nostro studio a Milano è pensata per farti sentire
-                a tuo agio e garantirti la migliore esperienza possibile, fin dal primo momento.
+                Ogni prima visita è pensata per farti sentire a tuo agio e garantirti la migliore esperienza possibile, fin dal primo momento.
               </p>
             </div>
 
             <ScrollTimeline steps={timelineSteps} />
-
-            {/* CTA → Pagina Servizi */}
-            <div className="pv-services-cta">
-              <div className="pv-services-cta-bg" aria-hidden="true" />
-              <div className="pv-services-cta-inner">
-                <div className="pv-services-cta-text">
-                  <span className="pv-services-cta-eyebrow">Approfondisci</span>
-                  <h3>La Prima Visita È Solo L'Inizio</h3>
-                  <p>
-                    Questi quattro step descrivono il percorso generale di accoglienza comune a tutti i pazienti.
-                    Ogni area di specializzazione — dall'Odontoiatria alla Bio-nutrizione, dalla Medicina Estetica all'Osteopatia — ha un proprio percorso clinico dedicato con protocolli, tempi e obiettivi specifici.
-                  </p>
-                </div>
-                <div className="pv-services-cta-action">
-                  <Link href="/i-nostri-servizi" className="pv-services-cta-btn">
-                    Scopri tutti i servizi
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <line x1="5" y1="12" x2="19" y2="12" />
-                      <polyline points="12 5 19 12 12 19" />
+          </div>
+        <section className="section">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">La Prima Visita In Pillole</span>
+              <h2 className="section-title">Perché Scegliere Studio Pinoli</h2>
+            </div>
+            <div className="value-props-grid">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="value-prop-item">
+                  <div className="value-prop-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d={benefit.icon} />
                     </svg>
-                  </Link>
-                  <ul className="pv-services-cta-pills" aria-label="Servizi disponibili">
-                    <li><Link href="/servizi/odontoiatria">Odontoiatria</Link></li>
-                    <li><Link href="/servizi/bionutrizione">Bio-nutrizione</Link></li>
-                    <li><Link href="/servizi/medicina-estetica">Medicina Estetica</Link></li>
-                    <li><Link href="/servizi/osteopatia">Osteopatia</Link></li>
-                    <li><Link href="/servizi/art-terapia">Art-Terapia</Link></li>
-                  </ul>
+                  </div>
+                  <h4>{benefit.title}</h4>
+                  <p>{benefit.description}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section> 
+          {/* CTA → Pagina Servizi — full width, outside container */}
+          <div className="pv-services-cta" style={{marginTop: "30px"}}>
+            <div className="pv-services-cta-bg" aria-hidden="true" />
+            <div className="pv-services-cta-inner">
+              <div className="pv-services-cta-text">
+                <span className="pv-services-cta-eyebrow">Approfondisci</span>
+                <h3>La Prima Visita È Solo L'Inizio</h3>
+                <p>
+                  Questi quattro step descrivono il percorso generale di accoglienza comune a tutti i pazienti.
+                  Ogni area di specializzazione — dall'Odontoiatria alla Bio-nutrizione, dalla Medicina Estetica all'Osteopatia — ha un proprio percorso clinico dedicato con protocolli, tempi e obiettivi specifici.
+                </p>
+              </div>
+              <div className="pv-services-cta-action">
+                <Link href="/i-nostri-servizi" className="pv-services-cta-btn">
+                  Scopri tutti i servizi
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+                <ul className="pv-services-cta-pills" aria-label="Servizi disponibili">
+                  <li className="pill-dental"><Link href="/servizi/odontoiatria">Odontoiatria</Link></li>
+                  <li className="pill-nutrition"><Link href="/servizi/bionutrizione">Bio-nutrizione</Link></li>
+                  <li className="pill-aesthetic"><Link href="/servizi/medicina-estetica">Medicina Estetica</Link></li>
+                  <li className="pill-osteopatia"><Link href="/servizi/osteopatia">Osteopatia</Link></li>
+                  <li className="pill-art"><Link href="/servizi/art-terapia">Art-Terapia</Link></li>
+                </ul>
               </div>
             </div>
           </div>
         </section>
+        
 
         {/* What to Bring */}
         <section className="section">
@@ -293,22 +368,15 @@ export default function PrimaVisita() {
                 <span className="section-subtitle">Prima di venire</span>
                 <h2>Cosa Portare</h2>
                 <p>
-                  Per rendere la tua prima visita il più efficace possibile, ti consigliamo
-                  di portare con te alcuni documenti:
+               Per rendere la tua prima visita il più efficace possibile, ti consigliamo di portare con te alcuni documenti:
                 </p>
+                {/* todo togliere puntini blu dalla lista */}
                 <ul className="checklist-styled">
                   <li>
                     <span className="check-icon">✓</span>
                     <div>
-                      <strong>Documento d'identità</strong>
-                      <p>Carta d'identità o passaporto valido</p>
-                    </div>
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    <div>
                       <strong>Tessera sanitaria</strong>
-                      <p>Se disponibile</p>
+                      <p>In corso di validità</p>
                     </div>
                   </li>
                   <li>
@@ -325,6 +393,13 @@ export default function PrimaVisita() {
                       <p>Medicinali che stai assumendo</p>
                     </div>
                   </li>
+                   <li>
+                    <span className="check-icon">✓</span>
+                    <div>
+                      <strong>Lista esami clinici</strong>
+                      <p>Se ne hai di recenti, portali con te</p>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div className="two-col-image">
@@ -339,6 +414,46 @@ export default function PrimaVisita() {
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <section className="section section-light">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">Domande frequenti</span>
+              <h2 className="section-title">Hai qualche dubbio?</h2>
+              <p className="section-description">
+                Le risposte alle domande più comuni sulla prima visita in Studio.
+              </p>
+            </div>
+            <div className="faq-section-styled">
+              {[
+                {
+                  question: "La prima visita è gratuita?",
+                  answer: "Sì, la prima visita conoscitiva è gratuita. Comprende un colloquio iniziale, la valutazione clinica e la presentazione di un preventivo personalizzato senza impegno.",
+                },
+                {
+                  question: "Quanto dura la prima visita?",
+                  answer: "Generalmente circa 60 minuti. Dedichiamo tutto il tempo necessario per conoscerti, analizzare la tua situazione clinica e costruire insieme un piano di cura adatto a te.",
+                },
+                {
+                  question: "Devo portare documenti specifici?",
+                  answer: "Ti consigliamo di portare la tessera sanitaria, eventuali radiografie recenti, la lista dei farmaci che stai assumendo e qualsiasi esame clinico rilevante.",
+                },
+                {
+                  question: "Posso prenotare per più di una specializzazione?",
+                  answer: "Certamente. Studio Pinoli offre un approccio integrato: odontoiatria, bio-nutrizione, medicina estetica, osteopatia e art-terapia. Il nostro team ti guiderà verso i professionisti più adatti alle tue esigenze.",
+                },
+                {
+                  question: "Come posso prenotare?",
+                  answer: "Puoi prenotare online tramite il pulsante 'Prenota ora' oppure chiamarci direttamente al +39 331 671 3904. Siamo disponibili per trovare insieme il giorno e l'orario più comodi per te.",
+                },
+              ].map((faq, index) => (
+                <FAQItem key={index} question={faq.question} answer={faq.answer} />
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
     </>
   );
