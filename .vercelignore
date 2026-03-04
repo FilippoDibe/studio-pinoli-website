@@ -1,0 +1,15 @@
+*
+!frontend
+!frontend/**
+
+frontend/node_modules
+frontend/.next
+frontend/.git
+frontend/.vercel
+
+frontend/.env.local
+frontend/.env*.local
+
+frontend/public/media/studio-pinoli-social-3/videos/video-008-video-anna-spezzoni-viedeo-pinoli.mp4
+frontend/public/media/studio-pinoli-social-3/videos/video-009-video-anna-spezzoni-viedeo-pinoli1.mp4
+frontend/public/media/studio-pinoli-social-3/videos/video-010-video-anna-spezzoni-viedeo-reel2-pinoli.mp4
