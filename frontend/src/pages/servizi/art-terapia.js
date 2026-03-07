@@ -2,7 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import styles from "../../styles/art-terapia.module.css";
+
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+
 const benefits = [
   "Ridurre stress e tensioni emotive",
   "Migliorare la gestione dell'ansia",
@@ -15,38 +18,54 @@ const benefits = [
 const valuePros = [
   {
     title: "Accessibile a Tutti",
-    description: "Non è necessario avere competenze artistiche. Il percorso è guidato e pensato per chiunque voglia esplorare il proprio mondo emotivo.",
+    description:
+      "Non è necessario avere competenze artistiche. Il percorso è guidato e pensato per chiunque voglia esplorare il proprio mondo emotivo.",
+    iconPath:
+      "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z",
   },
   {
     title: "Ambiente Sicuro",
-    description: "Uno spazio accogliente e protetto dove esprimere emozioni attraverso l'arte, senza giudizi e con la guida di un professionista.",
+    description:
+      "Uno spazio accogliente e protetto dove esprimere emozioni attraverso l'arte, senza giudizi e con la guida di un professionista.",
+    iconPath:
+      "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
   },
   {
     title: "Percorso Personalizzato",
-    description: "Ogni incontro è costruito sulle esigenze individuali della persona, con attività creative mirate al benessere emotivo.",
+    description:
+      "Ogni incontro è costruito sulle esigenze individuali della persona, con attività creative mirate al benessere emotivo.",
+    iconPath:
+      "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
   },
   {
     title: "Supporto ai Percorsi di Cura",
-    description: "L'art-terapia può affiancare altri trattamenti dello studio, aiutando a gestire l'ansia legata alle cure mediche e odontoiatriche.",
+    description:
+      "L'art-terapia può affiancare altri trattamenti dello studio, aiutando a gestire l'ansia legata alle cure mediche e odontoiatriche.",
+    iconPath:
+      "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z",
   },
 ];
 
 const faqs = [
   {
     question: "Cos'è l'art-terapia e a cosa serve?",
-    answer: "L'art-terapia è una disciplina che utilizza l'espressione artistica come strumento di supporto emotivo e crescita personale. Attraverso il disegno, il colore e altre forme creative, è possibile esplorare emozioni, ridurre lo stress e favorire una maggiore consapevolezza di sé. Non è una lezione d'arte, ma un percorso terapeutico.",
+    answer:
+      "L'art-terapia è una disciplina che utilizza l'espressione artistica come strumento di supporto emotivo e crescita personale. Attraverso il disegno, il colore e altre forme creative, è possibile esplorare emozioni, ridurre lo stress e favorire una maggiore consapevolezza di sé. Non è una lezione d'arte, ma un percorso terapeutico.",
   },
   {
     question: "Devo saper disegnare per fare art-terapia?",
-    answer: "Assolutamente no. L'art-terapia non richiede alcuna competenza artistica. L'obiettivo non è creare un'opera d'arte, ma usare il processo creativo come strumento di esplorazione emotiva. Il risultato finale non viene valutato esteticamente.",
+    answer:
+      "Assolutamente no. L'art-terapia non richiede alcuna competenza artistica. L'obiettivo non è creare un'opera d'arte, ma usare il processo creativo come strumento di esplorazione emotiva. Il risultato finale non viene valutato esteticamente.",
   },
   {
     question: "A chi è indicata l'art-terapia?",
-    answer: "L'art-terapia è indicata a chiunque voglia esplorare il proprio benessere emotivo: adulti che vivono momenti di stress, persone che vogliono lavorare sulla propria consapevolezza, o chi desidera un supporto emotivo durante percorsi di cura medica o odontoiatrica.",
+    answer:
+      "L'art-terapia è indicata a chiunque voglia esplorare il proprio benessere emotivo: adulti che vivono momenti di stress, persone che vogliono lavorare sulla propria consapevolezza, o chi desidera un supporto emotivo durante percorsi di cura medica o odontoiatrica.",
   },
   {
     question: "Quanti incontri sono necessari?",
-    answer: "Il percorso di art-terapia viene definito in base alle esigenze individuali. Può trattarsi di incontri singoli di esplorazione o di un percorso strutturato nel tempo. Il numero di sessioni verrà concordato insieme durante il primo colloquio.",
+    answer:
+      "Il percorso di art-terapia viene definito in base alle esigenze individuali. Può trattarsi di incontri singoli di esplorazione o di un percorso strutturato nel tempo. Il numero di sessioni verrà concordato insieme durante il primo colloquio.",
   },
 ];
 
@@ -117,9 +136,7 @@ export default function ArtTerapia() {
             </nav>
             <h1>Art-Terapia a Milano</h1>
             <p>
-             
-L’art-terapia è una disciplina che utilizza l’espressione artistica come strumento di supporto emotivo e crescita personale. Attraverso il disegno, il colore e altre forme creative, è possibile esplorare emozioni, ridurre lo stress e favorire una maggiore consapevolezza di sé.
-
+              L'art-terapia è una disciplina che utilizza l'espressione artistica come strumento di supporto emotivo e crescita personale. Attraverso il disegno, il colore e altre forme creative, è possibile esplorare emozioni, ridurre lo stress e favorire una maggiore consapevolezza di sé.
             </p>
             <div className="page-hero-ctas">
               <Link href="/contatti" className="btn btn-primary">
@@ -137,18 +154,22 @@ L’art-terapia è una disciplina che utilizza l’espressione artistica come st
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>Benessere emotivo attraverso l’espressione creativa</h2>
+                <h2>Benessere emotivo attraverso l'espressione creativa</h2>
                 <p>
                   L'art-terapia usa il disegno, il colore e altre forme creative come strumenti
                   di supporto emotivo e crescita personale.
                 </p>
                 <p>
-             Nel nostro studio l’art-terapia rappresenta uno spazio dedicato al benessere emotivo della persona e può essere un valido supporto anche nei percorsi di cura, aiutando a gestire ansia, tensione e difficoltà emotive.
+                  Nel nostro studio l'art-terapia rappresenta uno spazio dedicato al benessere emotivo della persona e può essere un valido supporto anche nei percorsi di cura, aiutando a gestire ansia, tensione e difficoltà emotive.
                 </p>
                 <p style={{ fontSize: "0.92rem", color: "var(--gray-500)", fontStyle: "italic" }}>
                   Non è necessario avere competenze artistiche: il percorso è guidato
                   e accessibile a tutti.
                 </p>
+                <div className={styles.pullQuote}>
+                  <span className={styles.pullQuoteBar} />
+                  <p>"Non importa saper disegnare — importa saper sentire."</p>
+                </div>
               </div>
               <div className="two-col-image">
                 <Image
@@ -163,7 +184,7 @@ L’art-terapia è una disciplina che utilizza l’espressione artistica come st
           </div>
         </section>
 
-        {/* What it helps */}
+        {/* A Cosa Serve */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
@@ -174,20 +195,18 @@ L’art-terapia è una disciplina che utilizza l’espressione artistica come st
               </p>
             </div>
 
-            <div className="highlight-list">
+            <div className={styles.numberedList}>
               {benefits.map((item, i) => (
-                <div key={i} className="highlight-item">
-                  <svg viewBox="0 0 24 24" fill="currentColor" style={{ color: "var(--color-art)" }}>
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                  </svg>
-                  <span>{item}</span>
+                <div key={i} className={styles.numberedItem}>
+                  <span className={styles.bigNum}>{String(i + 1).padStart(2, "0")}</span>
+                  <span className={styles.itemText}>{item}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Journey section */}
+        {/* Journey */}
         <section className="section">
           <div className="container">
             <div className="two-col-section reverse">
@@ -200,7 +219,7 @@ L’art-terapia è una disciplina che utilizza l’espressione artistica come st
                   style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
                 />
               </div>
-              <div className="two-col-content">
+              <div className={`two-col-content ${styles.journeyContent}`}>
                 <h2>Un Percorso di Ascolto e Crescita Personale</h2>
                 <p>
                   Attraverso attività creative guidate, l'art-terapia permette di esplorare
@@ -213,10 +232,9 @@ L’art-terapia è una disciplina che utilizza l’espressione artistica come st
                   per un supporto emotivo durante i percorsi di cura.
                 </p>
                 <Link
-                  h href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer"
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn btn-outline"
                   style={{ borderColor: "var(--color-art)", color: "var(--color-art)" }}
                 >
@@ -227,19 +245,19 @@ L’art-terapia è una disciplina che utilizza l’espressione artistica come st
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* Perché Scegliere */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">I vantaggi</span>
               <h2 className="section-title">Perché Scegliere l'Art-Terapia</h2>
             </div>
-            <div className="value-props-grid">
+            <div className={styles.warmGrid}>
               {valuePros.map((v, i) => (
-                <div key={i} className="value-prop-item">
-                  <div className="value-prop-icon" style={{ background: "rgba(125, 63, 34, 0.1)", color: "var(--color-art)" }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                <div key={i} className={styles.warmCard}>
+                  <div className={styles.warmCardIcon}>
+                    <svg viewBox="0 0 24 24" fill="currentColor" width={22} height={22}>
+                      <path d={v.iconPath} />
                     </svg>
                   </div>
                   <h4>{v.title}</h4>

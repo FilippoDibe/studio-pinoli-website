@@ -1,0 +1,159 @@
+/* ============================================================
+   Art-Terapia — CSS Module
+   Design concept: Creative & Warm (sienna / terracotta palette)
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Pull Quote
+   ---------------------------------------------------------- */
+.pullQuote {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 28px;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(160, 82, 45, 0.15);
+}
+
+.pullQuoteBar {
+  flex-shrink: 0;
+  width: 3px;
+  height: auto;
+  align-self: stretch;
+  background: #a0522d;
+  border-radius: 2px;
+  min-height: 40px;
+}
+
+.pullQuote p {
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #a0522d;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------
+   Numbered List  ("A Cosa Serve" section)
+   ---------------------------------------------------------- */
+.numberedList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 32px;
+}
+
+.numberedItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 24px;
+  background: white;
+  border-radius: 12px;
+  border-left: 3px solid rgba(160, 82, 45, 0.3);
+  transition: all 0.2s ease;
+}
+
+.numberedItem:hover {
+  border-left-color: #a0522d;
+  background: rgba(160, 82, 45, 0.03);
+  transform: translateX(4px);
+}
+
+.bigNum {
+  flex-shrink: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: rgba(160, 82, 45, 0.35);
+  line-height: 1;
+  min-width: 44px;
+}
+
+.itemText {
+  font-size: 0.92rem;
+  color: #2a3f55;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ----------------------------------------------------------
+   Warm Grid  ("Perché Scegliere" section)
+   ---------------------------------------------------------- */
+.warmGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.warmCard {
+  background: linear-gradient(
+    135deg,
+    rgba(160, 82, 45, 0.06) 0%,
+    rgba(160, 82, 45, 0.02) 100%
+  );
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid rgba(160, 82, 45, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.warmCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(160, 82, 45, 0.12);
+}
+
+.warmCardIcon {
+  width: 44px;
+  height: 44px;
+  background: rgba(160, 82, 45, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0522d;
+  margin-bottom: 18px;
+}
+
+.warmCard h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a2b3d;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.warmCard p {
+  font-size: 0.88rem;
+  color: #5d6f82;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   Journey Content  (slight h2 enlargement)
+   ---------------------------------------------------------- */
+.journeyContent h2 {
+  font-size: 1.6rem;
+}
+
+/* ----------------------------------------------------------
+   Responsive
+   ---------------------------------------------------------- */
+@media (max-width: 768px) {
+  .warmGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .numberedItem {
+    padding: 14px 18px;
+  }
+
+  .bigNum {
+    font-size: 1.4rem;
+  }
+}

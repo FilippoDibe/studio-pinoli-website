@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import styles from "../../styles/odontoiatria.module.css";
+
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
 const dentalServices = [
@@ -22,12 +24,11 @@ const hygieneServices = [
   { name: "Sbiancamento domiciliare", desc: "Protocollo personalizzato da effettuare a casa in totale sicurezza." },
 ];
 
-// Process steps
 const processSteps = [
   {
     number: "1",
     title: "Compilazione documenti e anamnesi",
-    description: "All’arrivo in studio ti chiederemo di compilare i documenti per la privacy e l’anamnesi medica. Queste informazioni ci aiutano a comprendere il tuo stato di salute generale e a inquadrare correttamente la situazione clinica.",
+    description: "All'arrivo in studio ti chiederemo di compilare i documenti per la privacy e l'anamnesi medica. Queste informazioni ci aiutano a comprendere il tuo stato di salute generale e a inquadrare correttamente la situazione clinica.",
   },
   {
     number: "2",
@@ -46,7 +47,6 @@ const processSteps = [
   },
 ];
 
-// FAQ data
 const faqs = [
   {
     question: "Quanto dura un impianto dentale?",
@@ -89,6 +89,28 @@ const relatedServices = [
     href: "/servizi/medicina-estetica",
     image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
   },
+];
+
+// SVG icon paths in the same order as dentalServices
+const iconPaths = [
+  // Conservativa
+  "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z",
+  // Protesi
+  "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+  // Ortodonzia
+  "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z",
+  // Gnatologia
+  "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+  // Implantologia
+  "M13 10V3L4 14h7v7l9-11h-7z",
+  // Estetica dentale
+  "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z",
+  // Endodonzia
+  "M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z",
+  // Pedodonzia
+  "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z",
+  // Parodontologia
+  "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
 ];
 
 // FAQ Item Component
@@ -137,6 +159,7 @@ export default function Odontoiatria() {
               <span>/</span>
               <span>Odontoiatria</span>
             </nav>
+            <div className={styles.heroBadge}>✓ Prima Visita Gratuita</div>
             <h1>Dentista a Milano</h1>
             <p>
               Da oltre 35 anni il nostro studio dentistico a Milano offre cure odontoiatriche di eccellenza:
@@ -144,10 +167,12 @@ export default function Odontoiatria() {
               e alla bellezza del tuo sorriso.
             </p>
             <div className="page-hero-ctas">
-              <Link  href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer" className="btn btn-primary">
+              <Link
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Prenota una visita
               </Link>
               <a href="tel:+393316713904" className="btn btn-secondary">
@@ -164,10 +189,10 @@ export default function Odontoiatria() {
               <div className="two-col-content">
                 <h2>Il Tuo Dentista a Milano</h2>
                 <p>
-                 Studio Pinoli è un centro odontoiatrico a Milano che unisce esperienza clinica, tecnologie avanzate e attenzione alla persona. Il nostro obiettivo è offrire cure precise, affidabili e costruite sulle reali esigenze di ogni paziente.
+                  Studio Pinoli è un centro odontoiatrico a Milano che unisce esperienza clinica, tecnologie avanzate e attenzione alla persona. Il nostro obiettivo è offrire cure precise, affidabili e costruite sulle reali esigenze di ogni paziente.
                 </p>
                 <p>
-Crediamo in un’odontoiatria attenta, che mette al centro la salute orale, il comfort e la qualità del percorso di cura.
+                  Crediamo in un'odontoiatria attenta, che mette al centro la salute orale, il comfort e la qualità del percorso di cura.
                 </p>
                 <span><b>Il nostro approccio si basa su:</b></span>
                 <ul>
@@ -198,29 +223,46 @@ Crediamo in un’odontoiatria attenta, che mette al centro la salute orale, il c
               <h2 className="section-title">Servizi di Odontoiatria</h2>
             </div>
 
-            <div className="service-detail-grid">
+            {/* Icon grid — dental services */}
+            <div className={styles.iconGrid}>
               {dentalServices.map((s, i) => (
-                <div key={i} className="service-detail-item dental">
-                  <span className="service-detail-dot" />
-                  <div className="service-detail-body">
-                    <strong>{s.name}</strong>
-                    <p>{s.desc}</p>
-                  </div>
+                <div key={i} className={styles.iconCard}>
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d={iconPaths[i]} />
+                  </svg>
+                  <strong>{s.name}</strong>
+                  <p>{s.desc}</p>
                 </div>
               ))}
             </div>
 
+            {/* Hygiene strip */}
             <p className="service-subsection-label">Servizi di Igiene Dentale</p>
-            <div className="service-detail-grid">
-              {hygieneServices.map((s, i) => (
-                <div key={i} className="service-detail-item dental">
-                  <span className="service-detail-dot" />
-                  <div className="service-detail-body">
-                    <strong>{s.name}</strong>
-                    <p>{s.desc}</p>
+            <div className={styles.hygieneStrip}>
+              <div className={styles.hygieneGrid}>
+                {hygieneServices.map((s, i) => (
+                  <div key={i} className={styles.hygieneCard}>
+                    <svg
+                      className={styles.hygieneCheckIcon}
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                      <strong>{s.name}</strong>
+                      <p>{s.desc}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -233,12 +275,14 @@ Crediamo in un’odontoiatria attenta, che mette al centro la salute orale, il c
               <h2 className="section-title">Come Funziona</h2>
             </div>
 
-            <div className="process-timeline">
+            <div className={styles.stepper}>
               {processSteps.map((step, index) => (
-                <div key={index} className="process-step">
-                  <div className="process-step-number">{step.number}</div>
-                  <h4>{step.title}</h4>
-                  <p>{step.description}</p>
+                <div key={index} className={styles.stepperItem}>
+                  <div className={styles.stepNum}>{step.number}</div>
+                  <div>
+                    <h4 className={styles.stepTitle}>{step.title}</h4>
+                    <p className={styles.stepDesc}>{step.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -250,13 +294,15 @@ Crediamo in un’odontoiatria attenta, che mette al centro la salute orale, il c
           <div className="container">
             <h2>Prenota la tua visita odontoiatrica a Milano</h2>
             <p>
-          Il nostro team di ti seguirà per una prima visita accurata, con valutazione completa della salute orale e definizione del percorso di cura più adatto alle tue esigenze.
+              Il nostro team di ti seguirà per una prima visita accurata, con valutazione completa della salute orale e definizione del percorso di cura più adatto alle tue esigenze.
             </p>
             <div className="cta-buttons">
-              <Link  href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer"  className="btn btn-primary">
+              <Link
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Prenota ora
               </Link>
               <a href="tel:+393316713904" className="btn btn-secondary">

@@ -2,7 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import styles from "../../styles/medicina-estetica.module.css";
+
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+
 // Treatments data
 const treatments = [
   {
@@ -136,13 +139,15 @@ export default function MedicinaEstetica() {
             </nav>
             <h1>Medicina Estetica a Milano</h1>
             <p>
-           Eseguiamo trattamenti estetici non invasivi per esaltare la tua bellezza naturale. Filler, biorivitalizzazione, mesoterapia e protocolli anti-aging per risultati visibili e armoniosi.
+              Eseguiamo trattamenti estetici non invasivi per esaltare la tua bellezza naturale. Filler, biorivitalizzazione, mesoterapia e protocolli anti-aging per risultati visibili e armoniosi.
             </p>
             <div className="page-hero-ctas">
-              <Link href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer"className="btn btn-primary">
+              <Link
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Prenota un trattamento
               </Link>
               <a href="tel:+393316713904" className="btn btn-secondary">
@@ -159,10 +164,10 @@ export default function MedicinaEstetica() {
               <div className="two-col-content">
                 <h2>Un Approccio Integrato alla Bellezza</h2>
                 <p>
-                 La nostra filosofia di medicina estetica a Milano si basa sull'esaltazione della bellezza naturale di ogni persona. Non stravolgiamo i lineamenti, ma lavoriamo per valorizzare ciò che rende unico ogni volto.
+                  La nostra filosofia di medicina estetica a Milano si basa sull'esaltazione della bellezza naturale di ogni persona. Non stravolgiamo i lineamenti, ma lavoriamo per valorizzare ciò che rende unico ogni volto.
                 </p>
                 <p>
-            Utilizziamo solo prodotti certificati CE — filler con acido ialuronico, tossina botulinica e principi attivi di alta qualità — con tecniche all'avanguardia per garantire risultati naturali, sicuri e duraturi. Ogni trattamento estetico viene personalizzato sulle tue esigenze specifiche.
+                  Utilizziamo solo prodotti certificati CE — filler con acido ialuronico, tossina botulinica e principi attivi di alta qualità — con tecniche all'avanguardia per garantire risultati naturali, sicuri e duraturi. Ogni trattamento estetico viene personalizzato sulle tue esigenze specifiche.
                 </p>
                 <ul>
                   <li>Approccio non invasivo</li>
@@ -184,6 +189,17 @@ export default function MedicinaEstetica() {
           </div>
         </section>
 
+        {/* Quote Section */}
+        <section className={styles.quoteSection}>
+          <div className="container">
+            <blockquote className={styles.quote}>
+              <span className={styles.quoteMark}>"</span>
+              La vera bellezza nasce dall'armonia tra salute e cura di sé.
+              <footer className={styles.quoteFooter}>Studio Pinoli — Milano</footer>
+            </blockquote>
+          </div>
+        </section>
+
         {/* Treatments Grid */}
         <section className="section section-light">
           <div className="container">
@@ -192,14 +208,12 @@ export default function MedicinaEstetica() {
               <h2 className="section-title">Servizi di Medicina Estetica</h2>
             </div>
 
-            <div className="sub-services-grid sub-services-grid--two">
+            <div className={styles.luxuryGrid}>
               {treatments.map((treatment, index) => (
-                <div key={index} className="sub-service-card" style={{ borderColor: "var(--color-aesthetic)" }}>
-                  <div className="sub-service-icon" style={{ color: "var(--color-aesthetic)" }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
-                      <path d={treatment.icon} />
-                    </svg>
-                  </div>
+                <div key={index} className={styles.luxuryCard}>
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                    <path d={treatment.icon} />
+                  </svg>
                   <h4>{treatment.title}</h4>
                   <p>{treatment.description}</p>
                 </div>
@@ -216,14 +230,9 @@ export default function MedicinaEstetica() {
               <h2 className="section-title">Perché Scegliere i Nostri Trattamenti</h2>
             </div>
 
-            <div className="value-props-grid">
+            <div className={styles.elegantBenefits}>
               {benefits.map((benefit, index) => (
-                <div key={index} className="value-prop-item">
-                  <div className="value-prop-icon" style={{ background: "rgba(142, 68, 173, 0.1)", color: "var(--color-aesthetic)" }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                    </svg>
-                  </div>
+                <div key={index} className={styles.elegantBenefit}>
                   <h4>{benefit.title}</h4>
                   <p>{benefit.description}</p>
                 </div>
@@ -232,41 +241,11 @@ export default function MedicinaEstetica() {
           </div>
         </section>
 
-        {/* Image + Text Section */}
-        {/* <section className="section section-light">
-          <div className="container">
-            <div className="two-col-section reverse">
-              <div className="two-col-image">
-                <Image
-                  src="/foto/image-017-foto-nastia-cc1a9464.jpg"
-                  alt="Risultati biorivitalizzazione e filler acido ialuronico Milano Studio Pinoli"
-                  width={600}
-                  height={400}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                />
-              </div>
-              <div className="two-col-content">
-                <h2>Un Approccio Integrato alla Bellezza</h2>
-                <p>
-                  La medicina estetica nel nostro studio si integra perfettamente con
-                  gli altri servizi che offriamo. Crediamo che la vera bellezza nasca
-                  dal benessere globale della persona.
-                </p>
-                <p>
-                  Per questo, oltre ai trattamenti estetici, possiamo consigliarti
-                  percorsi di nutrizione e benessere che completano e potenziano i
-                  risultati dei trattamenti.
-                </p>
-                <Link href="/contatti" className="btn btn-outline" style={{ borderColor: "var(--color-aesthetic)", color: "var(--color-aesthetic)" }}>
-                  Prenota una consulenza gratuita
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         {/* CTA Section */}
-        <section className="cta-section" style={{ background: "var(--color-aesthetic)" }}>
+        <section
+          className="cta-section"
+          style={{ background: "linear-gradient(135deg, #5a3050 0%, #7d4a6f 50%, #9b5f8a 100%)" }}
+        >
           <div className="container">
             <h2>Prenota una Consulenza di Medicina Estetica a Milano</h2>
             <p>
@@ -274,11 +253,13 @@ export default function MedicinaEstetica() {
               Filler, biorivitalizzazione, mesoterapia: ti guidiamo verso il risultato migliore per te.
             </p>
             <div className="cta-buttons">
-              <Link h href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer" className="btn btn-primary">
-                Prenota un trattamento 
+              <Link
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
+                Prenota un trattamento
               </Link>
               <a href="tel:393316713904" className="btn btn-secondary">
                 Chiama in Studio

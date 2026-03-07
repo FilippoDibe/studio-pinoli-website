@@ -1,0 +1,171 @@
+/* ============================================================
+   osteopatia.module.css — "Body & Movement" design concept
+   Indigo tones, structural, precise but warm.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Hero — left-aligned text
+   ---------------------------------------------------------- */
+.heroLeft {
+  max-width: 620px;
+  text-align: left;
+}
+
+/* ----------------------------------------------------------
+   Chip / tag grid — "When Useful" section
+   ---------------------------------------------------------- */
+.chipGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: white;
+  border-radius: 50px;
+  border: 1.5px solid rgba(92, 107, 192, 0.25);
+  font-size: 0.88rem;
+  color: #2a3f55;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.chip:hover {
+  background: rgba(92, 107, 192, 0.06);
+  border-color: rgba(92, 107, 192, 0.45);
+  box-shadow: 0 4px 12px rgba(92, 107, 192, 0.12);
+}
+
+.chip::before {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5c6bc0;
+}
+
+/* ----------------------------------------------------------
+   ATM Connection Callout
+   ---------------------------------------------------------- */
+.atmCallout {
+  background: linear-gradient(
+    135deg,
+    rgba(92, 107, 192, 0.08) 0%,
+    rgba(92, 107, 192, 0.04) 100%
+  );
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  border-left: 4px solid #5c6bc0;
+  margin-top: 32px;
+}
+
+.atmCalloutIcon {
+  flex-shrink: 0;
+  color: #5c6bc0;
+  padding-top: 2px;
+}
+
+.atmCallout strong {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a2b3d;
+  margin-bottom: 8px;
+}
+
+.atmCallout p {
+  color: #5d6f82;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   Benefits — 2×2 indigo-tinted card grid
+   ---------------------------------------------------------- */
+.benefitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.benefitCard {
+  background: linear-gradient(
+    135deg,
+    rgba(92, 107, 192, 0.07) 0%,
+    rgba(92, 107, 192, 0.03) 100%
+  );
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid rgba(92, 107, 192, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.benefitCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(92, 107, 192, 0.15);
+}
+
+.benefitCardIcon {
+  width: 48px;
+  height: 48px;
+  background: rgba(92, 107, 192, 0.12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5c6bc0;
+  margin-bottom: 18px;
+}
+
+.benefitCard h4 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a2b3d;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.benefitCard p {
+  font-size: 0.88rem;
+  color: #5d6f82;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   Responsive breakpoints
+   ---------------------------------------------------------- */
+@media (max-width: 900px) {
+  .chipGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .benefitGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .chipGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroLeft {
+    text-align: center;
+    max-width: 100%;
+  }
+}

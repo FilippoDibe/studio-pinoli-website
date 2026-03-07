@@ -2,8 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import styles from "../../styles/bionutrizione.module.css";
+
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
-// Sub-services data
 
 // Process steps
 const processSteps = [
@@ -121,10 +122,12 @@ export default function Bionutrizione() {
               Percorsi di nutrizione personalizzati a Milano per ritrovare equilibrio, salute e benessere. Un approccio scientifico e su misura per le esigenze del tuo organismo.
             </p>
             <div className="page-hero-ctas">
-              <Link  href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer" className="btn btn-primary">
+              <Link
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Prenota una visita
               </Link>
               <a href="tel:+393316713904" className="btn btn-secondary">
@@ -141,12 +144,12 @@ export default function Bionutrizione() {
               <div className="two-col-content">
                 <h2>Piani di Nutrizione Personalizzati</h2>
                 <p>
-                Nel nostro Studio la nutrizione è parte di un approccio integrato alla salute e al benessere della persona. Attraverso una valutazione approfondita della composizione corporea, del metabolismo e delle abitudini di vita, siamo in grado di elaborare percorsi alimentari personalizzati, costruiti sulle reali esigenze di ogni paziente.
+                  Nel nostro Studio la nutrizione è parte di un approccio integrato alla salute e al benessere della persona. Attraverso una valutazione approfondita della composizione corporea, del metabolismo e delle abitudini di vita, siamo in grado di elaborare percorsi alimentari personalizzati, costruiti sulle reali esigenze di ogni paziente.
                 </p>
                 <p>
-               L’obiettivo non è solo raggiungere il peso forma, ma migliorare l’equilibrio dell’organismo, sostenere le performance fisiche e favorire uno stile di vita sano e duraturo nel tempo. Il percorso terapeutico comprende:
+                  L'obiettivo non è solo raggiungere il peso forma, ma migliorare l'equilibrio dell'organismo, sostenere le performance fisiche e favorire uno stile di vita sano e duraturo nel tempo. Il percorso terapeutico comprende:
                 </p>
-                <ul>
+                <ul className={styles.greenList}>
                   <li>Analisi dello stato nutrizionale e metabolico</li>
                   <li>Elaborazione di un piano alimentare personalizzato</li>
                   <li>Monitoraggio periodico dei risultati ottenuti</li>
@@ -165,8 +168,22 @@ export default function Bionutrizione() {
           </div>
         </section>
 
-        {/* Services Grid */}
-       
+        {/* App Callout — Biotekna Plus */}
+        <section className="section">
+          <div className="container">
+            <div className={styles.appCallout}>
+              <div className={styles.appCalloutIcon}>
+                <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                  <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+                </svg>
+              </div>
+              <div className={styles.appCalloutContent}>
+                <strong>App Biotekna Plus</strong>
+                <p>Prima della visita, ti chiediamo di compilare il diario alimentare per almeno 7 giorni attraverso l'app Biotekna Plus. Questo ci permette di avere un quadro completo delle tue abitudini alimentari e di elaborare un piano personalizzato fin dal primo incontro.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Process Section */}
         <section className="section">
@@ -176,12 +193,10 @@ export default function Bionutrizione() {
               <h2 className="section-title">Come Funziona</h2>
             </div>
 
-            <div className="process-timeline">
+            <div className={styles.stepGrid}>
               {processSteps.map((step, index) => (
-                <div key={index} className="process-step">
-                  <div className="process-step-number" style={{ background: "var(--color-nutrition)" }}>
-                    {step.number}
-                  </div>
+                <div key={index} className={styles.stepCard}>
+                  <span className={styles.stepBigNum}>{"0" + step.number}</span>
                   <h4>{step.title}</h4>
                   <p>{step.description}</p>
                 </div>
@@ -190,51 +205,20 @@ export default function Bionutrizione() {
           </div>
         </section>
 
-        {/* Benefits Section */}
-        {/* <section className="section section-light">
-          <div className="container">
-            <div className="two-col-section reverse">
-              <div className="two-col-image">
-                <Image
-                  src="/foto/image-056-foto-nastia-cc1a9642.jpg"
-                  alt="Programma nutrizionale personalizzato a Milano — Studio Pinoli"
-                  width={600}
-                  height={400}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                />
-              </div>
-              <div className="two-col-content">
-                <h2>I Benefici di una Corretta Alimentazione</h2>
-                <p>
-                  Una dieta equilibrata e personalizzata può trasformare la tua vita,
-                  migliorando non solo il tuo aspetto fisico ma anche la tua energia
-                  e il tuo benessere generale.
-                </p>
-                <ul>
-                  <li>Raggiungimento del peso forma ideale</li>
-                  <li>Maggiore energia e vitalità</li>
-                  <li>Migliore qualità del sonno</li>
-                  <li>Digestione più efficiente</li>
-                  <li>Prevenzione di patologie metaboliche</li>
-                  <li>Miglioramento dell'umore</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         {/* CTA Section */}
         <section className="cta-section" style={{ background: "var(--color-nutrition)" }}>
           <div className="container">
             <h2>Prenota la tua consulenza nutrizionale</h2>
             <p>
-             Scopri il percorso alimentare personalizzato più adatto al tuo stile di vita e al tuo benessere.
+              Scopri il percorso alimentare personalizzato più adatto al tuo stile di vita e al tuo benessere.
             </p>
             <div className="cta-buttons">
-              <Link  href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer" className="btn btn-primary">
+              <Link
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Prenota una visita
               </Link>
               <a href="tel:+393316713904" className="btn btn-secondary">

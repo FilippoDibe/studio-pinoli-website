@@ -2,7 +2,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import styles from "../../styles/osteopatia.module.css";
+
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+
 const whenUseful = [
   "Dolori mandibolari e disturbi dell'ATM",
   "Cefalee e tensioni muscolari del viso e del collo",
@@ -71,6 +74,13 @@ const relatedServices = [
   },
 ];
 
+const benefitIcons = [
+  "M13 10V3L4 14h7v7l9-11h-7z",
+  "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+  "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+  "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 13H11v-4h1.5v4zm0-6H11V7h1.5v2z",
+];
+
 function FAQItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -100,7 +110,7 @@ export default function Osteopatia() {
       </Head>
 
       <main id="main-content">
-        {/* Hero Section */}
+        {/* 1. Hero Section */}
         <section className="service-hero osteopatia">
           <div
             className="service-hero-bg"
@@ -108,34 +118,38 @@ export default function Osteopatia() {
           />
           <div className="service-hero-overlay" />
           <div className="container">
-            <nav className="breadcrumb" aria-label="Breadcrumb">
-              <Link href="/">Home</Link>
-              <span>/</span>
-              <Link href="/i-nostri-servizi">Servizi</Link>
-              <span>/</span>
-              <span>Osteopatia</span>
-            </nav>
-            <h1>Osteopatia a Milano</h1>
-            <p>
-              Equilibrio e benessere per il tuo corpo. L'osteopatia ristabilisce l'equilibrio
-              funzionale attraverso tecniche manuali su muscoli, articolazioni e tessuti 
-              in sinergia con l'odontoiatria per trattare i disturbi dell'ATM.
-            </p>
-            <div className="page-hero-ctas">
-              <Link  href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer" className="btn btn-primary">
-                Prenota una visita
-              </Link>
-              <a href="tel:+393316713904" className="btn btn-secondary">
-                Chiama ora
-              </a>
+            <div className={styles.heroLeft}>
+              <nav className="breadcrumb" aria-label="Breadcrumb">
+                <Link href="/">Home</Link>
+                <span>/</span>
+                <Link href="/i-nostri-servizi">Servizi</Link>
+                <span>/</span>
+                <span>Osteopatia</span>
+              </nav>
+              <h1>Osteopatia a Milano</h1>
+              <p>
+                Equilibrio e benessere per il tuo corpo. L'osteopatia ristabilisce l'equilibrio
+                funzionale attraverso tecniche manuali su muscoli, articolazioni e tessuti
+                in sinergia con l'odontoiatria per trattare i disturbi dell'ATM.
+              </p>
+              <div className="page-hero-ctas">
+                <Link
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  Prenota una visita
+                </Link>
+                <a href="tel:+393316713904" className="btn btn-secondary">
+                  Chiama ora
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Overview */}
+        {/* 2. Overview — two-col + ATM callout */}
         <section className="section">
           <div className="container">
             <div className="two-col-section">
@@ -164,10 +178,23 @@ export default function Osteopatia() {
                 />
               </div>
             </div>
+
+            {/* ATM Callout — appended after two-col-section, inside same container */}
+            <div className={styles.atmCallout}>
+              <div className={styles.atmCalloutIcon}>
+                <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <div>
+                <strong>Connessione con l'Odontoiatria</strong>
+                <p>L'articolazione temporo-mandibolare (ATM) è strettamente connessa alla postura e alla colonna cervicale. Nel nostro studio, l'osteopatia lavora in sinergia con l'odontoiatria per trattare i disturbi mandibolari in modo completo e integrato.</p>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* When Useful */}
+        {/* 3. When Useful — chip grid */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
@@ -178,20 +205,17 @@ export default function Osteopatia() {
               </p>
             </div>
 
-            <div className="highlight-list">
+            <div className={styles.chipGrid}>
               {whenUseful.map((item, i) => (
-                <div key={i} className="highlight-item">
-                  <svg viewBox="0 0 24 24" fill="currentColor" style={{ color: "var(--color-osteopatia)" }}>
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                  </svg>
-                  <span>{item}</span>
+                <div key={i} className={styles.chip}>
+                  {item}
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Integrated Approach */}
+        {/* 4. Integrated Approach — two-col reverse, keep as-is */}
         <section className="section">
           <div className="container">
             <div className="two-col-section reverse">
@@ -226,19 +250,19 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* 5. Benefits — indigo-tinted benefitGrid */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">I vantaggi</span>
               <h2 className="section-title">Perché Scegliere l'Osteopatia nel Nostro Studio</h2>
             </div>
-            <div className="value-props-grid">
+            <div className={styles.benefitGrid}>
               {benefits.map((b, i) => (
-                <div key={i} className="value-prop-item">
-                  <div className="value-prop-icon" style={{ background: "rgba(63, 81, 181, 0.1)", color: "var(--color-osteopatia)" }}>
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                <div key={i} className={styles.benefitCard}>
+                  <div className={styles.benefitCardIcon}>
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                      <path d={benefitIcons[i]} />
                     </svg>
                   </div>
                   <h4>{b.title}</h4>
@@ -249,7 +273,7 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* 6. CTA */}
         <section className="cta-section" style={{ background: "var(--color-osteopatia)" }}>
           <div className="container">
             <h2>Prenota una Consulenza Osteopatica a Milano</h2>
@@ -258,10 +282,12 @@ export default function Osteopatia() {
               alle tue esigenze e migliorare il tuo benessere muscolare e articolare.
             </p>
             <div className="cta-buttons">
-              <Link  href={BOOKING_URL}
-            
-                 target="_blank"
-                rel="noopener noreferrer" className="btn btn-primary">
+              <Link
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
                 Prenota ora
               </Link>
               <a href="tel:+393316713904" className="btn btn-secondary">
@@ -271,7 +297,7 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* FAQ */}
+        {/* 7. FAQ */}
         <section className="section">
           <div className="container">
             <div className="section-header">
@@ -286,7 +312,7 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* Related Services */}
+        {/* 8. Related Services */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
