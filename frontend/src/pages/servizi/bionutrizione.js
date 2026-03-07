@@ -32,22 +32,22 @@ const processSteps = [
   {
     number: "1",
     title: "Diario Alimentare",
-    description: "Compila il diario alimentare per almeno 7 giorni usando l'app MyDietPro.",
+    description: "Compila il diario alimentare per almeno 7 giorni prima della tua visita usando l'app Biotekna Plus.",
   },
   {
     number: "2",
     title: "Prima Visita",
-    description: "Analizziamo insieme il tuo diario e valutiamo le tue esigenze specifiche.",
+    description: "Analizziamo insieme il tuo diario alimentare e valutiamo le tue esigenze specifiche.",
   },
   {
     number: "3",
-    title: "Piano Personalizzato",
-    description: "Ricevi il tuo piano alimentare creato su misura per i tuoi obiettivi.",
+    title: "Piano Alimentare Personalizzato",
+    description: "Ricevi il tuo piano alimentare creato su misura per i tuoi obiettivi di salute e benessere.",
   },
   {
     number: "4",
     title: "Controlli Periodici",
-    description: "Monitoriamo i progressi e adattiamo il piano in base ai risultati.",
+    description: "Monitoriamo i progressi e adattiamo il piano alimentare in base ai risultati ottenuti.",
   },
 ];
 
@@ -190,22 +190,22 @@ export default function Bionutrizione() {
           </div>
         </section>
 
-        {/* Sub-services Grid */}
+        {/* Services Grid */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
-              <span className="section-subtitle">I nostri servizi</span>
-              <h2 className="section-title">Servizi di Bionutrizione</h2>
+              <span className="section-subtitle">Il percorso terapeutico</span>
+              <h2 className="section-title">Piani di Nutrizione Personalizzati</h2>
             </div>
 
-            <div className="sub-services-grid sub-services-grid--two">
+            <div className="service-detail-grid">
               {subServices.map((service, index) => (
-                <div key={index} className="sub-service-card">
-                  <div className="sub-service-icon">
-                    <Image src={service.icon} alt="" width={64} height={64} />
+                <div key={index} className="service-detail-item nutrition">
+                  <span className="service-detail-dot" />
+                  <div className="service-detail-body">
+                    <strong>{service.title}</strong>
+                    <p>{service.description}</p>
                   </div>
-                  <h4>{service.title}</h4>
-                  <p>{service.description}</p>
                 </div>
               ))}
             </div>

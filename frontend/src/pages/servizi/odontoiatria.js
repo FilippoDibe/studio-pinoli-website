@@ -3,61 +3,45 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 
-// Sub-services data
-const subServices = [
-  {
-    title: "Implantologia a Milano",
-    description: "Sostituzione di denti mancanti con impianti dentali in titanio di ultima generazione. Oltre il 95% di successo a 10 anni. Risultati naturali e duraturi.",
-    icon: "/images/implant.svg",
-  },
-  {
-    title: "Ortodonzia a Milano",
-    description: "Correzione di malocclusioni e allineamento dentale con apparecchi fissi tradizionali o allineatori invisibili (ortodonzia invisibile). Per adulti e bambini.",
-    icon: "/images/ortodonzia-invisibile.svg",
-  },
-  {
-    title: "Igiene Orale Professionale",
-    description: "Pulizia dei denti professionale, ablazione del tartaro e prevenzione delle malattie parodontali. Consigliata ogni 6 mesi per mantenere gengive e denti sani.",
-    icon: "/images/dentist.svg",
-  },
-  {
-    title: "Estetica Dentale",
-    description: "Sbiancamento denti professionale, faccette in porcellana e trattamenti estetici per un sorriso luminoso, bianco e armonioso.",
-    icon: "/images/dentist-chair.svg",
-  },
-  {
-    title: "Endodonzia (Devitalizzazione)",
-    description: "Trattamento dei canali radicolari per salvare denti compromessi da carie profonde, ascessi o traumi. Procedura precisa e indolore con anestesia locale.",
-    icon: "/images/dentist-2.svg",
-  },
-  {
-    title: "Protesi Dentale",
-    description: "Corone in ceramica, ponti fissi e protesi rimovibili per ripristinare funzionalità estetica del sorriso. Materiali di alta qualità per risultati naturali.",
-    icon: "/images/dentist-chair-2.svg",
-  },
+const dentalServices = [
+  { name: "Conservativa", desc: "Cura e ricostruzione dei denti danneggiati da carie o traumi." },
+  { name: "Protesi", desc: "Soluzioni fisse o mobili per ripristinare estetica e funzione masticatoria." },
+  { name: "Ortodonzia (fissa / allineatori)", desc: "Allineamento dentale con apparecchi tradizionali o trasparenti di ultima generazione." },
+  { name: "Gnatologia", desc: "Diagnosi e trattamento dei disturbi dell'articolazione temporo-mandibolare (ATM)." },
+  { name: "Implantologia", desc: "Sostituzione dei denti mancanti con impianti stabili e duraturi." },
+  { name: "Estetica dentale", desc: "Trattamenti mirati a migliorare armonia e luminosità del sorriso." },
+  { name: "Endodonzia", desc: "Terapie canalari per salvare denti compromessi da infezioni profonde." },
+  { name: "Pedodonzia", desc: "Cure odontoiatriche dedicate ai bambini in un ambiente sereno e protetto." },
+  { name: "Parodontologia", desc: "Prevenzione e trattamento delle malattie di gengive e tessuti di supporto." },
+];
+
+const hygieneServices = [
+  { name: "Igiene dentale professionale", desc: "Rimozione di placca e tartaro per mantenere salute orale nel tempo." },
+  { name: "Sbiancamento in poltrona", desc: "Trattamento professionale per denti più bianchi e luminosi." },
+  { name: "Sbiancamento domiciliare", desc: "Protocollo personalizzato da effettuare a casa in totale sicurezza." },
 ];
 
 // Process steps
 const processSteps = [
   {
     number: "1",
-    title: "Prima Visita",
-    description: "Colloquio conoscitivo e valutazione completa della tua situazione orale con tecnologie diagnostiche avanzate.",
+    title: "Compilazione documenti e anamnesi",
+    description: "All'arrivo in studio compilerai i documenti per la privacy e l'anamnesi medica. Queste informazioni ci aiutano a comprendere il tuo stato di salute generale.",
   },
   {
     number: "2",
-    title: "Piano di Cura",
-    description: "Elaborazione di un piano di trattamento personalizzato con preventivo dettagliato e trasparente.",
+    title: "Visita e valutazione clinica",
+    description: "Effettueremo la visita odontoiatrica con eventuali radiografie e fotografie diagnostiche per analizzare con precisione la tua situazione.",
   },
   {
     number: "3",
-    title: "Trattamento",
-    description: "Esecuzione del trattamento con tecniche all'avanguardia e massimo comfort del paziente.",
+    title: "Presentazione del piano di cura",
+    description: "Al termine della visita ti illustreremo le possibili soluzioni terapeutiche più adatte al tuo caso, con trasparenza su costi e tempi.",
   },
   {
     number: "4",
-    title: "Follow-up",
-    description: "Controlli periodici e programma di mantenimento per garantire risultati duraturi nel tempo.",
+    title: "Piano di cura e follow-up",
+    description: "La segreteria ti fornirà tutte le informazioni su preventivo e modalità di pagamento. Ti accompagneremo durante tutto il percorso e nei controlli successivi.",
   },
 ];
 
@@ -87,8 +71,14 @@ const faqs = [
 
 const relatedServices = [
   {
+    title: "Osteopatia",
+    description: "Trattamenti manuali per disturbi dell'ATM e benessere articolare.",
+    href: "/servizi/osteopatia",
+    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+  },
+  {
     title: "Bionutrizione",
-    description: "Diete personalizzate per il tuo benessere completo.",
+    description: "Piani alimentari personalizzati per il tuo benessere.",
     href: "/servizi/bionutrizione",
     image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
   },
@@ -97,12 +87,6 @@ const relatedServices = [
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
     image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
-  },
-  {
-    title: "Medicina Integrata",
-    description: "Approccio olistico per mente e corpo.",
-    href: "/servizi/medicina-integrata",
-    image: "/foto/image-036-foto-nastia-cc1a9553.jpg",
   },
 ];
 
@@ -205,7 +189,7 @@ export default function Odontoiatria() {
           </div>
         </section>
 
-        {/* Sub-services Grid */}
+        {/* Services Grid */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
@@ -213,14 +197,27 @@ export default function Odontoiatria() {
               <h2 className="section-title">Servizi di Odontoiatria</h2>
             </div>
 
-            <div className="sub-services-grid">
-              {subServices.map((service, index) => (
-                <div key={index} className="sub-service-card">
-                  <div className="sub-service-icon">
-                    <Image src={service.icon} alt="" width={64} height={64} />
+            <div className="service-detail-grid">
+              {dentalServices.map((s, i) => (
+                <div key={i} className="service-detail-item dental">
+                  <span className="service-detail-dot" />
+                  <div className="service-detail-body">
+                    <strong>{s.name}</strong>
+                    <p>{s.desc}</p>
                   </div>
-                  <h4>{service.title}</h4>
-                  <p>{service.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="service-subsection-label">Servizi di Igiene Dentale</p>
+            <div className="service-detail-grid">
+              {hygieneServices.map((s, i) => (
+                <div key={i} className="service-detail-item dental">
+                  <span className="service-detail-dot" />
+                  <div className="service-detail-body">
+                    <strong>{s.name}</strong>
+                    <p>{s.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>

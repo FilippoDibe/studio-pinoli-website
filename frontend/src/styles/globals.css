@@ -2655,6 +2655,141 @@ ul, ol {
     linear-gradient(135deg, rgba(35, 122, 114, 0.42) 0%, rgba(24, 89, 82, 0.37) 100%),
     linear-gradient(180deg, rgba(14, 23, 32, 0.14) 0%, rgba(14, 23, 32, 0.28) 100%);
 }
+.service-hero.osteopatia .service-hero-overlay {
+  background:
+    linear-gradient(135deg, rgba(63, 81, 181, 0.44) 0%, rgba(48, 63, 159, 0.38) 100%),
+    linear-gradient(180deg, rgba(14, 23, 32, 0.14) 0%, rgba(14, 23, 32, 0.28) 100%);
+}
+.service-hero.art .service-hero-overlay {
+  background:
+    linear-gradient(135deg, rgba(125, 63, 34, 0.46) 0%, rgba(93, 47, 25, 0.40) 100%),
+    linear-gradient(180deg, rgba(14, 23, 32, 0.14) 0%, rgba(14, 23, 32, 0.28) 100%);
+}
+
+/* ===== SERVICE DETAIL LIST (two-column with accent) ===== */
+.service-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.service-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 22px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 2px 10px rgba(16, 33, 50, 0.06);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.service-detail-item:hover {
+  box-shadow: 0 6px 20px rgba(16, 33, 50, 0.10);
+  transform: translateY(-2px);
+}
+
+.service-detail-item.dental { border-left-color: var(--color-dental); }
+.service-detail-item.nutrition { border-left-color: var(--color-nutrition); }
+.service-detail-item.aesthetic { border-left-color: var(--color-aesthetic); }
+.service-detail-item.integrative { border-left-color: var(--color-integrative); }
+.service-detail-item.osteopatia { border-left-color: var(--color-osteopatia); }
+.service-detail-item.art { border-left-color: var(--color-art); }
+
+.service-detail-dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 6px;
+}
+
+.service-detail-item.dental .service-detail-dot { background: var(--color-dental); }
+.service-detail-item.nutrition .service-detail-dot { background: var(--color-nutrition); }
+.service-detail-item.aesthetic .service-detail-dot { background: var(--color-aesthetic); }
+.service-detail-item.integrative .service-detail-dot { background: var(--color-integrative); }
+.service-detail-item.osteopatia .service-detail-dot { background: var(--color-osteopatia); }
+.service-detail-item.art .service-detail-dot { background: var(--color-art); }
+
+.service-detail-body strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--gray-800);
+  margin-bottom: 4px;
+}
+
+.service-detail-body p {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Hygiene / sub-section label */
+.service-subsection-label {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 36px 0 16px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.service-subsection-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray-200);
+}
+
+/* When useful — highlight list */
+.highlight-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  background: var(--gray-50);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-200);
+  font-size: 0.92rem;
+  color: var(--gray-700);
+  font-weight: 500;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.highlight-item:hover {
+  background: var(--white);
+  border-color: var(--gray-300);
+  box-shadow: 0 4px 12px rgba(16, 33, 50, 0.07);
+}
+
+.highlight-item svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .service-detail-grid { grid-template-columns: 1fr; }
+  .highlight-list { grid-template-columns: 1fr; }
+}
 
 .service-hero .container {
   position: relative;
