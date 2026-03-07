@@ -117,9 +117,9 @@ export default function ArtTerapia() {
             </nav>
             <h1>Art-Terapia a Milano</h1>
             <p>
-              Benessere emotivo attraverso l'espressione creativa. L'art-terapia usa
-              il disegno, il colore e altre forme artistiche per esplorare emozioni,
-              ridurre lo stress e favorire una maggiore consapevolezza di sé.
+             
+L’art-terapia è una disciplina che utilizza l’espressione artistica come strumento di supporto emotivo e crescita personale. Attraverso il disegno, il colore e altre forme creative, è possibile esplorare emozioni, ridurre lo stress e favorire una maggiore consapevolezza di sé.
+
             </p>
             <div className="page-hero-ctas">
               <Link href="/contatti" className="btn btn-primary">
@@ -137,17 +137,13 @@ export default function ArtTerapia() {
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>Arte come Strumento di Benessere</h2>
+                <h2>Benessere emotivo attraverso l’espressione creativa</h2>
                 <p>
-                  L'art-terapia è una disciplina che utilizza l'espressione artistica come
-                  strumento di supporto emotivo e crescita personale. Nel nostro studio
-                  rappresenta uno spazio dedicato al benessere emotivo della persona.
+                  L'art-terapia usa il disegno, il colore e altre forme creative come strumenti
+                  di supporto emotivo e crescita personale.
                 </p>
                 <p>
-                  Attraverso il disegno, il colore e altre forme creative, è possibile
-                  esplorare emozioni, ridurre lo stress e favorire una maggiore
-                  consapevolezza di sé. Può essere un valido supporto anche nei percorsi
-                  di cura, aiutando a gestire ansia, tensione e difficoltà emotive.
+             Nel nostro studio l’art-terapia rappresenta uno spazio dedicato al benessere emotivo della persona e può essere un valido supporto anche nei percorsi di cura, aiutando a gestire ansia, tensione e difficoltà emotive.
                 </p>
                 <p style={{ fontSize: "0.92rem", color: "var(--gray-500)", fontStyle: "italic" }}>
                   Non è necessario avere competenze artistiche: il percorso è guidato
