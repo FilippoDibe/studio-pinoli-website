@@ -1,53 +1,148 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import ServiceCard from "@/components/ui/ServiceCard";
+import { useState, useEffect, useRef } from "react";
+import styles from "../styles/StudioHome.module.css";
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
-// Services data
-const services = [
+const carouselServices = [
   {
-    title: "Odontoiatria",
-    description:
-      "Da oltre 35 anni offriamo cure odontoiatriche di eccellenza. Implantologia, ortodonzia, igiene orale, estetica dentale, endodonzia e protesi: un servizio completo per il tuo sorriso.",
-    image: "/servizi/odontoriatria.jpg",
+    tag: "Odontoiatria",
+    title: "Odontoiatria a Milano",
+    description: "Da oltre 35 anni offriamo cure odontoiatriche di eccellenza. Implantologia, ortodonzia, igiene orale, estetica dentale, endodonzia e protesi: un servizio completo per il tuo sorriso.",
     href: "/servizi/odontoiatria",
-    theme: "dental",
+    image: "/servizi/odontoriatria.jpg",
+    alt: "Trattamento odontoiatrico presso Studio Pinoli Milano",
+    accent: "#0066cc",
   },
   {
-    title: "Bio-nutrizione",
-    description:
-      "Piani nutrizionali personalizzati per migliorare energia, composizione corporea e performance mentale, con un approccio scientifico e monitoraggio costante nel tempo.",
-    image: "/servizi/Biochimica-nutrizione_Immagine_blog-.jpg",
+    tag: "Bio-nutrizione",
+    title: "Bio-nutrizione a Milano",
+    description: "Piani nutrizionali personalizzati per migliorare energia, composizione corporea e performance mentale, con un approccio scientifico e monitoraggio costante nel tempo.",
     href: "/servizi/bionutrizione",
-    theme: "nutrition",
+    image: "/servizi/Biochimica-nutrizione_Immagine_blog-.jpg",
+    alt: "Consulenza bionutrizione e dieta personalizzata Milano Studio Pinoli",
+    accent: "#2a9d5b",
   },
   {
-    title: "Medicina Estetica",
-    description:
-      "Trattamenti non invasivi e protocolli medicali per valorizzare i lineamenti in modo naturale. Filler, biorivitalizzazione e soluzioni anti-aging per risultati eleganti e duraturi.",
-    image: "/servizi/medicina-estetica.jpg",
+    tag: "Medicina Estetica",
+    title: "Medicina Estetica a Milano",
+    description: "Trattamenti non invasivi e protocolli medicali per valorizzare i lineamenti in modo naturale, con risultati eleganti e armonici.",
     href: "/servizi/medicina-estetica",
-    theme: "aesthetic",
+    image: "/servizi/medicina-estetica.jpg",
+    alt: "Trattamento medicina estetica viso Milano Studio Pinoli",
+    accent: "#c16d43",
   },
   {
-    title: "Osteopatia",
-    description:
-      "Valutazioni e trattamenti osteopatici per migliorare postura, mobilità e benessere muscolo-scheletrico, in integrazione con il percorso clinico complessivo dello studio.",
-    image: "/servizi/osteopatia-hd.jpg",
+    tag: "Osteopatia",
+    title: "Osteopatia a Milano",
+    description: "Valutazioni e trattamenti osteopatici per migliorare postura, mobilità e benessere muscolo-scheletrico, in integrazione con il percorso clinico complessivo.",
     href: "/servizi/osteopatia",
-    theme: "osteopatia",
+    image: "/servizi/osteopatia-hd.jpg",
+    alt: "Trattamenti osteopatici Studio Pinoli Milano",
+    accent: "#5c6bc0",
   },
   {
-    title: "Art-Terapia",
-    description:
-      "Percorsi di art-terapia orientati alla gestione dello stress, all'equilibrio emotivo e al benessere psico-fisico, in un contesto medico strutturato e professionale.",
-    image: "/servizi/art-terapia-hd.jpg",
+    tag: "Art-Terapia",
+    title: "Art-Terapia a Milano",
+    description: "Percorsi di art-terapia orientati alla gestione dello stress, all'equilibrio emotivo e al benessere psico-fisico, in un contesto medico strutturato.",
     href: "/servizi/art-terapia",
-    theme: "art",
+    image: "/servizi/art-terapia-hd.jpg",
+    alt: "Trattamenti art-terapia Studio Pinoli Milano",
+    accent: "#a0522d",
   },
 ];
+
+function ServiceCarousel() {
+  const total = carouselServices.length;
+  const [current, setCurrent] = useState(0);
+  const [progKey, setProgKey] = useState(0);
+  const timerRef = useRef(null);
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrent((c) => (c + 1) % total);
+      setProgKey((k) => k + 1);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const go = (idx) => {
+    setCurrent((idx + total) % total);
+    setProgKey((k) => k + 1);
+    startTimer();
+  };
+
+  return (
+    <div className={styles.carousel}>
+      <div
+        className={styles.carouselTrack}
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {carouselServices.map((service, i) => (
+          <div key={i} className={styles.carouselSlide}>
+            <Image
+              src={service.image}
+              alt={service.alt}
+              fill
+              sizes="100vw"
+              className={styles.coverImage}
+              priority={i === 0}
+            />
+            <div className={styles.slideOverlay}>
+              <span
+                className={styles.slideTag}
+                style={{ borderColor: service.accent, color: "#fff", background: `${service.accent}33` }}
+              >
+                {service.tag}
+              </span>
+              <h2 className={styles.slideTitle}>{service.title}</h2>
+              <p className={styles.slideDesc}>{service.description}</p>
+              <Link href={service.href} className={styles.slideLink}>
+                Scopri di più <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <button
+        className={`${styles.carouselBtn} ${styles.carouselBtnPrev}`}
+        onClick={() => go(current - 1)}
+        aria-label="Servizio precedente"
+      >
+        ‹
+      </button>
+      <button
+        className={`${styles.carouselBtn} ${styles.carouselBtnNext}`}
+        onClick={() => go(current + 1)}
+        aria-label="Servizio successivo"
+      >
+        ›
+      </button>
+
+      <div className={styles.carouselDots} role="tablist">
+        {carouselServices.map((s, i) => (
+          <button
+            key={i}
+            role="tab"
+            aria-selected={i === current}
+            aria-label={s.title}
+            className={`${styles.dot} ${i === current ? styles.dotActive : ""}`}
+            onClick={() => go(i)}
+          />
+        ))}
+      </div>
+
+      <div key={progKey} className={styles.carouselProgress} />
+    </div>
+  );
+}
 
 // Value propositions
 const valueProps = [
@@ -183,45 +278,15 @@ Il nostro obiettivo è guardare alla totalità del paziente e del suo benessere 
           </div>
         </section>
 
-        {/* Services Mosaic — Premium Dark Section */}
-        <section className="mosaic-section">
-          {/* Decorative layers */}
-          <div className="mosaic-section-bg"      aria-hidden="true" />
-          <div className="mosaic-section-topline" aria-hidden="true" />
-
+        {/* Services Carousel */}
+        <section className={styles.servicesSection}>
           <div className="container">
-            {/* Header: logo bianco | divisore | titolo */}
-            <div className="mosaic-header">
-              <div className="mosaic-header-logo">
-                <Image
-                  src="/images/studio-pinoli-logo-oriz-1.png"
-                  alt="Studio Pinoli"
-                  width={180}
-                  height={68}
-                  style={{ width: "100%", height: "auto", filter: "brightness(0) invert(1)" }}
-                />
-              </div>
-              <div className="mosaic-header-divider" aria-hidden="true" />
-              <div className="mosaic-header-text">
-                <span className="mosaic-section-subtitle">Aree di specializzazione</span>
-                <h2 className="mosaic-section-title">Scegli Il Tuo Percorso di Cura</h2>
-              </div>
+            <div className={styles.sectionHead}>
+              <span className={styles.sectionTag}>I nostri servizi</span>
+              <h2>Scegli il Tuo Percorso di Cura</h2>
+              <p>Cinque aree di specializzazione per accompagnarti verso la salute e il benessere che meriti.</p>
             </div>
-
-            <div className="mosaic-services-grid">
-              {services.map((service, index) => (
-                <ServiceCard
-                  key={index}
-                  title={service.title}
-                  description={service.description}
-                  image={service.image}
-                  icon={service.icon}
-                  href={service.href}
-                  theme={service.theme}
-                  num={String(index + 1).padStart(2, "0")}
-                />
-              ))}
-            </div>
+            <ServiceCarousel />
           </div>
         </section>
 
