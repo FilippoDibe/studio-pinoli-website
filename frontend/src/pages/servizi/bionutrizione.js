@@ -2,30 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-
+const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 // Sub-services data
-const subServices = [
-  {
-    title: "Diete Personalizzate a Milano",
-    description: "Piani alimentari su misura elaborati dal nostro nutrizionista a Milano in base al tuo metabolismo, ai tuoi obiettivi e al tuo stile di vita.",
-    icon: "/images/diet.svg",
-  },
-  {
-    title: "Consulenza Nutrizionale",
-    description: "Valutazione approfondita delle abitudini alimentari, analisi della composizione corporea e consigli pratici per migliorare la tua nutrizione quotidiana.",
-    icon: "/images/diet-1.svg",
-  },
-  {
-    title: "Nutrizione Sportiva",
-    description: "Piani alimentari specifici per atleti e sportivi a Milano: ottimizzazione delle prestazioni, recupero muscolare e gestione dei macronutrienti.",
-    icon: "/images/exercise.svg",
-  },
-  {
-    title: "Nutrizione Clinica",
-    description: "Supporto nutrizionale specializzato per patologie come diabete, ipercolesterolemia, sindrome metabolica, intolleranze e allergie alimentari.",
-    icon: "/images/diet-2.svg",
-  },
-];
 
 // Process steps
 const processSteps = [
@@ -42,7 +20,7 @@ const processSteps = [
   {
     number: "3",
     title: "Piano Alimentare Personalizzato",
-    description: "Ricevi il tuo piano alimentare creato su misura per i tuoi obiettivi di salute e benessere.",
+    description: "Ricevi il tuo piano alimentare creato su misura per i tuoi obiettivi.",
   },
   {
     number: "4",
@@ -138,17 +116,19 @@ export default function Bionutrizione() {
               <span>/</span>
               <span>Bionutrizione</span>
             </nav>
-            <h1>Nutrizionista a Milano — Bionutrizione</h1>
+            <h1>Nutrizionista a Milano</h1>
             <p>
-              Diete personalizzate e consulenza nutrizionale a Milano per raggiungere i tuoi obiettivi di salute
-              e benessere. Un approccio scientifico e integrato all'alimentazione, su misura per te.
+              Percorsi di nutrizione personalizzati a Milano per ritrovare equilibrio, salute e benessere. Un approccio scientifico e su misura per le esigenze del tuo organismo.
             </p>
             <div className="page-hero-ctas">
-              <Link href="/contatti" className="btn btn-primary">
-                Prenota una consulenza
+              <Link  href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer" className="btn btn-primary">
+                Prenota una visita
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama ora
               </a>
             </div>
           </div>
@@ -159,22 +139,17 @@ export default function Bionutrizione() {
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>Il Tuo Nutrizionista a Milano</h2>
+                <h2>Piani di Nutrizione Personalizzati</h2>
                 <p>
-                  Il nostro servizio di bionutrizione offre un approccio personalizzato all'alimentazione.
-                  Il nostro nutrizionista a Milano crea piani alimentari su misura per le tue esigenze,
-                  il tuo metabolismo e il tuo stile di vita.
+                Nel nostro Studio la nutrizione è parte di un approccio integrato alla salute e al benessere della persona. Attraverso una valutazione approfondita della composizione corporea, del metabolismo e delle abitudini di vita, siamo in grado di elaborare percorsi alimentari personalizzati, costruiti sulle reali esigenze di ogni paziente.
                 </p>
                 <p>
-                  Che tu voglia dimagrire, migliorare le prestazioni sportive o gestire una patologia
-                  come diabete o intolleranze alimentari, ti guidiamo verso uno stile di vita più sano
-                  e consapevole con un percorso di nutrizione integrata.
+               L’obiettivo non è solo raggiungere il peso forma, ma migliorare l’equilibrio dell’organismo, sostenere le performance fisiche e favorire uno stile di vita sano e duraturo nel tempo. Il percorso terapeutico comprende:
                 </p>
                 <ul>
-                  <li>Valutazione metabolica completa</li>
-                  <li>Piani alimentari personalizzati</li>
-                  <li>Supporto continuativo</li>
-                  <li>Approccio integrato con altre discipline</li>
+                  <li>Analisi dello stato nutrizionale e metabolico</li>
+                  <li>Elaborazione di un piano alimentare personalizzato</li>
+                  <li>Monitoraggio periodico dei risultati ottenuti</li>
                 </ul>
               </div>
               <div className="two-col-image">
@@ -191,26 +166,7 @@ export default function Bionutrizione() {
         </section>
 
         {/* Services Grid */}
-        <section className="section section-light">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-subtitle">Il percorso terapeutico</span>
-              <h2 className="section-title">Piani di Nutrizione Personalizzati</h2>
-            </div>
-
-            <div className="service-detail-grid">
-              {subServices.map((service, index) => (
-                <div key={index} className="service-detail-item nutrition">
-                  <span className="service-detail-dot" />
-                  <div className="service-detail-body">
-                    <strong>{service.title}</strong>
-                    <p>{service.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+       
 
         {/* Process Section */}
         <section className="section">
@@ -235,7 +191,7 @@ export default function Bionutrizione() {
         </section>
 
         {/* Benefits Section */}
-        <section className="section section-light">
+        {/* <section className="section section-light">
           <div className="container">
             <div className="two-col-section reverse">
               <div className="two-col-image">
@@ -265,22 +221,24 @@ export default function Bionutrizione() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <section className="cta-section" style={{ background: "var(--color-nutrition)" }}>
           <div className="container">
-            <h2>Prenota una Consulenza con il Nutrizionista a Milano</h2>
+            <h2>Prenota la tua consulenza nutrizionale</h2>
             <p>
-              Inizia il tuo percorso di bionutrizione a Milano: prenota una consulenza e scopri il piano
-              alimentare su misura per i tuoi obiettivi di salute e benessere.
+             Scopri il percorso alimentare personalizzato più adatto al tuo stile di vita e al tuo benessere.
             </p>
             <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
-                Prenota una consulenza
+              <Link  href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer" className="btn btn-primary">
+                Prenota una visita
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama ora
               </a>
             </div>
           </div>

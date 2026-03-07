@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
 const dentalServices = [
   { name: "Conservativa", desc: "Cura e ricostruzione dei denti danneggiati da carie o traumi." },
@@ -26,22 +27,22 @@ const processSteps = [
   {
     number: "1",
     title: "Compilazione documenti e anamnesi",
-    description: "All'arrivo in studio compilerai i documenti per la privacy e l'anamnesi medica. Queste informazioni ci aiutano a comprendere il tuo stato di salute generale.",
+    description: "All’arrivo in studio ti chiederemo di compilare i documenti per la privacy e l’anamnesi medica. Queste informazioni ci aiutano a comprendere il tuo stato di salute generale e a inquadrare correttamente la situazione clinica.",
   },
   {
     number: "2",
     title: "Visita e valutazione clinica",
-    description: "Effettueremo la visita odontoiatrica con eventuali radiografie e fotografie diagnostiche per analizzare con precisione la tua situazione.",
+    description: "Effettueremo la visita odontoiatrica con eventuali radiografie e fotografie diagnostiche. Questo ci permette di analizzare con precisione la tua situazione e individuare le cause dei problemi presenti.",
   },
   {
     number: "3",
     title: "Presentazione del piano di cura",
-    description: "Al termine della visita ti illustreremo le possibili soluzioni terapeutiche più adatte al tuo caso, con trasparenza su costi e tempi.",
+    description: "Al termine della visita ti illustreremo le possibili soluzioni terapeutiche più adatte al tuo caso. In presenza di situazioni complesse, il piano di cura verrà elaborato con maggiore approfondimento e condiviso successivamente.",
   },
   {
     number: "4",
     title: "Piano di cura e follow-up",
-    description: "La segreteria ti fornirà tutte le informazioni su preventivo e modalità di pagamento. Ti accompagneremo durante tutto il percorso e nei controlli successivi.",
+    description: "Una volta definito il piano di cura, la segreteria ti fornirà tutte le informazioni su preventivo e modalità di pagamento. Il nostro team ti accompagnerà durante tutto il percorso di trattamento e nei controlli successivi.",
   },
 ];
 
@@ -136,18 +137,21 @@ export default function Odontoiatria() {
               <span>/</span>
               <span>Odontoiatria</span>
             </nav>
-            <h1>Odontoiatria a Milano</h1>
+            <h1>Dentista a Milano</h1>
             <p>
               Da oltre 35 anni il nostro studio dentistico a Milano offre cure odontoiatriche di eccellenza:
               implantologia, ortodonzia, igiene orale e molto altro. Un team di specialisti dedicato alla salute
               e alla bellezza del tuo sorriso.
             </p>
             <div className="page-hero-ctas">
-              <Link href="/contatti" className="btn btn-primary">
+              <Link  href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer" className="btn btn-primary">
                 Prenota una visita
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama ora
               </a>
             </div>
           </div>
@@ -158,21 +162,18 @@ export default function Odontoiatria() {
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>Il Tuo Dentista a Milano dal 1989</h2>
+                <h2>Il Tuo Dentista a Milano</h2>
                 <p>
-                  Studio Pinoli è un punto di riferimento per l'odontoiatria a Milano da oltre
-                  35 anni. Il nostro team di dentisti e specialisti utilizza le tecnologie più moderne
-                  per garantire trattamenti efficaci, precisi e minimamente invasivi.
+                 Studio Pinoli è un centro odontoiatrico a Milano che unisce esperienza clinica, tecnologie avanzate e attenzione alla persona. Il nostro obiettivo è offrire cure precise, affidabili e costruite sulle reali esigenze di ogni paziente.
                 </p>
                 <p>
-                  Dalla prevenzione alla riabilitazione orale completa — implantologia, ortodonzia,
-                  sbiancamento e protesi — offriamo tutto ciò di cui hai bisogno in un unico studio
-                  dentistico a Milano, in zona Certosa.
+Crediamo in un’odontoiatria attenta, che mette al centro la salute orale, il comfort e la qualità del percorso di cura.
                 </p>
+                <span><b>Il nostro approccio si basa su:</b></span>
                 <ul>
-                  <li>Tecnologie diagnostiche all'avanguardia</li>
-                  <li>Approccio minimamente invasivo</li>
-                  <li>Team di specialisti qualificati</li>
+                  <li>Tecnologie diagnostiche avanzate</li>
+                  <li>Un team di professionisti qualificati</li>
+                  <li>Trattamenti accurati e personalizzati</li>
                   <li>Ambiente sereno e accogliente</li>
                 </ul>
               </div>
@@ -247,17 +248,19 @@ export default function Odontoiatria() {
         {/* CTA Section */}
         <section className="cta-section">
           <div className="container">
-            <h2>Prenota la Tua Visita Dentistica a Milano</h2>
+            <h2>Prenota la tua visita odontoiatrica a Milano</h2>
             <p>
-              Il nostro team di dentisti a Milano è pronto ad accoglierti per una prima visita gratuita,
-              con valutazione completa e piano di trattamento personalizzato.
+          Il nostro team di ti seguirà per una prima visita accurata, con valutazione completa della salute orale e definizione del percorso di cura più adatto alle tue esigenze.
             </p>
             <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
+              <Link  href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer"  className="btn btn-primary">
                 Prenota ora
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama ora
               </a>
             </div>
           </div>

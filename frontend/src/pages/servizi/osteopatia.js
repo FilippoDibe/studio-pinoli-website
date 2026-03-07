@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-
+const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 const whenUseful = [
   "Dolori mandibolari e disturbi dell'ATM",
   "Cefalee e tensioni muscolari del viso e del collo",
@@ -118,15 +118,18 @@ export default function Osteopatia() {
             <h1>Osteopatia a Milano</h1>
             <p>
               Equilibrio e benessere per il tuo corpo. L'osteopatia ristabilisce l'equilibrio
-              funzionale attraverso tecniche manuali su muscoli, articolazioni e tessuti —
+              funzionale attraverso tecniche manuali su muscoli, articolazioni e tessuti 
               in sinergia con l'odontoiatria per trattare i disturbi dell'ATM.
             </p>
             <div className="page-hero-ctas">
-              <Link href="/contatti" className="btn btn-primary">
-                Prenota una consulenza
+              <Link  href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer" className="btn btn-primary">
+                Prenota una visita
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama ora
               </a>
             </div>
           </div>
@@ -209,16 +212,14 @@ export default function Osteopatia() {
                   benessere della persona.
                 </p>
                 <p>
-                  Questo approccio integrato consente di intervenire non solo sul sintomo,
-                  ma anche sulle cause che possono contribuire ai disturbi muscolari e
-                  articolari, offrendo una risposta terapeutica più completa ed efficace.
+                  Questo approccio integrato consente di intervenire non solo sul sintomo, ma anche sulle cause che possono contribuire ai disturbi muscolari e articolari.
                 </p>
                 <Link
                   href="/contatti"
                   className="btn btn-outline"
                   style={{ borderColor: "var(--color-osteopatia)", color: "var(--color-osteopatia)" }}
                 >
-                  Prenota una valutazione
+                  Prenota visita
                 </Link>
               </div>
             </div>
@@ -257,11 +258,14 @@ export default function Osteopatia() {
               alle tue esigenze e migliorare il tuo benessere muscolare e articolare.
             </p>
             <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
+              <Link  href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer" className="btn btn-primary">
                 Prenota ora
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama ora
               </a>
             </div>
           </div>

@@ -2,12 +2,12 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-
+const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 // Treatments data
 const treatments = [
   {
-    title: "Filler con Acido Ialuronico",
-    description: "Filler labbra, zigomi e rughe con acido ialuronico a Milano: riduzione delle rughe, definizione dei contorni e volume naturale al viso. Risultati immediati.",
+    title: "Filler",
+    description: "Filler labbra, zigomi iduzione delle rughe, definizione dei contorni e volume naturale al viso. Risultati immediati.",
     icon: "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z",
   },
   {
@@ -136,16 +136,17 @@ export default function MedicinaEstetica() {
             </nav>
             <h1>Medicina Estetica a Milano</h1>
             <p>
-              Trattamenti estetici non invasivi a Milano per esaltare la tua bellezza naturale.
-              Filler con acido ialuronico, biorivitalizzazione, mesoterapia e protocolli anti-aging
-              per risultati visibili e armoniosi.
+           Eseguiamo trattamenti estetici non invasivi per esaltare la tua bellezza naturale. Filler, biorivitalizzazione, mesoterapia e protocolli anti-aging per risultati visibili e armoniosi.
             </p>
             <div className="page-hero-ctas">
-              <Link href="/contatti" className="btn btn-primary">
-                Prenota una consulenza
+              <Link href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer"className="btn btn-primary">
+                Prenota un trattamento
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama in Studio
               </a>
             </div>
           </div>
@@ -156,17 +157,12 @@ export default function MedicinaEstetica() {
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
-                <h2>Medicina Estetica Viso a Milano — Risultati Naturali</h2>
+                <h2>Un Approccio Integrato alla Bellezza</h2>
                 <p>
-                  La nostra filosofia di medicina estetica a Milano si basa sull'esaltazione
-                  della bellezza naturale di ogni persona. Non stravolgiamo i lineamenti,
-                  ma lavoriamo per valorizzare ciò che rende unico ogni volto.
+                 La nostra filosofia di medicina estetica a Milano si basa sull'esaltazione della bellezza naturale di ogni persona. Non stravolgiamo i lineamenti, ma lavoriamo per valorizzare ciò che rende unico ogni volto.
                 </p>
                 <p>
-                  Utilizziamo solo prodotti certificati CE — filler con acido ialuronico, tossina
-                  botulinica e principi attivi di alta qualità — con tecniche all'avanguardia per
-                  garantire risultati naturali, sicuri e duraturi. Ogni trattamento estetico viene
-                  personalizzato sulle tue esigenze specifiche.
+            Utilizziamo solo prodotti certificati CE — filler con acido ialuronico, tossina botulinica e principi attivi di alta qualità — con tecniche all'avanguardia per garantire risultati naturali, sicuri e duraturi. Ogni trattamento estetico viene personalizzato sulle tue esigenze specifiche.
                 </p>
                 <ul>
                   <li>Approccio non invasivo</li>
@@ -237,7 +233,7 @@ export default function MedicinaEstetica() {
         </section>
 
         {/* Image + Text Section */}
-        <section className="section section-light">
+        {/* <section className="section section-light">
           <div className="container">
             <div className="two-col-section reverse">
               <div className="two-col-image">
@@ -267,7 +263,7 @@ export default function MedicinaEstetica() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <section className="cta-section" style={{ background: "var(--color-aesthetic)" }}>
@@ -278,11 +274,14 @@ export default function MedicinaEstetica() {
               Filler, biorivitalizzazione, mesoterapia: ti guidiamo verso il risultato migliore per te.
             </p>
             <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
-                Prenota una consulenza
+              <Link h href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer" className="btn btn-primary">
+                Prenota un trattamento 
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:393316713904" className="btn btn-secondary">
+                Chiama in Studio
               </a>
             </div>
           </div>

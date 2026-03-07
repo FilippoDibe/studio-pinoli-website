@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-
+const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 const benefits = [
   "Ridurre stress e tensioni emotive",
   "Migliorare la gestione dell'ansia",
@@ -213,11 +213,14 @@ L’art-terapia è una disciplina che utilizza l’espressione artistica come st
                   per un supporto emotivo durante i percorsi di cura.
                 </p>
                 <Link
-                  href="/contatti"
+                  h href={BOOKING_URL}
+            
+                 target="_blank"
+                rel="noopener noreferrer"
                   className="btn btn-outline"
                   style={{ borderColor: "var(--color-art)", color: "var(--color-art)" }}
                 >
-                  Scopri il tuo percorso
+                  Prenota una visita
                 </Link>
               </div>
             </div>
@@ -256,11 +259,11 @@ L’art-terapia è una disciplina che utilizza l’espressione artistica come st
               serenità e benessere emotivo. Il primo passo è una semplice conversazione.
             </p>
             <div className="cta-buttons">
-              <Link href="/contatti" className="btn btn-primary">
-                Prenota ora
+              <Link href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                Prenota una visita
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama ora
               </a>
             </div>
           </div>
