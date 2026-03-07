@@ -3724,7 +3724,83 @@ ul, ol {
   transform: scale(1.4);
 }
 
+/* Desktop team grid — shown on ≥769px, hidden on mobile */
+.team-desktop-section {
+  margin-top: 48px;
+  display: block;
+}
+
+.team-desktop-group {
+  margin-bottom: 44px;
+}
+
+.team-desktop-group:last-child {
+  margin-bottom: 0;
+}
+
+.team-desktop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.team-desktop-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-desktop-photo {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--gray-100);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+  cursor: default;
+}
+
+.team-desktop-photo:hover .team-carousel-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team-desktop-name {
+  padding: 12px 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.team-desktop-name strong {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gray-800);
+}
+
+.team-desktop-name span {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+/* Mobile only: carousels visible, desktop grid hidden */
+.team-mobile-only {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .team-desktop-section {
+    display: none;
+  }
+
+  .team-mobile-only {
+    display: grid !important;
+  }
+
   .team-carousels-row {
     grid-template-columns: 1fr;
     gap: 36px;

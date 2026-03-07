@@ -124,7 +124,7 @@ function TeamCarousel({ members, label }) {
         setCurrent((c) => (c + 1) % total);
         setAnimating(false);
       }, 300);
-    }, 4500);
+    }, 7000);
   };
 
   useEffect(() => {
@@ -185,6 +185,37 @@ function TeamCarousel({ members, label }) {
         <button className="team-carousel-btn" onClick={() => go(current + 1, "next")} aria-label="Successivo">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
+      </div>
+    </div>
+  );
+}
+
+// Desktop Grid Card
+function TeamDesktopCard({ member }) {
+  return (
+    <div className="team-desktop-card">
+      <div className="team-desktop-photo">
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          style={{ objectFit: "cover", objectPosition: "top center" }}
+          sizes="(max-width: 1200px) 25vw, 280px"
+        />
+        {member.specialty && (
+          <span className="team-carousel-badge" style={{ "--member-color": member.color }}>
+            {member.specialty}
+          </span>
+        )}
+        <div className="team-carousel-overlay">
+          <h4>{member.name}</h4>
+          <p className="team-carousel-role">{member.role}</p>
+          <p className="team-carousel-bio">{member.description}</p>
+        </div>
+      </div>
+      <div className="team-desktop-name">
+        <strong>{member.name}</strong>
+        <span>{member.role}</span>
       </div>
     </div>
   );
@@ -375,8 +406,28 @@ export default function ChiSiamo() {
               </div>
             </div>
 
-            {/* Two carousels side by side */}
-            <div className="team-carousels-row">
+            {/* Desktop: static grid of all members */}
+            <div className="team-desktop-section">
+              <div className="team-desktop-group">
+                <p className="team-group-label">Staff Clinico</p>
+                <div className="team-desktop-grid">
+                  {clinicalTeam.slice(1).map((m, i) => (
+                    <TeamDesktopCard key={i} member={m} />
+                  ))}
+                </div>
+              </div>
+              <div className="team-desktop-group">
+                <p className="team-group-label">Staff di Studio</p>
+                <div className="team-desktop-grid">
+                  {supportTeam.map((m, i) => (
+                    <TeamDesktopCard key={i} member={m} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile: two carousels side by side */}
+            <div className="team-carousels-row team-mobile-only">
               <TeamCarousel members={clinicalTeam.slice(1)} label="Staff Clinico" />
               <TeamCarousel members={supportTeam} label="Staff di Studio" />
             </div>
