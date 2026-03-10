@@ -207,15 +207,13 @@ function TeamDesktopCard({ member }) {
             {member.specialty}
           </span>
         )}
-        <div className="team-carousel-overlay">
-          <h4>{member.name}</h4>
-          <p className="team-carousel-role">{member.role}</p>
-          <p className="team-carousel-bio">{member.description}</p>
-        </div>
       </div>
-      <div className="team-desktop-name">
-        <strong>{member.name}</strong>
-        <span>{member.role}</span>
+      <div className="team-desktop-info">
+        <strong className="team-desktop-info-name">{member.name}</strong>
+        <span className="team-desktop-info-role">{member.role}</span>
+        <div className="team-desktop-bio-wrap">
+          <p className="team-desktop-bio-text">{member.description}</p>
+        </div>
       </div>
     </div>
   );

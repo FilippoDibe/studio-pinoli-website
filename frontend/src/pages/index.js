@@ -211,7 +211,7 @@ export default function Home({ posts }) {
             </div>
           </div>
         </section>
-  <section className={styles.ctaSection}>
+  <section style={{marginBottom: '100px'}} className={styles.ctaSection}>
           <div className="container">
             <div className={styles.ctaGrid}>
               <div className={styles.ctaContent}>
@@ -247,8 +247,9 @@ export default function Home({ posts }) {
             </div>
           </div>
         </section>
+        
         {/* Services mosaic */}
-        <section className="mosaic-section">
+        <section style={{marginBottom: '100px'}} className="mosaic-section">
           <div className="mosaic-section-bg" aria-hidden="true" />
           <div className="mosaic-section-topline" aria-hidden="true" />
           <div className="container">

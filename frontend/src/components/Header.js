@@ -87,18 +87,17 @@ export default function Header() {
               <Link href="/prima-visita">Prima Visita</Link>
               <Link href="/chi-siamo">Chi Siamo</Link>
               <Link href="/blog">Blog</Link>
-              <a
-              href="/contatti" className="nav-management"
-              >
+              <Link href="/contatti" className="nav-management">
                 Contattaci
-              </a>
-              <Link   
-              href={BOOKING_URL}
-              className="nav-cta"
-                 target="_blank"
-                rel="noopener noreferrer" >
-                Prenota Ora
               </Link>
+              <a
+                href={BOOKING_URL}
+                className="nav-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Prenota Ora
+              </a>
             </nav>
 
             <button
@@ -147,7 +146,6 @@ export default function Header() {
           <Link href="/prima-visita" onClick={closeMenu}>Prima Visita</Link>
           <Link href="/chi-siamo" onClick={closeMenu}>Chi Siamo</Link>
           <Link href="/blog" onClick={closeMenu}>Blog</Link>
-          <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Gestionale</a>
           <Link href="/contatti" onClick={closeMenu}>Contatti</Link>
         </div>
 
@@ -165,11 +163,11 @@ export default function Header() {
             Apri Gestionale
           </a>
           <div className="mobile-nav-contact">
-            <a href="tel:+390242272381">
+            <a href="tel:+393316713904">
               <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
-              02 4272381
+              +39 3316713904
             </a>
           </div>
         </div>
