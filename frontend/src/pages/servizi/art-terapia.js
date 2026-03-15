@@ -48,45 +48,56 @@ const valuePros = [
 
 const faqs = [
   {
-    question: "Cos'è l'art-terapia e a cosa serve?",
+    question: "Cos'è l'art-terapia e come funziona?",
     answer:
-      "L'art-terapia è una disciplina che utilizza l'espressione artistica come strumento di supporto emotivo e crescita personale. Attraverso il disegno, il colore e altre forme creative, è possibile esplorare emozioni, ridurre lo stress e favorire una maggiore consapevolezza di sé. Non è una lezione d'arte, ma un percorso terapeutico.",
+      "L'art-terapia utilizza attività creative come disegno, pittura o modellazione manuale per favorire l'espressione delle emozioni e migliorare il benessere psicologico.",
   },
   {
-    question: "Devo saper disegnare per fare art-terapia?",
+    question: "A chi è rivolta l'art-terapia?",
     answer:
-      "Assolutamente no. L'art-terapia non richiede alcuna competenza artistica. L'obiettivo non è creare un'opera d'arte, ma usare il processo creativo come strumento di esplorazione emotiva. Il risultato finale non viene valutato esteticamente.",
+      "Può essere utile per adulti, adolescenti e bambini che desiderano migliorare la gestione delle emozioni o ridurre lo stress.",
   },
   {
-    question: "A chi è indicata l'art-terapia?",
+    question: "Serve avere capacità artistiche per partecipare?",
     answer:
-      "L'art-terapia è indicata a chiunque voglia esplorare il proprio benessere emotivo: adulti che vivono momenti di stress, persone che vogliono lavorare sulla propria consapevolezza, o chi desidera un supporto emotivo durante percorsi di cura medica o odontoiatrica.",
+      "No. L'obiettivo non è il risultato estetico ma il processo creativo e l'espressione personale.",
   },
   {
-    question: "Quanti incontri sono necessari?",
+    question: "Quali benefici può offrire l'art-terapia?",
     answer:
-      "Il percorso di art-terapia viene definito in base alle esigenze individuali. Può trattarsi di incontri singoli di esplorazione o di un percorso strutturato nel tempo. Il numero di sessioni verrà concordato insieme durante il primo colloquio.",
+      "Può aiutare a ridurre stress e tensione emotiva, migliorare la consapevolezza di sé e favorire il benessere psicologico.",
+  },
+  {
+    question: "Come si svolge una seduta di art-terapia?",
+    answer:
+      "Durante l'incontro vengono proposte attività creative guidate che permettono di esplorare emozioni e vissuti attraverso il linguaggio artistico.",
   },
 ];
 
 const relatedServices = [
   {
-    title: "Medicina Integrata",
-    description: "Approccio olistico per mente e corpo in equilibrio.",
-    href: "/servizi/medicina-integrata",
-    image: "/foto/image-036-foto-nastia-cc1a9553.jpg",
+    title: "Odontoiatria",
+    description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
+    href: "/servizi/odontoiatria",
+    image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
   },
   {
-    title: "Osteopatia",
-    description: "Trattamenti manuali per benessere muscolare e articolare.",
-    href: "/servizi/osteopatia",
-    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+    title: "Bionutrizione",
+    description: "Piani alimentari personalizzati per il tuo benessere.",
+    href: "/servizi/bionutrizione",
+    image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
     image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
+  },
+  {
+    title: "Osteopatia",
+    description: "Trattamenti manuali per benessere muscolare e articolare.",
+    href: "/servizi/osteopatia",
+    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
   },
 ];
 
@@ -121,10 +132,23 @@ export default function ArtTerapia() {
       <main id="main-content">
         {/* Hero */}
         <section className="service-hero art">
-          <div
-            className="service-hero-bg"
-            style={{ backgroundImage: "url('/foto/image-048-foto-nastia-cc1a9613.jpg')" }}
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+          >
+            <source src="/art-terapia/WhatsApp%20Video%202026-03-14%20at%2011.33.43%20%281%29.mp4" type="video/mp4" />
+          </video>
           <div className="service-hero-overlay" />
           <div className="container">
             <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -184,8 +208,35 @@ export default function ArtTerapia() {
           </div>
         </section>
 
-        {/* A Cosa Serve */}
+        {/* Specialist */}
         <section className="section section-light">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">La tua specialista</span>
+              <h2 className="section-title">Chi Ti Seguirà</h2>
+            </div>
+            <div className="specialist-solo-card" style={{ "--specialist-accent": "var(--color-art)" }}>
+              <div className="specialist-photo-wrap">
+                <Image
+                  src="/team/IRINA.jpeg"
+                  alt="Dr.ssa Irina Metliaeva — Art-Terapeuta Studio Pinoli Milano"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center center" }}
+                  sizes="340px"
+                />
+              </div>
+              <div className="specialist-info-panel">
+                <span className="specialist-role-tag">Art-Terapia</span>
+                <h3>Dr.ssa Irina Metliaeva</h3>
+                <span className="specialist-sub-role">Art-Terapeuta</span>
+                <p>Art-terapeuta con formazione in psicologia e terapia espressiva. Conduce percorsi di arte-terapia orientati alla gestione dello stress, all'equilibrio emotivo e al benessere psico-fisico, in un contesto clinico strutturato che valorizza l'espressione creativa come strumento di cura autentica.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* A Cosa Serve */}
+        <section className="section">
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Cosa può fare per te</span>
@@ -307,7 +358,8 @@ export default function ArtTerapia() {
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Scopri anche</span>
-              <h2 className="section-title">Altri Servizi</h2>
+              <h2 className="section-title">Scopri Altre Soluzioni Terapeutiche</h2>
+              <p className="section-description">Scopri le altre soluzioni terapeutiche pensate per la salute globale della persona.</p>
             </div>
             <div className="services-grid">
               {relatedServices.map((service) => (

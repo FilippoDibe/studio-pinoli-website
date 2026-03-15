@@ -67,7 +67,28 @@ const services = [
     theme: "art",
   },
 ];
-
+const valueProps = [
+  {
+    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
+    title: "Oltre 35 Anni di Esperienza",
+    description: "Professionalità consolidata e aggiornamento continuo per garantire le migliori cure.",
+  },
+  {
+    icon: "M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z",
+    title: "Approccio Integrato",
+    description: "Combiniamo odontoiatria, nutrizione e medicina integrata per il tuo benessere completo.",
+  },
+  {
+    icon: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z",
+    title: "Team Specializzato",
+    description: "Professionisti qualificati pronti ad accoglierti e guidarti nel tuo percorso di cura.",
+  },
+  {
+    icon: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z",
+    title: "Tecnologie Moderne",
+    description: "Strumentazioni all'avanguardia per diagnosi precise e trattamenti efficaci.",
+  },
+];
 const studioStats = [
   { numeric: 35,    suffix: "+",  label: "Anni di esperienza" },
   { numeric: 15000, suffix: "+",  label: "Pazienti seguiti" },
@@ -159,14 +180,16 @@ export default function Home({ posts }) {
               <h1 className={styles.heroTag}>Studio Medico Dentistico a Milano</h1>
               <h1>Odontoiatria, Bio-Nutrizione e Medicina integrata</h1>
               <p>
-               Centro medico nel cuore di Milano specializzato in odontoiatria, bio-nutrizione e medicina olistica, con percorsi personalizzati per chi ricerca qualità, precisione e risultati duraturi nel tempo.
+               Studio Medico Dentistico nel cuore di Milano specializzato in odontoiatria, bio-nutrizione e medicina integrata, con percorsi personalizzati per chi ricerca qualità, precisione e risultati duraturi nel tempo.
               </p>
               <div className={styles.heroActions}>
-                <Link href="/prima-visita" className="btn btn-primary btn-lg">
-                  Prenota la prima visita
+                <Link     href={BOOKING_URL}     target="_blank"
+                rel="noopener noreferrer" className="btn btn-primary btn-lg">
+                  Prenota una visita
                 </Link>
+                 
                 <a href="tel:+393316713904" className="btn btn-white btn-lg">
-                  Chiama ora
+                  Chiama in Studio
                 </a>
               </div>
             </div>
@@ -190,7 +213,7 @@ export default function Home({ posts }) {
                 <span className={styles.sectionTag}>Chi siamo</span>
                 <h2>Studio Medico Dentistico a Milano, cinque aree di competenza integrate</h2>
                 <p>
-                  <b>Studio Pinoli</b>, situato nel cuore di Milano, è uno Studio medico specializzato in <b>odontoiatria, bio-nutrizione e medicina integrata</b>. Lo Studio, guidato dalla direzione sanitaria del Dr. Luca Maria Pinoli, offre un ambiente dove professionisti del benessere lavorano in sinergia per offrirti un percorso di cure personalizzato.
+                  <b>Studio Pinoli</b>, situato nel cuore di Milano, è uno Studio Medico Dentistico specializzato in <b>odontoiatria, bio-nutrizione e medicina integrata</b>. Lo Studio, guidato dalla direzione sanitaria del Dr. Luca Maria Pinoli, offre un ambiente dove professionisti del benessere lavorano in sinergia per offrirti un percorso di cure personalizzato.
                 </p>
                 <p>
                Da oltre 35 anni, accompagniamo i nostri pazienti con un approccio clinico integrato, grazie all’utilizzo di tecnologie avanzate e un’attenzione costante alla qualità dell’esperienza clinica in Studio.
@@ -211,45 +234,10 @@ export default function Home({ posts }) {
             </div>
           </div>
         </section>
-  <section style={{marginBottom: '100px'}} className={styles.ctaSection}>
-          <div className="container">
-            <div className={styles.ctaGrid}>
-              <div className={styles.ctaContent}>
-                <span className={styles.sectionTagLight}>Prima visita</span>
-                <h3 style={{fontSize:"2.5rem", marginTop:"20px", color:"white"}}>Prenota una prima visita in Studio </h3>
-                <p>
-               La prima visita e il momento in cui analizziamo la tua situazione clinica, ascoltiamo i tuoi obiettivi e definiamo il piano di cure migliore per te. 
-                </p>
-                <ul>
-                  <li>Analisi del quadro clinico</li>
-                  <li>Piano di cura personalizzato</li>
-                  <li>Preventivo chiaro e trasparente</li>
-                </ul>
-                <div className={styles.ctaActions}>
-                  <Link href={BOOKING_URL} className="btn btn-white btn-lg"  target="_blank"
-                rel="noopener noreferrer" >
-                    Prenota ora
-                  </Link>
-                  <Link href="/prima-visita" className={styles.ctaGhostBtn}>
-                    Come funziona
-                  </Link>
-                </div>
-              </div>
-              <div className={styles.ctaImageWrap}>
-                <Image
-                  src={IMAGES.primaVisita}
-                  alt="Prima visita dentista gratuita Studio Pinoli Milano"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 40vw"
-                  className={styles.coverImage}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+
         
         {/* Services mosaic */}
-        <section style={{marginBottom: '100px'}} className="mosaic-section">
+        <section className="mosaic-section">
           <div className="mosaic-section-bg" aria-hidden="true" />
           <div className="mosaic-section-topline" aria-hidden="true" />
           <div className="container">
@@ -284,8 +272,64 @@ export default function Home({ posts }) {
             </div>
           </div>
         </section>
+  <section className="section">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">I nostri punti di forza</span>
+              <h2 className="section-title">Perché Scegliere Studio Pinoli</h2>
+            </div>
 
-      
+            <div className="value-props-grid">
+              {valueProps.map((prop, index) => (
+                <div key={index} className="value-prop-item">
+                  <div className="value-prop-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d={prop.icon} />
+                    </svg>
+                  </div>
+                  <h4>{prop.title}</h4>
+                  <p>{prop.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section style={{marginBottom: '100px'}} className={styles.ctaSection}>
+          <div className="container">
+            <div className={styles.ctaGrid}>
+              <div className={styles.ctaContent}>
+                <span className={styles.sectionTagLight}>Prima visita</span>
+                <h3 style={{fontSize:"2.5rem", marginTop:"20px", color:"white"}}>Prenota una prima visita in Studio </h3>
+                <p>
+               La prima visita è il momento in cui analizziamo la tua situazione clinica, ascoltiamo i tuoi obiettivi e definiamo il piano di cure migliore per te. 
+                </p>
+                <ul>
+                  <li>Analisi del quadro clinico</li>
+                  <li>Piano di cura personalizzato</li>
+                  <li>Preventivo chiaro e trasparente</li>
+                </ul>
+                <div className={styles.ctaActions}>
+                  <Link href={BOOKING_URL} className="btn btn-white btn-lg"  target="_blank"
+                rel="noopener noreferrer" >
+                    Prenota ora
+                  </Link>
+                  <Link href="/prima-visita" className={styles.ctaGhostBtn}>
+                    Come funziona
+                  </Link>
+                </div>
+              </div>
+              <div className={styles.ctaImageWrap}>
+                <Image
+                  src={IMAGES.primaVisita}
+                  alt="Prima visita dentista gratuita Studio Pinoli Milano"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 40vw"
+                  className={styles.coverImage}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
       
 
@@ -294,7 +338,7 @@ export default function Home({ posts }) {
             <div className={styles.contactGrid}>
               <div className={styles.contactInfo}>
                 <h2>Contatti – Studio Medico Dentistico a Milano</h2>
-                <p>Ti aspettiamo nel nostro <b>Studio medico dentistico a Milano</b>  per informazioni, consulenze e appuntamenti personalizzati.</p>
+                <p>Ti aspettiamo nel nostro <b>Studio Medico Dentistico a Milano</b>  per informazioni, consulenze e appuntamenti personalizzati.</p>
                 <address>
                   <strong>Studio Pinoli</strong>
                   <br />
@@ -302,9 +346,7 @@ export default function Home({ posts }) {
                   <br />
                   20144 Milano (MI)
                 </address>
-                <p className={styles.phone}>
-                  <a href="tel:+393316713904">+39 3316713904</a>
-                </p>
+                
                 <Link style={{ marginTop: '1.2rem' }} href="/contatti" className="btn btn-primary">
                   Contattaci
                 </Link>
@@ -323,28 +365,6 @@ export default function Home({ posts }) {
             </div>
           </div>
         </section>
-          {/* {posts.length > 0 && (
-          <section className={styles.blogSection}>
-            <div className="container">
-              <div className={styles.blogHead}>
-                <h2>Dal nostro blog</h2>
-                <Link href="/blog" className={styles.textLink}>
-                  Tutti gli articoli
-                </Link>
-              </div>
-              <div className={styles.blogGrid}>
-                {posts.map((post) => (
-                  <article key={post.id} className={styles.blogCard}>
-                    <h3 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                    <Link href={`/blog/${post.slug}`} className={styles.textLink}>
-                      Leggi articolo
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        )} */}
       </main>
     </>
   );

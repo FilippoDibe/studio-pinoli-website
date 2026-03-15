@@ -4,20 +4,24 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "Quali sono gli orari di apertura?",
-    answer: "Lo studio è aperto dal lunedì al venerdì, dalle 9:00 alle 19:00. Per urgenze fuori orario, potete contattarci via WhatsApp al +39 331 671 3904."
+    question: "Come prenotare una visita dentistica a Milano?",
+    answer: "È possibile prenotare un appuntamento contattando lo studio telefonicamente o compilando il modulo di contatto presente sul sito."
   },
   {
-    question: "Come posso prenotare un appuntamento?",
-    answer: "Potete prenotare telefonicamente, via email, tramite WhatsApp oppure compilando il form di contatto in questa pagina. Vi ricontatteremo entro 24 ore."
+    question: "Dove si trova lo studio dentistico?",
+    answer: "Lo studio si trova a Milano ed è facilmente raggiungibile sia con i mezzi pubblici sia in auto."
   },
   {
-    question: "Dove si trova lo studio?",
-    answer: "Siamo in Via Domenico Cimarosa 4, 20144 Milano (zona Corso Vercelli). Lo studio è facilmente raggiungibile con la metro M1 (fermata Pagano) o con il tram (linee 16, 29 e 30)."
+    question: "È possibile richiedere informazioni prima di prenotare?",
+    answer: "Sì. Lo staff dello studio è disponibile per fornire informazioni sui servizi e sulle modalità di visita."
   },
   {
-    question: "Accettate pagamenti rateizzati?",
-    answer: "Sì, offriamo diverse soluzioni di pagamento dilazionato per venire incontro alle esigenze dei nostri pazienti. Contattateci per maggiori informazioni."
+    question: "Cosa fare in caso di urgenza dentale?",
+    answer: "In caso di dolore o urgenza è consigliabile contattare lo studio il prima possibile per valutare una visita nel più breve tempo possibile."
+  },
+  {
+    question: "Come modificare o spostare un appuntamento?",
+    answer: "Per modificare o annullare un appuntamento è sufficiente contattare lo studio con anticipo."
   }
 ];
 

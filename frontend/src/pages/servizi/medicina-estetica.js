@@ -15,12 +15,12 @@ const treatments = [
   },
   {
     title: "Biorivitalizzazione",
-    description: "Microiniezioni di acido ialuronico e vitamine per stimolare il collagene, idratare la pelle in profondità e migliorarne luminosità e tono. Ideale per la prevenzione anti-aging.",
+    description: "Microiniezioni per stimolare il collagene, idratare la pelle in profondità e migliorarne luminosità e tono. Ideale per la prevenzione anti-aging.",
     icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
   },
   {
     title: "Mesoterapia",
-    description: "Microiniezioni di principi attivi per trattare inestetismi cutanei e migliorare la qualità della pelle.",
+    description: "Microiniezioni di principi attivi per trattare inestetismi cutanei (cellulite, adipe, invecchiamento cutaneo) o dolori (artrosi, contratture).",
     icon: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z",
   },
   {
@@ -84,10 +84,16 @@ const relatedServices = [
     image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
   },
   {
-    title: "Medicina Integrata",
-    description: "Approccio olistico per mente e corpo.",
-    href: "/servizi/medicina-integrata",
-    image: "/foto/image-036-foto-nastia-cc1a9553.jpg",
+    title: "Osteopatia",
+    description: "Trattamenti manuali per il benessere muscolare e articolare.",
+    href: "/servizi/osteopatia",
+    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+  },
+  {
+    title: "Art-Terapia",
+    description: "Percorsi creativi per il benessere emotivo e psicologico.",
+    href: "/servizi/art-terapia",
+    image: "/foto/image-050-foto-nastia-cc1a9620.jpg",
   },
 ];
 
@@ -158,36 +164,6 @@ export default function MedicinaEstetica() {
         </section>
 
         {/* Overview Section */}
-        <section className="section">
-          <div className="container">
-            <div className="two-col-section">
-              <div className="two-col-content">
-                <h2>Un Approccio Integrato alla Bellezza</h2>
-                <p>
-                  La nostra filosofia di medicina estetica a Milano si basa sull'esaltazione della bellezza naturale di ogni persona. Non stravolgiamo i lineamenti, ma lavoriamo per valorizzare ciò che rende unico ogni volto.
-                </p>
-                <p>
-                  Utilizziamo solo prodotti certificati CE — filler con acido ialuronico, tossina botulinica e principi attivi di alta qualità — con tecniche all'avanguardia per garantire risultati naturali, sicuri e duraturi. Ogni trattamento estetico viene personalizzato sulle tue esigenze specifiche.
-                </p>
-                <ul>
-                  <li>Approccio non invasivo</li>
-                  <li>Risultati naturali e armoniosi</li>
-                  <li>Prodotti di alta qualità certificati</li>
-                  <li>Trattamenti personalizzati</li>
-                </ul>
-              </div>
-              <div className="two-col-image">
-                <Image
-                  src="/foto/image-042-foto-nastia-cc1a9571.jpg"
-                  alt="Trattamento filler medicina estetica viso Milano Studio Pinoli"
-                  width={600}
-                  height={400}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Quote Section */}
         <section className={styles.quoteSection}>
@@ -250,7 +226,7 @@ export default function MedicinaEstetica() {
             <h2>Prenota una Consulenza di Medicina Estetica a Milano</h2>
             <p>
               Scopri quali trattamenti estetici a Milano sono più adatti a valorizzare la tua bellezza naturale.
-              Filler, biorivitalizzazione, mesoterapia: ti guidiamo verso il risultato migliore per te.
+             Il nostro team di esperti ti guidera verso il risultato migliore per te.
             </p>
             <div className="cta-buttons">
               <Link
@@ -289,7 +265,8 @@ export default function MedicinaEstetica() {
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Scopri anche</span>
-              <h2 className="section-title">Altri Servizi</h2>
+              <h2 className="section-title">Scopri Altre Soluzioni Terapeutiche</h2>
+              <p className="section-description">Scopri le altre soluzioni terapeutiche pensate per la salute globale della persona.</p>
             </div>
 
             <div className="services-grid">

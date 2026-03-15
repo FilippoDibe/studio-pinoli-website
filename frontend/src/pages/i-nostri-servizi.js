@@ -144,61 +144,32 @@ function ServiceCarousel() {
   );
 }
 
-// Value propositions
-const valueProps = [
-  {
-    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
-    title: "Oltre 35 Anni di Esperienza",
-    description: "Professionalità consolidata e aggiornamento continuo per garantire le migliori cure.",
-  },
-  {
-    icon: "M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z",
-    title: "Approccio Integrato",
-    description: "Combiniamo odontoiatria, nutrizione e medicina olistica per il tuo benessere completo.",
-  },
-  {
-    icon: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z",
-    title: "Team Specializzato",
-    description: "Professionisti qualificati pronti ad accoglierti e guidarti nel tuo percorso di cura.",
-  },
-  {
-    icon: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z",
-    title: "Tecnologie Moderne",
-    description: "Strumentazioni all'avanguardia per diagnosi precise e trattamenti efficaci.",
-  },
-];
-
 // FAQ Data
 const faqs = [
   {
-    question: "Quali servizi offrite in studio?",
+    question: "Quali servizi offre uno Studio Dentistico multidisciplinare a Milano?",
     answer:
-      "Offriamo un approccio integrato alla salute con quattro aree principali: Odontoiatria (implantologia, ortodonzia, igiene orale, estetica dentale), Bionutrizione (diete personalizzate, piani alimentari), Medicina Estetica (filler, biorivitalizzazione, anti-aging) e Medicina Integrata (oli essenziali, aromaterapia, approccio olistico).",
+      "Uno studio multidisciplinare integra diverse competenze per prendersi cura della salute della persona in modo completo. Oltre all'odontoiatria, Studio Pinoli offre percorsi legati alla nutrizione, all'osteopatia ed al benessere emotivo, con un approccio coordinato tra professionisti.",
   },
   {
-    question: "Cosa significa approccio integrato alla salute?",
+    question: "Perché scegliere uno Studio che integra più discipline?",
     answer:
-      "Il nostro approccio integrato considera la persona nella sua totalità. Crediamo che la salute orale, l'alimentazione e il benessere psico-fisico siano interconnessi. Per questo offriamo servizi che lavorano in sinergia per raggiungere uno stato di salute ottimale.",
+      "Molti disturbi sono collegati tra loro: alimentazione, postura, salute orale e stress possono influenzarsi reciprocamente. Un approccio integrato permette di individuare le cause dei problemi e non solo i sintomi.",
   },
   {
-    question: "Come posso prenotare una prima visita?",
+    question: "Come capire quale trattamento è più adatto alle proprie esigenze?",
     answer:
-      "Puoi prenotare una prima visita chiamando il numero 02 4272381, inviando un'email a info@studiopinoli.it, oppure compilando il form di contatto sul nostro sito. Ti risponderemo entro 24 ore per confermare l'appuntamento.",
+      "La soluzione migliore è una prima valutazione specialistica. Durante la visita vengono analizzate le esigenze del paziente e viene proposto un percorso personalizzato.",
   },
   {
-    question: "Offrite consulenze nutrizionali online?",
+    question: "È possibile seguire più trattamenti contemporaneamente?",
     answer:
-      "Sì, offriamo la possibilità di effettuare una prima consulenza nutrizionale tramite videochiamata. Tuttavia, per il piano alimentare personalizzato e i controlli periodici, è necessario prenotare un appuntamento in studio.",
+      "Sì. In alcuni casi odontoiatria, nutrizione e osteopatia possono essere integrate per migliorare i risultati e il benessere generale.",
   },
   {
-    question: "Quali sono i tempi di attesa per un appuntamento?",
+    question: "Quando è consigliato rivolgersi a uno Studio Medico multidisciplinare?",
     answer:
-      "Cerchiamo sempre di garantire tempi di attesa brevi. Per le urgenze siamo disponibili anche in giornata. Per visite programmate, solitamente riusciamo a fissare un appuntamento entro una settimana.",
-  },
-  {
-    question: "Accettate pagamenti rateizzati?",
-    answer:
-      "Sì, offriamo diverse opzioni di pagamento rateizzato per rendere i nostri trattamenti accessibili a tutti. Contattaci per maggiori informazioni sulle modalità disponibili.",
+      "Quando si desidera un approccio più completo alla salute o quando diversi aspetti - come postura, alimentazione o salute orale - influiscono sul benessere quotidiano.",
   },
 ];
 
@@ -277,6 +248,53 @@ Il nostro obiettivo è guardare alla totalità del paziente e del suo benessere 
             </div>
           </div>
         </section>
+        {/* Percorso di Cura */}
+        <section className="percorso-section">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">Come funziona</span>
+              <h2 className="section-title">Il Tuo Percorso di Cura</h2>
+              <p className="section-description">
+                Ogni paziente è unico. Per questo costruiamo insieme un percorso personalizzato che parte dall&apos;ascolto.
+              </p>
+            </div>
+            <div className="percorso-steps">
+              <div className="percorso-step">
+                <span className="percorso-step-number" aria-hidden="true">01</span>
+                <div className="percorso-step-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+                </div>
+                <h4>Prima Visita</h4>
+                <p>Un colloquio approfondito per conoscere la tua storia clinica e i tuoi obiettivi di salute.</p>
+              </div>
+              <div className="percorso-step">
+                <span className="percorso-step-number" aria-hidden="true">02</span>
+                <div className="percorso-step-icon percorso-step-icon--2">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+                <h4>Diagnosi Integrata</h4>
+                <p>Valutazione multidisciplinare che considera ogni aspetto del tuo benessere fisico ed emotivo.</p>
+              </div>
+              <div className="percorso-step">
+                <span className="percorso-step-number" aria-hidden="true">03</span>
+                <div className="percorso-step-icon percorso-step-icon--3">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                </div>
+                <h4>Piano Personalizzato</h4>
+                <p>Un percorso su misura costruito intorno alle tue esigenze, in collaborazione con i nostri specialisti.</p>
+              </div>
+              <div className="percorso-step">
+                <span className="percorso-step-number" aria-hidden="true">04</span>
+                <div className="percorso-step-icon percorso-step-icon--4">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <h4>Cura e Follow-up</h4>
+                <p>Trattamenti mirati e monitoraggio continuo per accompagnarti verso i tuoi risultati nel tempo.</p>
+              </div>
+            </div>
+     
+          </div>
+        </section>
 
         {/* Services Carousel */}
         <section className={styles.servicesSection}>
@@ -287,30 +305,6 @@ Il nostro obiettivo è guardare alla totalità del paziente e del suo benessere 
               <p>Cinque aree di specializzazione per accompagnarti verso la salute e il benessere che meriti.</p>
             </div>
             <ServiceCarousel />
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section className="section">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-subtitle">I nostri punti di forza</span>
-              <h2 className="section-title">Perché Scegliere Studio Pinoli</h2>
-            </div>
-
-            <div className="value-props-grid">
-              {valueProps.map((prop, index) => (
-                <div key={index} className="value-prop-item">
-                  <div className="value-prop-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d={prop.icon} />
-                    </svg>
-                  </div>
-                  <h4>{prop.title}</h4>
-                  <p>{prop.description}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 

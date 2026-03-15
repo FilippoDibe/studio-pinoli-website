@@ -36,20 +36,24 @@ const benefits = [
 
 const faqs = [
   {
-    question: "Cos'è l'osteopatia e come funziona?",
-    answer: "L'osteopatia è una disciplina manuale che mira a ristabilire l'equilibrio funzionale del corpo attraverso tecniche specifiche su muscoli, articolazioni e tessuti. Agisce sulle tensioni che limitano la mobilità e il corretto funzionamento del corpo.",
+    question: "Cos'è l'osteopatia e a cosa serve?",
+    answer: "L'osteopatia è una disciplina manuale che mira a migliorare mobilità, postura ed equilibrio del corpo attraverso tecniche specifiche.",
   },
   {
-    question: "Qual è il legame tra osteopatia e problemi dentali?",
-    answer: "L'articolazione temporo-mandibolare (ATM) è strettamente connessa a postura, colonna cervicale e sistema cranio-sacrale. Spesso i disturbi mandibolari si associano a tensioni muscolari, cefalee e dolori cervicali che l'osteopatia può aiutare a risolvere in sinergia con l'odontoiatria.",
+    question: "Per quali problemi è utile l'osteopatia?",
+    answer: "È spesso utilizzata per dolori cervicali, mal di schiena, tensioni muscolari, disturbi posturali e rigidità articolare.",
   },
   {
-    question: "Quante sedute sono necessarie?",
-    answer: "Il numero di sedute varia in base alla situazione clinica e agli obiettivi del paziente. Dopo una prima valutazione il professionista definirà un percorso personalizzato, con controlli periodici per monitorare i progressi.",
+    question: "Quante sedute di osteopatia sono necessarie?",
+    answer: "Dipende dal problema e dalla risposta del corpo al trattamento. Dopo la valutazione iniziale viene definito un percorso personalizzato.",
   },
   {
-    question: "Il trattamento osteopatico è doloroso?",
-    answer: "No. Le tecniche osteopatiche sono generalmente delicate e non invasive. Potrebbe esserci una leggera sensazione di pressione durante alcune manovre, ma non dolore. Dopo la seduta è normale avvertire un senso di rilassamento muscolare.",
+    question: "L'osteopatia è dolorosa?",
+    answer: "No. Le tecniche osteopatiche sono generalmente delicate e adattate alla condizione del paziente.",
+  },
+  {
+    question: "L'osteopatia può essere integrata con altri trattamenti?",
+    answer: "Sì. In molti casi può essere associata a percorsi nutrizionali o odontoiatrici per migliorare l'equilibrio generale del corpo.",
   },
 ];
 
@@ -61,16 +65,22 @@ const relatedServices = [
     image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
   },
   {
-    title: "Medicina Integrata",
-    description: "Approccio olistico per mente e corpo in equilibrio.",
-    href: "/servizi/medicina-integrata",
-    image: "/foto/image-036-foto-nastia-cc1a9553.jpg",
-  },
-  {
     title: "Bionutrizione",
     description: "Piani alimentari personalizzati per il tuo benessere.",
     href: "/servizi/bionutrizione",
     image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
+  },
+  {
+    title: "Medicina Estetica",
+    description: "Trattamenti estetici non invasivi e naturali.",
+    href: "/servizi/medicina-estetica",
+    image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
+  },
+  {
+    title: "Art-Terapia",
+    description: "Percorsi creativi per il benessere emotivo e psicologico.",
+    href: "/servizi/art-terapia",
+    image: "/foto/image-050-foto-nastia-cc1a9620.jpg",
   },
 ];
 
@@ -152,34 +162,8 @@ export default function Osteopatia() {
         {/* 2. Overview — two-col + ATM callout */}
         <section className="section">
           <div className="container">
-            <div className="two-col-section">
-              <div className="two-col-content">
-                <h2>Osteopatia Integrata con l'Odontoiatria</h2>
-                <p>
-                  Nel nostro studio l'approccio osteopatico si integra con l'odontoiatria
-                  ed è particolarmente utile nel trattamento dei disturbi dell'articolazione
-                  temporo-mandibolare (ATM), spesso associati a tensioni muscolari, mal di
-                  testa, dolori cervicali o difficoltà nei movimenti della mandibola.
-                </p>
-                <p>
-                  Grazie a una valutazione personalizzata, il trattamento osteopatico aiuta
-                  a ridurre le tensioni, migliorare la mobilità articolare e favorire il
-                  naturale equilibrio del corpo. L'osteopatia lavora sull'intero sistema
-                  corporeo per favorire una migliore armonia tra struttura, movimento e postura.
-                </p>
-              </div>
-              <div className="two-col-image">
-                <Image
-                  src="/foto/image-038-foto-nastia-cc1a9559.jpg"
-                  alt="Trattamento osteopatico Studio Pinoli Milano"
-                  width={600}
-                  height={400}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                />
-              </div>
-            </div>
 
-            {/* ATM Callout — appended after two-col-section, inside same container */}
+          
             <div className={styles.atmCallout}>
               <div className={styles.atmCalloutIcon}>
                 <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
@@ -194,7 +178,34 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* 3. When Useful — chip grid */}
+        {/* 3. Specialist */}
+        <section className="section">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">Il tuo specialista</span>
+              <h2 className="section-title">Chi Ti Seguirà</h2>
+            </div>
+            <div className="specialist-solo-card" style={{ "--specialist-accent": "var(--color-osteopatia)" }}>
+              <div className="specialist-photo-wrap">
+                <Image
+                  src="/team/ALESSANDRO.jpeg"
+                  alt="Dr. Alessandro Ploner — Osteopata Studio Pinoli Milano"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center 50%" }}
+                  sizes="340px"
+                />
+              </div>
+              <div className="specialist-info-panel">
+                <span className="specialist-role-tag">Osteopatia</span>
+                <h3>Dr. Alessandro Ploner</h3>
+                <span className="specialist-sub-role">Osteopata</span>
+                <p>Osteopata specializzato nel trattamento di disfunzioni muscolo-scheletriche, posturali e cranio-sacrali. Collabora con l'équipe medica dello studio in ottica integrata, offrendo percorsi per dolori cronici, tensioni cervicali e problematiche correlate alla salute orale.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 4. When Useful — chip grid */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
@@ -317,7 +328,8 @@ export default function Osteopatia() {
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Scopri anche</span>
-              <h2 className="section-title">Altri Servizi</h2>
+              <h2 className="section-title">Scopri Altre Soluzioni Terapeutiche</h2>
+              <p className="section-description">Scopri le altre soluzioni terapeutiche pensate per la salute globale della persona.</p>
             </div>
             <div className="services-grid">
               {relatedServices.map((service) => (

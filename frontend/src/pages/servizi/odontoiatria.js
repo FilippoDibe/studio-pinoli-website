@@ -6,77 +6,140 @@ import styles from "../../styles/odontoiatria.module.css";
 
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
-const dentalServices = [
-  { name: "Conservativa", desc: "Cura e ricostruzione dei denti danneggiati da carie o traumi." },
-  { name: "Protesi", desc: "Soluzioni fisse o mobili per ripristinare estetica e funzione masticatoria." },
-  { name: "Ortodonzia (fissa / allineatori)", desc: "Allineamento dentale con apparecchi tradizionali o trasparenti di ultima generazione." },
-  { name: "Gnatologia", desc: "Diagnosi e trattamento dei disturbi dell'articolazione temporo-mandibolare (ATM)." },
-  { name: "Implantologia", desc: "Sostituzione dei denti mancanti con impianti stabili e duraturi." },
-  { name: "Estetica dentale", desc: "Trattamenti mirati a migliorare armonia e luminosità del sorriso." },
-  { name: "Endodonzia", desc: "Terapie canalari per salvare denti compromessi da infezioni profonde." },
-  { name: "Pedodonzia", desc: "Cure odontoiatriche dedicate ai bambini in un ambiente sereno e protetto." },
-  { name: "Parodontologia", desc: "Prevenzione e trattamento delle malattie di gengive e tessuti di supporto." },
+/* ── Mosaic groups ─────────────────────────────────────────── */
+const UNSPLASH = "https://images.unsplash.com";
+
+const mosaicGroups = [
+  {
+    key: "conservativa",
+    title: "Conservativa & Endodonzia",
+    services: ["Conservativa", "Endodonzia"],
+    tagline: "Cura e salvataggio del dente naturale",
+    description:
+      "Dalla terapia canalare alle ricostruzioni, preserviamo ogni dente con precisione chirurgica e materiali biocompatibili di ultima generazione.",
+    image: `${UNSPLASH}/photo-1643290976205-c2e467a65e9c?auto=format&fit=crop&w=1200&q=80`,
+    focalPoint: "center",
+    icon: "/odontoiatria/conservativa.svg",
+    accent: "#0a5a8c",
+  },
+  {
+    key: "ortodonzia",
+    title: "Ortodonzia & Pedodonzia",
+    services: ["Ortodonzia", "Pedodonzia"],
+    tagline: "Sorrisi allineati, grandi e piccini",
+    description:
+      "Allineatori invisibili e apparecchi fissi per adulti e adolescenti. Cure odontoiatriche dedicate ai bambini in un ambiente accogliente e sereno.",
+    image: `${UNSPLASH}/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=80`,
+    focalPoint: "center top",
+    icon: "/odontoiatria/ortodonzia.svg",
+    accent: "#1a6cb0",
+  },
+  {
+    key: "implantologia",
+    title: "Implantologia & Chirurgia",
+    services: ["Implantologia", "Chirurgia Orale"],
+    tagline: "Soluzioni fisse e durature nel tempo",
+    description:
+      "Impianti in titanio con protocolli chirurgici avanzati. Oltre il 95% di successo a 10 anni per restituire funzionalità e naturalezza al sorriso.",
+    image: `${UNSPLASH}/photo-1468493858157-0da44aaf1d13?auto=format&fit=crop&w=1200&q=80`,
+    focalPoint: "center",
+    icon: "/odontoiatria/implantologia.svg",
+    accent: "#063d6e",
+  },
+  {
+    key: "protesi",
+    title: "Protesi & Estetica Dentale",
+    services: ["Protesi", "Estetica Dentale"],
+    tagline: "Il sorriso che hai sempre desiderato",
+    description:
+      "Faccette in ceramica, protesi fisse e mobili, sbiancamento professionale. Risultati estetici armonici che rispettano la fisionomia naturale.",
+    image: `${UNSPLASH}/photo-1655807946138-811bb2340d34?auto=format&fit=crop&w=1200&q=80`,
+    focalPoint: "center",
+    icon: "/odontoiatria/protesi-estetica.svg",
+    accent: "#0d5492",
+  },
+  {
+    key: "parodontologia",
+    title: "Parodontologia & Igiene",
+    services: ["Parodontologia", "Igiene Professionale"],
+    tagline: "Gengive sane, denti per sempre",
+    description:
+      "Prevenzione e terapia delle malattie parodontali, igiene professionale personalizzata e sbiancamento domiciliare con supervisione clinica.",
+    image: `${UNSPLASH}/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=1200&q=80`,
+    focalPoint: "center",
+    icon: "/odontoiatria/igiene.svg",
+    accent: "#0a6e8a",
+  },
 ];
 
-const hygieneServices = [
-  { name: "Igiene dentale professionale", desc: "Rimozione di placca e tartaro per mantenere salute orale nel tempo." },
-  { name: "Sbiancamento in poltrona", desc: "Trattamento professionale per denti più bianchi e luminosi." },
-  { name: "Sbiancamento domiciliare", desc: "Protocollo personalizzato da effettuare a casa in totale sicurezza." },
+/* Maps each card to its CSS grid position class */
+const cardClasses = [
+  styles.cardA,
+  styles.cardB,
+  styles.cardC,
+  styles.cardD,
+  styles.cardE,
 ];
 
+/* ── Process steps ──────────────────────────────────────────── */
 const processSteps = [
   {
     number: "1",
     title: "Compilazione documenti e anamnesi",
-    description: "All'arrivo in studio ti chiederemo di compilare i documenti per la privacy e l'anamnesi medica. Queste informazioni ci aiutano a comprendere il tuo stato di salute generale e a inquadrare correttamente la situazione clinica.",
+    description:
+      "All'arrivo in studio ti chiederemo di compilare i documenti per la privacy e l'anamnesi medica. Queste informazioni ci aiutano a comprendere il tuo stato di salute generale e a inquadrare correttamente la situazione clinica.",
   },
   {
     number: "2",
     title: "Visita e valutazione clinica",
-    description: "Effettueremo la visita odontoiatrica con eventuali radiografie e fotografie diagnostiche. Questo ci permette di analizzare con precisione la tua situazione e individuare le cause dei problemi presenti.",
+    description:
+      "Effettueremo la visita odontoiatrica con eventuali radiografie e fotografie diagnostiche. Questo ci permette di analizzare con precisione la tua situazione e individuare le cause dei problemi presenti.",
   },
   {
     number: "3",
     title: "Presentazione del piano di cura",
-    description: "Al termine della visita ti illustreremo le possibili soluzioni terapeutiche più adatte al tuo caso. In presenza di situazioni complesse, il piano di cura verrà elaborato con maggiore approfondimento e condiviso successivamente.",
+    description:
+      "Al termine della visita ti illustreremo le possibili soluzioni terapeutiche più adatte al tuo caso. In presenza di situazioni complesse, il piano di cura verrà elaborato con maggiore approfondimento e condiviso successivamente.",
   },
   {
     number: "4",
     title: "Piano di cura e follow-up",
-    description: "Una volta definito il piano di cura, la segreteria ti fornirà tutte le informazioni su preventivo e modalità di pagamento. Il nostro team ti accompagnerà durante tutto il percorso di trattamento e nei controlli successivi.",
+    description:
+      "Una volta definito il piano di cura, la segreteria ti fornirà tutte le informazioni su preventivo e modalità di pagamento. Il nostro team ti accompagnerà durante tutto il percorso di trattamento e nei controlli successivi.",
   },
 ];
 
+/* ── FAQ ────────────────────────────────────────────────────── */
 const faqs = [
   {
+    question: "Ogni quanto tempo è consigliato andare dal dentista?",
+    answer:
+      "Nella maggior parte dei casi è consigliata una visita di controllo ogni 4-6 mesi. I controlli regolari permettono di prevenire carie, problemi gengivali e altre patologie della bocca.",
+  },
+  {
+    question: "Cosa fare in caso di forte mal di denti improvviso?",
+    answer:
+      "Un mal di denti intenso può essere causato da carie profonde, infezioni della polpa dentale o infiammazioni del nervo. In questi casi è importante effettuare una visita odontoiatrica il prima possibile per individuare la causa del dolore. Attraverso una valutazione clinica ed eventuali esami diagnostici, il dentista può stabilire il trattamento più indicato, come una terapia conservativa o un trattamento endodontico (devitalizzazione), per eliminare l’infezione e salvare il dente.",
+  },
+  {
+    question: "Quando è necessaria una devitalizzazione del dente?",
+    answer:
+      "La devitalizzazione (trattamento endodontico) diventa necessaria quando la polpa dentale, cioè il nervo del dente, è infiammata o infetta a causa di una carie profonda o di un trauma. Il trattamento permette di rimuovere l’infezione, eliminare il dolore e preservare il dente naturale evitando l’estrazione.",
+  },
+  {
     question: "Quanto dura un impianto dentale?",
-    answer: "Con le giuste cure e controlli regolari, un impianto dentale può durare tutta la vita. La percentuale di successo dell'implantologia è superiore al 95% a 10 anni. Nel nostro studio dentistico a Milano utilizziamo impianti in titanio di ultima generazione.",
+    answer:
+      "Se correttamente mantenuto con controlli periodici e igiene orale adeguata, un impianto dentale può durare molti anni e rappresentare una soluzione stabile per sostituire i denti mancanti.",
   },
   {
-    question: "L'implantologia è dolorosa?",
-    answer: "No. L'intervento di implantologia viene eseguito in anestesia locale e non provoca dolore durante la procedura. Dopo l'intervento è normale un leggero gonfiore e fastidio, facilmente gestibile con antidolorifici comuni.",
-  },
-  {
-    question: "La prima visita dal dentista è gratuita?",
-    answer: "Sì, la prima visita presso Studio Pinoli è gratuita e senza impegno. Include una valutazione completa della tua salute orale, radiografie se necessarie e la presentazione di un piano di trattamento personalizzato.",
-  },
-  {
-    question: "Offrite soluzioni di ortodonzia invisibile a Milano?",
-    answer: "Sì, offriamo diverse soluzioni di ortodonzia invisibile con allineatori trasparenti, adatte sia agli adulti che agli adolescenti. Durante la visita valuteremo insieme il tipo di apparecchio — fisso o invisibile — più adatto al tuo caso.",
-  },
-  {
-    question: "Con che frequenza fare la pulizia dei denti dal dentista?",
-    answer: "Si consiglia una pulizia professionale dei denti ogni 6 mesi. Nei pazienti con tendenza al tartaro o con problemi gengivali, il nostro studio dentistico a Milano può raccomandare intervalli più frequenti.",
+    question: "Gli allineatori dentali trasparenti funzionano davvero?",
+    answer:
+      "Gli allineatori trasparenti sono una soluzione ortodontica moderna che permette di allineare i denti in modo discreto e confortevole. Si tratta di mascherine quasi invisibili, realizzate su misura, che vengono sostituite progressivamente per guidare lo spostamento dei denti. Rispetto agli apparecchi tradizionali sono più estetici, rimovibili durante i pasti e facilitano l’igiene orale quotidiana.",
   },
 ];
 
+/* ── Related services ───────────────────────────────────────── */
 const relatedServices = [
-  {
-    title: "Osteopatia",
-    description: "Trattamenti manuali per disturbi dell'ATM e benessere articolare.",
-    href: "/servizi/osteopatia",
-    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
-  },
   {
     title: "Bionutrizione",
     description: "Piani alimentari personalizzati per il tuo benessere.",
@@ -89,34 +152,23 @@ const relatedServices = [
     href: "/servizi/medicina-estetica",
     image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
   },
+  {
+    title: "Osteopatia",
+    description: "Trattamenti manuali per disturbi dell'ATM e benessere articolare.",
+    href: "/servizi/osteopatia",
+    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+  },
+  {
+    title: "Art-Terapia",
+    description: "Percorsi creativi per il benessere emotivo e psicologico.",
+    href: "/servizi/art-terapia",
+    image: "/foto/image-050-foto-nastia-cc1a9620.jpg",
+  },
 ];
 
-// SVG icon paths in the same order as dentalServices
-const iconPaths = [
-  // Conservativa
-  "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z",
-  // Protesi
-  "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
-  // Ortodonzia
-  "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z",
-  // Gnatologia
-  "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-  // Implantologia
-  "M13 10V3L4 14h7v7l9-11h-7z",
-  // Estetica dentale
-  "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z",
-  // Endodonzia
-  "M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z",
-  // Pedodonzia
-  "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z",
-  // Parodontologia
-  "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z",
-];
-
-// FAQ Item Component
+/* ── Components ─────────────────────────────────────────────── */
 function FAQItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div className={`faq-item-styled ${isOpen ? "open" : ""}`}>
       <button className="faq-question-styled" onClick={() => setIsOpen(!isOpen)}>
@@ -132,6 +184,66 @@ function FAQItem({ question, answer }) {
   );
 }
 
+function MosaicCard({ group, className }) {
+  return (
+    <article
+      className={`${styles.mosaicCard} ${className}`}
+      style={{ "--card-accent": group.accent }}
+    >
+      {/* Background photo */}
+      <Image
+        src={group.image}
+        alt={group.title}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+        className={styles.mosaicBg}
+        style={{ objectPosition: group.focalPoint || "center" }}
+      />
+
+      {/* Dark gradient overlay */}
+      <div className={styles.mosaicOverlay} />
+
+      {/* Decorative icon — large, semi-transparent */}
+      <div className={styles.mosaicIcon} aria-hidden="true">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={group.icon} alt="" width={88} height={88} />
+      </div>
+
+      {/* Text content */}
+      <div className={styles.mosaicContent}>
+        <div className={styles.mosaicBadges}>
+          {group.services.map((s) => (
+            <span key={s} className={styles.mosaicBadge}>
+              {s}
+            </span>
+          ))}
+        </div>
+        <h3 className={styles.mosaicTitle}>{group.title}</h3>
+        <p className={styles.mosaicTagline}>{group.tagline}</p>
+        <p className={styles.mosaicDesc}>{group.description}</p>
+        <span className={styles.mosaicCta} aria-hidden="true">
+          Scopri di più
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            width="15"
+            height="15"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </span>
+      </div>
+    </article>
+  );
+}
+
+/* ── Page ───────────────────────────────────────────────────── */
 export default function Odontoiatria() {
   return (
     <>
@@ -144,7 +256,7 @@ export default function Odontoiatria() {
       </Head>
 
       <main id="main-content">
-        {/* Hero Section */}
+        {/* ── Hero ───────────────────────────────────────────── */}
         <section className="service-hero dental">
           <div
             className="service-hero-bg"
@@ -162,9 +274,9 @@ export default function Odontoiatria() {
             <div className={styles.heroBadge}>✓ Prima Visita Gratuita</div>
             <h1>Dentista a Milano</h1>
             <p>
-              Da oltre 35 anni il nostro studio dentistico a Milano offre cure odontoiatriche di eccellenza:
-              implantologia, ortodonzia, igiene orale e molto altro. Un team di specialisti dedicato alla salute
-              e alla bellezza del tuo sorriso.
+              Da oltre 35 anni il nostro studio dentistico a Milano offre cure odontoiatriche
+              di eccellenza: implantologia, ortodonzia, igiene orale e molto altro. Un team
+              di specialisti dedicato alla salute e alla bellezza del tuo sorriso.
             </p>
             <div className="page-hero-ctas">
               <Link
@@ -182,19 +294,25 @@ export default function Odontoiatria() {
           </div>
         </section>
 
-        {/* Overview Section */}
+        {/* ── Overview ───────────────────────────────────────── */}
         <section className="section">
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
                 <h2>Il Tuo Dentista a Milano</h2>
                 <p>
-                  Studio Pinoli è un centro odontoiatrico a Milano che unisce esperienza clinica, tecnologie avanzate e attenzione alla persona. Il nostro obiettivo è offrire cure precise, affidabili e costruite sulle reali esigenze di ogni paziente.
+                  Studio Pinoli è un centro odontoiatrico a Milano che unisce esperienza
+                  clinica, tecnologie avanzate e attenzione alla persona. Il nostro obiettivo
+                  è offrire cure precise, affidabili e costruite sulle reali esigenze di ogni
+                  paziente.
                 </p>
                 <p>
-                  Crediamo in un'odontoiatria attenta, che mette al centro la salute orale, il comfort e la qualità del percorso di cura.
+                  Crediamo in un'odontoiatria attenta, che mette al centro la salute orale,
+                  il comfort e la qualità del percorso di cura.
                 </p>
-                <span><b>Il nostro approccio si basa su:</b></span>
+                <span>
+                  <b>Il nostro approccio si basa su:</b>
+                </span>
                 <ul>
                   <li>Tecnologie diagnostiche avanzate</li>
                   <li>Un team di professionisti qualificati</li>
@@ -215,59 +333,76 @@ export default function Odontoiatria() {
           </div>
         </section>
 
-        {/* Services Grid */}
+        {/* ── Team Specialists ───────────────────────────────── */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
-              <span className="section-subtitle">Le nostre specializzazioni</span>
-              <h2 className="section-title">Servizi di Odontoiatria</h2>
+              <span className="section-subtitle">I nostri specialisti</span>
+              <h2 className="section-title">Chi Ti Seguirà</h2>
+              <p className="section-description">
+                Un team dedicato di professioniste qualificate per la salute orale e il sorriso di ogni paziente.
+              </p>
             </div>
-
-            {/* Icon grid — dental services */}
-            <div className={styles.iconGrid}>
-              {dentalServices.map((s, i) => (
-                <div key={i} className={styles.iconCard}>
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d={iconPaths[i]} />
-                  </svg>
-                  <strong>{s.name}</strong>
-                  <p>{s.desc}</p>
+            <div className="specialist-duo-grid">
+              <div className="specialist-duo-card">
+                <div className="specialist-duo-photo">
+                  <Image
+                    src="/team/DIANA.jpeg"
+                    alt="Dr.ssa Diana Mihaela Bulache — Igienista Dentale Studio Pinoli"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "center 15%" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
-              ))}
-            </div>
-
-            {/* Hygiene strip */}
-            <p className="service-subsection-label">Servizi di Igiene Dentale</p>
-            <div className={styles.hygieneStrip}>
-              <div className={styles.hygieneGrid}>
-                {hygieneServices.map((s, i) => (
-                  <div key={i} className={styles.hygieneCard}>
-                    <svg
-                      className={styles.hygieneCheckIcon}
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <div>
-                      <strong>{s.name}</strong>
-                      <p>{s.desc}</p>
-                    </div>
-                  </div>
-                ))}
+                <div className="specialist-duo-info" style={{ "--specialist-accent": "var(--color-dental)" }}>
+                  <span className="specialist-role-tag" style={{ color: "var(--color-dental)", borderColor: "var(--color-dental)" }}>Igiene Dentale</span>
+                  <h3>Dr.ssa Diana Mihaela Bulache</h3>
+                  <span className="specialist-sub-role">Igienista Dentale</span>
+                  <p>Igienista dentale specializzata nella prevenzione e nel mantenimento della salute orale. Promuove la salute orale come parte integrante del benessere complessivo dei nostri pazienti, attraverso trattamenti personalizzati e consigli pratici per una corretta igiene orale quotidiana.</p>
+                </div>
+              </div>
+              <div className="specialist-duo-card">
+                <div className="specialist-duo-photo">
+                  <Image
+                    src="/team/MARTA-MILANO.jpeg"
+                    alt="Dr.ssa Marta Plutino — Ortodontista Studio Pinoli"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "center center" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="specialist-duo-info" style={{ "--specialist-accent": "var(--color-dental)" }}>
+                  <span className="specialist-role-tag" style={{ color: "var(--color-dental)", borderColor: "var(--color-dental)" }}>Ortodonzia</span>
+                  <h3>Dr.ssa Marta Plutino</h3>
+                  <span className="specialist-sub-role">Ortodontista</span>
+                  <p>Specialista in ortodonzia per adulti e bambini, con competenza in trattamenti fissi, mobili e allineatori invisibili. Guida ogni paziente verso un sorriso armonico con tecniche contemporanee, rispettando funzionalità occlusale ed estetica naturale.</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Process Section */}
+        {/* ── Services Mosaic ────────────────────────────────── */}
+        <section className="section section-light">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">Le nostre specializzazioni</span>
+              <h2 className="section-title">Servizi di Odontoiatria</h2>
+              <p className="section-description">
+                Cinque aree di competenza per una cura completa e integrata della salute
+                orale, dalla prevenzione all'estetica.
+              </p>
+            </div>
+
+            <div className={styles.mosaic}>
+              {mosaicGroups.map((group, i) => (
+                <MosaicCard key={group.key} group={group} className={cardClasses[i]} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Process ────────────────────────────────────────── */}
         <section className="section">
           <div className="container">
             <div className="section-header">
@@ -276,8 +411,8 @@ export default function Odontoiatria() {
             </div>
 
             <div className={styles.stepper}>
-              {processSteps.map((step, index) => (
-                <div key={index} className={styles.stepperItem}>
+              {processSteps.map((step) => (
+                <div key={step.number} className={styles.stepperItem}>
                   <div className={styles.stepNum}>{step.number}</div>
                   <div>
                     <h4 className={styles.stepTitle}>{step.title}</h4>
@@ -289,12 +424,14 @@ export default function Odontoiatria() {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* ── CTA ────────────────────────────────────────────── */}
         <section className="cta-section">
           <div className="container">
             <h2>Prenota la tua visita odontoiatrica a Milano</h2>
             <p>
-              Il nostro team di ti seguirà per una prima visita accurata, con valutazione completa della salute orale e definizione del percorso di cura più adatto alle tue esigenze.
+              Il nostro team ti seguirà per una prima visita accurata, con valutazione
+              completa della salute orale e definizione del percorso di cura più adatto
+              alle tue esigenze.
             </p>
             <div className="cta-buttons">
               <Link
@@ -312,7 +449,7 @@ export default function Odontoiatria() {
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* ── FAQ ────────────────────────────────────────────── */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
@@ -328,12 +465,13 @@ export default function Odontoiatria() {
           </div>
         </section>
 
-        {/* Related Services */}
+        {/* ── Related Services ───────────────────────────────── */}
         <section className="section">
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Scopri anche</span>
-              <h2 className="section-title">Altri Servizi</h2>
+              <h2 className="section-title">Scopri Altre Soluzioni Terapeutiche</h2>
+              <p className="section-description">Scopri le altre soluzioni terapeutiche pensate per la salute globale della persona.</p>
             </div>
 
             <div className="services-grid">

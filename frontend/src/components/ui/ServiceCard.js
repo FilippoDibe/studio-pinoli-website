@@ -3,13 +3,10 @@ import Image from "next/image";
 
 export default function ServiceCard({
   title,
-  description: _description,
+  description,
   image,
-  icon: _icon,
   href,
   theme = "dental",
-  badge: _badge,
-  num: _num,
 }) {
   return (
     <Link
@@ -45,6 +42,9 @@ export default function ServiceCard({
       <div className="mosaic-card-content">
         <span className="mosaic-card-badge">Studio Pinoli</span>
         <h3 className="mosaic-card-title">{title}</h3>
+        {description && (
+          <p className="mosaic-card-description">{description}</p>
+        )}
         <div className="mosaic-card-cta" aria-hidden="true">
           Scopri il servizio
           <svg

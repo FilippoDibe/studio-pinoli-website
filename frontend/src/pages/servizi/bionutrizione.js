@@ -33,20 +33,24 @@ const processSteps = [
 // FAQ data
 const faqs = [
   {
-    question: "Qual è la differenza tra una dieta personalizzata e una dieta standard?",
-    answer: "Una dieta personalizzata viene creata specificamente per te, considerando il tuo metabolismo, le tue abitudini, eventuali patologie e i tuoi obiettivi. Una dieta standard propone lo stesso schema per tutti senza considerare le differenze individuali.",
+    question: "Perché l'alimentazione è importante per la salute orale?",
+    answer: "Una dieta equilibrata contribuisce alla salute delle gengive, riduce il rischio di infiammazioni e supporta il benessere generale dell'organismo.",
   },
   {
-    question: "Quanto tempo ci vuole per vedere i risultati?",
-    answer: "I primi risultati sono generalmente visibili già dopo 2-3 settimane. Tuttavia, per un cambiamento duraturo dello stile alimentare consigliamo un percorso di almeno 3-6 mesi con controlli periodici.",
+    question: "Quando è utile una consulenza nutrizionale?",
+    answer: "Può essere utile in caso di squilibri alimentari, difficoltà digestive, stanchezza persistente o quando si desidera migliorare il proprio stile di vita o la propria performance sportiva.",
   },
   {
-    question: "Posso fare una consulenza nutrizionale online?",
-    answer: "Sì, offriamo la possibilità di effettuare una prima consulenza tramite videochiamata. Per il piano alimentare personalizzato e i controlli periodici è però necessario un appuntamento in studio.",
+    question: "Qual è la differenza tra dietologo e nutrizionista?",
+    answer: "Il dietologo è un medico laureato in medicina e chirurgia con specializzazione in scienza dell’alimentazione. Può formulare diete anche in presenza di patologie e prescrivere eventuali esami o farmaci. Il nutrizionista, invece, è generalmente un biologo specializzato in nutrizione che si occupa di educazione alimentare e piani nutrizionali personalizzati per migliorare lo stile di vita e il benessere generale.",
   },
   {
-    question: "Trattate anche intolleranze e allergie alimentari?",
-    answer: "Assolutamente sì. I nostri nutrizionisti sono specializzati nel trattamento di intolleranze, allergie alimentari e patologie correlate all'alimentazione.",
+    question: "Il piano alimentare è personalizzato?",
+    answer: "Sì. Ogni percorso nutrizionale viene costruito tenendo conto delle abitudini alimentari, dello stato di salute e degli obiettivi della persona.",
+  },
+  {
+    question: "Quanto tempo serve per vedere i risultati di un percorso nutrizionale?",
+    answer: "I tempi possono variare da persona a persona, ma molti pazienti iniziano a percepire benefici già dopo le prime settimane.",
   },
 ];
 
@@ -64,10 +68,16 @@ const relatedServices = [
     image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
   },
   {
-    title: "Medicina Integrata",
-    description: "Approccio olistico per mente e corpo.",
-    href: "/servizi/medicina-integrata",
-    image: "/foto/image-036-foto-nastia-cc1a9553.jpg",
+    title: "Osteopatia",
+    description: "Trattamenti manuali per il benessere muscolare e articolare.",
+    href: "/servizi/osteopatia",
+    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+  },
+  {
+    title: "Art-Terapia",
+    description: "Percorsi creativi per il benessere emotivo e psicologico.",
+    href: "/servizi/art-terapia",
+    image: "/foto/image-050-foto-nastia-cc1a9620.jpg",
   },
 ];
 
@@ -117,7 +127,7 @@ export default function Bionutrizione() {
               <span>/</span>
               <span>Bionutrizione</span>
             </nav>
-            <h1>Nutrizionista a Milano</h1>
+            <h1>Dietologo a Milano</h1>
             <p>
               Percorsi di nutrizione personalizzati a Milano per ritrovare equilibrio, salute e benessere. Un approccio scientifico e su misura per le esigenze del tuo organismo.
             </p>
@@ -168,22 +178,7 @@ export default function Bionutrizione() {
           </div>
         </section>
 
-        {/* App Callout — Biotekna Plus */}
-        <section className="section">
-          <div className="container">
-            <div className={styles.appCallout}>
-              <div className={styles.appCalloutIcon}>
-                <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
-                  <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
-                </svg>
-              </div>
-              <div className={styles.appCalloutContent}>
-                <strong>App Biotekna Plus</strong>
-                <p>Prima della visita, ti chiediamo di compilare il diario alimentare per almeno 7 giorni attraverso l'app Biotekna Plus. Questo ci permette di avere un quadro completo delle tue abitudini alimentari e di elaborare un piano personalizzato fin dal primo incontro.</p>
-              </div>
-            </div>
-          </div>
-        </section>
+       
 
         {/* Process Section */}
         <section className="section">
@@ -249,7 +244,8 @@ export default function Bionutrizione() {
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Scopri anche</span>
-              <h2 className="section-title">Altri Servizi</h2>
+              <h2 className="section-title">Scopri Altre Soluzioni Terapeutiche</h2>
+              <p className="section-description">Scopri le altre soluzioni terapeutiche pensate per la salute globale della persona.</p>
             </div>
 
             <div className="services-grid">

@@ -11,6 +11,10 @@ const nextConfig = {
       {
         hostname: "studiopinoli.it",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
 };

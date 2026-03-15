@@ -8,10 +8,12 @@
       "Read(//private/tmp/**)",
       "Read(//private/var/**)",
       "Bash(# Wait a bit and check vercel deployment status sleep 10 && vercel ls)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "WebFetch(domain:unsplash.com)"
     ],
     "additionalDirectories": [
-      "/Users/filippodibenedetto/Desktop/wordpress-migration/frontend"
+      "/Users/filippodibenedetto/Desktop/wordpress-migration/frontend",
+      "/tmp"
     ]
   }
 }

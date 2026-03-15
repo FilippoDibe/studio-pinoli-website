@@ -17,41 +17,52 @@ const clinicalTeam = [
     name: "Dr. Luca Maria Pinoli",
     role: "Medico Chirurgo, Odontoiatra",
     description: "Direttore sanitario dello Studio, specializzato in odontostomatologia e bio-nutrizione, con oltre 35 anni di esperienza è uno specialista nel campo dell’estetica dentale e della medicina integrata. Unisce la cura orale al benessere globale della persona, unendo tecniche avanzate di cura dentale a terapie naturali e nutrizionali che prendono in considerazione ogni aspetto della salute dell’individuo.",
-    image: "/team/LUCA-MARIA.jpeg",
+    image: "/team/DR-PINOLI-MILANO.jpeg",
+    objectPosition: "top center",
     color: "var(--color-dental)",
     specialty: "Odontoiatria",
+    specialty2: "Bio-nutrizione" ,
+    specialty3: "Medicina estetica",
   },
   {
     name: "Dr.ssa Diana Mihaela Bulache",
     role: "Igienista Dentale",
     description: "Igienista dentale specializzata nella prevenzione e nel mantenimento della salute orale. Promuove la salute orale come parte integrante del benessere complessivo dei nostri pazienti, attraverso trattamenti personalizzati e consigli pratici per una corretta igiene orale.",
     image: "/team/DIANA.jpeg",
+    objectPosition: "center 15%",
     color: "var(--color-dental)",
     specialty: "Igiene Dentale",
-  },
-  {
-    name: "Dr.ssa Marta Plutino",
-    role: "Ortodontista",
-    description: "Specialista in ortodonzia per adulti e bambini, con competenza in trattamenti fissi, mobili e allineatori invisibili. Guida ogni paziente verso un sorriso armonico con tecniche contemporanee, rispettando funzionalità occlusale ed estetica.",
-    image: "/team/MARTA.jpeg",
-    color: "var(--color-dental)",
-    specialty: "Ortodonzia",
+    specialtyHref: "/servizi/odontoiatria",
   },
   {
     name: "Dr. Alessandro Ploner",
     role: "Osteopata",
     description: "Osteopata specializzato nel trattamento di disfunzioni muscolo-scheletriche, posturali e cranio-sacrali. Collabora con l'équipe medica dello studio in ottica integrata, offrendo percorsi per dolori cronici, tensioni cervicali e problematiche correlate alla salute orale.",
     image: "/team/ALESSANDRO.jpeg",
+    objectPosition: "center 50%",
     color: "var(--color-osteopatia)",
     specialty: "Osteopatia",
+    specialtyHref: "/servizi/osteopatia",
+  },
+  {
+    name: "Dr.ssa Marta Plutino",
+    role: "Ortodontista",
+    description: "Specialista in ortodonzia per adulti e bambini, con competenza in trattamenti fissi, mobili e allineatori invisibili. Guida ogni paziente verso un sorriso armonico con tecniche contemporanee, rispettando funzionalità occlusale ed estetica.",
+    image: "/team/MARTA-MILANO.jpeg",
+    objectPosition: "center center",
+    color: "var(--color-dental)",
+    specialty: "Ortodonzia",
+    specialtyHref: "/servizi/odontoiatria",
   },
   {
     name: "Dr.ssa Irina Metliaeva",
     role: "Art-Terapeuta",
     description: "Art-terapeuta con formazione in psicologia e terapia espressiva. Conduce percorsi di arte-terapia orientati alla gestione dello stress, all'equilibrio emotivo e al benessere psico-fisico, in un contesto clinico strutturato che valorizza l'espressione come strumento di cura.",
     image: "/team/IRINA.jpeg",
+    objectPosition: "center center",
     color: "var(--color-art)",
     specialty: "Art-Terapia",
+    specialtyHref: "/servizi/art-terapia",
   },
 ];
 
@@ -60,25 +71,29 @@ const supportTeam = [
     name: "Francesca Mazzardo",
     role: "Dirigente ASO",
     description: "Assistente alla Poltrona con anni di esperienza clinica e ruolo di coordinamento operativo. Supporta l'équipe medica durante le procedure garantendo efficienza, sicurezza e un ambiente sereno per ogni paziente.",
-    image: "/team/FRANCESCA.jpeg",
+    image: "/team/FRANCESCA-MAZZARDO-MILANO.jpeg",
+    objectPosition: "top center",
   },
   {
     name: "Viktoriia Kushnyrik",
     role: "Assistente alla Poltrona (ASO)",
     description: "Assistente alla Poltrona con formazione specialistica nel supporto alle procedure odontoiatriche. Contribuisce con precisione e attenzione alla qualità di ogni trattamento, assicurando continuità e serenità al paziente in ogni fase della visita.",
     image: "/team/VIKTORIIA.jpeg",
+    objectPosition: "top center",
   },
   {
     name: "Gabriella Mazzardo",
     role: "Segreteria",
     description: "Responsabile dell'accoglienza e della gestione amministrativa dello studio. Primo punto di contatto per i pazienti: coordina gli appuntamenti, gestisce le comunicazioni e si assicura che ogni visita sia organizzata con cura e puntualità.",
     image: "/team/GABRIELLA.jpeg",
+    objectPosition: "20% center",
   },
   {
     name: "Lorenzo Di Benedetto",
     role: "Amministratore",
     description: "Responsabile dell'amministrazione e della gestione strategica dello studio. Supervisiona i processi organizzativi, la comunicazione e le attività operative con l'obiettivo di garantire la migliore esperienza possibile ai pazienti e al team.",
-    image: "/team/LORENZO.jpeg",
+    image: "/team/LORENZO-DI-BENEDETTO-MILANO.jpeg",
+    objectPosition: "top center",
   },
 ];
 
@@ -106,6 +121,95 @@ const values = [
     description: "Ogni paziente è unico e merita un'attenzione personalizzata e premurosa."
   }
 ];
+
+// Fade-in on scroll wrapper
+function FadeIn({ children, delay = 0, style: passedStyle }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        ...passedStyle,
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(28px)",
+        transition: `opacity 0.65s ease ${delay}ms, transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+// Bento-style clinical staff card (photo-first, cinematic hover overlay)
+function TeamBentoCard({ member, featured = false }) {
+  return (
+    <div
+      className={`team-bento-card${featured ? " team-bento-featured" : ""}`}
+      style={{ "--member-color": member.color || "var(--primary)" }}
+    >
+      <Image
+        src={member.image}
+        alt={member.name}
+        fill
+        style={{ objectFit: "cover", objectPosition: member.objectPosition || "top center" }}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 580px"
+      />
+      {member.specialty && member.specialtyHref ? (
+        <Link href={member.specialtyHref} className="team-bento-badge team-bento-badge--link">
+          {member.specialty}
+        </Link>
+      ) : member.specialty ? (
+        <span className="team-bento-badge">{member.specialty}</span>
+      ) : null}
+      {featured && (
+        <span className="team-bento-featured-label">Staff Clinico</span>
+      )}
+      <div className="team-bento-name-bar">
+        <h4>{member.name}</h4>
+        <p className="team-bento-role-label">{member.role}</p>
+      </div>
+      <div className="team-bento-hover-overlay">
+        <div className="team-bento-hover-content">
+          <h4>{member.name}</h4>
+          <p className="team-bento-role-label">{member.role}</p>
+          {member.specialtyHref && (
+            <Link
+              href={member.specialtyHref}
+              style={{
+                display: "inline-block",
+                marginTop: "12px",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                color: "#fff",
+                border: "1.5px solid rgba(255,255,255,0.6)",
+                borderRadius: "999px",
+                padding: "5px 16px",
+                letterSpacing: "0.05em",
+                textDecoration: "none",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
+            >
+              Scopri di più →
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 // Team Carousel Component
 function TeamCarousel({ members, label }) {
@@ -152,7 +256,7 @@ function TeamCarousel({ members, label }) {
           src={member.image}
           alt={member.name}
           fill
-          style={{ objectFit: "cover", objectPosition: "top center" }}
+          style={{ objectFit: "cover", objectPosition: member.objectPosition || "top center" }}
           sizes="(max-width: 768px) 100vw, 45vw"
         />
         {member.specialty && (
@@ -165,7 +269,25 @@ function TeamCarousel({ members, label }) {
         <div className="team-carousel-overlay">
           <h4>{member.name}</h4>
           <p className="team-carousel-role">{member.role}</p>
-          <p className="team-carousel-bio">{member.description}</p>
+          {member.specialtyHref && (
+            <Link
+              href={member.specialtyHref}
+              style={{
+                display: "inline-block",
+                marginTop: "10px",
+                fontSize: "0.72rem",
+                fontWeight: 700,
+                color: "#fff",
+                border: "1.5px solid rgba(255,255,255,0.6)",
+                borderRadius: "999px",
+                padding: "4px 14px",
+                letterSpacing: "0.05em",
+                textDecoration: "none",
+              }}
+            >
+              Scopri di più →
+            </Link>
+          )}
         </div>
       </div>
       <div className="team-carousel-controls">
@@ -199,7 +321,7 @@ function TeamDesktopCard({ member }) {
           src={member.image}
           alt={member.name}
           fill
-          style={{ objectFit: "cover", objectPosition: "top center" }}
+          style={{ objectFit: "cover", objectPosition: member.objectPosition || "top center" }}
           sizes="(max-width: 1200px) 25vw, 280px"
         />
         {member.specialty && (
@@ -211,9 +333,6 @@ function TeamDesktopCard({ member }) {
       <div className="team-desktop-info">
         <strong className="team-desktop-info-name">{member.name}</strong>
         <span className="team-desktop-info-role">{member.role}</span>
-        <div className="team-desktop-bio-wrap">
-          <p className="team-desktop-bio-text">{member.description}</p>
-        </div>
       </div>
     </div>
   );
@@ -316,11 +435,6 @@ export default function ChiSiamo() {
                 <p className="lead">
                  I nostri <b>valori</b> si fondano sull’integrazione tra cura dentale e salute generale, rispettando l’interconnessione tra bocca, corpo e mente. Ci impegniamo a trattare ogni paziente con un approccio integrato, mirando non solo alla soluzione del problema, ma anche al suo benessere psico-fisico. 
                 </p>
-                {/* <p>
-                  La nostra filosofia si basa sull'ascolto attento delle esigenze di ogni
-                  paziente e sulla personalizzazione dei percorsi di cura: nessun protocollo
-                  standard, solo trattamenti su misura per te.
-                </p> */}
               </div>
               <div className="about-hero-image">
                 <Image
@@ -348,7 +462,76 @@ export default function ChiSiamo() {
             </div>
           </div>
         </section>
+  {/* Team — Premium Layout */}
+        <section className="section team-premium-section">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">Il nostro team</span>
+              <h2 className="section-title">I Professionisti al Tuo Servizio</h2>
+              <p className="section-description">
+             Sarai accolto e seguito da un team di specialisti qualificati pronti ad offrirti cure di eccellenza.
+              </p>
+            </div>
 
+            {/* Director — featured hero card */}
+            <FadeIn>
+              <div className="team-director-card">
+                <div className="team-director-info">
+                  <span className="team-director-label"> Direttore Sanitario</span>
+                  <h3>{clinicalTeam[0].name}</h3>
+                  <p style={{color:"white", marginTop:"20px"}}>{clinicalTeam[0].description}</p>
+                  <p style={{marginBottom:"10px"}} className="team-director-role">{clinicalTeam[0].role}</p>
+                   <ul className="pv-services-cta-pills" aria-label="Servizi disponibili">
+                    <li className="pill-dental"><Link href="/servizi/odontoiatria" style={{ color: "white" }}>Odontoiatria</Link></li>
+                    <li className="pill-nutrition"><Link href="/servizi/bionutrizione" style={{ color: "white" }}>Bio-nutrizione</Link></li>
+                    <li className="pill-aesthetic"><Link href="/servizi/medicina-estetica" style={{ color: "white" }}>Medicina Estetica</Link></li>
+                  </ul>
+                
+
+                </div>
+                <div className="team-director-photo">
+                  <Image
+                    src={clinicalTeam[0].image}
+                    alt={clinicalTeam[0].name}
+                    fill
+                    style={{ objectFit: "cover", objectPosition: clinicalTeam[0].objectPosition || "top center" }}
+                    sizes="420px"
+                  />
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Desktop: bento grid for clinical + staggered cards for support */}
+            <div className="team-desktop-section">
+              <div className="team-desktop-group">
+                <p className="team-group-label">Staff Clinico</p>
+                <div className="team-bento-grid">
+                  {clinicalTeam.slice(1).map((m, i) => (
+                    <FadeIn key={i} delay={i * 110} style={{ height: "100%" }}>
+                      <TeamBentoCard member={m} />
+                    </FadeIn>
+                  ))}
+                </div>
+              </div>
+              <div className="team-desktop-group">
+                <p className="team-group-label">Staff di Studio</p>
+                <div className="team-desktop-grid">
+                  {supportTeam.map((m, i) => (
+                    <FadeIn key={i} delay={i * 90}>
+                      <TeamDesktopCard member={m} />
+                    </FadeIn>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile: two carousels side by side */}
+            <div className="team-carousels-row team-mobile-only">
+              <TeamCarousel members={clinicalTeam.slice(1)} label="Staff Clinico" />
+              <TeamCarousel members={supportTeam} label="Staff di Studio" />
+            </div>
+          </div>
+        </section>
         {/* Values */}
         <section className="section section-light">
           <div className="container">
@@ -373,64 +556,7 @@ export default function ChiSiamo() {
           </div>
         </section>
 
-        {/* Team — Premium Layout */}
-        <section className="section team-premium-section">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-subtitle">Il nostro team</span>
-              <h2 className="section-title">I Professionisti al Tuo Servizio</h2>
-              <p className="section-description">
-             Sarai accolto e seguito da un team di specialisti qualificati pronti ad offrirti cure di eccellenza.
-              </p>
-            </div>
-
-            {/* Director — featured hero card */}
-            <div className="team-director-card">
-              <div className="team-director-info">
-                <span className="team-director-label"> Direttore Sanitario</span>
-                <h3>{clinicalTeam[0].name}</h3>
-                <p className="team-director-role">{clinicalTeam[0].role}</p>
-                <p className="team-director-bio">{clinicalTeam[0].description}</p>
-                <span className="team-director-badge">{clinicalTeam[0].specialty}</span>
-              </div>
-              <div className="team-director-photo">
-                <Image
-                  src={clinicalTeam[0].image}
-                  alt={clinicalTeam[0].name}
-                  fill
-                  style={{ objectFit: "cover", objectPosition: "top center" }}
-                  sizes="420px"
-                />
-              </div>
-            </div>
-
-            {/* Desktop: static grid of all members */}
-            <div className="team-desktop-section">
-              <div className="team-desktop-group">
-                <p className="team-group-label">Staff Clinico</p>
-                <div className="team-desktop-grid">
-                  {clinicalTeam.slice(1).map((m, i) => (
-                    <TeamDesktopCard key={i} member={m} />
-                  ))}
-                </div>
-              </div>
-              <div className="team-desktop-group">
-                <p className="team-group-label">Staff di Studio</p>
-                <div className="team-desktop-grid">
-                  {supportTeam.map((m, i) => (
-                    <TeamDesktopCard key={i} member={m} />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile: two carousels side by side */}
-            <div className="team-carousels-row team-mobile-only">
-              <TeamCarousel members={clinicalTeam.slice(1)} label="Staff Clinico" />
-              <TeamCarousel members={supportTeam} label="Staff di Studio" />
-            </div>
-          </div>
-        </section>
+      
   {/* CTA */}
         <section className="cta-section">
           <div className="container">
@@ -448,40 +574,6 @@ export default function ChiSiamo() {
             </div>
           </div>
         </section>
-        {/* Mission */}
-        <section className="section section-light">
-          <div className="container">
-            <div className="two-col-section">
-              <div className="two-col-image">
-                <Image
-                  src="/foto/image-029-foto-nastia-cc1a9504.jpg"
-                  alt="Approccio integrato odontoiatria e benessere Studio Pinoli Milano"
-                  width={600}
-                  height={450}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                />
-              </div>
-              <div className="two-col-content">
-                <span className="section-subtitle">La nostra missione</span>
-                <h2>Un Approccio Integrato alla Salute</h2>
-                <p>
-               Crediamo che il benessere sia il risultato dell'equilibrio tra corpo e mente. Per questo abbiamo sviluppato un approccio che integra diverse discipline:
-                </p>
-                <ul>
-                  <li><strong>Odontoiatria</strong> - Per la salute del tuo sorriso</li>
-                  <li><strong>Bio-nutrizione</strong> - Per un'alimentazione equilibrata</li>
-                  <li><strong>Osteopartia</strong> - Per ritrovare equilibrio tra postura e movimento</li>
-                  <li><strong>Medicina Estetica</strong> - Per valorizzare la tua bellezza naturale</li>
-                  <li><strong>Art-Terapia</strong> - Per favorire benessere emotivo e serenità nel tuo percorso di cura</li>
-                </ul>
-                <Link href="/i-nostri-servizi" className="btn btn-blue" style={{ marginTop: "20px" }}>
-                  Scopri i nostri servizi
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Location */}
         <section className="section">
           <div className="container">

@@ -275,23 +275,6 @@ export default function PrimaVisita() {
         </section>
 
         {/* Benefits */}
-        {/* <section className="section">
-          <div className="container">
-            <div className="value-props-grid">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="value-prop-item">
-                  <div className="value-prop-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d={benefit.icon} />
-                    </svg>
-                  </div>
-                  <h4>{benefit.title}</h4>
-                  <p>{benefit.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section> */}
 
         {/* Timeline Section with Scroll Progress */}
         <section className="section section-light pv-timeline-section">
@@ -370,8 +353,7 @@ export default function PrimaVisita() {
                 <p>
                Per rendere la tua prima visita il più efficace possibile, ti consigliamo di portare con te alcuni documenti:
                 </p>
-                {/* todo togliere puntini blu dalla lista */}
-                <ul className="checklist-styled">
+<ul className="checklist-styled">
                   <li>
                     <span className="check-icon">✓</span>
                     <div>
@@ -428,24 +410,24 @@ export default function PrimaVisita() {
             <div className="faq-section-styled">
               {[
                 {
-                  question: "La prima visita è gratuita?",
-                  answer: "Sì, la prima visita conoscitiva è gratuita. Comprende un colloquio iniziale, la valutazione clinica e la presentazione di un preventivo personalizzato senza impegno.",
+                  question: "In cosa consiste la prima visita dal dentista?",
+                  answer: "La prima visita comprende una valutazione della salute orale, l'analisi della situazione clinica e la raccolta delle informazioni utili per definire un piano di trattamento.",
                 },
                 {
-                  question: "Quanto dura la prima visita?",
-                  answer: "Generalmente circa 60 minuti. Dedichiamo tutto il tempo necessario per conoscerti, analizzare la tua situazione clinica e costruire insieme un piano di cura adatto a te.",
+                  question: "Quanto dura la prima visita odontoiatrica?",
+                  answer: "Generalmente tra 30 e 60 minuti, a seconda della complessità del caso.",
                 },
                 {
-                  question: "Devo portare documenti specifici?",
-                  answer: "Ti consigliamo di portare la tessera sanitaria, eventuali radiografie recenti, la lista dei farmaci che stai assumendo e qualsiasi esame clinico rilevante.",
+                  question: "Durante la prima visita vengono fatte radiografie?",
+                  answer: "Se necessario, possono essere eseguiti esami diagnostici per ottenere una valutazione più completa della situazione clinica.",
                 },
                 {
-                  question: "Posso prenotare per più di una specializzazione?",
-                  answer: "Certamente. Studio Pinoli offre un approccio integrato: odontoiatria, bio-nutrizione, medicina estetica, osteopatia e art-terapia. Il nostro team ti guiderà verso i professionisti più adatti alle tue esigenze.",
+                  question: "È possibile ricevere un piano di trattamento dopo la visita?",
+                  answer: "Sì. Dopo la valutazione il professionista può proporre le opzioni terapeutiche più adatte al caso specifico.",
                 },
                 {
-                  question: "Come posso prenotare?",
-                  answer: "Puoi prenotare online tramite il pulsante 'Prenota ora' oppure chiamarci direttamente al +39 331 671 3904. Siamo disponibili per trovare insieme il giorno e l'orario più comodi per te.",
+                  question: "Posso fare domande durante la prima visita?",
+                  answer: "Certamente. La prima visita è il momento ideale per chiarire dubbi sui trattamenti, sui tempi e sul percorso terapeutico.",
                 },
               ].map((faq, index) => (
                 <FAQItem key={index} question={faq.question} answer={faq.answer} />

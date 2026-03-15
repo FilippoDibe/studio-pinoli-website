@@ -206,6 +206,9 @@
 .sectionHead {
   margin-bottom: 1.8rem;
   max-width: 680px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sectionHead h2 {
