@@ -386,11 +386,11 @@ export default function PrimaVisita() {
               </div>
               <div className="two-col-image">
                 <Image
-                  src="/foto/image-050-foto-nastia-cc1a9620.jpg"
+                  src="/images/cosa-portare.jpeg"
                   alt="Dentista Studio Pinoli Milano — accoglienza prima visita"
-                  width={600}
-                  height={450}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{ objectFit: "cover" }}
                 />
               </div>
             </div>

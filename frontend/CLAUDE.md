@@ -19,7 +19,7 @@ No test runner is configured.
 
 **Data loading pattern:** Pages import JSON directly rather than fetching from the Express backend at build time. For example, `index.js` does `import postsData from "./api/posts.json"` and serves it via `getStaticProps`. This is pure static generation — no ISR revalidation is wired up in any page currently.
 
-**API routes** (`src/pages/api/`): The `contact.js` route is the only real server-side handler; it sends email via nodemailer using SMTP env vars. The `.json` files in `src/pages/api/` are data files imported by pages, not API endpoints.
+**API routes** (`src/pages/api/`): `contact.js` sends email via nodemailer (and auto-replies to the sender). `posts/index.js`, `posts/[slug].js`, `pages/index.js`, `pages/[slug].js` are thin handlers that re-export the `.json` data files — they exist so the Express backend pattern works at runtime, but pages import the `.json` files directly at build time.
 
 **Path alias:** `@/*` → `src/*`
 
@@ -48,7 +48,7 @@ Global utility classes (`.container`, `.section`, `.btn`, `.btn-primary`, `.mosa
 ## Key Constants
 
 - Booking URL (alfadocs): `https://prenota.alfadocs.com/p/milano-studio-pinoli-31191` — hardcoded in `Header.js` and each service page. Not an env var.
-- Studio phone: `+39 3316713904`
+- Studio phone: `+39 3316713904`; email: `info@studiopinoli.it`; address: Via Domenico Cimarosa, 4 — 20144 Milano — hardcoded in contact page and email templates.
 - `NEXT_PUBLIC_API_URL` — env var for the Express backend (localhost:3001 in dev), used only if pages fetch at runtime rather than importing JSON.
 
 ## Environment Variables

@@ -3,6 +3,76 @@
    ============================================================ */
 
 /* ----------------------------------------------------------
+   Button override — nutrition green
+   ---------------------------------------------------------- */
+.btnNutrition {
+  background: var(--color-nutrition) !important;
+  border-color: var(--color-nutrition) !important;
+}
+
+.btnNutrition:hover {
+  background: var(--color-nutrition-dark) !important;
+  border-color: var(--color-nutrition-dark) !important;
+}
+
+.btnNutritionOutline {
+  color: var(--color-nutrition) !important;
+  border-color: var(--color-nutrition) !important;
+  background: transparent !important;
+}
+
+.btnNutritionOutline:hover {
+  background: var(--color-nutrition) !important;
+  color: #fff !important;
+}
+
+/* ----------------------------------------------------------
+   Diete Personalizzate — block divider inside two-col-content
+   ---------------------------------------------------------- */
+.dieteBlock + .dieteBlock {
+  padding-top: 28px;
+  border-top: 1px solid rgba(10, 90, 140, 0.1);
+  margin-top: 4px;
+}
+
+/* ----------------------------------------------------------
+   Controlli Periodici — subtitle + checklist inside two-col-content
+   ---------------------------------------------------------- */
+.controlliSubtitle {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--primary, #0a5a8c);
+  margin: 12px 0 4px;
+}
+
+.checkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #3d5570;
+  line-height: 1.5;
+}
+
+.checkList li::before {
+  content: '✓';
+  color: #2a9d5b;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ----------------------------------------------------------
    Green checkmark list
    ---------------------------------------------------------- */
 .greenList {
@@ -29,52 +99,97 @@
 }
 
 /* ----------------------------------------------------------
-   Process step grid (2×2)
+   Journey Timeline (process steps)
    ---------------------------------------------------------- */
-.stepGrid {
+.journeyTrack {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 60px;
+  padding-top: 28px;
 }
 
-.stepCard {
-  background: white;
+.journeyLine {
+  position: absolute;
+  top: 55px;
+  left: 12.5%;
+  width: 75%;
+  height: 2px;
+  background: linear-gradient(90deg, #2a9d5b 0%, rgba(42,157,91,0.15) 100%);
+  z-index: 0;
+}
+
+.journeyStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.journeyBubble {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #2a9d5b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #2a9d5b;
+  box-shadow: 0 0 0 6px rgba(42,157,91,0.07);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.journeyStep:hover .journeyBubble {
+  background: #2a9d5b;
+  color: #fff;
+}
+
+.journeyCard {
+  background: #fff;
   border-radius: 16px;
-  padding: 36px 32px;
-  box-shadow: 0 2px 16px rgba(16, 33, 50, 0.07);
-  border-left: 4px solid #2a9d5b;
+  padding: 24px 20px 22px;
+  box-shadow: 0 4px 24px rgba(16, 33, 50, 0.07);
+  border-top: 3px solid #2a9d5b;
+  width: 100%;
+  overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.stepCard:hover {
+.journeyStep:hover .journeyCard {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(42, 157, 91, 0.12);
+  box-shadow: 0 14px 36px rgba(42,157,91,0.13);
 }
 
-.stepBigNum {
+.journeyCardNum {
   font-family: Montserrat, sans-serif;
-  font-weight: 800;
-  font-size: 3.5rem;
-  color: #2a9d5b;
-  opacity: 0.9;
+  font-weight: 900;
+  font-size: 3.8rem;
+  color: rgba(42,157,91,0.07);
   line-height: 1;
-  margin-bottom: 12px;
+  margin: 0 0 -16px;
+  letter-spacing: -0.05em;
   display: block;
 }
 
-.stepCard h4 {
+.journeyCardTitle {
   font-family: Montserrat, sans-serif;
   font-weight: 700;
-  font-size: 1rem;
-  color: #1a2b3d;
-  margin-bottom: 10px;
+  font-size: 0.95rem;
+  color: #0e1f30;
+  margin: 0 0 8px;
 }
 
-.stepCard p {
-  font-size: 0.88rem;
+.journeyCardDesc {
+  font-size: 0.84rem;
   color: #5d6f82;
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 0;
 }
 
@@ -123,11 +238,40 @@
    Responsive
    ---------------------------------------------------------- */
 @media (max-width: 768px) {
-  .stepGrid {
-    grid-template-columns: 1fr;
+  .journeyTrack {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .journeyLine {
+    display: none;
   }
 
   .appCallout {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .appCallout {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .journeyCard {
+    padding: 16px 14px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .journeyTrack {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .journeyCardNum {
+    font-size: 2.4rem;
+    margin-bottom: -10px;
   }
 }

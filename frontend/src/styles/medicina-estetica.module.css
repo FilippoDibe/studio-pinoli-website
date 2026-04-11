@@ -153,6 +153,12 @@
   }
 }
 
+@media (max-width: 640px) {
+  .luxuryCard {
+    padding: 24px 20px;
+  }
+}
+
 @media (max-width: 600px) {
   .elegantBenefits {
     grid-template-columns: 1fr;

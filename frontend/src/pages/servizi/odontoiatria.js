@@ -17,7 +17,7 @@ const mosaicGroups = [
     tagline: "Cura e salvataggio del dente naturale",
     description:
       "Dalla terapia canalare alle ricostruzioni, preserviamo ogni dente con precisione chirurgica e materiali biocompatibili di ultima generazione.",
-    image: `${UNSPLASH}/photo-1643290976205-c2e467a65e9c?auto=format&fit=crop&w=1200&q=80`,
+    image: `/servizi/odontoriatria/conservativa.jpeg`,
     focalPoint: "center",
     icon: "/odontoiatria/conservativa.svg",
     accent: "#0a5a8c",
@@ -144,25 +144,25 @@ const relatedServices = [
     title: "Bionutrizione",
     description: "Piani alimentari personalizzati per il tuo benessere.",
     href: "/servizi/bionutrizione",
-    image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
+    image: "/servizi/Biochimica-nutrizione_Immagine_blog-.jpg",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
-    image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
+    image: "/servizi/medicinaestetica.jpg",
   },
   {
     title: "Osteopatia",
     description: "Trattamenti manuali per disturbi dell'ATM e benessere articolare.",
     href: "/servizi/osteopatia",
-    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+    image: "/servizi/osteopatia.jpg",
   },
   {
     title: "Art-Terapia",
     description: "Percorsi creativi per il benessere emotivo e psicologico.",
     href: "/servizi/art-terapia",
-    image: "/foto/image-050-foto-nastia-cc1a9620.jpg",
+    image: "/servizi/art-terapia-hd.jpg",
   },
 ];
 
@@ -221,23 +221,6 @@ function MosaicCard({ group, className }) {
         <h3 className={styles.mosaicTitle}>{group.title}</h3>
         <p className={styles.mosaicTagline}>{group.tagline}</p>
         <p className={styles.mosaicDesc}>{group.description}</p>
-        <span className={styles.mosaicCta} aria-hidden="true">
-          Scopri di più
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            width="15"
-            height="15"
-            aria-hidden="true"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </span>
       </div>
     </article>
   );
@@ -295,7 +278,7 @@ export default function Odontoiatria() {
         </section>
 
         {/* ── Overview ───────────────────────────────────────── */}
-        <section className="section">
+        {/* <section className="section">
           <div className="container">
             <div className="two-col-section">
               <div className="two-col-content">
@@ -331,9 +314,32 @@ export default function Odontoiatria() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
-        {/* ── Team Specialists ───────────────────────────────── */}
+     
+
+        {/* ── Services Mosaic ────────────────────────────────── */}
+        <section className="section section-light">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">Le nostre specializzazioni</span>
+              <h2 className="section-title">Servizi di Odontoiatria</h2>
+              <p className="section-description">
+                Cinque aree di competenza per una cura completa e integrata della salute
+                orale, dalla prevenzione all'estetica.
+              </p>
+            </div>
+          </div>
+
+          <div className={styles.mosaicWrapper}>
+            <div className={styles.mosaic}>
+              {mosaicGroups.map((group, i) => (
+                <MosaicCard key={group.key} group={group} className={cardClasses[i]} />
+              ))}
+            </div>
+          </div>
+        </section>
+   {/* ── Team Specialists ───────────────────────────────── */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
@@ -344,6 +350,23 @@ export default function Odontoiatria() {
               </p>
             </div>
             <div className="specialist-duo-grid">
+              <div className="specialist-duo-card">
+                <div className="specialist-duo-photo">
+                  <Image
+                    src="/team/DR-PINOLI-MILANO.jpeg"
+                    alt="Dr. Luca Maria Pinoli — Direttore Sanitario Studio Pinoli Milano"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "top center" }}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="specialist-duo-info" style={{ "--specialist-accent": "var(--color-dental)" }}>
+                  <span className="specialist-role-tag" style={{ color: "var(--color-dental)", borderColor: "var(--color-dental)" }}>Direttore Sanitario</span>
+                  <h3>Dr. Luca Maria Pinoli</h3>
+                  <span className="specialist-sub-role">Medico Chirurgo · Odontoiatra</span>
+                  <p>Specializzato in odontostomatologia e bio-nutrizione, con oltre 35 anni di esperienza nel campo dell'estetica dentale e della medicina integrata. Unisce la cura orale al benessere globale della persona, combinando tecniche avanzate a terapie naturali e nutrizionali.</p>
+                </div>
+              </div>
               <div className="specialist-duo-card">
                 <div className="specialist-duo-photo">
                   <Image
@@ -381,27 +404,6 @@ export default function Odontoiatria() {
             </div>
           </div>
         </section>
-
-        {/* ── Services Mosaic ────────────────────────────────── */}
-        <section className="section section-light">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-subtitle">Le nostre specializzazioni</span>
-              <h2 className="section-title">Servizi di Odontoiatria</h2>
-              <p className="section-description">
-                Cinque aree di competenza per una cura completa e integrata della salute
-                orale, dalla prevenzione all'estetica.
-              </p>
-            </div>
-
-            <div className={styles.mosaic}>
-              {mosaicGroups.map((group, i) => (
-                <MosaicCard key={group.key} group={group} className={cardClasses[i]} />
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* ── Process ────────────────────────────────────────── */}
         <section className="section">
           <div className="container">
@@ -410,13 +412,19 @@ export default function Odontoiatria() {
               <h2 className="section-title">Come Funziona</h2>
             </div>
 
-            <div className={styles.stepper}>
-              {processSteps.map((step) => (
-                <div key={step.number} className={styles.stepperItem}>
-                  <div className={styles.stepNum}>{step.number}</div>
-                  <div>
-                    <h4 className={styles.stepTitle}>{step.title}</h4>
-                    <p className={styles.stepDesc}>{step.description}</p>
+            <div className={styles.journeyTrack}>
+              <div className={styles.journeyLine} aria-hidden="true" />
+              {processSteps.map((step, i) => (
+                <div key={i} className={styles.journeyStep}>
+                  <div className={styles.journeyBubble} aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className={styles.journeyCard}>
+                    <p className={styles.journeyCardNum} aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <h4 className={styles.journeyCardTitle}>{step.title}</h4>
+                    <p className={styles.journeyCardDesc}>{step.description}</p>
                   </div>
                 </div>
               ))}

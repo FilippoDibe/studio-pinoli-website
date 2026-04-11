@@ -29,7 +29,7 @@ const carouselServices = [
     title: "Medicina Estetica a Milano",
     description: "Trattamenti non invasivi e protocolli medicali per valorizzare i lineamenti in modo naturale, con risultati eleganti e armonici.",
     href: "/servizi/medicina-estetica",
-    image: "/servizi/medicina-estetica.jpg",
+    image: "/servizi/medicinaestetica.jpg",
     alt: "Trattamento medicina estetica viso Milano Studio Pinoli",
     accent: "#c16d43",
   },
@@ -38,7 +38,7 @@ const carouselServices = [
     title: "Osteopatia a Milano",
     description: "Valutazioni e trattamenti osteopatici per migliorare postura, mobilità e benessere muscolo-scheletrico, in integrazione con il percorso clinico complessivo.",
     href: "/servizi/osteopatia",
-    image: "/servizi/osteopatia-hd.jpg",
+    image: "/servizi/osteopatia.jpg",
     alt: "Trattamenti osteopatici Studio Pinoli Milano",
     accent: "#5c6bc0",
   },
@@ -92,6 +92,10 @@ function ServiceCarousel() {
               fill
               sizes="100vw"
               className={styles.coverImage}
+              style={{
+                objectFit: service.objectFit || "cover",
+                objectPosition: service.objectPosition || "center center",
+              }}
               priority={i === 0}
             />
             <div className={styles.slideOverlay}>

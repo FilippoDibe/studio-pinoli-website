@@ -59,25 +59,25 @@ const relatedServices = [
     title: "Odontoiatria",
     description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
     href: "/servizi/odontoiatria",
-    image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
+    image: "/servizi/odontoriatria.jpg",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
-    image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
+    image: "/servizi/medicinaestetica.jpg",
   },
   {
     title: "Osteopatia",
     description: "Trattamenti manuali per il benessere muscolare e articolare.",
     href: "/servizi/osteopatia",
-    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+    image: "/servizi/osteopatia.jpg",
   },
   {
     title: "Art-Terapia",
     description: "Percorsi creativi per il benessere emotivo e psicologico.",
     href: "/servizi/art-terapia",
-    image: "/foto/image-050-foto-nastia-cc1a9620.jpg",
+    image: "/servizi/art-terapia-hd.jpg",
   },
 ];
 
@@ -136,7 +136,7 @@ export default function Bionutrizione() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary"
+                className={`btn btn-primary ${styles.btnNutrition}`}
               >
                 Prenota una visita
               </Link>
@@ -147,38 +147,48 @@ export default function Bionutrizione() {
           </div>
         </section>
 
-        {/* Overview Section */}
+        {/* Diete Personalizzate Section */}
         <section className="section">
           <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">Bio-Nutrizione</span>
+              <h2 className="section-title">Piani Alimentari Personalizzati</h2>
+            </div>
             <div className="two-col-section">
-              <div className="two-col-content">
-                <h2>Piani di Nutrizione Personalizzati</h2>
-                <p>
-                  Nel nostro Studio la nutrizione è parte di un approccio integrato alla salute e al benessere della persona. Attraverso una valutazione approfondita della composizione corporea, del metabolismo e delle abitudini di vita, siamo in grado di elaborare percorsi alimentari personalizzati, costruiti sulle reali esigenze di ogni paziente.
-                </p>
-                <p>
-                  L'obiettivo non è solo raggiungere il peso forma, ma migliorare l'equilibrio dell'organismo, sostenere le performance fisiche e favorire uno stile di vita sano e duraturo nel tempo. Il percorso terapeutico comprende:
-                </p>
-                <ul className={styles.greenList}>
-                  <li>Analisi dello stato nutrizionale e metabolico</li>
-                  <li>Elaborazione di un piano alimentare personalizzato</li>
-                  <li>Monitoraggio periodico dei risultati ottenuti</li>
-                </ul>
-              </div>
               <div className="two-col-image">
                 <Image
-                  src="/foto/image-055-foto-nastia-cc1a9639.jpg"
-                  alt="Consulenza nutrizionista Milano — bionutrizione Studio Pinoli"
-                  width={600}
-                  height={400}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
+                  src="/servizi/bio-nutrizione/dieta.jpeg"
+                  alt="Diete personalizzate nutrizionista Milano Studio Pinoli"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center" }}
+                  sizes="50vw"
                 />
+              </div>
+              <div className="two-col-content">
+                <div className={styles.dieteBlock}>
+                  <h3>Hai problemi di alimentazione?</h3>
+                  <p>
+                    Hai problemi di sovrappeso o di eccessiva magrezza? Sei uno sportivo e sei alla ricerca della dieta ideale? Soffri di patologie metaboliche o degenerative e cerchi un piano di alimentazione equilibrato? Oppure desideri semplicemente migliorare il tuo aspetto fisico? Rivolgiti allo Studio Pinoli e inizia la tua dieta personalizzata.
+                  </p>
+                  <Link href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className={`btn btn-primary ${styles.btnNutrition}`}>
+                    Richiedi una prima consulenza online
+                  </Link>
+                </div>
+                <div className={styles.dieteBlock}>
+                  <h3>Richiedi il <strong>tuo piano alimentare</strong>!</h3>
+                  <p>
+                    Offriamo servizi di eccellenza per aiutarti a raggiungere i tuoi obiettivi di salute. Le nostre consulenze nutrizionali offrono un approccio personalizzato per migliorare il tuo benessere. Investi in te stesso chiedendo una consulenza nutrizionale e fai il primo passo verso uno stile di vita sano e duraturo.
+                  </p>
+                  <Link href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className={`btn btn-primary ${styles.btnNutrition}`}>
+                    Prenota una visita in Studio
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-       
+
 
         {/* Process Section */}
         <section className="section">
@@ -188,12 +198,20 @@ export default function Bionutrizione() {
               <h2 className="section-title">Come Funziona</h2>
             </div>
 
-            <div className={styles.stepGrid}>
-              {processSteps.map((step, index) => (
-                <div key={index} className={styles.stepCard}>
-                  <span className={styles.stepBigNum}>{"0" + step.number}</span>
-                  <h4>{step.title}</h4>
-                  <p>{step.description}</p>
+            <div className={styles.journeyTrack}>
+              <div className={styles.journeyLine} aria-hidden="true" />
+              {processSteps.map((step, i) => (
+                <div key={i} className={styles.journeyStep}>
+                  <div className={styles.journeyBubble} aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className={styles.journeyCard}>
+                    <p className={styles.journeyCardNum} aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <h4 className={styles.journeyCardTitle}>{step.title}</h4>
+                    <p className={styles.journeyCardDesc}>{step.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -212,13 +230,49 @@ export default function Bionutrizione() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary"
+                className={`btn btn-primary ${styles.btnNutrition}`}
               >
                 Prenota una visita
               </Link>
               <a href="tel:+393316713904" className="btn btn-secondary">
                 Chiama ora
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Controlli Periodici Section */}
+        <section className="section section-light">
+          <div className="container">
+            <div className="two-col-section">
+              <div className="two-col-image">
+                <Image
+                  src="/servizi/bio-nutrizione/pancia-piatta.jpeg"
+                  alt="Controlli periodici nutrizionista Studio Pinoli Milano"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center" }}
+                  sizes="50vw"
+                />
+              </div>
+              <div className="two-col-content">
+                <h2>Controlli Periodici</h2>
+                <p>
+                  Una volta ricevuta la Dieta, organizzeremo 4 incontri, uno alla settimana, per supportarti nell'apprendere il piano alimentare ideato su misura per te. Continueremo poi a vederci regolarmente, indicativamente una volta ogni 2 mesi, fino al raggiungimento del tuo obiettivo.
+                </p>
+                <Link href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className={`btn btn-primary ${styles.btnNutrition}`}>
+                  Richiedi una consulenza online
+                </Link>
+                <p className={styles.controlliSubtitle}>Cosa comprende il piano di cure nutrizionale:</p>
+                <ul className={styles.checkList}>
+                  <li>Analisi clinica + Diario alimentare</li>
+                  <li>Test Biorisonanza</li>
+                  <li>Esposizione del piano alimentare</li>
+                  <li>Controlli periodici fino a raggiungimento risultato</li>
+                </ul>
+                <Link href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className={`btn btn-outline ${styles.btnNutritionOutline}`}>
+                  Prenota una visita in Studio
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -75,25 +75,25 @@ const relatedServices = [
     title: "Odontoiatria",
     description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
     href: "/servizi/odontoiatria",
-    image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
+    image: "/servizi/odontoriatria.jpg",
   },
   {
     title: "Bionutrizione",
     description: "Diete personalizzate per il tuo benessere completo.",
     href: "/servizi/bionutrizione",
-    image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
+    image: "/servizi/Biochimica-nutrizione_Immagine_blog-.jpg",
   },
   {
     title: "Osteopatia",
     description: "Trattamenti manuali per il benessere muscolare e articolare.",
     href: "/servizi/osteopatia",
-    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+    image: "/servizi/osteopatia.jpg",
   },
   {
     title: "Art-Terapia",
     description: "Percorsi creativi per il benessere emotivo e psicologico.",
     href: "/servizi/art-terapia",
-    image: "/foto/image-050-foto-nastia-cc1a9620.jpg",
+    image: "/servizi/art-terapia-hd.jpg",
   },
 ];
 

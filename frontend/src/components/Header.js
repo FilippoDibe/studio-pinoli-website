@@ -141,7 +141,8 @@ export default function Header() {
             <Link href="/servizi/odontoiatria" onClick={closeMenu}>Odontoiatria</Link>
             <Link href="/servizi/bionutrizione" onClick={closeMenu}>Bionutrizione</Link>
             <Link href="/servizi/medicina-estetica" onClick={closeMenu}>Medicina Estetica</Link>
-            <Link href="/servizi/medicina-integrata" onClick={closeMenu}>Medicina Integrata</Link>
+            <Link href="/servizi/osteopatia" onClick={closeMenu}>Osteopatia</Link>
+            <Link href="/servizi/art-terapia" onClick={closeMenu}>Art-Terapia</Link>
           </div>
           <Link href="/prima-visita" onClick={closeMenu}>Prima Visita</Link>
           <Link href="/chi-siamo" onClick={closeMenu}>Chi Siamo</Link>

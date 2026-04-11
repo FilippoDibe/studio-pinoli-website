@@ -6,16 +6,7 @@ import styles from "../../styles/art-terapia.module.css";
 
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
-const benefits = [
-  "Ridurre stress e tensioni emotive",
-  "Migliorare la gestione dell'ansia",
-  "Favorire l'espressione delle emozioni",
-  "Sviluppare consapevolezza e equilibrio interiore",
-  "Supportare il benessere psicologico",
-  "Gestire difficoltà emotive durante i percorsi di cura",
-];
-
-const valuePros = [
+const treatments = [
   {
     title: "Accessibile a Tutti",
     description:
@@ -44,6 +35,15 @@ const valuePros = [
     iconPath:
       "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z",
   },
+];
+
+const benefits = [
+  "Ridurre stress e tensioni emotive",
+  "Migliorare la gestione dell'ansia",
+  "Favorire l'espressione delle emozioni",
+  "Sviluppare consapevolezza e equilibrio interiore",
+  "Supportare il benessere psicologico",
+  "Gestire difficoltà emotive durante i percorsi di cura",
 ];
 
 const faqs = [
@@ -79,25 +79,25 @@ const relatedServices = [
     title: "Odontoiatria",
     description: "Cure odontoiatriche di eccellenza per il tuo sorriso.",
     href: "/servizi/odontoiatria",
-    image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
+    image: "/servizi/odontoriatria.jpg",
   },
   {
     title: "Bionutrizione",
     description: "Piani alimentari personalizzati per il tuo benessere.",
     href: "/servizi/bionutrizione",
-    image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
+    image: "/servizi/Biochimica-nutrizione_Immagine_blog-.jpg",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
-    image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
+    image: "/servizi/medicinaestetica.jpg",
   },
   {
     title: "Osteopatia",
     description: "Trattamenti manuali per benessere muscolare e articolare.",
     href: "/servizi/osteopatia",
-    image: "/foto/image-045-foto-nastia-cc1a9602.jpg",
+    image: "/servizi/osteopatia.jpg",
   },
 ];
 
@@ -173,38 +173,14 @@ export default function ArtTerapia() {
           </div>
         </section>
 
-        {/* Overview */}
-        <section className="section">
+        {/* Quote */}
+        <section className={styles.quoteSection}>
           <div className="container">
-            <div className="two-col-section">
-              <div className="two-col-content">
-                <h2>Benessere emotivo attraverso l'espressione creativa</h2>
-                <p>
-                  L'art-terapia usa il disegno, il colore e altre forme creative come strumenti
-                  di supporto emotivo e crescita personale.
-                </p>
-                <p>
-                  Nel nostro studio l'art-terapia rappresenta uno spazio dedicato al benessere emotivo della persona e può essere un valido supporto anche nei percorsi di cura, aiutando a gestire ansia, tensione e difficoltà emotive.
-                </p>
-                <p style={{ fontSize: "0.92rem", color: "var(--gray-500)", fontStyle: "italic" }}>
-                  Non è necessario avere competenze artistiche: il percorso è guidato
-                  e accessibile a tutti.
-                </p>
-                <div className={styles.pullQuote}>
-                  <span className={styles.pullQuoteBar} />
-                  <p>"Non importa saper disegnare — importa saper sentire."</p>
-                </div>
-              </div>
-              <div className="two-col-image">
-                <Image
-                  src="/foto/image-050-foto-nastia-cc1a9620.jpg"
-                  alt="Seduta di art-terapia Studio Pinoli Milano"
-                  width={600}
-                  height={400}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                />
-              </div>
-            </div>
+            <blockquote className={styles.quote}>
+              <span className={styles.quoteMark}>"</span>
+              Non importa saper disegnare — importa saper sentire.
+              <footer className={styles.quoteFooter}>Studio Pinoli — Milano</footer>
+            </blockquote>
           </div>
         </section>
 
@@ -235,84 +211,38 @@ export default function ArtTerapia() {
           </div>
         </section>
 
-        {/* A Cosa Serve */}
+        {/* Treatments Grid */}
         <section className="section">
           <div className="container">
             <div className="section-header">
-              <span className="section-subtitle">Cosa può fare per te</span>
-              <h2 className="section-title">A Cosa Serve l'Art-Terapia</h2>
-              <p style={{ maxWidth: 620, margin: "0 auto", color: "var(--gray-500)", textAlign: "center" }}>
-                L'art-terapia può aiutare a:
-              </p>
+              <span className="section-subtitle">Perché sceglierci</span>
+              <h2 className="section-title">I Vantaggi dell'Art-Terapia</h2>
             </div>
-
-            <div className={styles.numberedList}>
-              {benefits.map((item, i) => (
-                <div key={i} className={styles.numberedItem}>
-                  <span className={styles.bigNum}>{String(i + 1).padStart(2, "0")}</span>
-                  <span className={styles.itemText}>{item}</span>
+            <div className={styles.luxuryGrid}>
+              {treatments.map((t, i) => (
+                <div key={i} className={styles.luxuryCard}>
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                    <path d={t.iconPath} />
+                  </svg>
+                  <h4>{t.title}</h4>
+                  <p>{t.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Journey */}
-        <section className="section">
-          <div className="container">
-            <div className="two-col-section reverse">
-              <div className="two-col-image">
-                <Image
-                  src="/foto/image-029-foto-nastia-cc1a9504.jpg"
-                  alt="Percorso guidato di art-terapia Studio Pinoli"
-                  width={600}
-                  height={400}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                />
-              </div>
-              <div className={`two-col-content ${styles.journeyContent}`}>
-                <h2>Un Percorso di Ascolto e Crescita Personale</h2>
-                <p>
-                  Attraverso attività creative guidate, l'art-terapia permette di esplorare
-                  il proprio mondo emotivo in un ambiente sicuro e accogliente.
-                </p>
-                <p>
-                  Il percorso viene costruito in base alle esigenze individuali e può
-                  rappresentare un momento di pausa, riflessione e riequilibrio nella
-                  vita quotidiana — oppure integrarsi con altri trattamenti dello studio
-                  per un supporto emotivo durante i percorsi di cura.
-                </p>
-                <Link
-                  href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                  style={{ borderColor: "var(--color-art)", color: "var(--color-art)" }}
-                >
-                  Prenota una visita
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Perché Scegliere */}
+        {/* Benefits — what art therapy helps with */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
-              <span className="section-subtitle">I vantaggi</span>
-              <h2 className="section-title">Perché Scegliere l'Art-Terapia</h2>
+              <span className="section-subtitle">Cosa può fare per te</span>
+              <h2 className="section-title">A Cosa Serve l'Art-Terapia</h2>
             </div>
-            <div className={styles.warmGrid}>
-              {valuePros.map((v, i) => (
-                <div key={i} className={styles.warmCard}>
-                  <div className={styles.warmCardIcon}>
-                    <svg viewBox="0 0 24 24" fill="currentColor" width={22} height={22}>
-                      <path d={v.iconPath} />
-                    </svg>
-                  </div>
-                  <h4>{v.title}</h4>
-                  <p>{v.description}</p>
+            <div className={styles.elegantBenefits}>
+              {benefits.map((item, i) => (
+                <div key={i} className={styles.elegantBenefit}>
+                  <h4>{item}</h4>
                 </div>
               ))}
             </div>
@@ -353,7 +283,7 @@ export default function ArtTerapia() {
           </div>
         </section>
 
-        {/* Related */}
+        {/* Related Services */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">

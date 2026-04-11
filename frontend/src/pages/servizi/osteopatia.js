@@ -6,6 +6,29 @@ import styles from "../../styles/osteopatia.module.css";
 
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
+const treatments = [
+  {
+    title: "Approccio Manuale",
+    description: "Tecniche specifiche su muscoli, articolazioni e tessuti per ripristinare l'equilibrio funzionale del corpo.",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+  },
+  {
+    title: "Integrazione con l'Odontoiatria",
+    description: "Collaborazione diretta con il team odontoiatrico per trattare i disturbi dell'ATM in modo completo.",
+    icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+  },
+  {
+    title: "Valutazione Personalizzata",
+    description: "Ogni percorso parte da un'analisi approfondita per individuare le cause e non solo il sintomo.",
+    icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+  {
+    title: "Benessere Duraturo",
+    description: "L'obiettivo è migliorare la mobilità articolare e favorire il naturale equilibrio del corpo nel tempo.",
+    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 13H11v-4h1.5v4zm0-6H11V7h1.5v2z",
+  },
+];
+
 const whenUseful = [
   "Dolori mandibolari e disturbi dell'ATM",
   "Cefalee e tensioni muscolari del viso e del collo",
@@ -13,25 +36,6 @@ const whenUseful = [
   "Dolori muscolo-scheletrici",
   "Limitazioni nei movimenti della mandibola",
   "Squilibri posturali e compensi corporei",
-];
-
-const benefits = [
-  {
-    title: "Approccio Manuale",
-    description: "Tecniche specifiche su muscoli, articolazioni e tessuti per ripristinare l'equilibrio funzionale del corpo.",
-  },
-  {
-    title: "Integrazione con l'Odontoiatria",
-    description: "Collaborazione diretta con il team odontoiatrico per trattare i disturbi dell'ATM in modo completo.",
-  },
-  {
-    title: "Valutazione Personalizzata",
-    description: "Ogni percorso parte da un'analisi approfondita per individuare le cause e non solo il sintomo.",
-  },
-  {
-    title: "Benessere Duraturo",
-    description: "L'obiettivo è migliorare la mobilità articolare e favorire il naturale equilibrio del corpo nel tempo.",
-  },
 ];
 
 const faqs = [
@@ -62,33 +66,26 @@ const relatedServices = [
     title: "Odontoiatria",
     description: "Cure odontoiatriche di eccellenza, con attenzione all'ATM.",
     href: "/servizi/odontoiatria",
-    image: "/foto/image-013-foto-nastia-cc1a9446.jpg",
+    image: "/servizi/odontoriatria.jpg",
   },
   {
     title: "Bionutrizione",
     description: "Piani alimentari personalizzati per il tuo benessere.",
     href: "/servizi/bionutrizione",
-    image: "/foto/image-024-foto-nastia-cc1a9492.jpg",
+    image: "/servizi/Biochimica-nutrizione_Immagine_blog-.jpg",
   },
   {
     title: "Medicina Estetica",
     description: "Trattamenti estetici non invasivi e naturali.",
     href: "/servizi/medicina-estetica",
-    image: "/foto/image-025-foto-nastia-cc1a9493.jpg",
+    image: "/servizi/medicinaestetica.jpg",
   },
   {
     title: "Art-Terapia",
     description: "Percorsi creativi per il benessere emotivo e psicologico.",
     href: "/servizi/art-terapia",
-    image: "/foto/image-050-foto-nastia-cc1a9620.jpg",
+    image: "/servizi/art-terapia-hd.jpg",
   },
-];
-
-const benefitIcons = [
-  "M13 10V3L4 14h7v7l9-11h-7z",
-  "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-  "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
-  "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 13H11v-4h1.5v4zm0-6H11V7h1.5v2z",
 ];
 
 function FAQItem({ question, answer }) {
@@ -120,7 +117,7 @@ export default function Osteopatia() {
       </Head>
 
       <main id="main-content">
-        {/* 1. Hero Section */}
+        {/* Hero */}
         <section className="service-hero osteopatia">
           <div
             className="service-hero-bg"
@@ -159,27 +156,19 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* 2. Overview — two-col + ATM callout */}
-        <section className="section">
+        {/* Quote */}
+        <section className={styles.quoteSection}>
           <div className="container">
-
-          
-            <div className={styles.atmCallout}>
-              <div className={styles.atmCalloutIcon}>
-                <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-              <div>
-                <strong>Connessione con l'Odontoiatria</strong>
-                <p>L'articolazione temporo-mandibolare (ATM) è strettamente connessa alla postura e alla colonna cervicale. Nel nostro studio, l'osteopatia lavora in sinergia con l'odontoiatria per trattare i disturbi mandibolari in modo completo e integrato.</p>
-              </div>
-            </div>
+            <blockquote className={styles.quote}>
+              <span className={styles.quoteMark}>"</span>
+              Il corpo parla. L'osteopatia ascolta e risponde.
+              <footer className={styles.quoteFooter}>Studio Pinoli — Milano</footer>
+            </blockquote>
           </div>
         </section>
 
-        {/* 3. Specialist */}
-        <section className="section">
+        {/* Specialist */}
+        <section className="section section-light">
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Il tuo specialista</span>
@@ -205,86 +194,45 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* 4. When Useful — chip grid */}
+        {/* Treatments Grid */}
+        <section className="section">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-subtitle">I nostri trattamenti</span>
+              <h2 className="section-title">Servizi di Osteopatia</h2>
+            </div>
+            <div className={styles.luxuryGrid}>
+              {treatments.map((t, i) => (
+                <div key={i} className={styles.luxuryCard}>
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                    <path d={t.icon} />
+                  </svg>
+                  <h4>{t.title}</h4>
+                  <p>{t.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* When Useful */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">
               <span className="section-subtitle">Indicazioni cliniche</span>
               <h2 className="section-title">Quando Può Essere Utile l'Osteopatia</h2>
-              <p style={{ maxWidth: 640, margin: "0 auto", color: "var(--gray-500)", textAlign: "center" }}>
-                Il trattamento osteopatico può rappresentare un valido supporto in presenza di:
-              </p>
             </div>
-
-            <div className={styles.chipGrid}>
+            <div className={styles.elegantBenefits}>
               {whenUseful.map((item, i) => (
-                <div key={i} className={styles.chip}>
-                  {item}
+                <div key={i} className={styles.elegantBenefit}>
+                  <h4>{item}</h4>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 4. Integrated Approach — two-col reverse, keep as-is */}
-        <section className="section">
-          <div className="container">
-            <div className="two-col-section reverse">
-              <div className="two-col-image">
-                <Image
-                  src="/foto/image-043-foto-nastia-cc1a9578.jpg"
-                  alt="Approccio integrato osteopatia e odontoiatria Studio Pinoli"
-                  width={600}
-                  height={400}
-                  style={{ width: "100%", height: "auto", borderRadius: "var(--radius-lg)" }}
-                />
-              </div>
-              <div className="two-col-content">
-                <h2>Un Approccio Integrato alla Salute</h2>
-                <p>
-                  Nel nostro studio l'osteopatia si inserisce in un percorso multidisciplinare
-                  che coinvolge odontoiatria, gnatologia e altre discipline orientate al
-                  benessere della persona.
-                </p>
-                <p>
-                  Questo approccio integrato consente di intervenire non solo sul sintomo, ma anche sulle cause che possono contribuire ai disturbi muscolari e articolari.
-                </p>
-                <Link
-                  href="/contatti"
-                  className="btn btn-outline"
-                  style={{ borderColor: "var(--color-osteopatia)", color: "var(--color-osteopatia)" }}
-                >
-                  Prenota visita
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 5. Benefits — indigo-tinted benefitGrid */}
-        <section className="section section-light">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-subtitle">I vantaggi</span>
-              <h2 className="section-title">Perché Scegliere l'Osteopatia nel Nostro Studio</h2>
-            </div>
-            <div className={styles.benefitGrid}>
-              {benefits.map((b, i) => (
-                <div key={i} className={styles.benefitCard}>
-                  <div className={styles.benefitCardIcon}>
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d={benefitIcons[i]} />
-                    </svg>
-                  </div>
-                  <h4>{b.title}</h4>
-                  <p>{b.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 6. CTA */}
+        {/* CTA */}
         <section className="cta-section" style={{ background: "var(--color-osteopatia)" }}>
           <div className="container">
             <h2>Prenota una Consulenza Osteopatica a Milano</h2>
@@ -308,7 +256,7 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* 7. FAQ */}
+        {/* FAQ */}
         <section className="section">
           <div className="container">
             <div className="section-header">
@@ -323,7 +271,7 @@ export default function Osteopatia() {
           </div>
         </section>
 
-        {/* 8. Related Services */}
+        {/* Related Services */}
         <section className="section section-light">
           <div className="container">
             <div className="section-header">

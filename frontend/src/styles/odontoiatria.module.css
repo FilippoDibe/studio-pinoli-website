@@ -3,6 +3,129 @@
    ============================================================ */
 
 /* ----------------------------------------------------------
+   Dr. Pinoli Section
+   ---------------------------------------------------------- */
+.doctorSection {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.doctorPhoto {
+  position: relative;
+  height: 520px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(10, 30, 50, 0.14);
+  flex-shrink: 0;
+}
+
+.doctorLabel {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(10, 90, 140, 0.88);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.doctorContent {
+  padding-top: 0.5rem;
+}
+
+.doctorName {
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-weight: 800;
+  color: #0e1f30;
+  letter-spacing: -0.025em;
+  margin: 0.5rem 0 0.2rem;
+  line-height: 1.1;
+}
+
+.doctorRole {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+  margin: 0 0 1.4rem;
+  text-transform: uppercase;
+}
+
+.doctorDesc {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #3d5570;
+  margin: 0 0 1.6rem;
+  max-width: 60ch;
+}
+
+.doctorSpecialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.4rem;
+}
+
+.doctorPill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  background: rgba(10, 90, 140, 0.08);
+  border: 1px solid rgba(10, 90, 140, 0.2);
+  border-radius: 50px;
+  padding: 5px 14px;
+}
+
+.doctorCredentials {
+  border-left: 3px solid rgba(10, 90, 140, 0.2);
+  padding-left: 14px;
+  margin-bottom: 1.6rem;
+}
+
+.doctorCredentials p {
+  font-size: 0.8rem;
+  color: #5d6f82;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.doctorLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(10, 90, 140, 0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.doctorLink:hover {
+  color: var(--primary-dark);
+  border-color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .doctorSection {
+    grid-template-columns: 1fr;
+  }
+  .doctorPhoto {
+    height: 380px;
+  }
+}
+
+/* ----------------------------------------------------------
    Hero Badge
    ---------------------------------------------------------- */
 .heroBadge {
@@ -26,12 +149,17 @@
 /* ----------------------------------------------------------
    Mosaic Grid — 5 service groups
    ---------------------------------------------------------- */
+.mosaicWrapper {
+  width: 80vw;
+  margin: 0 auto;
+  margin-top: 48px;
+}
+
 .mosaic {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 380px 300px;
+  grid-template-rows: 500px 420px;
   gap: 14px;
-  margin-top: 48px;
 }
 
 /* Grid positions */
@@ -180,21 +308,12 @@
   font-style: italic;
 }
 
-/* Description — revealed on hover */
+/* Description — always visible */
 .mosaicDesc {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.82);
   line-height: 1.6;
   margin: 0 0 12px;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.35s ease 0.06s;
-}
-
-.mosaicCard:hover .mosaicDesc {
-  max-height: 120px;
-  opacity: 1;
 }
 
 /* CTA label */
@@ -217,68 +336,97 @@
 }
 
 /* ----------------------------------------------------------
-   Stepper (process steps)
+   Journey Timeline (process steps)
    ---------------------------------------------------------- */
-.stepper {
-  display: flex;
-  gap: 0;
-  margin-top: 48px;
-}
-
-.stepperItem {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.journeyTrack {
   position: relative;
-  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 60px;
+  padding-top: 28px;
 }
 
-.stepperItem:not(:last-child)::after {
-  content: '';
+.journeyLine {
   position: absolute;
-  top: 27px;
-  left: calc(50% + 28px);
-  right: calc(-50% + 28px);
+  top: 55px;
+  left: 12.5%;
+  width: 75%;
   height: 2px;
-  background: linear-gradient(90deg, #0a5a8c, rgba(10, 90, 140, 0.25));
+  background: linear-gradient(90deg, #0a5a8c 0%, rgba(10,90,140,0.12) 100%);
   z-index: 0;
 }
 
-.stepNum {
-  width: 56px;
-  height: 56px;
+.journeyStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.journeyBubble {
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background: #0a5a8c;
-  color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 1.3rem;
+  border: 2px solid #0a5a8c;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
-  box-shadow: 0 4px 16px rgba(10, 90, 140, 0.3);
-  margin-bottom: 20px;
-  flex-shrink: 0;
-  position: relative;
-}
-
-.stepTitle {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
   font-size: 0.9rem;
-  color: #1a2b3d;
-  margin-bottom: 10px;
-  line-height: 1.35;
-  margin-top: 0;
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(10,90,140,0.28), 0 0 0 6px rgba(10,90,140,0.07);
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
-.stepDesc {
-  font-size: 0.82rem;
+.journeyStep:hover .journeyBubble {
+  background: #084a74;
+  transform: scale(1.08);
+}
+
+.journeyCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 20px 22px;
+  box-shadow: 0 4px 24px rgba(16, 33, 50, 0.07);
+  border-left: 3px solid #0a5a8c;
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.journeyStep:hover .journeyCard {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(10,90,140,0.12);
+}
+
+.journeyCardNum {
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  font-size: 3.8rem;
+  color: rgba(10,90,140,0.06);
+  line-height: 1;
+  margin: 0 0 -16px;
+  letter-spacing: -0.05em;
+  display: block;
+}
+
+.journeyCardTitle {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #0e1f30;
+  margin: 0 0 8px;
+}
+
+.journeyCardDesc {
+  font-size: 0.84rem;
   color: #5d6f82;
-  line-height: 1.55;
+  line-height: 1.65;
   margin: 0;
 }
 
@@ -307,7 +455,24 @@
 /* ----------------------------------------------------------
    Responsive — mobile (max 640px)
    ---------------------------------------------------------- */
+@media (max-width: 768px) {
+  .journeyTrack {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .journeyLine {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
+  .mosaicWrapper {
+    width: 100%;
+    margin-top: 32px;
+  }
+
   .mosaic {
     grid-template-columns: 1fr;
     grid-template-rows: none;
@@ -321,13 +486,7 @@
   .cardE {
     grid-column: 1 !important;
     grid-row: auto !important;
-    height: 260px;
-  }
-
-  /* Always show description on mobile (no hover) */
-  .mosaicDesc {
-    max-height: 120px;
-    opacity: 1;
+    height: 240px;
   }
 
   .mosaicCard::before {
@@ -338,27 +497,28 @@
     font-size: 1.05rem;
   }
 
-  .stepper {
-    flex-direction: column;
-    gap: 32px;
+  .mosaicIcon {
+    width: 52px;
+    height: 52px;
+    top: 12px;
+    right: 12px;
   }
 
-  .stepperItem {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
+  .journeyTrack {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .stepperItem:not(:last-child)::after {
-    display: none;
+  .journeyCard {
+    padding: 16px 14px 14px;
   }
 
-  .stepNum {
-    width: 44px;
-    height: 44px;
-    font-size: 1rem;
-    margin-bottom: 0;
-    margin-right: 16px;
-    flex-shrink: 0;
+  .journeyCardNum {
+    font-size: 2.4rem;
+    margin-bottom: -10px;
+  }
+
+  .doctorPhoto {
+    height: 300px;
   }
 }

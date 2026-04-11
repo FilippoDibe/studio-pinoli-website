@@ -2,16 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import postsData from "./api/posts.json";
 import styles from "../styles/StudioHome.module.css";
 import ServiceCard from "@/components/ui/ServiceCard";
 const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
 
-
 const IMAGES = {
   hero: "/foto/image-003-foto-anna-sof-5706.jpg",
-  about: "/foto/image-042-foto-nastia-cc1a9571.jpg",
-  primaVisita: "/prima-visita/prima-visita.jpg",
+  about: "/images/logo.png",
+  primaVisita: "/images/ingresso.jpeg",
 };
 const HERO_VIDEO = "/video/hero-pinoli.mp4";
 
@@ -41,7 +39,7 @@ const services = [
     title: "Medicina Estetica a Milano",
     description: "Trattamenti non invasivi e protocolli medicali per valorizzare i lineamenti in modo naturale, con risultati eleganti e armonici.",
     href: "/servizi/medicina-estetica",
-    image: "/servizi/medicina-estetica.jpg",
+    image: "/servizi/medicinaestetica.jpg",
     alt: "Trattamento medicina estetica viso Milano Studio Pinoli",
     accent: "#c16d43",
     theme: "aesthetic",
@@ -51,7 +49,7 @@ const services = [
     title: "Osteopatia a Milano",
     description: "Valutazioni e trattamenti osteopatici per migliorare postura, mobilità e benessere muscolo-scheletrico, in integrazione con il percorso clinico complessivo.",
     href: "/servizi/osteopatia",
-    image: "/servizi/osteopatia-hd.jpg",
+    image: "/servizi/osteopatia.jpg",
     alt: "Trattamenti osteopatici Studio Pinoli Milano",
     accent: "#5c6bc0",
     theme: "osteopatia",
@@ -139,7 +137,7 @@ function StatCard({ numeric, suffix, label }) {
 }
 
 
-export default function Home({ posts }) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -147,6 +145,48 @@ export default function Home({ posts }) {
         <meta
           name="description"
           content="Studio Pinoli, dentista a Milano dal 1989. Odontoiatria, implantologia, ortodonzia, bionutrizione e medicina estetica in un unico studio. Prima visita gratuita."
+        />
+        {/* Open Graph */}
+        <meta property="og:title" content="Studio Pinoli | Dentista a Milano dal 1989" />
+        <meta property="og:description" content="Studio Pinoli, dentista a Milano dal 1989. Odontoiatria, implantologia, ortodonzia, bionutrizione e medicina estetica in un unico studio." />
+        <meta property="og:image" content="https://www.studiopinoli.it/foto/image-003-foto-anna-sof-5706.jpg" />
+        {/* Schema.org JSON-LD — LocalBusiness / Dentist */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["Dentist", "MedicalClinic"],
+              "name": "Studio Pinoli",
+              "description": "Studio medico dentistico a Milano dal 1989. Odontoiatria, bionutrizione, medicina estetica, osteopatia e art-terapia.",
+              "url": "https://www.studiopinoli.it",
+              "telephone": "+390242272381",
+              "email": "info@studiopinoli.it",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Via Domenico Cimarosa, 4",
+                "addressLocality": "Milano",
+                "postalCode": "20144",
+                "addressCountry": "IT"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 45.4645,
+                "longitude": 9.1565
+              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  "opens": "09:00",
+                  "closes": "19:00"
+                }
+              ],
+              "image": "https://www.studiopinoli.it/foto/image-003-foto-anna-sof-5706.jpg",
+              "priceRange": "€€",
+              "medicalSpecialty": ["Dentistry", "Nutrition", "Aesthetic Medicine"]
+            })
+          }}
         />
       </Head>
 
@@ -177,7 +217,7 @@ export default function Home({ posts }) {
 
           <div className="container">
             <div className={styles.heroContent}>
-              <h1 className={styles.heroTag}>Studio Medico Dentistico a Milano</h1>
+              <p className={styles.heroTag}>Studio Medico Dentistico a Milano</p>
               <h1>Odontoiatria, Bio-Nutrizione e Medicina integrata</h1>
               <p>
                Studio Medico Dentistico nel cuore di Milano specializzato in odontoiatria, bio-nutrizione e medicina integrata, con percorsi personalizzati per chi ricerca qualità, precisione e risultati duraturi nel tempo.
@@ -209,11 +249,26 @@ export default function Home({ posts }) {
         <section className={styles.aboutSection}>
           <div className="container">
             <div className={styles.aboutGrid}>
+                <div className={styles.logoBrandPanel}>
+                  <div className={styles.logoBrandRingOuter} aria-hidden="true" />
+                  <div className={styles.logoBrandRing} aria-hidden="true" />
+                  <div className={styles.logoBrandRing2} aria-hidden="true" />
+                  <div className={styles.logoBrandAccent} aria-hidden="true" />
+                  <div className={styles.logoBrandInner}>
+                    <Image
+                      src="/images/logo.png"
+                      alt="Studio Pinoli"
+                      width={260}
+                      height={260}
+                      style={{ width: "auto", height: "auto", maxWidth: "500px", position: "relative", zIndex: 1 }}
+                    />
+                  </div>
+                </div>
               <div className={styles.aboutContent}>
                 <span className={styles.sectionTag}>Chi siamo</span>
-                <h2>Studio Medico Dentistico a Milano, cinque aree di competenza integrate</h2>
+                <h2>Studio Medico Dentistico a Milano</h2>
                 <p>
-                  <b>Studio Pinoli</b>, situato nel cuore di Milano, è uno Studio Medico Dentistico specializzato in <b>odontoiatria, bio-nutrizione e medicina integrata</b>. Lo Studio, guidato dalla direzione sanitaria del Dr. Luca Maria Pinoli, offre un ambiente dove professionisti del benessere lavorano in sinergia per offrirti un percorso di cure personalizzato.
+                  <b>Studio Pinoli</b>, situato nel cuore di Milano, è uno Studio Medico Dentistico specializzato in <b>odontoiatria, bio-nutrizione e medicina integrata</b>. 
                 </p>
                 <p>
                Da oltre 35 anni, accompagniamo i nostri pazienti con un approccio clinico integrato, grazie all’utilizzo di tecnologie avanzate e un’attenzione costante alla qualità dell’esperienza clinica in Studio.
@@ -222,15 +277,7 @@ export default function Home({ posts }) {
                   Scopri il nostro team &rarr;
                 </Link>
               </div>
-              <div className={styles.aboutImageWrap}>
-                <Image
-                  src={IMAGES.about}
-                  alt="Il team di dentisti e specialisti dello Studio Pinoli a Milano"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 45vw"
-                  className={styles.coverImage}
-                />
-              </div>
+            
             </div>
           </div>
         </section>
@@ -370,7 +417,3 @@ export default function Home({ posts }) {
   );
 }
 
-export async function getStaticProps() {
-  const latestPosts = Array.isArray(postsData) ? postsData.slice(0, 3) : [];
-  return { props: { posts: latestPosts } };
-}
