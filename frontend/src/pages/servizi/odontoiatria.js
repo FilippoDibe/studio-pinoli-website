@@ -3,8 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/odontoiatria.module.css";
-
-const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+import { BOOKING_URL } from "@/lib/constants";
 
 /* ── Mosaic groups ─────────────────────────────────────────── */
 const UNSPLASH = "https://images.unsplash.com";
@@ -232,9 +231,39 @@ export default function Odontoiatria() {
     <>
       <Head>
         <title>Dentista a Milano — Odontoiatria | Studio Pinoli</title>
-        <meta
-          name="description"
-          content="Dentista a Milano con oltre 35 anni di esperienza. Implantologia, ortodonzia, igiene orale, sbiancamento e protesi dentale. Studio Pinoli, zona Certosa. Prima visita gratuita."
+        <meta name="description" content="Dentista a Milano con oltre 35 anni di esperienza. Implantologia, ortodonzia, igiene orale, sbiancamento e protesi dentale. Studio Pinoli, zona Navigli." />
+        <meta property="og:title" content="Dentista a Milano — Odontoiatria | Studio Pinoli" />
+        <meta property="og:description" content="Implantologia, ortodonzia, igiene orale, sbiancamento e protesi dentale a Milano. Studio Pinoli, Via Cimarosa 4." />
+        <meta property="og:image" content="https://www.studiopinoli.it/servizi/odontoriatria.jpg" />
+        <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalBusiness",
+              "name": "Studio Pinoli — Odontoiatria",
+              "url": "https://www.studiopinoli.it/servizi/odontoiatria",
+              "description": "Odontoiatria conservativa, implantologia, ortodonzia e igiene professionale a Milano.",
+              "medicalSpecialty": "Dentistry",
+              "parentOrganization": {
+                "@type": "Dentist",
+                "name": "Studio Pinoli",
+                "url": "https://www.studiopinoli.it"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Servizi Odontoiatrici",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Implantologia dentale" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Ortodonzia invisibile" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Igiene orale professionale" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Protesi dentale" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Sbiancamento dentale" } }
+                ]
+              }
+            })
+          }}
         />
       </Head>
 

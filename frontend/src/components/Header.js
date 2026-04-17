@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-
-const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+import { BOOKING_URL } from "@/lib/constants";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -151,17 +150,14 @@ export default function Header() {
         </div>
 
         <div className="mobile-nav-footer">
-          <Link href="/contatti" className="btn btn-primary btn-block" onClick={closeMenu}>
-            Prenota Appuntamento
-          </Link>
           <a
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-outline btn-block btn-gestionale"
+            className="btn btn-primary btn-block"
             onClick={closeMenu}
           >
-            Apri Gestionale
+            Prenota Ora
           </a>
           <div className="mobile-nav-contact">
             <a href="tel:+393316713904">

@@ -3,8 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import postsData from "../api/posts.json";
 
-// Helper function to extract first image from content
-function extractFirstImage(content) {
+// Helper function — prefers yoast OG image, falls back to first img in content
+function extractFirstImage(post) {
+  const ogImages = post?.yoast_head_json?.og_image;
+  if (ogImages && ogImages.length > 0 && ogImages[0].url) return ogImages[0].url;
+  const content = post?.content?.rendered;
   if (!content) return null;
   const match = content.match(/<img[^>]+src=["']([^"']+)["']/i);
   return match ? match[1] : null;
@@ -58,7 +61,7 @@ export default function BlogPost({ post }) {
     );
   }
 
-  const heroImage = extractFirstImage(post.content?.rendered) || getFallbackImage();
+  const heroImage = extractFirstImage(post) || getFallbackImage();
   const readingTime = calculateReadingTime(post.content?.rendered);
   const publishDate = new Date(post.date).toLocaleDateString("it-IT", {
     year: "numeric",

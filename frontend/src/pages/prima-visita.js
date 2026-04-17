@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+import { BOOKING_URL } from "@/lib/constants";
 // Services with accent colors (matching home page)
 const services = [
   {
@@ -237,10 +237,11 @@ export default function PrimaVisita() {
     <>
       <Head>
         <title>Prima Visita dal Dentista a Milano | Studio Pinoli</title>
-        <meta
-          name="description"
-          content="Prima visita gratuita dal dentista a Milano presso Studio Pinoli. Valutazione completa della salute orale, piano di cura personalizzato e preventivo trasparente. Prenota ora."
-        />
+        <meta name="description" content="Prima visita dal dentista a Milano presso Studio Pinoli. Valutazione completa della salute orale, piano di cura personalizzato e preventivo trasparente. Prenota ora." />
+        <meta property="og:title" content="Prima Visita dal Dentista a Milano | Studio Pinoli" />
+        <meta property="og:description" content="Prenota la tua prima visita a Studio Pinoli: analisi del quadro clinico, piano di cura personalizzato e preventivo chiaro e trasparente." />
+        <meta property="og:image" content="https://www.studiopinoli.it/images/ingresso.jpeg" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <main id="main-content">

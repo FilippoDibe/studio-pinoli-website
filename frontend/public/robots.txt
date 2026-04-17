@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Blocca route API interne
+Disallow: /api/
+
+Sitemap: https://www.studiopinoli.it/sitemap.xml

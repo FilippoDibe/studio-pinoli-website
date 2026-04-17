@@ -3,8 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/art-terapia.module.css";
-
-const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+import { BOOKING_URL } from "@/lib/constants";
 
 const treatments = [
   {
@@ -123,9 +122,36 @@ export default function ArtTerapia() {
     <>
       <Head>
         <title>Art-Terapia a Milano — Benessere Emotivo | Studio Pinoli</title>
-        <meta
-          name="description"
-          content="Art-terapia a Milano: percorsi di benessere emotivo attraverso l'espressione creativa. Riduzione dello stress, gestione dell'ansia e consapevolezza di sé. Studio Pinoli."
+        <meta name="description" content="Art-terapia a Milano: percorsi di benessere emotivo attraverso l'espressione creativa. Riduzione dello stress, gestione dell'ansia e consapevolezza di sé. Studio Pinoli." />
+        <meta property="og:title" content="Art-Terapia a Milano — Benessere Emotivo | Studio Pinoli" />
+        <meta property="og:description" content="Percorsi di art-terapia per la gestione dello stress, equilibrio emotivo e benessere psico-fisico in un contesto clinico strutturato." />
+        <meta property="og:image" content="https://www.studiopinoli.it/servizi/art-terapia-hd.jpg" />
+        <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalBusiness",
+              "name": "Studio Pinoli — Art-Terapia",
+              "url": "https://www.studiopinoli.it/servizi/art-terapia",
+              "description": "Percorsi di art-terapia orientati alla gestione dello stress, all'equilibrio emotivo e al benessere psico-fisico.",
+              "parentOrganization": {
+                "@type": "Dentist",
+                "name": "Studio Pinoli",
+                "url": "https://www.studiopinoli.it"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Percorsi di Art-Terapia",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Art-terapia individuale" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestione dello stress attraverso l'arte" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Percorso benessere emotivo" } }
+                ]
+              }
+            })
+          }}
         />
       </Head>
 

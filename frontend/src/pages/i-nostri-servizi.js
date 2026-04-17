@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import styles from "../styles/StudioHome.module.css";
-const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+import { BOOKING_URL } from "@/lib/constants";
 
 const carouselServices = [
   {

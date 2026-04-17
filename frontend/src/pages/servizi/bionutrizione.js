@@ -3,8 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/bionutrizione.module.css";
-
-const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+import { BOOKING_URL } from "@/lib/constants";
 
 // Process steps
 const processSteps = [
@@ -105,9 +104,37 @@ export default function Bionutrizione() {
     <>
       <Head>
         <title>Nutrizionista a Milano — Bionutrizione | Studio Pinoli</title>
-        <meta
-          name="description"
-          content="Nutrizionista a Milano: piani alimentari personalizzati, diete per dimagrimento, nutrizione sportiva e clinica. Studio Pinoli zona Certosa. Prenota una consulenza."
+        <meta name="description" content="Nutrizionista a Milano: piani alimentari personalizzati, diete per dimagrimento, nutrizione sportiva e clinica. Studio Pinoli, Via Cimarosa 4." />
+        <meta property="og:title" content="Nutrizionista a Milano — Bionutrizione | Studio Pinoli" />
+        <meta property="og:description" content="Piani alimentari personalizzati, nutrizione sportiva e clinica a Milano. Approccio scientifico e monitoraggio costante." />
+        <meta property="og:image" content="https://www.studiopinoli.it/servizi/Biochimica-nutrizione_Immagine_blog-.jpg" />
+        <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalBusiness",
+              "name": "Studio Pinoli — Bionutrizione",
+              "url": "https://www.studiopinoli.it/servizi/bionutrizione",
+              "description": "Piani nutrizionali personalizzati per migliorare energia, composizione corporea e performance mentale.",
+              "medicalSpecialty": "DietNutrition",
+              "parentOrganization": {
+                "@type": "Dentist",
+                "name": "Studio Pinoli",
+                "url": "https://www.studiopinoli.it"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Servizi di Bionutrizione",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Piano alimentare personalizzato" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Nutrizione sportiva" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Dieta per dimagrimento" } }
+                ]
+              }
+            })
+          }}
         />
       </Head>
 

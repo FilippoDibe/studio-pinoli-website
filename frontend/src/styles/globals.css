@@ -5171,7 +5171,8 @@ ul, ol {
 .article-hero .container {
   position: relative;
   z-index: 1;
-  padding-bottom: 60px;
+  padding-bottom: 48px;
+  padding-top: 20px;
 }
 
 .article-hero .breadcrumb {
@@ -5348,6 +5349,50 @@ ul, ol {
   color: var(--white);
 }
 
+/* Blog category filter */
+.blog-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.blog-filter-btn {
+  padding: 10px 20px;
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.blog-filter-btn:hover,
+.blog-filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+/* Load more */
+.blog-load-more {
+  text-align: center;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.blog-load-more-count {
+  color: var(--gray-500);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 .blog-grid-large {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -5506,6 +5551,31 @@ ul, ol {
   border-radius: var(--radius-lg);
   margin: 32px 0;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* WordPress content safeguards — prevent overflow from inline styles */
+.wp-content img,
+.wp-content figure,
+.wp-content table,
+.wp-content pre,
+.wp-content iframe {
+  max-width: 100%;
+  height: auto;
+  overflow-x: auto;
+}
+
+.wp-content table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.wp-content pre {
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .article-content blockquote {
@@ -5520,6 +5590,8 @@ ul, ol {
 
 .article-share {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   margin-top: 40px;
   padding-top: 40px;
@@ -5567,6 +5639,57 @@ ul, ol {
 
   .article-content p {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .article-hero {
+    height: 320px;
+  }
+
+  .article-hero h1 {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+  }
+
+  .article-content {
+    padding: 32px var(--container-padding);
+  }
+
+  .article-content h2 {
+    font-size: 1.35rem;
+    margin: 28px 0 14px;
+  }
+
+  .article-content h3 {
+    font-size: 1.15rem;
+  }
+
+  .article-share {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .article-navigation {
+    margin-top: 24px;
+  }
+}
+
+/* Contact map hero */
+.contact-map-hero {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .contact-map-hero {
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-map-hero {
+    height: 240px;
   }
 }
 
@@ -7627,6 +7750,31 @@ main {
   .contact-form-wrapper {
     padding: 26px 20px;
   }
+
+  /* Blog filter — touch targets */
+  .blog-filter {
+    gap: 8px;
+  }
+
+  .blog-filter-btn {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 0.82rem;
+  }
+
+  /* Blog load more */
+  .blog-load-more {
+    margin-top: 32px;
+  }
+
+  /* Blog card */
+  .blog-card-large {
+    border-radius: var(--radius-lg);
+  }
+
+  .blog-card-body {
+    padding: 16px;
+  }
 }
 
 /* ===== MOBILE HARDENING ===== */
@@ -7853,13 +8001,28 @@ body {
 @media (max-width: 768px) {
   .mosaic-services-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 320px 300px 300px 300px 300px;
+    grid-template-rows: 300px 260px 260px 260px 260px;
     grid-template-areas: "c1" "c4" "c2" "c3" "c5";
     gap: 12px;
   }
 
   .mosaic-card-title {
     font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  /* Su touch device mostra sempre descrizione e CTA */
+  .mosaic-card-description {
+    max-height: 60px;
+    opacity: 0.85;
+    font-size: 0.8rem;
+  }
+
+  .mosaic-card-cta {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 0.82rem;
+    margin-top: 6px;
   }
 
   .mosaic-header {
@@ -7873,6 +8036,21 @@ body {
 
   .mosaic-section .container {
     padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mosaic-services-grid {
+    grid-template-rows: 260px 220px 220px 220px 220px;
+    gap: 10px;
+  }
+
+  .mosaic-card-content {
+    padding: 20px 16px;
+  }
+
+  .mosaic-card-title {
+    font-size: 1.15rem;
   }
 }
 

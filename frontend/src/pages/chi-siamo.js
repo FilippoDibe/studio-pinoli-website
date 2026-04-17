@@ -395,10 +395,11 @@ export default function ChiSiamo() {
     <>
       <Head>
         <title>Chi Siamo | Studio Dentistico Pinoli Milano dal 1989</title>
-        <meta
-          name="description"
-          content="Studio Pinoli a Milano: dentisti e specialisti con oltre 35 anni di esperienza in odontoiatria, bionutrizione e medicina estetica. Scopri il nostro team e la nostra storia."
-        />
+        <meta name="description" content="Studio Pinoli a Milano: dentisti e specialisti con oltre 35 anni di esperienza in odontoiatria, bionutrizione e medicina estetica. Scopri il nostro team e la nostra storia." />
+        <meta property="og:title" content="Chi Siamo | Studio Dentistico Pinoli Milano dal 1989" />
+        <meta property="og:description" content="Un team di specialisti con oltre 35 anni di esperienza in odontoiatria, bionutrizione, medicina estetica e osteopatia. Scopri Studio Pinoli a Milano." />
+        <meta property="og:image" content="https://www.studiopinoli.it/foto/image-003-foto-anna-sof-5706.jpg" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <main id="main-content">

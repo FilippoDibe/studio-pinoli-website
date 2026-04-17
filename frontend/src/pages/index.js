@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/StudioHome.module.css";
 import ServiceCard from "@/components/ui/ServiceCard";
-const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+import { BOOKING_URL } from "@/lib/constants";
 
 const IMAGES = {
   hero: "/foto/image-003-foto-anna-sof-5706.jpg",
@@ -171,8 +171,8 @@ export default function Home() {
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": 45.4645,
-                "longitude": 9.1565
+                "latitude": 45.4564,
+                "longitude": 9.1755
               },
               "openingHoursSpecification": [
                 {
@@ -341,12 +341,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section style={{marginBottom: '100px'}} className={styles.ctaSection}>
+        <section className={styles.ctaSection}>
           <div className="container">
             <div className={styles.ctaGrid}>
               <div className={styles.ctaContent}>
                 <span className={styles.sectionTagLight}>Prima visita</span>
-                <h3 style={{fontSize:"2.5rem", marginTop:"20px", color:"white"}}>Prenota una prima visita in Studio </h3>
+                <h3>Prenota una prima visita in Studio</h3>
                 <p>
                La prima visita è il momento in cui analizziamo la tua situazione clinica, ascoltiamo i tuoi obiettivi e definiamo il piano di cure migliore per te. 
                 </p>
@@ -394,20 +394,25 @@ export default function Home() {
                   20144 Milano (MI)
                 </address>
                 
-                <Link style={{ marginTop: '1.2rem' }} href="/contatti" className="btn btn-primary">
+                <Link href="/contatti" className={`btn btn-primary ${styles.contactInfoBtn}`}>
                   Contattaci
                 </Link>
               </div>
               <div className={styles.mapWrap}>
-                <iframe
-                  src="https://maps.google.com/maps?q=Via+Domenico+Cimarosa+4,+20144+Milano+MI&output=embed&hl=it"
-                  width="100%"
-                  height="340"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Mappa Studio Pinoli"
-                />
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Via+Domenico+Cimarosa+4,+20144+Milano+MI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Apri Studio Pinoli su Google Maps"
+                  className={styles.mapPlaceholder}
+                >
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" className={styles.mapIcon}>
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <strong>Via Domenico Cimarosa, 4</strong>
+                  <span>20144 Milano (MI)</span>
+                  <span className={styles.mapCta}>Apri su Google Maps →</span>
+                </a>
               </div>
             </div>
           </div>

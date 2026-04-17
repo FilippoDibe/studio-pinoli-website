@@ -1,61 +1,63 @@
 # SEO — Lista lavori da fare
 
-Studio Pinoli | Ultima analisi: febbraio 2026
+Studio Pinoli | Ultima analisi: aprile 2026 | Aggiornato: 17 aprile 2026
 
 ---
 
 ## Stato attuale
 
-La struttura tecnica del sito è buona. Titoli, meta description e gerarchia dei titoli (H1/H2/H3) sono presenti su tutte le pagine. I problemi principali riguardano tre aree: elementi tecnici mancanti, contenuti da riscrivere/aggiungere e immagini da ottimizzare.
+La struttura tecnica del sito è ora completa per quanto riguarda gli elementi fondamentali: sitemap, robots.txt, canonical, Open Graph e Schema.org sono tutti implementati. Le priorità residue riguardano contenuti da potenziare, nuove pagine da creare e attività off-site.
 
 ---
 
-## 1. Elementi tecnici mancanti
+## 1. Elementi tecnici
 
-Questi file non esistono ancora e bloccano una corretta indicizzazione.
+### `sitemap.xml` ✅ FATTO
+- [x] Generata automaticamente post-build con `next-sitemap`
+- [x] Include tutte le URL: home, servizi, chi-siamo, prima-visita, contatti, tutti i blog post (850+)
+- [x] Priorità calibrate: home/i-nostri-servizi/prima-visita = 1.0 · servizi/chi-siamo/contatti = 0.9 · blog = 0.6 · blog index = 0.8
+- [x] Si rigenera automaticamente ad ogni build
 
-### `sitemap.xml`
+### `robots.txt` ✅ FATTO
+- [x] Creato in `frontend/public/robots.txt`
+- [x] Allow tutto, Disallow `/api/`, punta alla sitemap
 
-- [ ] Creare `frontend/public/sitemap.xml`
-- [ ] Includere tutte le URL: home, servizi, chi siamo, prima visita, contatti, blog post
-- [ ] Aggiornare la data di modifica (`<lastmod>`) quando si aggiorna una pagina
-- [ ] Aggiungere priorità: home = 1.0, servizi = 0.9, blog post = 0.7
+### Canonical URL ✅ FATTO
+- [x] `<link rel="canonical">` automatico in `_app.js` via `useRouter().asPath` — copre tutte le pagine
 
-### `robots.txt`
+### Open Graph ✅ FATTO
+- [x] Homepage — `og:title`, `og:description`, `og:image`
+- [x] Odontoiatria
+- [x] Bionutrizione
+- [x] Medicina Estetica
+- [x] Osteopatia
+- [x] Art-Terapia
+- [x] Chi Siamo
+- [x] Prima Visita
+- [x] Contatti
+- [x] Blog post — già presenti, confermati
 
-- [ ] Creare `frontend/public/robots.txt`
-- [ ] Contenuto minimo:
-  ```
-  User-agent: *
-  Allow: /
-  Sitemap: https://www.studiopinoli.it/sitemap.xml
-  ```
-
-### Structured Data (JSON-LD) — priorità alta
-
-Questi dati permettono a Google di mostrare risultati arricchiti (orari, indirizzo, FAQ, stelle).
-
-- [ ] **Homepage** — aggiungere schema `LocalBusiness` + `DentalClinic` con:
-  - Nome, indirizzo, telefono, email
-  - Orari di apertura
-  - URL, logo
-- [ ] **Pagine servizi** — aggiungere schema `FAQPage` (le sezioni FAQ sono già presenti, basta strutturarle)
+### Structured Data (JSON-LD) ✅ FATTO (parziale)
+- [x] **Homepage** — schema `Dentist` + `MedicalClinic` con nome, indirizzo, telefono, email, orari, coordinate geo, medicalSpecialty
+- [x] **Pagine servizi** — schema `MedicalBusiness` + `hasOfferCatalog` con le procedure specifiche su ognuna delle 5 pagine
+- [x] **Contatti** — schema `FAQPage` con le 5 FAQ già presenti (rich snippet Google)
 - [ ] **Post del blog** — aggiungere schema `Article` (autore, data, immagine)
-- [ ] **Breadcrumb** — aggiungere schema `BreadcrumbList` (il breadcrumb HTML c'è già, manca solo la dichiarazione strutturata)
+- [ ] **Breadcrumb** — aggiungere schema `BreadcrumbList` (il breadcrumb HTML c'è, manca il JSON-LD)
 
-### Canonical URL
+### Google Analytics 4 ✅ FATTO (pronto, attivabile)
+- [x] Script integrato in `_app.js` con `next/script` e `strategy="afterInteractive"` (non penalizza i Core Web Vitals)
+- [x] Si attiva solo se `NEXT_PUBLIC_GA_ID` è presente nel file `.env.local`
+- [ ] **Da fare:** creare property GA4 su analytics.google.com e aggiungere `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX` a `.env.local`
 
-- [ ] Aggiungere tag `<link rel="canonical" href="..." />` in ogni pagina per evitare contenuto duplicato
+### Google Search Console — DA FARE
+- [ ] Creare property su search.google.com/search-console
+- [ ] Aggiungere meta tag di verifica nell'`<Head>` di `_app.js`
+- [ ] Dopo il deploy, inviare la sitemap: `https://www.studiopinoli.it/sitemap.xml`
+- [ ] Monitorare copertura indice e posizioni ogni mese
 
-### Open Graph (anteprime social)
-
-- [ ] Aggiungere `og:image`, `og:title`, `og:description` su: homepage, pagine servizi, chi siamo, contatti
-- [ ] Il blog ha già Open Graph — OK
-
-### Correzioni minori
-
-- [ ] Correggere "qualita" → "qualità" nella meta description globale in `frontend/src/pages/_app.js`
-- [ ] Aggiungere `<meta charset="UTF-8" />` in `frontend/src/pages/_document.js`
+### Correzioni minori — DA FARE
+- [ ] Aggiungere schema `BreadcrumbList` JSON-LD (breadcrumb HTML già presente su tutte le pagine)
+- [ ] Aggiungere schema `Article` sui post del blog (autore, data, immagine)
 
 ---
 
@@ -63,43 +65,37 @@ Questi dati permettono a Google di mostrare risultati arricchiti (orari, indiriz
 
 ### Homepage (`frontend/src/pages/index.js`)
 
-- [ ] L'H1 attuale è "La tua salute, il nostro metodo" — è un buono slogan ma non contiene keyword. Valuta:
-  - Mantenerlo come H1 e aggiungere un sottotitolo H2 tipo "Dentista a Milano dal 1989"
-  - Oppure cambiarlo direttamente con keyword + brand
 - [ ] Verificare che "dentista a Milano" compaia nel testo della sezione hero, non solo nel `<title>`
-- [ ] Aggiungere menzione esplicita del quartiere/zona (es. Milano zona Lorenteggio / zona ovest) per SEO locale
+- [ ] Aggiungere menzione esplicita del quartiere/zona (es. zona Navigli / zona ovest) per SEO locale
 
 ### Pagina Odontoiatria (`frontend/src/pages/servizi/odontoiatria.js`)
 
-- [ ] **Implantologia** compare solo nella meta description, non in nessun H2 o H3. Aggiungere una sottosezione dedicata con testo descrittivo
-- [ ] **Ortodonzia** stessa situazione — aggiungere sottosezione H2 o H3
-- [ ] **Igiene orale** — verificare che sia presente come voce separata con descrizione
+- [ ] **Implantologia** — aggiungere sottosezione H2 dedicata con testo descrittivo (keyword ad alto volume)
+- [ ] **Ortodonzia** — stessa cosa, aggiungere H2/H3 con descrizione
+- [ ] **Igiene orale** — verificare presenza come voce separata con descrizione
 
 ### Pagina Bionutrizione (`frontend/src/pages/servizi/bionutrizione.js`)
 
-- [ ] Verificare che la keyword "nutrizione" (non solo "bionutrizione") compaia nel testo, perché le ricerche su Google usano entrambe
-- [ ] Aggiungere menzione di "nutrizionista Milano" e "dieta personalizzata Milano" nel testo
+- [ ] Verificare che "nutrizione" (non solo "bionutrizione") compaia nel testo
+- [ ] Aggiungere "nutrizionista Milano" e "dieta personalizzata Milano" in modo naturale nel testo
 
 ### Pagina Medicina Estetica (`frontend/src/pages/servizi/medicina-estetica.js`)
 
-- [ ] Verificare presenza di keyword: "filler Milano", "botox Milano", "medicina estetica viso Milano"
-- [ ] Sono keyword molto cercate — il testo deve contenerle in modo naturale
+- [ ] Verificare presenza di "filler Milano", "medicina estetica viso Milano" nel testo
 
 ### Pagina Chi Siamo (`frontend/src/pages/chi-siamo.js`)
 
-- [ ] Aggiungere una descrizione testuale per ogni membro del team (non solo nome e ruolo)
-- [ ] Questo aiuta il ranking per keyword tipo "dott.ssa [cognome] dentista Milano"
-- [ ] Verificare che "35 anni di esperienza" o simile compaia nel testo (elemento di fiducia importante)
+- [ ] Aggiungere descrizione testuale per ogni membro del team (non solo nome e ruolo)
+- [ ] Aiuta il ranking per "dott.ssa [cognome] dentista Milano"
 
 ### Pagina Prima Visita (`frontend/src/pages/prima-visita.js`)
 
-- [ ] Buona struttura — verificare che "prima visita gratuita" o "prima visita dentista Milano" compaia nei titoli e nel testo
 - [ ] Aggiungere FAQ: "La prima visita è gratuita?", "Quanto dura?", "Cosa portare?"
+- [ ] Queste FAQ possono diventare rich snippet se strutturate con schema `FAQPage`
 
 ### Blog (`frontend/src/pages/blog/`)
 
-- [ ] 850+ articoli sono un asset enorme — molti probabilmente non sono ottimizzati per keyword specifiche
-- [ ] Priorità: identificare i 10-20 articoli più rilevanti (implantologia, sbiancamento, nutrizione, ecc.) e ottimizzarli con titoli H2 e meta description forti
+- [ ] Identificare i 10-20 articoli più rilevanti (implantologia, sbiancamento, nutrizione) e ottimizzarli con H2 e meta description forti
 - [ ] Aggiungere link interni dai post del blog alle pagine servizi corrispondenti
 
 ### Pagine da creare (nuove — alta priorità SEO)
@@ -115,30 +111,26 @@ Questi dati permettono a Google di mostrare risultati arricchiti (orari, indiriz
 
 ### Alt text (testo alternativo)
 
-Attualmente molte immagini hanno alt text generici ripetuti. Vanno resi descrittivi e con keyword.
-
-| Immagine          | Alt attuale (da sostituire) | Alt suggerito                                              |
-| ----------------- | --------------------------- | ---------------------------------------------------------- |
-| Hero homepage     | "Studio Pinoli a Milano"    | "Studio dentistico Pinoli — sala accoglienza Milano"       |
-| Team foto         | Solo nome                   | "Dott.ssa [Nome] [Cognome], dentista Milano Studio Pinoli" |
-| Foto studio       | "Studio Pinoli"             | "Sala trattamenti Studio Pinoli, via Chiminello Milano"    |
-| Implantologia     | generico                    | "Trattamento implantologia dentale Milano Studio Pinoli"   |
-| Bionutrizione     | generico                    | "Consulenza bionutrizione e dieta personalizzata Milano"   |
-| Medicina estetica | generico                    | "Trattamento medicina estetica viso Milano Studio Pinoli"  |
-
-**Regola generale:** ogni alt text deve rispondere a "cosa mostra questa foto e dove si trova lo studio".
+| Immagine          | Alt attuale (da sostituire)  | Alt suggerito                                              |
+| ----------------- | ---------------------------- | ---------------------------------------------------------- |
+| Hero homepage     | "Studio Pinoli a Milano"     | "Studio dentistico Pinoli — sala accoglienza Milano"       |
+| Team foto         | Solo nome                    | "Dott.ssa [Nome] [Cognome], dentista Milano Studio Pinoli" |
+| Foto studio       | "Studio Pinoli"              | "Sala trattamenti Studio Pinoli, Via Cimarosa Milano"      |
+| Implantologia     | generico                     | "Trattamento implantologia dentale Milano Studio Pinoli"   |
+| Bionutrizione     | generico                     | "Consulenza bionutrizione e dieta personalizzata Milano"   |
+| Medicina estetica | generico                     | "Trattamento medicina estetica viso Milano Studio Pinoli"  |
 
 ### Nuove immagini da aggiungere o sostituire
 
 - [ ] Foto esterne dello studio / insegna (aiuta per local SEO)
-- [ ] Foto dei macchinari/attrezzature (costruisce fiducia e differenziazione)
-- [ ] Foto prima/dopo trattamenti (solo con consenso paziente) — molto efficaci per medicina estetica e implantologia
+- [ ] Foto dei macchinari/attrezzature (costruisce fiducia)
+- [ ] Foto prima/dopo trattamenti (solo con consenso paziente) — efficaci per medicina estetica e implantologia
 - [ ] Foto del team in ambiente di lavoro (non solo ritratti statici)
-- [ ] Immagini per Open Graph: una per ogni pagina servizio (dimensione consigliata 1200×630px)
+- [ ] Immagini Open Graph dedicate per ogni pagina servizio (1200×630px) — attualmente puntano alle foto esistenti del sito
 
 ### Nomi dei file immagine
 
-I nomi attuali sono generici o codificati (es. `image-003-foto-anna-sof-5706.jpg`). Quando si sostituiscono le immagini, usare nomi descrittivi:
+I nomi attuali sono generici o codificati. Quando si sostituiscono le immagini, usare nomi descrittivi:
 
 - ❌ `image-003-foto-anna-sof-5706.jpg`
 - ✅ `studio-pinoli-dottoressa-anna-dentista-milano.jpg`
@@ -159,10 +151,8 @@ I nomi attuali sono generici o codificati (es. `image-003-foto-anna-sof-5706.jpg
 
 ## 4. SEO locale — da verificare fuori dal sito
 
-Questi punti non riguardano il codice ma sono fondamentali per il ranking locale su Google Maps e "dentista vicino a me".
-
 - [ ] **Google Business Profile** — verificare che esista, sia completo e aggiornato (orari, foto, categoria: Dentista)
-- [ ] **Coerenza NAP** — Nome, Indirizzo, Telefono devono essere identici su: sito web, Google Business, Pagine Gialle, Facebook, qualsiasi directory
+- [ ] **Coerenza NAP** — Nome, Indirizzo, Telefono identici su: sito web, Google Business, Pagine Gialle, Facebook, directory
 - [ ] **Recensioni Google** — attivare un sistema per chiedere recensioni ai pazienti (anche solo un link diretto)
 - [ ] **Citazioni locali** — verificare presenza su: Pagine Gialle, TuttoCittà, Doctolib, iDoctors, Yelp Italia
 
@@ -170,32 +160,42 @@ Questi punti non riguardano il codice ma sono fondamentali per il ranking locale
 
 ## Riepilogo priorità
 
-### Fare subito (blocca l'indicizzazione)
+### ✅ Già fatto (aprile 2026)
 
-1. Creare `sitemap.xml`
-2. Creare `robots.txt`
-3. Aggiungere JSON-LD `LocalBusiness` alla homepage
-4. Aggiungere JSON-LD `FAQPage` alle pagine servizi
-5. Correggere alt text delle immagini principali
+1. ~~Creare `sitemap.xml`~~ — generata automaticamente con next-sitemap
+2. ~~Creare `robots.txt`~~
+3. ~~Aggiungere JSON-LD `LocalBusiness/Dentist` alla homepage~~
+4. ~~Aggiungere JSON-LD `MedicalBusiness` + `hasOfferCatalog` alle 5 pagine servizi~~
+5. ~~Aggiungere JSON-LD `FAQPage` alla pagina contatti~~
+6. ~~Open Graph su tutte le pagine~~
+7. ~~Canonical URL automatico~~
+8. ~~Google Analytics 4 integrato (attivabile via env var)~~
 
-### Fare durante la revisione dei contenuti
+### Da fare subito (richiede accesso esterno)
 
-6. Aggiornare testo homepage con keyword esplicite
-7. Aggiungere sottosezioni per implantologia e ortodonzia
-8. Ottimizzare alt text di tutte le immagini nuove
-9. Aggiungere canonical URL
-10. Completare Open Graph su tutte le pagine
+1. Creare property Google Search Console + inviare sitemap
+2. Creare property Google Analytics 4 + aggiungere `NEXT_PUBLIC_GA_ID` a `.env.local`
 
-### Fare dopo (crescita a lungo termine)
+### Da fare durante la revisione dei contenuti
 
-11. Creare pagine dedicate: implantologia, ortodonzia, igiene orale
-12. Ottimizzare i 10-20 post blog più rilevanti
-13. Aggiungere link interni dal blog alle pagine servizi
-14. Configurare Google Search Console e inviare sitemap
-15. Monitorare posizioni con Google Search Console ogni mese
+3. Aggiornare testo homepage con keyword esplicite ("dentista a Milano", zona)
+4. Aggiungere sottosezioni per implantologia e ortodonzia in `/servizi/odontoiatria`
+5. Ottimizzare alt text di tutte le immagini
+6. Aggiungere FAQ alla pagina Prima Visita (con schema FAQPage)
+7. Schema `BreadcrumbList` JSON-LD su tutte le pagine
+8. Schema `Article` sui post del blog
 
-### aggiunte da proporre
+### Da fare dopo (crescita a lungo termine)
 
-1. chat bot che risponde e controlla gestionale su whatsapp per gestione e prenotazione tremite telefono
-2. gestire il flusso del telefono con un chatbot che scrive e prenota
-3. inviando messaggi a voi che lui ha eseguito una prenotazione
+9. Creare pagine dedicate: implantologia, ortodonzia, igiene orale, sbiancamento
+10. Ottimizzare i 10-20 post blog più rilevanti
+11. Aggiungere link interni dal blog alle pagine servizi
+12. Monitorare posizioni con Google Search Console ogni mese
+
+---
+
+## Proposte future (idee dello studio)
+
+1. Chatbot WhatsApp che risponde e controlla il gestionale Alfadocs per gestione e prenotazione tramite telefono
+2. Gestire il flusso del telefono con un chatbot che scrive e prenota
+3. Notifiche automatiche quando il bot esegue una prenotazione

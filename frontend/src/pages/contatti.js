@@ -61,16 +61,34 @@ export default function Contatti() {
     <>
       <Head>
         <title>Contatti | Studio Dentistico Pinoli Milano — Prenota una Visita</title>
-        <meta
-          name="description"
-          content="Contatta Studio Pinoli in Via Domenico Cimarosa 4, Milano. Prenota una visita dal dentista, una consulenza nutrizionale o un trattamento estetico. Tel: +39 331 671 3904 — Anche WhatsApp."
+        <meta name="description" content="Contatta Studio Pinoli in Via Domenico Cimarosa 4, Milano. Prenota una visita dal dentista, una consulenza nutrizionale o un trattamento estetico. Tel: +39 331 671 3904 — Anche WhatsApp." />
+        <meta property="og:title" content="Contatti | Studio Dentistico Pinoli Milano" />
+        <meta property="og:description" content="Via Domenico Cimarosa 4, 20144 Milano. Tel: +39 331 671 3904. Prenota una visita o richiedi informazioni — rispondiamo anche su WhatsApp." />
+        <meta property="og:image" content="https://www.studiopinoli.it/foto/image-003-foto-anna-sof-5706.jpg" />
+        <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqs.map((faq) => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.answer
+                }
+              }))
+            })
+          }}
         />
       </Head>
 
       <main id="main-content">
 
         {/* ── Hero Mappa ── */}
-        <section style={{ position: "relative", height: "480px", overflow: "hidden" }}>
+        <section className="contact-map-hero">
           {/* Mappa a schermo intero */}
           <iframe
             src="https://maps.google.com/maps?q=Via+Domenico+Cimarosa+4,+20144+Milano+MI&output=embed&hl=it"

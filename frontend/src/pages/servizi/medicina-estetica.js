@@ -3,8 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/medicina-estetica.module.css";
-
-const BOOKING_URL = "https://prenota.alfadocs.com/p/milano-studio-pinoli-31191";
+import { BOOKING_URL } from "@/lib/constants";
 
 // Treatments data
 const treatments = [
@@ -121,9 +120,38 @@ export default function MedicinaEstetica() {
     <>
       <Head>
         <title>Medicina Estetica a Milano — Filler e Anti-aging | Studio Pinoli</title>
-        <meta
-          name="description"
-          content="Medicina estetica a Milano: filler acido ialuronico, biorivitalizzazione, mesoterapia e trattamenti anti-aging viso. Risultati naturali, approccio non invasivo. Studio Pinoli."
+        <meta name="description" content="Medicina estetica a Milano: filler acido ialuronico, biorivitalizzazione, mesoterapia e trattamenti anti-aging viso. Risultati naturali, approccio non invasivo. Studio Pinoli." />
+        <meta property="og:title" content="Medicina Estetica a Milano — Filler e Anti-aging | Studio Pinoli" />
+        <meta property="og:description" content="Filler acido ialuronico, biorivitalizzazione e mesoterapia a Milano. Trattamenti non invasivi con risultati naturali ed eleganti." />
+        <meta property="og:image" content="https://www.studiopinoli.it/servizi/medicinaestetica.jpg" />
+        <meta property="og:type" content="website" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalBusiness",
+              "name": "Studio Pinoli — Medicina Estetica",
+              "url": "https://www.studiopinoli.it/servizi/medicina-estetica",
+              "description": "Trattamenti non invasivi e protocolli medicali per valorizzare i lineamenti in modo naturale.",
+              "medicalSpecialty": "Dermatology",
+              "parentOrganization": {
+                "@type": "Dentist",
+                "name": "Studio Pinoli",
+                "url": "https://www.studiopinoli.it"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Trattamenti di Medicina Estetica",
+                "itemListElement": [
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Filler acido ialuronico" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Biorivitalizzazione viso" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Mesoterapia" } },
+                  { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Trattamenti anti-aging" } }
+                ]
+              }
+            })
+          }}
         />
       </Head>
 
