@@ -94,7 +94,7 @@ export default function Footer() {
               Messaggio informativo sanitario ai sensi della legge 248 del 04/08/06 e 145 del 30/12/18 — La visita medica tradizionale rappresenta il solo strumento diagnostico per un efficace trattamento terapeutico.
             </p>
             <p>
-              © {currentYear} FDB Studio Associato S.r.l.  - P.IVA 13562380967 — <Link href="/page/privacy-policy">Privacy Policy</Link>
+              © {currentYear} FDB Studio Associato S.r.l.  - P.IVA 13562380967 — <Link href="/privacy-policy">Privacy Policy</Link>
             </p>
           </div>
         </div>

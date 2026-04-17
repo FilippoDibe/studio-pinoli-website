@@ -26,12 +26,15 @@ const faqs = [
 ];
 
 export default function Contatti() {
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", service: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", service: "", message: "", privacy: false, website: "" });
   const [formStatus, setFormStatus] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    setFormData({ ...formData, [e.target.name]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ export default function Contatti() {
       const data = await res.json();
       if (res.ok) {
         setFormStatus("success");
-        setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", service: "", message: "", privacy: false, website: "" });
       } else {
         setFormStatus(data.error || "Errore nell'invio. Riprova.");
       }
@@ -139,6 +142,11 @@ export default function Contatti() {
                 )}
 
                 <form className="contact-form" onSubmit={handleSubmit}>
+                  {/* Honeypot: nascosto agli utenti, i bot lo compilano → viene rigettato lato server */}
+                  <div style={{ display: "none" }} aria-hidden="true">
+                    <label htmlFor="website">Non compilare questo campo</label>
+                    <input type="text" id="website" name="website" value={formData.website} onChange={handleChange} tabIndex={-1} autoComplete="off" />
+                  </div>
                   <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="name">Nome e Cognome *</label>
@@ -171,12 +179,32 @@ export default function Contatti() {
                     <label htmlFor="message">Messaggio *</label>
                     <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder="Descrivi brevemente le tue esigenze..." />
                   </div>
+                  <div className="form-gdpr">
+                    <label className="form-gdpr-label">
+                      <input
+                        type="checkbox"
+                        name="privacy"
+                        checked={formData.privacy}
+                        onChange={handleChange}
+                        required
+                      />
+                      <span>
+                        Ho letto e acconsento al trattamento dei miei dati personali ai sensi del{" "}
+                        <abbr title="Regolamento Generale sulla Protezione dei Dati">GDPR</abbr>{" "}
+                        (Reg. UE 2016/679) e della{" "}
+                        <Link href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+                          Privacy Policy
+                        </Link>
+                        . *
+                      </span>
+                    </label>
+                  </div>
                   <div className="form-footer">
-                    <p className="form-privacy">
-                      Inviando questo form accetti la nostra{" "}
-                      <Link href="/privacy-policy">Privacy Policy</Link>
-                    </p>
-                    <button type="submit" className="btn btn-primary btn-lg" disabled={isSubmitting}>
+                    <button
+                      type="submit"
+                      className="btn btn-primary btn-lg"
+                      disabled={isSubmitting || !formData.privacy}
+                    >
                       {isSubmitting ? "Invio in corso…" : "Invia Messaggio"}
                       {!isSubmitting && (
                         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">

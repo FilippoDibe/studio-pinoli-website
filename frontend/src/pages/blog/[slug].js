@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import postsData from "../api/posts.json";
+import { SITE_URL } from "@/lib/constants";
 
 // Helper function — prefers yoast OG image, falls back to first img in content
 function extractFirstImage(post) {
@@ -62,25 +63,68 @@ export default function BlogPost({ post }) {
   }
 
   const heroImage = extractFirstImage(post) || getFallbackImage();
+  const heroImageAbsolute = heroImage.startsWith("http") ? heroImage : `${SITE_URL}${heroImage}`;
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
   const readingTime = calculateReadingTime(post.content?.rendered);
   const publishDate = new Date(post.date).toLocaleDateString("it-IT", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+  const postTitle = stripHtml(post.title.rendered);
+  const postDescription = stripHtml(post.excerpt?.rendered)?.substring(0, 160) || `${postTitle} - Blog Studio Dentistico Pinoli Milano`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": postTitle,
+    "description": postDescription,
+    "image": heroImageAbsolute,
+    "url": postUrl,
+    "datePublished": post.date,
+    "dateModified": post.modified || post.date,
+    "author": {
+      "@type": "Organization",
+      "name": "Studio Pinoli Milano",
+      "url": SITE_URL,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Studio Pinoli Milano",
+      "url": SITE_URL,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/foto/image-003-foto-anna-sof-5706.jpg`,
+      },
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blog` },
+      { "@type": "ListItem", "position": 3, "name": postTitle, "item": postUrl },
+    ],
+  };
 
   return (
     <>
       <Head>
-        <title>{stripHtml(post.title.rendered)} | Blog Studio Pinoli</title>
-        <meta
-          name="description"
-          content={stripHtml(post.excerpt?.rendered)?.substring(0, 160) || `${stripHtml(post.title.rendered)} - Blog Studio Dentistico Pinoli Milano`}
-        />
-        <meta property="og:title" content={stripHtml(post.title.rendered)} />
-        <meta property="og:description" content={stripHtml(post.excerpt?.rendered)?.substring(0, 160)} />
-        <meta property="og:image" content={heroImage} />
+        <title>{postTitle} | Blog Studio Pinoli</title>
+        <meta name="description" content={postDescription} />
+        <meta property="og:title" content={postTitle} />
+        <meta property="og:description" content={postDescription} />
+        <meta property="og:image" content={heroImageAbsolute} />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={postUrl} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       </Head>
 
       <main id="main-content">
