@@ -205,6 +205,13 @@ export default function INosttiServizi() {
           name="description"
           content="Odontoiatria, Bio-nutrizione, Medicina Estetica, Osteopatia e Art-Terapia a Milano. Scopri i nostri 5 servizi per il tuo benessere completo."
         />
+        <meta property="og:title" content="I Nostri Servizi | Studio Pinoli Milano" />
+        <meta
+          property="og:description"
+          content="Odontoiatria, Bio-nutrizione, Medicina Estetica, Osteopatia e Art-Terapia a Milano. Scopri i nostri 5 servizi per il tuo benessere completo."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.studiopinoli.it/foto/image-037-foto-nastia-cc1a9555.jpg" />
       </Head>
 
       <main id="main-content">

@@ -3,9 +3,18 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { BOOKING_URL } from "@/lib/constants";
 
+const SERVICES = [
+  { href: "/servizi/odontoiatria", label: "Odontoiatria" },
+  { href: "/servizi/bionutrizione", label: "Bio-nutrizione" },
+  { href: "/servizi/medicina-estetica", label: "Medicina Estetica" },
+  { href: "/servizi/osteopatia", label: "Osteopatia" },
+  { href: "/servizi/art-terapia", label: "Art-Terapia" },
+];
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +91,31 @@ export default function Header() {
 
             <nav className="nav-desktop">
               <Link href="/">Home</Link>
-              <Link href="/i-nostri-servizi">Servizi</Link>
+              <div
+                className="nav-dropdown"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <Link href="/i-nostri-servizi" className="nav-dropdown-trigger">
+                  Servizi
+                  <svg className={`nav-dropdown-arrow ${servicesOpen ? "open" : ""}`} viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                    <path d="M7 10l5 5 5-5z"/>
+                  </svg>
+                </Link>
+                {servicesOpen && (
+                  <div className="nav-dropdown-menu">
+                    {SERVICES.map((s) => (
+                      <Link key={s.href} href={s.href} className="nav-dropdown-item">
+                        {s.label}
+                      </Link>
+                    ))}
+                    <div className="nav-dropdown-divider" />
+                    <Link href="/i-nostri-servizi" className="nav-dropdown-item nav-dropdown-all">
+                      Tutti i servizi →
+                    </Link>
+                  </div>
+                )}
+              </div>
               <Link href="/prima-visita">Prima Visita</Link>
               <Link href="/chi-siamo">Chi Siamo</Link>
               <Link href="/blog">Blog</Link>

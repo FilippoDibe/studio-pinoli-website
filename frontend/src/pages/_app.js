@@ -117,6 +117,7 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href={canonical} />
         {/* Default Open Graph — overridden per pagina */}
+        <meta property="og:title" content="Studio Pinoli Milano — Dentista, Nutrizione, Medicina Estetica" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Studio Pinoli Milano" />
         <meta property="og:url" content={canonical} />

@@ -119,7 +119,7 @@ export default async function handler(req, res) {
     await transporter.sendMail({
       from: `"Studio Pinoli — Sito" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL,
-      replyTo: safeEmail,
+      replyTo: email,
       subject: `Nuova richiesta da ${safeName} — ${serviceLabel}`,
       html: htmlBody,
     });

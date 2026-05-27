@@ -5,7 +5,7 @@ module.exports = {
   changefreq: "weekly",
   priority: 0.7,
   sitemapSize: 5000,
-  exclude: ["/api/*", "/page/*"],
+  exclude: ["/api/*", "/page/*", "/privacy-policy"],
   transform: async (config, path) => {
     // Pagine principali — priorità alta
     const highPriority = ["/", "/i-nostri-servizi", "/prima-visita"];

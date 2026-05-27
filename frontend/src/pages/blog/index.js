@@ -59,6 +59,13 @@ export default function Blog({ posts, categories }) {
           name="description"
           content="Leggi gli ultimi articoli del nostro blog sulla salute dentale, consigli per l'igiene orale e novità dallo Studio Dentistico Pinoli."
         />
+        <meta property="og:title" content="Blog | Studio Dentistico Pinoli Milano" />
+        <meta
+          property="og:description"
+          content="Leggi gli ultimi articoli del nostro blog sulla salute dentale, consigli per l'igiene orale e novità dallo Studio Dentistico Pinoli."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.studiopinoli.it/foto/image-023-foto-nastia-cc1a9489.jpg" />
       </Head>
 
       <main id="main-content">

@@ -650,6 +650,79 @@ ul, ol {
   color: var(--gray-900);
 }
 
+/* Nav Dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-dropdown-arrow {
+  transition: transform 0.2s;
+  opacity: 0.6;
+}
+
+.nav-dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  min-width: 200px;
+  padding: 6px;
+  z-index: 100;
+  animation: dropdownFadeIn 0.15s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 9px 14px;
+  border-radius: calc(var(--radius) - 2px);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  background: transparent;
+}
+
+.nav-dropdown-item:hover {
+  background: var(--gray-50);
+  color: var(--primary);
+}
+
+.nav-dropdown-divider {
+  height: 1px;
+  background: var(--gray-100);
+  margin: 6px 0;
+}
+
+.nav-dropdown-all {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-dropdown-all:hover {
+  background: rgba(10, 90, 140, 0.06);
+  color: var(--primary-dark);
+}
+
 /* Hamburger Button */
 .hamburger {
   display: none;
@@ -9230,5 +9303,81 @@ body {
     right: 16px;
     width: 52px;
     height: 52px;
+  }
+}
+
+/* ============================================================
+   MOBILE PHOTO FIXES — Team & Servizi
+   ============================================================ */
+
+/* Team carousel: portrait aspect ratio su mobile per mostrare i visi */
+@media (max-width: 768px) {
+  .team-carousel-card {
+    aspect-ratio: 3 / 4;
+  }
+
+  /* Foto direttore: più alta su mobile */
+  .team-director-photo {
+    min-height: 360px;
+    order: -1;
+  }
+
+  /* Testo direttore: padding ridotto, testo più leggibile */
+  .team-director-card {
+    border-radius: 20px;
+  }
+
+  .team-director-info h3 {
+    font-size: 1.4rem;
+  }
+
+  /* About hero: immagine con altezza fissa quando si impila */
+  .about-hero-image {
+    min-height: 280px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .about-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Immagini servizi (two-col): più alte su mobile */
+  .two-col-image {
+    min-height: 280px;
+    border-radius: 14px;
+  }
+
+  /* Carousel label: leggibile su mobile */
+  .team-carousel .team-group-label {
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Carousel ancora più alto su schermi piccoli */
+  .team-carousel-card {
+    aspect-ratio: 2 / 3;
+  }
+
+  .team-director-photo {
+    min-height: 300px;
+  }
+
+  .about-hero-image {
+    min-height: 240px;
+  }
+
+  .two-col-image {
+    min-height: 240px;
+  }
+
+  /* Pills specialità direttore: vanno a capo */
+  .pv-services-cta-pills {
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }
