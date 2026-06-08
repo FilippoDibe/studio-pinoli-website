@@ -17,10 +17,6 @@ const nextConfig = {
       },
     ],
   },
-  webpack(config) {
-    config.output.chunkFilename = "_next/static/chunks/[id].[contenthash].js";
-    return config;
-  },
   async headers() {
     return [
       {
