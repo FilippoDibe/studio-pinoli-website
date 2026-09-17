@@ -114,6 +114,7 @@ export default function MyApp({ Component, pageProps }) {
     <div className={`${montserrat.variable} ${openSans.variable}`}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-site-verification" content="GlKsJzSeeVl4xMM1YIGFBmhcV_VVPi9ERwqpeuzuWRc" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href={canonical} />
         {/* Default Open Graph — overridden per pagina */}
