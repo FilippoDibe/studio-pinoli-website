@@ -192,8 +192,8 @@ export default function ArtTerapia() {
               <Link href="/contatti" className="btn btn-primary">
                 Prenota un incontro
               </Link>
-              <a href="tel:+390242272381" className="btn btn-secondary">
-                Chiama: 02 4272381
+              <a href="tel:+393316713904" className="btn btn-secondary">
+                Chiama in Studio
               </a>
             </div>
           </div>

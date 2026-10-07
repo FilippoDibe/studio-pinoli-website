@@ -129,7 +129,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="description"
-          content="Studio Pinoli — dentista a Milano dal 1989. Odontoiatria, implantologia, ortodonzia, bionutrizione e medicina estetica. Prima visita: chiama 02 4272381."
+          content="Studio Pinoli — dentista a Milano dal 1989. Odontoiatria, implantologia, ortodonzia, bionutrizione e medicina estetica. Via Cimarosa 4, Milano."
         />
         {breadcrumbs && (
           <script

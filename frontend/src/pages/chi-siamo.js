@@ -400,6 +400,7 @@ export default function ChiSiamo() {
         <meta property="og:description" content="Un team di specialisti con oltre 35 anni di esperienza in odontoiatria, bionutrizione, medicina estetica e osteopatia. Scopri Studio Pinoli a Milano." />
         <meta property="og:image" content="https://www.studiopinoli.it/foto/image-003-foto-anna-sof-5706.jpg" />
         <meta property="og:type" content="website" />
+        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":["Dentist","MedicalClinic"],"name":"Studio Pinoli","description":"Studio medico dentistico a Milano dal 1989. Un team di specialisti in odontoiatria, bionutrizione, medicina estetica, osteopatia e art-terapia.","url":"https://www.studiopinoli.it/chi-siamo","telephone":"+393316713904","email":"info@studiopinoli.it","address":{"@type":"PostalAddress","streetAddress":"Via Domenico Cimarosa, 4","addressLocality":"Milano","postalCode":"20144","addressCountry":"IT"},"image":"https://www.studiopinoli.it/foto/image-003-foto-anna-sof-5706.jpg","foundingDate":"1989","medicalSpecialty":["Dentistry","Nutrition","Aesthetic Medicine"]}`}</script>
       </Head>
 
       <main id="main-content">

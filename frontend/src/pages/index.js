@@ -144,7 +144,7 @@ export default function Home() {
         <title>Studio Pinoli | Dentista a Milano dal 1989</title>
         <meta
           name="description"
-          content="Studio Pinoli, dentista a Milano dal 1989. Odontoiatria, implantologia, ortodonzia, bionutrizione e medicina estetica in un unico studio. Prima visita gratuita."
+          content="Studio Pinoli, dentista a Milano dal 1989. Odontoiatria, implantologia, ortodonzia, bionutrizione e medicina estetica in un unico studio."
         />
         {/* Open Graph */}
         <meta property="og:title" content="Studio Pinoli | Dentista a Milano dal 1989" />
@@ -160,7 +160,7 @@ export default function Home() {
               "name": "Studio Pinoli",
               "description": "Studio medico dentistico a Milano dal 1989. Odontoiatria, bionutrizione, medicina estetica, osteopatia e art-terapia.",
               "url": "https://www.studiopinoli.it",
-              "telephone": "+390242272381",
+              "telephone": "+393316713904",
               "email": "info@studiopinoli.it",
               "address": {
                 "@type": "PostalAddress",
@@ -368,7 +368,7 @@ export default function Home() {
               <div className={styles.ctaImageWrap}>
                 <Image
                   src={IMAGES.primaVisita}
-                  alt="Prima visita dentista gratuita Studio Pinoli Milano"
+                  alt="Prima visita dentista Studio Pinoli Milano"
                   fill
                   sizes="(max-width: 900px) 100vw, 40vw"
                   className={styles.coverImage}

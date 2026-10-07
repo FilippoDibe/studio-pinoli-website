@@ -265,7 +265,7 @@ export default function MedicinaEstetica() {
               >
                 Prenota un trattamento
               </Link>
-              <a href="tel:393316713904" className="btn btn-secondary">
+              <a href="tel:+393316713904" className="btn btn-secondary">
                 Chiama in Studio
               </a>
             </div>

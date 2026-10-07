@@ -242,6 +242,7 @@ export default function PrimaVisita() {
         <meta property="og:description" content="Prenota la tua prima visita a Studio Pinoli: analisi del quadro clinico, piano di cura personalizzato e preventivo chiaro e trasparente." />
         <meta property="og:image" content="https://www.studiopinoli.it/images/ingresso.jpeg" />
         <meta property="og:type" content="website" />
+        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"MedicalClinic","name":"Studio Pinoli — Prima Visita","description":"Prima visita dal dentista a Milano presso Studio Pinoli. Valutazione completa della salute orale, piano di cura personalizzato e preventivo trasparente.","url":"https://www.studiopinoli.it/prima-visita","telephone":"+393316713904","email":"info@studiopinoli.it","address":{"@type":"PostalAddress","streetAddress":"Via Domenico Cimarosa, 4","addressLocality":"Milano","postalCode":"20144","addressCountry":"IT"},"image":"https://www.studiopinoli.it/images/ingresso.jpeg"}`}</script>
       </Head>
 
       <main id="main-content">
