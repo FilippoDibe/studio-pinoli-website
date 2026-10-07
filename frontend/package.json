@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack && next-sitemap",
+    "build": "next build --webpack && next-sitemap && cp out/blog.html out/blog/index.html && mkdir -p out/prima-visita && cp out/prima-visita.html out/prima-visita/index.html",
     "start": "next start",
     "import:studio-media": "node scripts/importStudioMedia.mjs",
     "migrate:blog-media": "node scripts/migrateBlogMedia.mjs"
