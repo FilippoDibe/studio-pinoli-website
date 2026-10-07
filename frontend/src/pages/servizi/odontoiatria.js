@@ -283,7 +283,7 @@ export default function Odontoiatria() {
               <span>/</span>
               <span>Odontoiatria</span>
             </nav>
-            <div className={styles.heroBadge}>✓ Prima Visita</div>
+
             <h1>Dentista a Milano</h1>
             <p>
               Da oltre 35 anni il nostro studio dentistico a Milano offre cure odontoiatriche
